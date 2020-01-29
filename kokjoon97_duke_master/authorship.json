@@ -1,0 +1,434 @@
+[
+  {
+    "path": "src/main/java/Duke.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        System.out.println(\"Hello! I\u0027m KJ\\n\" + \"How can I help you today?\");"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        String command;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        boolean shouldContinue \u003d true;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        Scanner input \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        Task[] instructions \u003d new Task[100];"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        int count \u003d 0;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        do {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            command \u003d input.nextLine();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            if (command.equals(\"bye\")) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                System.out.println(\"Bye. Hope to see you again soon!\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                shouldContinue \u003d false;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            } else if (command.equals(\"list\")) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                System.out.println(\"Here are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                for (int x \u003d 0; x \u003c count; x++) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                    System.out.println((x+1) + \".[\" + instructions[x].getStatus() + \"] \" + instructions[x].getDescription());"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            } else if (command.contains(\"done\")) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                String[] phrases \u003d command.split(\" \");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                int index \u003d Integer.parseInt(phrases[1]);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                instructions[index-1].markAsDone();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                System.out.println(\"  [\" + instructions[index-1].getStatus() + \"] \" + instructions[index-1].getDescription());"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                instructions[count] \u003d new Task(command);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                count +\u003d 1;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "                System.out.println(\"added: \" + command);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        } while (shouldContinue);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kokjoon97": 30,
+      "-": 4
+    }
+  },
+  {
+    "path": "src/main/java/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    private String description;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    private boolean isCompleted;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        isCompleted \u003d false;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    public String getStatus() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        if (isCompleted) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            return \"\\u2713\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "            return \"\\u2718\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    public String getDescription() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        return description;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    public void markAsDone() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "        isCompleted \u003d true;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kokjoon97"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kokjoon97": 25
+    }
+  }
+]
