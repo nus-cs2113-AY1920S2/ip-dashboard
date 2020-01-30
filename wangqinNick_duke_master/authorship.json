@@ -1,1 +1,5223 @@
-[]
+[
+  {
+    "path": "src/seedu/duke/Main.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.Command;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.ExitCommand;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.Duke;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.parser.Parser;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.ui.TextUi;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class Main {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    Duke duke \u003d new Duke();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private TextUi ui;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        new Main().run();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private void run(){"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        TextUi.showWelcomeMessage();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        runCommandLoopUntilExitCommand();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private void runCommandLoopUntilExitCommand() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        Command command;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        Scanner scanner \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        do {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            //read in user input"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            String userCommandText \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            //process from String to command"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            command \u003d new Parser().parseCommand(userCommandText);;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            executeCommand(command);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        } while (!ExitCommand.isExit(command));"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private void executeCommand(Command command) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        /**"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         * Supplies the data the command will operate on."
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         */"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        command.setData(duke);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        /**"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         * Execute according to the command itself"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         */"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        command.execute();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 53,
+      "-": 2
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/Command.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.Duke;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    protected Duke duke;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public String COMMAND_WORD;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    //constructor"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public Command() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Supplies the data the command will operate on."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void setData(Duke duke) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.duke \u003d duke;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public abstract CommandResult execute () ;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 21
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/CommandResult.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.ui.TextUi;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": " * Display the execute result, by constructing a CommandResult object,"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": " * parameter: Execute feedback to user"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class CommandResult {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public final String feedbackToUser;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult(String feedbackToUser) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.feedbackToUser \u003d feedbackToUser;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        TextUi.showResult(this.feedbackToUser);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 18
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/DoneCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class DoneCommand extends Command {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"done\";"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_DONE \u003d \"  Nice! I\u0027ve marked this task as done: \\n\"+\"  [✓] %s\";"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private final int toDoneIndex;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public DoneCommand(int toDoneIndex) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.toDoneIndex \u003d toDoneIndex-1;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        duke.doneTask(toDoneIndex);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_DONE,"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                duke.getTaskList().getInternalList().get(toDoneIndex).getTaskDescription()));"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 19
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/ExitCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class ExitCommand extends Command {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public ExitCommand() {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_EXIT_ACKNOWEDGEMENT \u003d \"  Bye. Hope to see you again soon!\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_EXIT_ACKNOWEDGEMENT));"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static boolean isExit(Command command) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return command instanceof ExitCommand; // instanceof returns false if it is null"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 21
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/IncorrectCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class IncorrectCommand extends Command{"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public final String feedbackToUser;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public IncorrectCommand(String commandWord) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.feedbackToUser \u003d commandWord;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        echo();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //for future implement"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //return new CommandResult(feedbackToUser);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private void echo(){"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(\"  \"+feedbackToUser);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 26
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/ListCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.DeadlineTask;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.EventTask;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.Task;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.TodoTask;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class ListCommand extends Command {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d \"Here are the tasks in your list:\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_EMPTY_LIST \u003d \"There is no current task in the list!\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_TODO_LIST \u003d \"  %d. [%c][%c] %s\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_DEADLINE_LIST \u003d \"  %d. [%c][%c] %s (%s)\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_EVENT_LIST \u003d \"  %d. [%c][%c] %s (%s)\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public ListCommand() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * If the list is not empty, return null. Do the display inside printAllTasks() function."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * If the list is empty, display the empty list message by return a CommandResult object."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(MESSAGE_USAGE);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        if (duke.getTaskList().getInternalList().size()\u003e0){"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            printAllTasks();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return new CommandResult(MESSAGE_EMPTY_LIST);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Print all tasks in the task list"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void printAllTasks(){"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        for (int i \u003d 1; i \u003c\u003d duke.getTaskList().getInternalList().size() ; i++) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            Task task \u003d duke.getTaskList().getInternalList().get(i-1);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            if (task instanceof TodoTask) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                printTodoTask((TodoTask) task, i);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            } else if (task instanceof DeadlineTask) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                printDeadlineTask((DeadlineTask) task, i);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            } else if( task instanceof EventTask) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                printEventTask((EventTask) task, i);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void printTodoTask(TodoTask todoTask, int index){"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(String.format("
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                MESSAGE_TODO_LIST,"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                index,"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                todoTask.getTaskType(),"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                todoTask.getChar(),"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                todoTask.getTaskDescription()));"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void printDeadlineTask(DeadlineTask deadlineTask, int index){"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(String.format("
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                MESSAGE_DEADLINE_LIST,"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                index,"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                deadlineTask.getTaskType(),"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                deadlineTask.getChar(),"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                deadlineTask.getTaskDescription(),"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                deadlineTask.getTaskDeadline()));"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void printEventTask(EventTask eventTask, int index){"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(String.format("
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                MESSAGE_EVENT_LIST,"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                index,"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                eventTask.getTaskType(),"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                eventTask.getChar(),"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                eventTask.getTaskDescription(),"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                eventTask.getTaskStartTime()));"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 84
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/add/AddCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands.add;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.Command;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public abstract class AddCommand extends Command {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_TODO_SUCCESS \u003d \"Got it. I\u0027ve added this task: \\n  [%c][%c] %s\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_DEADLINE_SUCCESS \u003d \"Got it. I\u0027ve added this task: \\n  [%c][%c] %s (%s)\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_EVENT_SUCCESS \u003d \"Got it. I\u0027ve added this task: \\n  [%c][%c] %s (%s)\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public AddCommand() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 14
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/add/AddDeadlineCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands.add;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.CommandResult;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.DeadlineTask;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class AddDeadlineCommand extends AddCommand {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"deadline\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final char COMMAND_TYPE \u003d \u0027D\u0027;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private final DeadlineTask deadlineTask;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public AddDeadlineCommand(Task deadlineTask) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.deadlineTask \u003d (DeadlineTask) deadlineTask;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        duke.addTask(deadlineTask);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new CommandResult(String.format("
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                MESSAGE_DEADLINE_SUCCESS,"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                COMMAND_TYPE,"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                deadlineTask.getChar(),"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                deadlineTask.getTaskDescription(),"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                deadlineTask.getTaskDeadline()));"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 28
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/add/AddEventCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands.add;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.CommandResult;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.EventTask;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class AddEventCommand extends AddCommand {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"event\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final char COMMAND_TYPE \u003d \u0027E\u0027;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private final EventTask eventTask;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public AddEventCommand(Task eventTask) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.eventTask \u003d (EventTask) eventTask;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        duke.addTask(eventTask);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new CommandResult(String.format("
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                MESSAGE_EVENT_SUCCESS,"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                COMMAND_TYPE,"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                eventTask.getChar(),"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                eventTask.getTaskDescription(),"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                eventTask.getTaskStartTime()));"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 28
+    }
+  },
+  {
+    "path": "src/seedu/duke/commands/add/AddTodoCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.commands.add;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.CommandResult;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.Task;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class AddTodoCommand extends AddCommand {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"todo\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final char COMMAND_TYPE \u003d \u0027T\u0027;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private final Task toDoTask;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public AddTodoCommand(Task toDoTask) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.toDoTask \u003d toDoTask;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public CommandResult execute() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        duke.addTask(toDoTask);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new CommandResult(String.format("
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                MESSAGE_TODO_SUCCESS,"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                COMMAND_TYPE,"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                toDoTask.getChar(),"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                toDoTask.getTaskDescription()));"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 26
+    }
+  },
+  {
+    "path": "src/seedu/duke/common/Messages.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.common;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class Messages {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String DIVIDER \u003d \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_WELCOME \u003d \"  Hello! I\u0027m Duke\\n  What can I do for you?\";"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static final String MESSAGE_FAREWELL \u003d \"  Bye. Hope to see you again soon!\";"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 7
+    }
+  },
+  {
+    "path": "src/seedu/duke/data/Duke.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private TaskList allTasks;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public Duke() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.allTasks \u003d new TaskList();"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public TaskList getTaskList() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return allTasks;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Adds a person to the address book."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void addTask(Task toAdd) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        allTasks.add(toAdd);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Returns true if an equivalent person exists in the address book."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public boolean containsTask(Task key) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return allTasks.contains(key);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Clears all persons and tags from the address book."
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void clear() {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        allTasks.clear();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                || (other instanceof Duke // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                \u0026\u0026 this.allTasks.equals(((Duke) other).allTasks));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Set target index task as done."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void doneTask(int doneId) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //find the task"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        allTasks.getInternalList().get(doneId).setDone(true);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 54
+    }
+  },
+  {
+    "path": "src/seedu/duke/data/task/DeadlineTask.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.data.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class DeadlineTask extends Task{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private String taskDeadline;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public DeadlineTask() {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public DeadlineTask(String taskDescription, String taskDeadline) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        super(taskDescription, \u0027D\u0027);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskDeadline \u003d taskDeadline;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public String getTaskDeadline() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return taskDeadline;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 17
+    }
+  },
+  {
+    "path": "src/seedu/duke/data/task/EventTask.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.data.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class EventTask extends Task{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private String taskStartTime;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private String taskEndTime;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public EventTask() {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public EventTask(String taskDescription, String taskStartTime) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        super(taskDescription, \u0027E\u0027);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskStartTime \u003d taskStartTime;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //this.taskEndTime \u003d taskEndTime;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public EventTask(String taskDescription, String taskStartTime, String taskEndTime) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        super(taskDescription, \u0027E\u0027);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskStartTime \u003d taskStartTime;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskEndTime \u003d taskEndTime;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public String getTaskStartTime() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return taskStartTime;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public String getTaskEndTime() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return taskEndTime;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 29
+    }
+  },
+  {
+    "path": "src/seedu/duke/data/task/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.data.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    //protected int index;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    protected String taskDescription;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    protected char taskType;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public Task() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public Task(String taskDescription) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskDescription \u003d taskDescription;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public Task(String taskDescription, char taskType) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskDescription \u003d taskDescription;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskType \u003d taskType;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public String getTaskDescription() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return taskDescription;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void setTaskDescription(String taskDescription) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        this.taskDescription \u003d taskDescription;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public boolean isDone() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return isDone;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void setDone(boolean done) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        isDone \u003d done;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public char getChar(){"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        char isDone;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        if (this.isDone){"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return \u0027✓\u0027;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return \u0027✗\u0027;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public char getTaskType() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return taskType;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Returns true if both persons have the same identity fields (name and telephone)."
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    boolean isSamePerson(Task other) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return (other \u003d\u003d this)"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                || (other !\u003d null"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                \u0026\u0026 other.getTaskDescription().equals(this.getTaskDescription()));"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 63
+    }
+  },
+  {
+    "path": "src/seedu/duke/data/task/TaskList.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.data.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import java.util.Iterator;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class TaskList implements Iterable\u003cTask\u003e {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private final List\u003cTask\u003e internalList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Constructs empty person list."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public TaskList() {}"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Checks if the list contains an equivalent person as the given argument."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public boolean contains(Task toCheck) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        for (Task p : internalList) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            if (p.isSamePerson(toCheck)) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public List\u003cTask\u003e getInternalList() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return internalList;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Adds a person to the list."
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void add(Task toAdd)  {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        internalList.add(toAdd);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Clears all persons in list."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public void clear() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        internalList.clear();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public Iterator\u003cTask\u003e iterator() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return internalList.iterator();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 52
+    }
+  },
+  {
+    "path": "src/seedu/duke/data/task/TodoTask.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.data.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class TodoTask extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public TodoTask(String taskDescription) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        super(taskDescription, \u0027T\u0027);"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 8
+    }
+  },
+  {
+    "path": "src/seedu/duke/parser/Parser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.Command;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.DoneCommand;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.ExitCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.ListCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.add.AddDeadlineCommand;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.add.AddEventCommand;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.commands.add.AddTodoCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.DeadlineTask;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.EventTask;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.data.task.TodoTask;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": " * Parses user input."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Parses user input into command for execution."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @param userInput full user input string"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @return the command based on the user input"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public Command parseCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        /**"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         * split the user input, command word and the description"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         * commandWord stores the whole user input"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         * commandWordFirstPart [0] stores the Command Word"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         * description stores additional information"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         */"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        final String commandWord \u003d userInput;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        final String []commandWordFirstPart \u003d commandWord.split(\" \");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        /**"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         * further split the user input, get the secondary part, the description"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "         */"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        final String commandWordDescription \u003d commandWord.substring(commandWordFirstPart[0].length());"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //operates according to different command word"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        switch (commandWordFirstPart[0]){"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //add event task"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        case AddEventCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return prepareAddEventTask(commandWordDescription);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //add deadline task"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        case AddDeadlineCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return prepareAddDeadlineTask(commandWordDescription);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //add todo task"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        case AddTodoCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return prepareAddTodoTask(commandWordDescription);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //done"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        case DoneCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return prepareDone(commandWord);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //list"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        case ListCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return new ListCommand();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //exit"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        case ExitCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return new ExitCommand();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //add"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            //return prepareAddTodo(commandWord);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "            return null;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Parses user input into command for execution."
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @param commandDescription full user input string (without the command Action)"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @return the AddCommand obj constructed on the user input"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private Command prepareAddEventTask(String commandDescription) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //split the commandDescription to task and start time"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        String [] temp \u003d commandDescription.split(\"/\");"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new AddEventCommand(new EventTask(temp[0],temp[1]));"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Parses user input into command for execution."
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @param commandDescription full user input string (without the command Action)"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @return the AddCommand obj constructed on the user input"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private Command prepareAddDeadlineTask(String commandDescription) {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        //split the commandDescription to task and deadline"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        String [] temp \u003d commandDescription.split(\"/\");"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new AddDeadlineCommand(new DeadlineTask(temp[0],temp[1]));"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Parses user input into command for execution."
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @param commandDescription full user input string (without the command Action)"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @return the AddCommand obj constructed on the user input"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private Command prepareAddTodoTask(String commandDescription) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new AddTodoCommand(new TodoTask(commandDescription));"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * Parses user input into command for execution."
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @param commandWord full user input string"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     * @return the DoneCommand obj constructed on the user input"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    private Command prepareDone (String commandWord) {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        return new DoneCommand(Integer.parseInt(commandWord.substring(5)));"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 116
+    }
+  },
+  {
+    "path": "src/seedu/duke/ui/TextUi.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "package seedu.duke.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "import seedu.duke.common.Messages;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "public class TextUi {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    //display welcome message"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static void showWelcomeMessage (){"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.MESSAGE_WELCOME);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    //display farewell message"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static void showFarewellMessage (){"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.MESSAGE_FAREWELL);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    //echo function, display user\u0027s input"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    public static void showResult(String text) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(\"  \"+ text);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "        System.out.println(Messages.DIVIDER);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "//    public String getUserCommand() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "//"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "//        String fullInputLine \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "//        //System.out.println(\"[Command entered:\" + fullInputLine + \"]\");;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "//        return fullInputLine;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "//    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "wangqinNick"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "wangqinNick": 34
+    }
+  }
+]
