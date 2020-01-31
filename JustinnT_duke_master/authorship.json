@@ -43,14 +43,14 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": " *  the steps of building a small software incrementally,"
+        "content": " *      the steps of building a small software incrementally,"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": " *  while applying as many Java and SE techniques as possible along the way."
+        "content": " *      while applying as many Java and SE techniques as possible along the way."
       },
       {
         "lineNumber": 8,
@@ -71,14 +71,14 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": " *  helps a person to keep track of various things. The name Duke was chosen as a placeholder name,"
+        "content": " *      helps a person to keep track of various things. The name Duke was chosen as a placeholder name,"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": " *  in honor of Duke, the Java Mascot. You may give it any other name and personality you wish."
+        "content": " *      in honor of Duke, the Java Mascot. You may give it any other name and personality you wish."
       },
       {
         "lineNumber": 12,
@@ -92,7 +92,7 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": " *  @file/s: Duke.java Printer.java* Storage.java*"
+        "content": " *  @file/s: Duke.java Printer.java Storage.java Task.java"
       },
       {
         "lineNumber": 14,
@@ -141,7 +141,7 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    static Storage myList \u003d new Storage();"
+        "content": "    static Storage myTasks \u003d new Storage();"
       },
       {
         "lineNumber": 21,
@@ -267,21 +267,21 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    public static void storeInList(String userInput) {"
+        "content": "    public static Task readFromUser() {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        myList.storeTasks(userInput);"
+        "content": "        Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    }"
+        "content": "        String userInput;"
       },
       {
         "lineNumber": 41,
@@ -295,35 +295,35 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    public static String readFromUser() {"
+        "content": "        userInput \u003d in.nextLine();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": "        Task task \u003d new Task(userInput);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        String userInput;"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": ""
+        "content": "        return task;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        userInput \u003d in.nextLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 47,
@@ -337,206 +337,311 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        return userInput;"
+        "content": "    public static String[] parseCommand(String description) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    }"
+        "content": "        String[] commands \u003d description.split(\" \");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": ""
+        "content": "        return commands;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    public static void echoUntilBye() {"
+        "content": "    }"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        boolean isBye \u003d false;"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        while (!isBye) {"
+        "content": "    public static void echoUntilBye() {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            String userInput \u003d readFromUser();"
+        "content": "        boolean isBye \u003d false;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            switch (userInput) {"
+        "content": "        while (!isBye) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            case \"bye\":"
+        "content": "            Task task \u003d readFromUser();"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "                isBye \u003d true;"
+        "content": "            String[] commands \u003d parseCommand(task.description);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "                exits();"
+        "content": "            String command \u003d commands[0];"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "                continue;"
+        "content": "            switch (command) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            case \"list\":"
+        "content": "            case \"bye\":"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "                myList.getTasks();"
+        "content": "                isBye \u003d true;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "                continue;"
+        "content": "                exits();"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            default:"
+        "content": "                continue;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "                storeInList(userInput);"
+        "content": "            case \"list\":"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "                Printer.printConfirmationMessage(userInput);"
+        "content": "                myTasks.displayTasks();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            }"
+        "content": "                continue;"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        }"
+        "content": "            case \"done\":"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    }"
+        "content": "                int index \u003d Integer.parseInt(commands[1]);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": ""
+        "content": "                Task t \u003d myTasks.getTask(index);"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "-"
+          "gitId": "JustinnT"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "                if (Task.isValid(t)) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        start();"
+        "content": "                    t.markAsDone();"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        Printer.printLines();"
+        "content": "                    Printer.printConfirmationMessage(t);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        Printer.printGreetings();"
+        "content": "                } else {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        Printer.printLines();"
+        "content": "                    Printer.printError();"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        echoUntilBye();"
+        "content": "                }"
       },
       {
         "lineNumber": 76,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "                continue;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "                myTasks.storeTasks(task);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "                Printer.printConfirmationMessage(task.description);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        start();"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        Printer.printLines();"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        Printer.printGreetings();"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        Printer.printLines();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        echoUntilBye();"
+      },
+      {
+        "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
@@ -544,7 +649,7 @@
       }
     ],
     "authorContributionMap": {
-      "JustinnT": 68,
+      "JustinnT": 83,
       "-": 9
     }
   },
@@ -795,7 +900,7 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    public static void printTasks(List\u003cString\u003e myList) {"
+        "content": "    public static void printConfirmationMessage(Task task) {"
       },
       {
         "lineNumber": 36,
@@ -809,28 +914,28 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        for (int i \u003d 0; i \u003c myList.size(); i ++) {"
+        "content": "        printIndentation();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            printIndentation();"
+        "content": "        System.out.printf(\"Nice! I\u0027ve marked this task as done:\\n\");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "            System.out.printf(\"%d. %s\\n\", i + 1, myList.get(i));"
+        "content": "        printIndentation();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        }"
+        "content": "        System.out.printf(\"  [%s] %s\\n\", task.getStatusIcon(), task.getDescription());"
       },
       {
         "lineNumber": 41,
@@ -851,11 +956,179 @@
         "author": {
           "gitId": "JustinnT"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public static void printTasks(List\u003cTask\u003e myList) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        printLines();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        if (myList.isEmpty()) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            printIndentation();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            System.out.println(\"List is empty.\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        else {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            for (int i \u003d 0; i \u003c myList.size(); i++) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "                printIndentation();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "                Task temp \u003d myList.get(i);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "                String symbol \u003d temp.getStatusIcon();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "                System.out.printf(\"%d.[%s] %s\\n\", i + 1, symbol, temp.getDescription());"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        printLines();"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public static void printError() {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        printLines();"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        printIndentation();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        System.out.println(\"Error.. ;-;\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        printLines();"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JustinnT"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "JustinnT": 43
+      "JustinnT": 67
     }
   },
   {
@@ -895,7 +1168,7 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    private List\u003cString\u003e myList \u003d new ArrayList\u003c\u003e();"
+        "content": "    private List\u003cTask\u003e myTasks \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 6,
@@ -909,14 +1182,14 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    public void storeTasks(String userInput) {"
+        "content": "    public void storeTasks(Task task) {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        myList.add(userInput);"
+        "content": "        myTasks.add(task);"
       },
       {
         "lineNumber": 9,
@@ -937,14 +1210,14 @@
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "    public void getTasks() {"
+        "content": "    public void displayTasks() {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JustinnT"
         },
-        "content": "        Printer.printTasks(myList);"
+        "content": "        Printer.printTasks(myTasks);"
       },
       {
         "lineNumber": 13,
@@ -958,11 +1231,265 @@
         "author": {
           "gitId": "JustinnT"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public Task getTask(int index) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            return myTasks.get(index - 1);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        catch(Exception e) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "            return null;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JustinnT"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "JustinnT": 14
+      "JustinnT": 23
+    }
+  },
+  {
+    "path": "src/main/java/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public String getDescription() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        String description \u003d this.description;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        return description;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public String getStatusIcon() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public void markAsDone() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    public static boolean isValid(Task task) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "        return task !\u003d null;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JustinnT"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JustinnT": 26
     }
   }
 ]
