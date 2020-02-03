@@ -1,5 +1,112 @@
 [
   {
+    "path": "src/main/java/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public Deadline(String description, String by) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        this.by \u003d by;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alexlim510": 14
+    }
+  },
+  {
     "path": "src/main/java/Duke.java",
     "fileType": "java",
     "lines": [
@@ -43,7 +150,7 @@
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        String[] tasks \u003d new String[100];"
+        "content": "        Task[] tasks \u003d new Task[100];"
       },
       {
         "lineNumber": 7,
@@ -64,28 +171,28 @@
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        boolean isFinished \u003d false;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": ""
+        "content": "        displayWelcome(logo);"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        System.out.println(\"Hey! I am \" + logo);"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        System.out.println(\"What would you like to do?\");"
+        "content": "        Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 13,
@@ -99,164 +206,605 @@
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": "        while (true) {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        userInput \u003d in.nextLine();"
+        "content": "            userInput \u003d in.nextLine();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": ""
+        "content": "            if (userInput.equals(\"bye\")){"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        while(!isFinished){"
+        "content": "                break;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "            switch (userInput) {"
+        "content": "            }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "            case \"bye\":"
+        "content": "            else if (userInput.equals(\"list\")){"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                isFinished \u003d true;"
+        "content": "                listTasks(tasks, count);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                break;"
+        "content": "            }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "            case \"list\":"
+        "content": "            else if (userInput.startsWith(\"done\")){"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                for (int j \u003d 0; j\u003ccount; j++) {"
+        "content": "                markTaskAsDone(tasks, userInput);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                    System.out.println(j+1 + \". \" + tasks[j]);"
+        "content": "            }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                }"
+        "content": "            else if (userInput.startsWith(\"todo\")){"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                break;"
+        "content": "                count \u003d addTodoTask(userInput, tasks, count);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "            default:"
+        "content": "            }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                System.out.println(\"added: \" + userInput);"
+        "content": "            else if (userInput.startsWith(\"deadline\")){"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                tasks[count] \u003d userInput;"
+        "content": "                count \u003d addDeadlineTask(userInput, tasks, count);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                count++;"
+        "content": "            }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "                break;"
+        "content": "            else if (userInput.startsWith(\"event\")){"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "            }"
+        "content": "                count \u003d addEventTask(userInput, tasks, count);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "            userInput \u003d in.nextLine();"
+        "content": "            }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        }"
+        "content": "            else {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "alexlim510"
         },
-        "content": "        System.out.println(\"Bye. Hope to see you soon!\");"
+        "content": "                count \u003d addGeneralTask(userInput, tasks, count);"
       },
       {
         "lineNumber": 36,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"Bye. Hope to see you soon!\");"
+      },
+      {
+        "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 40,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static void displayWelcome(String logo) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"Hey! I am \" + logo);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"What would you like to do?\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static int addGeneralTask(String userInput, Task[] tasks, int count) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        tasks[count] \u003d new Todo(userInput);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        count++;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        printNewTask(tasks, count);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return count;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static int addTodoTask(String userInput, Task[] tasks, int count) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        String todoTask \u003d userInput.substring(5);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        tasks[count] \u003d new Todo(todoTask);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        count++;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        printNewTask(tasks, count);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return count;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static int addDeadlineTask(String userInput, Task[] tasks, int count) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        String[] details \u003d userInput.split(\"/by \");"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        String deadlineTask \u003d details[0].substring(9);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        String date \u003d details[1];"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        tasks[count] \u003d new Deadline(deadlineTask, date);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        count++;"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        printNewTask(tasks, count);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return count;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static int addEventTask(String userInput, Task[] tasks, int count) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        String[] details \u003d userInput.split(\"/at \");"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        String deadlineTask \u003d details[0].substring(6);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        String dateAndTime \u003d details[1];"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        tasks[count] \u003d new Event(deadlineTask, dateAndTime);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        count++;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        printNewTask(tasks, count);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return count;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static void markTaskAsDone(Task[] tasks, String userInput) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        int itemNumber \u003d Integer.parseInt((userInput.substring(5)));"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        tasks[itemNumber-1].markAsDone();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"  \" + tasks[itemNumber-1]);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static void printNewTask(Task[] tasks, int count) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"New task added: \");"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\" \" + tasks[count-1]);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"Now you have \" + count + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    private static void listTasks(Task[] tasks, int count) {"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        System.out.println(\"Here are your tasks:\");"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        for (int j \u003d 0; j\u003ccount; j++) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "            System.out.println(j+1 + \". \" + tasks[j]);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
@@ -264,8 +812,441 @@
       }
     ],
     "authorContributionMap": {
-      "alexlim510": 33,
-      "-": 4
+      "alexlim510": 95,
+      "-": 5
+    }
+  },
+  {
+    "path": "src/main/java/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public Event(String description, String at) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        this.at \u003d at;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alexlim510": 14
+    }
+  },
+  {
+    "path": "src/main/java/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public Task() {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        this.description \u003d \"\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "     * Returns tick or X symbols"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "     * @return symbol"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public String getStatusIcon() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public void markAsDone() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return String.format(\"[\" + getStatusIcon() + \"]  \" + this.description);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alexlim510": 33
+    }
+  },
+  {
+    "path": "src/main/java/Todo.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "public class Todo extends Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public Todo(String description) {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "        return \"[T]\" + super.toString();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alexlim510"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alexlim510": 11
     }
   }
 ]
