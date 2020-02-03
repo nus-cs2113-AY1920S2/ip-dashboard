@@ -857,325 +857,304 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        int slashIndex \u003d input.indexOf(\" /\", spaceIndex);"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        String taskTypeLC \u003d input.substring(0, spaceIndex).trim().toLowerCase();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        // split input into 3 main parts"
+        "content": "        String taskName \u003d null;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        String taskName, date \u003d null;"
+        "content": "        String date \u003d null;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        String taskTypeLC \u003d input.substring(0, spaceIndex).trim().toLowerCase();"
+        "content": "        Task task \u003d null;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        if (slashIndex !\u003d -1) {"
+        "content": "        if (taskTypeLC.equals(\"todo\")) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // -1 means that input does not contain a date"
+        "content": "            taskName \u003d input.substring(spaceIndex + 1).trim();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            taskName \u003d input.substring(spaceIndex + 1, slashIndex).trim();"
+        "content": "            task \u003d new ToDos(taskName);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            date \u003d input.substring(slashIndex + 4).trim();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        } else {"
+        "content": "            int slashIndex \u003d input.indexOf(\" /\", spaceIndex);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            taskName \u003d input.substring(spaceIndex + 1).trim();"
+        "content": "            taskName \u003d input.substring(spaceIndex + 1, slashIndex).trim();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        }"
+        "content": "            date \u003d input.substring(slashIndex + 4).trim();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            if (taskTypeLC.equals(\"deadline\")) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        Task task;"
+        "content": "                task \u003d new Deadlines(taskName, date);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        if (taskTypeLC.equals(\"todo\")) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            task \u003d new ToDos(taskName);"
+        "content": "                // taskType \u003d\u003d event"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        } else if (taskTypeLC.equals(\"deadline\")) {"
+        "content": "                task \u003d new Events(taskName, date);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            task \u003d new Deadlines(taskName, date);"
+        "content": "            }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        } else {"
+        "content": "        }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // taskTypeLC \u003d\u003d \"event\""
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            task \u003d new Events(taskName, date);"
+        "content": "        this.list[numTasks] \u003d task;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        }"
+        "content": "        numTasks++;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        System.out.println(\"Task added: \");"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.list[numTasks] \u003d task;"
+        "content": "        System.out.println(\"  \" + task);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        numTasks++;"
+        "content": "        System.out.println(\"You have \" + numTasks + \" task\" + (numTasks \u003d\u003d 1 ? \"\" : \"s\") + \" in the list\");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"Task added: \");"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"  \" + task);"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"You have \" + numTasks + \" tasks in the list\");"
+        "content": "    public void viewList() {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "        if (numTasks \u003d\u003d 0) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            System.out.println(\"Nice, nothing to see here\");"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public void viewList() {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        if (numTasks \u003d\u003d 0) {"
+        "content": "            System.out.println(\"Quite a few tasks you got there\");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            System.out.println(\"Nice, nothing to see here\");"
+        "content": "            for (int i \u003d 0; i \u003c numTasks; ++i) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        } else {"
+        "content": "                System.out.printf(\"%3d. %s\\n\", i + 1, list[i]);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            System.out.println(\"Quite a few tasks you got there\");"
+        "content": "            }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            for (int i \u003d 0; i \u003c numTasks; ++i) {"
+        "content": "        }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                System.out.printf(\"%3d. %s\\n\", i + 1, list[i]);"
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        }"
+        "content": "    public void markAsDone(int index) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "        list[index].markAsDone();"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        System.out.println(\"Well, that\u0027s one task down\");"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public void markAsDone(int index) {"
+        "content": "        System.out.println(\"  \" + list[index]);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        list[index].markAsDone();"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "lwxymere"
-        },
-        "content": "        System.out.println(\"Well, that\u0027s one task down\");"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "lwxymere"
-        },
-        "content": "        System.out.printf(\"   [%s] %s\\n\", list[index].getStatusIcon(), list[index].description);"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "lwxymere"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 57,
         "author": {
           "gitId": "lwxymere"
         },
@@ -1183,7 +1162,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 60
+      "lwxymere": 57
     }
   },
   {
@@ -1263,6 +1242,880 @@
     ],
     "authorContributionMap": {
       "lwxymere": 10
+    }
+  },
+  {
+    "path": "text-ui-test/EXPECTED.txt",
+    "fileType": "txt",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "This is"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": " ____        _        "
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "|  _ \\ _   _| | _____ "
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "| | | | | | | |/ / _ \\"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "| |_| | |_| |   \u003c  __/"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "|____/ \\__,_|_|\\_\\___|"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "How can I help you today?"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task added: "
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [T][?] borrow book"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 1 task in the list"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Quite a few tasks you got there"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  1. [T][?] borrow book"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task added: "
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 2 tasks in the list"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task added: "
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 3 tasks in the list"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Quite a few tasks you got there"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  1. [T][?] borrow book"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  2. [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Well, that\u0027s one task down"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Quite a few tasks you got there"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  1. [T][?] borrow book"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  2. [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Well, that\u0027s one task down"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [T][?] borrow book"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Well, that\u0027s one task down"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Quite a few tasks you got there"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  1. [T][?] borrow book"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  2. [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task added: "
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [D][?] finish reading book (by: Sat maybe?)"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 4 tasks in the list"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task added: "
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [T][?] i want to write a slash here /by doing sth like this"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 5 tasks in the list"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Quite a few tasks you got there"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  1. [T][?] borrow book"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  2. [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  4. [D][?] finish reading book (by: Sat maybe?)"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  5. [T][?] i want to write a slash here /by doing sth like this"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Well, that\u0027s one task down"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Well, that\u0027s one task down"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [D][?] finish reading book (by: Sat maybe?)"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Well, that\u0027s one task down"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [T][?] i want to write a slash here /by doing sth like this"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Quite a few tasks you got there"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  1. [T][?] borrow book"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  2. [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  4. [D][?] finish reading book (by: Sat maybe?)"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  5. [T][?] i want to write a slash here /by doing sth like this"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Goodbye"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      }
+    ],
+    "authorContributionMap": {
+      "lwxymere": 82
+    }
+  },
+  {
+    "path": "text-ui-test/input.txt",
+    "fileType": "txt",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "todo borrow book"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "deadline return book /by Sunday"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "event project meeting /at Mon 2-4pm"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "done 2"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "done 1"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "done 3"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "deadline finish reading book /by  Sat maybe?"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "todo i want to write a slash here /by doing sth like this"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "done 3"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "done 4"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "done 5"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "bye"
+      }
+    ],
+    "authorContributionMap": {
+      "lwxymere": 18
+    }
+  },
+  {
+    "path": "text-ui-test/runtest.bat",
+    "fileType": "bat",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "@ECHO OFF"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "REM create bin directory if it doesn\u0027t exist"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "if not exist ..\\bin mkdir ..\\bin"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "REM delete output from previous run"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "del ACTUAL.TXT"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "REM compile the code into the bin folder"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "javac  -cp ..\\src\\main\\java -Xlint:none -d ..\\bin ..\\src\\main\\java\\Duke.java"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "IF ERRORLEVEL 1 ("
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  echo ********** BUILD FAILURE **********"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  exit /b 1"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ")"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "REM no error here, errorlevel \u003d\u003d 0"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "REM run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "java -classpath ..\\bin Duke \u003c input.txt \u003e ACTUAL.TXT"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "REM compare the output to the expected output"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "FC ACTUAL.TXT EXPECTED.TXT"
+      }
+    ],
+    "authorContributionMap": {
+      "lwxymere": 21
     }
   }
 ]

@@ -1,5 +1,105 @@
 [
   {
+    "path": "src/main/java/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    public Deadline(String action, String by) {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        super(action);"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        this.by \u003d by;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        return \"[D]\" + super.toString() + \"(by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "cheongisabella": 13
+    }
+  },
+  {
     "path": "src/main/java/Duke.java",
     "fileType": "java",
     "lines": [
@@ -120,150 +220,213 @@
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                System.out.println(\"Nice! I\u0027ve marked this task as done: \" + System.lineSeparator()"
+        "content": "                System.out.println(\"Nice! I\u0027ve marked this task as done: \" + System.lineSeparator() + taskList.get(index));"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                        + \"[\" + taskList.get(index).checkIfDone() + \"] \" + taskList.get(index).action);"
+        "content": "            } else if (line.equals(\"list\")) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "            } else if (line.equals(\"list\")) {"
+        "content": "                if (taskList.size() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                if (taskList.size() \u003d\u003d 0) {"
+        "content": "                    System.out.println(\"There is nothing on the list.\");"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                    System.out.println(\"There is nothing on the list.\");"
+        "content": "                } else {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                } else {"
+        "content": "                    System.out.println(\"Here are the tasks in your list: \");"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                    System.out.println(\"Here are the tasks in your list: \");"
+        "content": "                    for (int i \u003d 0; i \u003c taskList.size(); i++) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                    for (int i \u003d 0; i \u003c taskList.size(); i++) {"
+        "content": "                        System.out.println(i + 1 + \".\" + taskList.get(i));"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                        System.out.println(i+1 + \". [\" + taskList.get(i).checkIfDone() + \"] \" + taskList.get(i).action);"
+        "content": "                    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                    }"
+        "content": "                }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                }"
+        "content": "            } else if (line.startsWith(\"todo\")) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "            } else {"
+        "content": "                Task t \u003d new Todo(line.substring(5));"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                Task t \u003d new Task(line);"
+        "content": "                taskList.add(t);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                taskList.add(t);"
+        "content": "                System.out.println(\"Got it. I\u0027ve added this task: \" + System.lineSeparator() + t + System.lineSeparator() + \"Now you have \" + taskList.size() + \" tasks in the list.\");"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                System.out.println(\"added: \" + line);"
+        "content": "            } else if (line.startsWith(\"deadline\")) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "            }"
+        "content": "                int startOfDate \u003d line.indexOf(\u0027/\u0027);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "                line \u003d in.nextLine();"
+        "content": "                Task t \u003d new Deadline(line.substring(9, startOfDate), line.substring(startOfDate + 4));"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "        }"
+        "content": "                taskList.add(t);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": "        System.out.println(\"Bye. Hope to see you again soon!\");"
+        "content": "                System.out.println(\"Got it. I\u0027ve added this task: \" + System.lineSeparator() + t + System.lineSeparator() + \"Now you have \" + taskList.size() + \" tasks in the list.\");"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "cheongisabella"
         },
-        "content": ""
+        "content": "            } else if (line.startsWith(\"event\")) {"
       },
       {
         "lineNumber": 37,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "                int startOfDate \u003d line.indexOf(\u0027/\u0027);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "                    Task t \u003d new Event(line.substring(6, startOfDate), line.substring(startOfDate + 4));"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "                    taskList.add(t);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "                System.out.println(\"Got it. I\u0027ve added this task: \" + System.lineSeparator() + t + System.lineSeparator() + \"Now you have \" + taskList.size() + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "                line \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        System.out.println(\"Bye. Hope to see you again soon!\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
@@ -271,8 +434,108 @@
       }
     ],
     "authorContributionMap": {
-      "cheongisabella": 34,
+      "cheongisabella": 43,
       "-": 4
+    }
+  },
+  {
+    "path": "src/main/java/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    public Event(String action, String at) {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        super(action);"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        this.at \u003d at;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        return \"[E]\" + super.toString() + \"(at: \" + at + \")\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "cheongisabella": 13
     }
   },
   {
@@ -424,11 +687,139 @@
         "author": {
           "gitId": "cheongisabella"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        return \"[\" + checkIfDone() + \"] \" + action;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "cheongisabella"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "cheongisabella": 21
+      "cheongisabella": 26
+    }
+  },
+  {
+    "path": "src/main/java/Todo.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "public class Todo extends Task {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    public Todo(String action) {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        super(action);"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "        return \"[T]\" + super.toString();"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "cheongisabella"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "cheongisabella": 12
     }
   }
 ]
