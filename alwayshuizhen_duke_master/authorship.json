@@ -1,6 +1,6 @@
 [
   {
-    "path": "src/main/java/Deadline.java",
+    "path": "src/main/java/exceptionHandler/inputValidation.java",
     "fileType": "java",
     "lines": [
       {
@@ -8,28 +8,1435 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "package exceptionHandler;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    protected String by;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "public class inputValidation {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "alwayshuizhen"
         },
+        "content": "    protected String defaultStr \u003d \"I couldn\u0027t process that: \";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String doneNumErr \u003d defaultStr + \"Please indicate the item number without letters (i.e. done 2)\";"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String doneParamCount \u003d defaultStr + \"Please indicate an item number (i.e. done 2)\";"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String doneNotenough \u003d defaultStr + \"There isn\u0027t that many tasks :(\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String todoParamCount \u003d defaultStr + \"Please give me a todo detail\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String eventDateMissing \u003d defaultStr + \"When is the event?\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String eventMissingDesc \u003d defaultStr + \"I need more info!\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public inputValidation() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public Boolean validatingDone(String cmd, int taskCount) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        // checks if the item number is given"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (cmd.length() \u003c\u003d 4) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(doneParamCount);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        // checks if the given item number is numeric"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        int itemNumber;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            itemNumber \u003d Integer.parseInt(cmd.substring(5));"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (NumberFormatException nfe) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(doneNumErr);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        // check if item number is within the list count"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (itemNumber \u003c\u003d taskCount) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(doneNotenough);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public Boolean validatingTodo(String cmd) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        // checks if the item number is given"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (cmd.length() \u003c\u003d 4) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(todoParamCount);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public Boolean validatingEventDeadline(String cmd) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (cmd.length() \u003c\u003d 5) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(eventMissingDesc);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            int indexOfAt \u003d cmd.indexOf(\"/at\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            int indexOfby \u003d cmd.indexOf(\"/by\");"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (indexOfAt \u003d\u003d -1 \u0026\u0026 indexOfby \u003d\u003d -1) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                System.out.println(eventDateMissing);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            String eventDate \u003d cmd.substring(indexOfAt+4);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (NumberFormatException missingItem) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(eventDateMissing);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alwayshuizhen": 67
+    }
+  },
+  {
+    "path": "src/main/java/taskManager/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "package taskManager;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
         "content": "    public Deadline(String description, String by) {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        this.by \u003d by;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        this.itemType \u003d \u0027D\u0027;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public String printObject() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return (\"[\" + itemType + \"][\" + getStatusIcon() + \"] \"+ description + \" (by: \" + by + \")\");"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alwayshuizhen": 15
+    }
+  },
+  {
+    "path": "src/main/java/taskManager/Duke.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "package taskManager;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import exceptionHandler.inputValidation;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    private static int MAXIMUM_TASKS \u003d 100;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public static void printTaskList(Task[] taskList, int counter){"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        for (int i \u003d 0; i \u003c counter; i++) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(i + 1 + \". \" + taskList[i].printObject());"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public static void markTaskAsDone(Task[] taskList, String cmd){"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        int index \u003d Integer.parseInt(cmd.substring(cmd.length() - 1)) - 1;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        taskList[index].setDone();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Nice! I\u0027ve marked this task as done: \" + taskList[index].printObject());"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public static Todo createToDo(String cmd, int counter) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        Todo item \u003d new Todo(cmd.substring(5));"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Now you have \" + (counter+1) +\" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return item;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public static Event createEvent(String cmd, int counter) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        int indexOfAt \u003d cmd.indexOf(\"/at\");"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        String eventDescription \u003d cmd.substring(6, indexOfAt-1);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        String eventDate \u003d cmd.substring(indexOfAt+4);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        Event item \u003d new Event(eventDescription, eventDate);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Now you have \" + (counter+1) + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return item;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public static Deadline createDeadline(String cmd, int counter) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        int indexOfBy \u003d cmd.indexOf(\"/by\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        String deadlineDesc \u003d cmd.substring(9, indexOfBy-1);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        String deadlineDate \u003d cmd.substring(indexOfBy+4);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        Deadline item \u003d new Deadline(deadlineDesc, deadlineDate);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Now you have \"+ (counter+1) +\" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return item;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    private static String cmdTypeIdentifier(String cmd, int taskCount) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        inputValidation exception \u003d new inputValidation();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (cmd.equalsIgnoreCase(\"list\")){"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return \"LIST\";"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } else if (cmd.substring(0,4).equalsIgnoreCase(\"done\")) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (exception.validatingDone(cmd, taskCount)) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"DONE\";"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } else if (cmd.substring(0,4).equalsIgnoreCase(\"todo\")) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (exception.validatingTodo(cmd)) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"TODO\";"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } else if (cmd.substring(0,5).equalsIgnoreCase(\"event\")) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (exception.validatingEventDeadline(cmd)) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"EVENT\";"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } else if (cmd.substring(0,8).equalsIgnoreCase(\"deadline\")) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (exception.validatingEventDeadline(cmd)) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"DEADLINE\";"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___| \";"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(logo + \" says hello :)\");"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"\\nWhat can i do for you?\");"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        Task[] taskList \u003d new Task[MAXIMUM_TASKS];"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        int counter \u003d 0;"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        Boolean instr \u003d false;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        Scanner myObj \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        String cmd;"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        cmd \u003d myObj.nextLine();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        while (!cmd.equalsIgnoreCase(\"bye\")) {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            String cmdType \u003d cmdTypeIdentifier(cmd, counter);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (cmdType !\u003d null) {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                switch (cmdType) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                case \"LIST\":"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    printTaskList(taskList, counter);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                case \"DONE\":"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    markTaskAsDone(taskList, cmd);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                case \"TODO\":"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    taskList[counter] \u003d createToDo(cmd, counter);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    counter++;"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                case \"EVENT\":"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    taskList[counter] \u003d createEvent(cmd, counter);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    counter++;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                case \"DEADLINE\":"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    taskList[counter] \u003d createDeadline(cmd, counter);"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    counter++;"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    System.out.printf(\"error :(\");"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            cmd \u003d myObj.nextLine();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Bye bye! Talk to me again soon!\");"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alwayshuizhen": 107,
+      "-": 8
+    }
+  },
+  {
+    "path": "src/main/java/taskManager/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "package taskManager;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    protected String eventDate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public Event(String description, String eventDate) {"
       },
       {
         "lineNumber": 5,
@@ -43,14 +1450,14 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        this.by \u003d by;"
+        "content": "        this.eventDate \u003d eventDate;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        this.itemType \u003d \u0027D\u0027;"
+        "content": "        this.itemType \u003d \u0027E\u0027;"
       },
       {
         "lineNumber": 8,
@@ -85,7 +1492,7 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        return (\"[\" + itemType + \"][\" + getStatusIcon() +\"] \"+ description + \" (by: \" + by + \")\");"
+        "content": "        return (\"[\" + itemType + \"][\" + getStatusIcon() +\"] \"+ description + \" (at: \" + eventDate + \")\");"
       },
       {
         "lineNumber": 13,
@@ -107,7 +1514,7 @@
     }
   },
   {
-    "path": "src/main/java/Duke.java",
+    "path": "src/main/java/taskManager/Task.java",
     "fileType": "java",
     "lines": [
       {
@@ -115,785 +1522,150 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "import java.util.Scanner;"
+        "content": "package taskManager;"
       },
       {
         "lineNumber": 2,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class Duke {"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static void printTaskList(Task[] taskList, int counter){"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        for (int i \u003d 0; i \u003c counter; i++) {"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            System.out.println(i + 1 + \". \" + taskList[i].printObject());"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static void markTaskAsDone(Task[] taskList, String cmd){"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int index \u003d Integer.parseInt(cmd.substring(cmd.length() - 1)) - 1;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        taskList[index].setDone();"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Nice! I\u0027ve marked this task as done: \" + taskList[index].printObject());"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static Todo createToDo(String cmd, int counter) {"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Todo item \u003d new Todo(cmd.substring(5));"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Now you have \"+ (counter+1) +\" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return item;"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static Event createEvent(String cmd, int counter) {"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int indexOfAt \u003d cmd.indexOf(\"/at\");"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String eventDescription \u003d cmd.substring(6, indexOfAt-1);"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String eventDate \u003d cmd.substring(indexOfAt+4);"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Event item \u003d new Event(eventDescription, eventDate);"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Now you have \"+ (counter+1) +\" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return item;"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static Deadline createDeadline(String cmd, int counter) {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int indexOfBy \u003d cmd.indexOf(\"/by\");"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String deadlineDesc \u003d cmd.substring(9, indexOfBy-1);"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String deadlineDate \u003d cmd.substring(indexOfBy+4);"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Deadline item \u003d new Deadline(deadlineDesc, deadlineDate);"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Now you have \"+ (counter+1) +\" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return item;"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static void main(String[] args) {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        String logo \u003d \" ____        _        \\n\""
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___| \";"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(logo + \" says hello :)\");"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"\\nWhat can i do for you?\");"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Task[] taskList \u003d new Task[100];"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int counter \u003d 0;"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Scanner myObj \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String cmd;"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        cmd \u003d myObj.nextLine();"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        while (!cmd.equals(\"bye\")) {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (cmd.equals(\"list\")) {"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                printTaskList(taskList, counter);"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            } else if (cmd.substring(0,4).equals(\"done\")) {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                markTaskAsDone(taskList, cmd);"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }else if (cmd.substring(0,4).equals(\"todo\")){"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                taskList[counter] \u003d createToDo(cmd, counter);"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                counter++;"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            } else if (cmd.substring(0,5).equals(\"event\")) {"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                taskList[counter] \u003d createEvent(cmd, counter);"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                counter++;"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            } else if (cmd.substring(0,8).equals(\"deadline\")) {"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                taskList[counter] \u003d createDeadline(cmd, counter);"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                counter++;"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                System.out.printf(\"error :(\");"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            cmd \u003d myObj.nextLine();"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Bye bye! Talk to me again soon!\");"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "alwayshuizhen": 68,
-      "-": 8
-    }
-  },
-  {
-    "path": "src/main/java/Event.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "public class Event extends Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    protected String eventDate;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public Event(String description, String eventDate) {"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        super(description);"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        this.eventDate \u003d eventDate;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        this.itemType \u003d \u0027E\u0027;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public String printObject() {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return (\"[\" + itemType + \"][\" + getStatusIcon() +\"] \"+ description + \" (at: \" + eventDate + \")\");"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "alwayshuizhen": 13
-    }
-  },
-  {
-    "path": "src/main/java/Task.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
         "author": {
           "gitId": "alwayshuizhen"
         },
         "content": "public class Task {"
       },
       {
-        "lineNumber": 2,
+        "lineNumber": 3,
         "author": {
           "gitId": "alwayshuizhen"
         },
         "content": "    protected String description;"
       },
       {
-        "lineNumber": 3,
+        "lineNumber": 4,
         "author": {
           "gitId": "alwayshuizhen"
         },
         "content": "    protected boolean isDone;"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 5,
         "author": {
           "gitId": "alwayshuizhen"
         },
         "content": "    protected char itemType;"
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 6,
         "author": {
           "gitId": "alwayshuizhen"
         },
         "content": "    public Task(String description) {"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 7,
         "author": {
           "gitId": "alwayshuizhen"
         },
         "content": "        this.description \u003d description;"
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 8,
         "author": {
           "gitId": "alwayshuizhen"
         },
         "content": "        this.isDone \u003d false;"
       },
       {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 9,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public String getStatusIcon() {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
+        "content": "    public String getStatusIcon() {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public void setDone() {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        this.isDone \u003d true;"
+        "content": "    public void setDone() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "        this.isDone \u003d true;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public String printObject(){"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        return \"\\0\";"
+        "content": "    public String printObject(){"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "        return \"\\0\";"
       },
       {
         "lineNumber": 21,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
         "author": {
           "gitId": "alwayshuizhen"
         },
@@ -901,11 +1673,11 @@
       }
     ],
     "authorContributionMap": {
-      "alwayshuizhen": 21
+      "alwayshuizhen": 22
     }
   },
   {
-    "path": "src/main/java/Todo.java",
+    "path": "src/main/java/taskManager/Todo.java",
     "fileType": "java",
     "lines": [
       {
@@ -913,73 +1685,80 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "public class Todo extends Task {"
+        "content": "package taskManager;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public Todo(String description) {"
+        "content": "public class Todo extends Task {"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        super(description);"
+        "content": "    public Todo(String description) {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        this.itemType \u003d \u0027T\u0027;"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "        this.itemType \u003d \u0027T\u0027;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public String printObject() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        return (\"[\" + itemType + \"][\" + getStatusIcon() +\"] \"+ description);"
+        "content": "    public String printObject() {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "        return (\"[\" + itemType + \"][\" + getStatusIcon() +\"] \"+ description);"
       },
       {
         "lineNumber": 11,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
         "author": {
           "gitId": "alwayshuizhen"
         },
@@ -987,7 +1766,7 @@
       }
     ],
     "authorContributionMap": {
-      "alwayshuizhen": 11
+      "alwayshuizhen": 12
     }
   },
   {
@@ -1155,7 +1934,7 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\*.java"
+        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\taskManager\\*.java ..\\src\\main\\java\\exceptionHandler\\*.java"
       },
       {
         "lineNumber": 11,
