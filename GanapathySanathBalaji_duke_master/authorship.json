@@ -106,14 +106,14 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        String[] split \u003d descriptionWithDeadline.split(\"/\",2);"
+        "content": "        String[] words \u003d descriptionWithDeadline.split(\"/\",2);"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        return split[0];"
+        "content": "        return words[0];"
       },
       {
         "lineNumber": 17,
@@ -339,126 +339,126 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public static final String DEADLINE_SPECIFIER \u003d \"/by \";"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public static final String PERIOD_SPECIFIER \u003d \"/at \";"
+        "content": "    // Handles all the tasks"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "    private static TaskManager taskManager \u003d new TaskManager();"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Handles all the tasks"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static TaskManager taskManager \u003d new TaskManager();"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
         "content": ""
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": "    public static void main(String[] args) {"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
         "content": "        Scanner sc \u003d new Scanner(System.in);"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
         "content": "        String command;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
         "content": ""
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
         "content": "        PrintHelper.printWelcomeMessage();"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 21,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
         "content": "        command \u003d sc.nextLine();"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 22,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
         "content": "        while (!command.equals(BYE_COMMAND)) {"
       },
       {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                executeCommand(command);"
+      },
+      {
         "lineNumber": 25,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            executeCommand(command);"
+        "content": "            } catch (DukeException exception) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            command \u003d sc.nextLine();"
+        "content": "                exception.printExceptionMessage();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printByeMessage();"
+        "content": "            command \u003d sc.nextLine();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
@@ -472,661 +472,339 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Executes the command entered by the user"
+        "content": "        PrintHelper.printByeMessage();"
       },
       {
         "lineNumber": 32,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void executeCommand(String command) {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        String[] commandSplit \u003d command.split(\" \",2);"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        String commandType \u003d commandSplit[0];"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        boolean isOneWordCommand \u003d commandSplit.length \u003d\u003d 1 || commandSplit[1].isBlank();"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        switch (commandType) {"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        case LIST_COMMAND:"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            listTasks(isOneWordCommand);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        case EMPTY_COMMAND:"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            emptyCommand();"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        case DONE_COMMAND:"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            markTaskAsDone(commandSplit);"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        case TODO_COMMAND:"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            addToDoTask(commandSplit, isOneWordCommand);"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        case DEADLINE_COMMAND:"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            addDeadlineTask(commandSplit, isOneWordCommand);"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        case EVENT_COMMAND:"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            addEventTask(commandSplit, isOneWordCommand);"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        default:"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            invalidCommand();"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        System.out.println();"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // Prints that user entered an invalid Command"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void invalidCommand() {"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        PrintHelper.printInvalidCommand();"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // Prints that user entered an empty line"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void emptyCommand() {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        PrintHelper.printEmptyLineAlert();"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // Instructs the task manager to add the Event task specified by the user"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // to the list if the correct format is used"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void addEventTask(String[] commandSplit, boolean isOneWordCommand) {"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        boolean isCorrectFormat \u003d !isOneWordCommand \u0026\u0026 commandSplit[1].contains(PERIOD_SPECIFIER);"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        if (isCorrectFormat) {"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            taskManager.addTask(TaskType.Event, commandSplit[1]);"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            PrintHelper.printInvalidEventFormat();"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // Instructs the task manager to add the Deadline task specified by the user"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // to the list if the correct format is used"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void addDeadlineTask(String[] commandSplit, boolean isOneWordCommand) {"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        boolean isCorrectFormat \u003d !isOneWordCommand \u0026\u0026 commandSplit[1].contains(DEADLINE_SPECIFIER);"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        if (isCorrectFormat) {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            taskManager.addTask(TaskType.Deadline, commandSplit[1]);"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            PrintHelper.printInvalidDeadlineFormat();"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // Instructs the task manager to add the ToDo task specified by the user"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    //  to the list if the correct format is used"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void addToDoTask(String[] commandSplit, boolean isOneWordCommand) {"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        boolean isCorrectFormat \u003d !isOneWordCommand;"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        if (isCorrectFormat) {"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            taskManager.addTask(TaskType.ToDo, commandSplit[1]);"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            PrintHelper.printInvalidToDoFormat();"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // Instructs the task manager to mark the task done if the correct format is used"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void markTaskAsDone(String[] commandSplit) {"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        boolean isValid \u003d (commandSplit.length \u003d\u003d 2);"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        if (isValid) {"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            taskManager.markTask(commandSplit[1]);"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            PrintHelper.printInvalidDoneFormat();"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    // Instructs the task manager to list the tasks if the correct format is used"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "    private static void listTasks(boolean isOneWordCommand) {"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        boolean isCorrectFormat \u003d isOneWordCommand;"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        if (isCorrectFormat) {"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            taskManager.listTasks();"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "            PrintHelper.printInvalidCommand();"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "GanapathySanathBalaji"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 124,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // Executes the command entered by the user"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    private static void executeCommand(String command) throws DukeException {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        String[] commandSplit \u003d command.split(\" \",2);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        String commandType \u003d commandSplit[0];"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        boolean isOneWordCommand \u003d commandSplit.length \u003d\u003d 1 || commandSplit[1].isBlank();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            switch (commandType) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            case LIST_COMMAND:"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                taskManager.listTasks(isOneWordCommand);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            case DONE_COMMAND:"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                taskManager.markTaskAsDone(commandSplit);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            case TODO_COMMAND:"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                taskManager.addToDoTask(commandSplit);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            case DEADLINE_COMMAND:"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                taskManager.addDeadlineTask(commandSplit, isOneWordCommand);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            case EVENT_COMMAND:"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                taskManager.addEventTask(commandSplit, isOneWordCommand);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            case EMPTY_COMMAND:"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                throw new DukeException(ExceptionType.EmptyCommand);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                // break statement can\u0027t be reached if added"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                throw new DukeException(ExceptionType.InvalidCommand);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "                // break statement can\u0027t be reached if added"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        } catch (DukeException dukeException) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            dukeException.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        System.out.println();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // Prints that user entered an invalid Command"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    private static void invalidCommand() {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        PrintHelper.printInvalidCommand();"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // Prints that user entered an empty line"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    private static void emptyCommand() {"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        PrintHelper.printEmptyLineAlert();"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
@@ -1134,8 +812,248 @@
       }
     ],
     "authorContributionMap": {
-      "GanapathySanathBalaji": 121,
+      "GanapathySanathBalaji": 75,
       "-": 4
+    }
+  },
+  {
+    "path": "src/main/java/DukeException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "public class DukeException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    ExceptionType exceptionType;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    public DukeException(ExceptionType exceptionType){"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        this.exceptionType \u003d exceptionType;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    public void printExceptionMessage(){"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        switch (exceptionType){"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        case InvalidCommand:"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printInvalidCommand();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        case IndexDoneCommand:"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printInvalidDoneFormat();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        case InvalidToDoDeclaration:"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printInvalidToDoFormat();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        case InvalidDeadlineDeclaration:"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printInvalidDeadlineFormat();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        case InvalidEventDeclaration:"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printInvalidEventFormat();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        case InvalidIndex:"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printIndexNotIntegerAlert();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        case EmptyCommand:"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printEmptyLineAlert();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GanapathySanathBalaji": 33
     }
   },
   {
@@ -1393,6 +1311,50 @@
     }
   },
   {
+    "path": "src/main/java/ExceptionType.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "// Used to denote type of exception"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "public enum ExceptionType{"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    InvalidCommand, IndexDoneCommand, InvalidToDoDeclaration, InvalidEventDeclaration,"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    InvalidDeadlineDeclaration, InvalidIndex, EmptyCommand"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "GanapathySanathBalaji": 5
+    }
+  },
+  {
     "path": "src/main/java/PrintHelper.java",
     "fileType": "java",
     "lines": [
@@ -1415,7 +1377,7 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    private static final String INVALID_COMMAND_MESSAGE \u003d \"Invalid command, Please type a valid command\";"
+        "content": "    private static final String INVALID_COMMAND_MESSAGE \u003d \"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\";"
       },
       {
         "lineNumber": 4,
@@ -1485,7 +1447,7 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    private static final String INVALID_TODO_FORMAT_MESSAGE \u003d \"Invalid format of declaration for todo (todo .......)\";"
+        "content": "    private static final String INVALID_TODO_FORMAT_MESSAGE \u003d \"OOPS!!! The description of a todo cannot be empty.\";"
       },
       {
         "lineNumber": 14,
@@ -2546,626 +2508,927 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "    public static final String DEADLINE_SPECIFIER \u003d \"/by \";"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Stores all the tasks provided"
+        "content": "    public static final String PERIOD_SPECIFIER \u003d \"/at \";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003cTask\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "    // Stores all the tasks provided"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Adds a new task with the descriptionWithDetails provided by the user"
+        "content": "    ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003cTask\u003e();"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public void addTask(TaskType taskType, String descriptionWithDetails){"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        switch (taskType) {"
+        "content": "    // Adds a new task with the descriptionWithDetails provided by the user"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        case ToDo:"
+        "content": "    public void addTask(TaskType taskType, String descriptionWithDetails){"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            tasks.add(new ToDo(descriptionWithDetails));"
+        "content": "        switch (taskType) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            break;"
+        "content": "        case ToDo:"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        case Deadline:"
+        "content": "            tasks.add(new ToDo(descriptionWithDetails));"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            tasks.add(new Deadline(descriptionWithDetails));"
+        "content": "            break;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            break;"
+        "content": "        case Deadline:"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        case Event:"
+        "content": "            tasks.add(new Deadline(descriptionWithDetails));"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            tasks.add(new Event(descriptionWithDetails));"
+        "content": "            break;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            break;"
+        "content": "        case Event:"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        }"
+        "content": "            tasks.add(new Event(descriptionWithDetails));"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        printLatestTaskAndTotalNumberOfTasks();"
+        "content": "            break;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "        printLatestTaskAndTotalNumberOfTasks();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Prints details about the latest task added along with"
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // the total number of tasks present in the list"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    private void printLatestTaskAndTotalNumberOfTasks() {"
+        "content": "    // Prints details about the latest task added along with"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "    // the total number of tasks present in the list"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printWithIndentation(TASK_ADDED_MESSAGE);"
+        "content": "    private void printLatestTaskAndTotalNumberOfTasks() {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printWithIndentation(tasks.get(tasks.size()-1).getStatusWithDescription(),7);"
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printWithIndentation(\"Now you have \" + tasks.size() + \" task\" + (tasks.size() !\u003d 1?\"s \":\" \") + \"in the list.\");"
+        "content": "        PrintHelper.printWithIndentation(TASK_ADDED_MESSAGE);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "        PrintHelper.printWithIndentation(tasks.get(tasks.size()-1).getStatusWithDescription(),7);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": "        PrintHelper.printWithIndentation(\"Now you have \" + tasks.size() + \" task\" + (tasks.size() !\u003d 1?\"s \":\" \") + \"in the list.\");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Marks the task denoted by the task as done"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Also handles exceptions in case the index provided isn\u0027t valid"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public void markTask(String taskIndex){"
+        "content": "    // Marks the task denoted by the task as done"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        int taskNumber;"
+        "content": "    // Also handles exceptions in case the index provided isn\u0027t valid"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        try {"
+        "content": "    public void markTask (String[] commandSplit) throws DukeException {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            taskNumber \u003d Integer.parseInt(taskIndex);"
+        "content": "        int taskNumber;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            // Convert to 0-based index"
+        "content": "        if (commandSplit.length !\u003d 2){"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            taskNumber--;"
+        "content": "            throw new DukeException(ExceptionType.IndexDoneCommand);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            boolean isValidIndex \u003d checkIndexValidity(taskNumber);"
+        "content": "        }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            if (!isValidIndex) {"
+        "content": "        String taskIndex \u003d commandSplit[1];"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "                PrintHelper.printInvalidIndexAlert();"
+        "content": "        taskNumber \u003d Integer.parseInt(taskIndex);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            } else if (tasks.get(taskNumber).isDone) {"
+        "content": "        // Convert to 0-based index"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "                printAsAlreadyDone(taskNumber);"
+        "content": "        taskNumber--;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            } else {"
+        "content": "        if (tasks.get(taskNumber).isDone) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "                markTaskAsDone(taskNumber);"
+        "content": "            printAsAlreadyDone(taskNumber);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            markTaskAsDone(taskNumber);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            PrintHelper.printIndexNotIntegerAlert();"
+        "content": "        }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "    // Marks the task denoted by a valid task index as done and prints the corresponding message"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Marks the task denoted by a valid task index as done and prints the corresponding message"
+        "content": "    public void markTaskAsDone(int taskNumber){"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public void markTaskAsDone(int taskNumber){"
+        "content": "        tasks.get(taskNumber).markAsDone();"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        tasks.get(taskNumber).markAsDone();"
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "        PrintHelper.printWithIndentation(TASK_MARKED_MESSAGE);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printWithIndentation(TASK_MARKED_MESSAGE);"
+        "content": "        PrintHelper.printWithIndentation(tasks.get(taskNumber).getStatusWithDescription(),7);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printWithIndentation(tasks.get(taskNumber).getStatusWithDescription(),7);"
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "    // Lists all the tasks provided by user so far"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Lists all the tasks provided by user so far"
+        "content": "    public void listTasks(){"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public void listTasks(){"
+        "content": "        boolean isEmpty \u003d (tasks.size() \u003d\u003d 0);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        boolean isEmpty \u003d (tasks.size() \u003d\u003d 0);"
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "        if (isEmpty) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        if (isEmpty) {"
+        "content": "            PrintHelper.printWithIndentation(LIST_EMPTY_MESSAGE);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            PrintHelper.printWithIndentation(LIST_EMPTY_MESSAGE);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        } else {"
+        "content": "            PrintHelper.printWithIndentation(LIST_TASKS_MESSAGE);"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            PrintHelper.printWithIndentation(LIST_TASKS_MESSAGE);"
+        "content": "            for (int i \u003d 0; i \u003c tasks.size(); i++) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+        "content": "                PrintHelper.printWithIndentation((i + 1) + \". \" + tasks.get(i).getStatusWithDescription());"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "                PrintHelper.printWithIndentation((i + 1) + \". \" + tasks.get(i).getStatusWithDescription());"
+        "content": "            }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        }"
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "    // Prints that the user has already marked the specified task as done previously"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Prints that the user has already marked the specified task as done previously"
+        "content": "    public void printAsAlreadyDone(int index){"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public void printAsAlreadyDone(int index){"
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "        PrintHelper.printWithIndentation(TASK_ALREADY_SET_ALERT);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printWithIndentation(TASK_ALREADY_SET_ALERT);"
+        "content": "        PrintHelper.printWithIndentation(tasks.get(index).getStatusWithDescription(),7);"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printWithIndentation(tasks.get(index).getStatusWithDescription(),7);"
+        "content": "        PrintHelper.printLine();"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        PrintHelper.printLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "    // Instructs the task manager to add the Event task specified by the user"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    // Checks if the provided integer is a valid task index"
+        "content": "    // to the list if the correct format is used"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    public boolean checkIndexValidity(int index){"
+        "content": "    public void addEventTask(String[] commandSplit, boolean isOneWordCommand) throws DukeException {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        boolean isPositive \u003d index \u003e\u003d 0, isLessThanSize \u003d index \u003c tasks.size();"
+        "content": "        boolean isCorrectFormat \u003d !isOneWordCommand \u0026\u0026 commandSplit[1].contains(PERIOD_SPECIFIER);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "        return isPositive \u0026\u0026 isLessThanSize;"
+        "content": "        if (!isCorrectFormat) {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "    }"
+        "content": "            throw new DukeException(ExceptionType.InvalidEventDeclaration);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 99,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        addTask(TaskType.Event, commandSplit[1]);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // Instructs the task manager to add the Deadline task specified by the user"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // to the list if the correct format is used"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    public void addDeadlineTask(String[] commandSplit, boolean isOneWordCommand) throws DukeException {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        boolean isCorrectFormat \u003d !isOneWordCommand \u0026\u0026 commandSplit[1].contains(DEADLINE_SPECIFIER);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        if (!isCorrectFormat) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "           throw new DukeException(ExceptionType.InvalidDeadlineDeclaration);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        addTask(TaskType.Deadline, commandSplit[1]);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // Instructs the task manager to add the ToDo task specified by the user"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    //  to the list if the correct format is used"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    public void addToDoTask(String[] commandSplit) throws DukeException {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        if (commandSplit.length \u003d\u003d 1){"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            throw new DukeException(ExceptionType.InvalidToDoDeclaration);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        addTask(TaskType.ToDo, commandSplit[1]);"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // Instructs the task manager to mark the task done if the correct format is used"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    public void markTaskAsDone(String[] commandSplit) {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        try{"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            markTask(commandSplit);"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        } catch (DukeException invalidDoneCommand) {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            invalidDoneCommand.printExceptionMessage();"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        } catch (NumberFormatException indexNotInteger) {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printIndexNotIntegerAlert();"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        } catch (IndexOutOfBoundsException indexOutOfBounds){"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printInvalidIndexAlert();"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    // Instructs the task manager to list the tasks if the correct format is used"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    public void listTasks(boolean isCorrectFormat) {"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        if (isCorrectFormat) {"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            listTasks();"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "            PrintHelper.printInvalidCommand();"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "GanapathySanathBalaji"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 142,
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
@@ -3173,7 +3436,7 @@
       }
     ],
     "authorContributionMap": {
-      "GanapathySanathBalaji": 99
+      "GanapathySanathBalaji": 142
     }
   },
   {
@@ -3490,7 +3753,7 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "     Invalid format of declaration for todo (todo .......)"
+        "content": "     OOPS!!! The description of a todo cannot be empty."
       },
       {
         "lineNumber": 24,
@@ -3560,7 +3823,7 @@
         "author": {
           "gitId": "GanapathySanathBalaji"
         },
-        "content": "     Invalid command, Please type a valid command"
+        "content": "     OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-("
       },
       {
         "lineNumber": 34,
