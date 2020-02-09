@@ -1,6 +1,6 @@
 [
   {
-    "path": "src/main/java/Deadline.java",
+    "path": "src/main/java/Duke.java",
     "fileType": "java",
     "lines": [
       {
@@ -8,14 +8,14 @@
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "import task.*;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "    protected String by;"
+        "content": "import exceptions.*;"
       },
       {
         "lineNumber": 3,
@@ -27,30 +27,30 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "g-lilian"
+          "gitId": "-"
         },
-        "content": "    public Deadline(String description, String by) {"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        super(description);"
+        "content": "    public static void main(String[] args) throws InvalidCommandException, MissingDescriptionException {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        this.by \u003d by;"
+        "content": "        UI.initUI();"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "    }"
+        "content": "        UI.printGreetMessage();"
       },
       {
         "lineNumber": 8,
@@ -64,43 +64,765 @@
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "    @Override"
+        "content": "        String userInput;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "    public String toString() {"
+        "content": "        Task [] tasks \u003d new Task [100];"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+        "content": "        int numTasks \u003d 0;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "g-lilian"
         },
+        "content": "        while (true) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            userInput \u003d UI.getNextLine();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            // Exit if user says bye"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            if (userInput.equals(\"bye\")) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                String[] parsedInput \u003d userInput.split(\" \", 2);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                String command \u003d parsedInput[0];"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                String words \u003d \"\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                if (parsedInput.length \u003e 1) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    words \u003d parsedInput[1];"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                switch(command) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                case \"list\": // List all the tasks"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    listTasks(tasks, numTasks);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                case \"done\": // Mark a task as done"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    UI.br();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    System.out.println(\"\\t Dun dun dun dun! This task is done:\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    int taskIdx \u003d Integer.parseInt(words);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    taskIdx--; // -1 for zero-based indexing"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    tasks[taskIdx].setDone();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    System.out.println(\"\\t   \" + tasks[taskIdx]);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    UI.br();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                default: // Add a task"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    Task t;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    // Parse input to obtain text and timeDescriptor"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    String timeDescriptor \u003d \"\";"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    String text \u003d \"\";"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    int slashPos \u003d words.indexOf(\u0027/\u0027);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    if (slashPos !\u003d -1) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        timeDescriptor \u003d words.substring(slashPos + 4);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        text \u003d words.substring(0, slashPos);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    if (command.equals(\"todo\")) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        t \u003d new Todo(words);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        if (words.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                            throw new MissingDescriptionException();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    } else if (command.equals(\"deadline\")) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        t \u003d new Deadline(text, timeDescriptor);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        if (text.equals(\"\") || timeDescriptor.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                            throw new MissingDescriptionException();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    } else if (command.equals(\"event\")) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        t \u003d new Event(text, timeDescriptor);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        if (text.equals(\"\") || timeDescriptor.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                            throw new MissingDescriptionException();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    } else {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        throw new InvalidCommandException();"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    tasks[numTasks] \u003d t;"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    numTasks++;"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    printAddedTaskMessage(t, numTasks);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            } catch (MissingDescriptionException e) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                UI.br();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                System.out.println(\"\\t ☹ OOPS!!! The task description cannot be empty.\");"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                UI.br();"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            } catch (InvalidCommandException e) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                UI.br();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                System.out.println(\"\\t ☹ OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                UI.br();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                UI.br();"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                System.out.println(\"\\t ☹ OOPS!!! The task description cannot be empty.\");"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                UI.br();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        UI.printEndMessage();"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    /** Prints the message that is displayed after a task is added */"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    private static void printAddedTaskMessage(Task t, int numTasks) {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        UI.br();"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"\\t Dook has added task: \");"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"\\t  \" + t);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"\\t \" + numTasks + \" task(s) in the list now!\");"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        UI.br();"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    /** Prints all tasks in the list */"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    private static void listTasks(Task[] tasks, int numTasks) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        UI.br();"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"\\t Dook will list your tasks now:\");"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        for (int i\u003d0; i\u003cnumTasks; i++) {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            int taskNum \u003d i+1;"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "            System.out.println(\"\\t \" + taskNum + \". \" + tasks[i]);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        UI.br();"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "-"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "g-lilian": 13
+      "g-lilian": 113,
+      "-": 3
     }
   },
   {
-    "path": "src/main/java/Duke.java",
+    "path": "src/main/java/UI.java",
     "fileType": "java",
     "lines": [
       {
@@ -120,58 +842,712 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "g-lilian"
         },
-        "content": "public class Duke {"
+        "content": "public class UI {"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "g-lilian"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    protected static Scanner input;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        Scanner input \u003d new Scanner(System.in);"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        printStartMessage();"
+        "content": "    public static void initUI() {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": ""
+        "content": "        input \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        String userInput;"
+        "content": "    }"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        Task [] tasks \u003d new Task [100];"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        int numTasks \u003d 0;"
+        "content": "    /** Reads the next line of user input */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public static String getNextLine() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        return input.nextLine();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    /** Prints line divider */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public static void br () {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"    ...................................................\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    /** Prints the greeting message */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public static void printGreetMessage() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        br();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        String logo \u003d"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"        ┌┬┐┌─┐┌─┐┬┌─\\n\" +"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        \"         │││ ││ │├┴┐\\n\" +"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                        \"        ─┴┘└─┘└─┘┴ ┴\";"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"\\t Hello! I am \\n\" + logo);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"\\t Does the human have a request today?\");"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        br();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    /** Prints the goodbye message */"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public static void printEndMessage() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        br();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"\\t Goodbye, see you in the seventh dimension!\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        System.out.println(\"                   *       +\\n\" +"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"             \u0027                  |\\n\" +"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"         ()    .-.,\u003d\\\"``\\\"\u003d.    - o -\\n\" +"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"               \u0027\u003d/_       \\\\     |\\n\" +"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"            *   |  \u0027\u003d._    |\\n\" +"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"                 \\\\     `\u003d./`,        \u0027\\n\" +"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"              .   \u0027\u003d.__.\u003d\u0027 `\u003d\u0027      *\\n\" +"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"     +                         +\\n\" +"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "                \"          O      *        \u0027       .\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        br();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "g-lilian": 47
+    }
+  },
+  {
+    "path": "src/main/java/exceptions/InvalidCommandException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "package exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "public class InvalidCommandException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    // Thrown when input command is invalid"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "g-lilian": 5
+    }
+  },
+  {
+    "path": "src/main/java/exceptions/MissingDescriptionException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "package exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "public class MissingDescriptionException extends Exception{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    // Thrown when a task is missing the input description"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "g-lilian": 5
+    }
+  },
+  {
+    "path": "src/main/java/task/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "package task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public Deadline(String description, String by) {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        this.by \u003d by;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "g-lilian": 15
+    }
+  },
+  {
+    "path": "src/main/java/task/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "package task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public Event(String description, String at) {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        this.at \u003d at;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "g-lilian": 15
+    }
+  },
+  {
+    "path": "src/main/java/task/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "package task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "g-lilian"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 11,
@@ -185,800 +1561,106 @@
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        while (true) {"
+        "content": "    public void setDone() {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            // Get and parse user input"
+        "content": "        this.isDone \u003d true;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            userInput \u003d input.nextLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            // Exit if user says bye"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            if (userInput.equals(\"bye\")) {"
+        "content": "    /** Returns tick or X based on task completion */"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "                break;"
+        "content": "    public String getStatusIcon() {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            }"
+        "content": "        // Return tick or X symbols"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            String[] parsedInput \u003d userInput.split(\" \", 2);"
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            String command \u003d parsedInput[0];"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            String words \u003d \"\";"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            if (parsedInput.length !\u003d 1) {"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "                words \u003d parsedInput[1];"
+        "content": "        return String.format(\"[%s] %s\", this.getStatusIcon(), this.description);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "            }"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            switch(command) {"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            // List all the tasks"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            case \"list\":"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                listTasks(tasks, numTasks);"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            // Mark a task as done"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            case \"done\":"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                br();"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                System.out.println(\"\\t Dun dun dun dun! This task is done:\");"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                int taskIdx \u003d Integer.parseInt(words);"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                taskIdx--; // -1 for zero-based indexing"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                tasks[taskIdx].isDone \u003d true;"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                System.out.println(\"\\t   \" + tasks[taskIdx]);"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                br();"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            // Add a task"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            default:"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                Task t;"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                // Parse input to obtain text and timeDescriptor"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                String timeDescriptor \u003d \"\";"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                String text \u003d \"\";"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                int slashPos \u003d words.indexOf(\u0027/\u0027);"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                if (slashPos !\u003d -1) {"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                    timeDescriptor \u003d words.substring(slashPos+4);"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                    text \u003d words.substring(0, slashPos);"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                if (command.equals(\"todo\")) {"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                    t \u003d new Todo(words);"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                } else if (command.equals(\"deadline\")) {"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                    t \u003d new Deadline(text, timeDescriptor);"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                    t \u003d new Event(text, timeDescriptor);"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                tasks[numTasks] \u003d t;"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                numTasks++;"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                printAddedTaskMessage(t, numTasks);"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        printEndMessage();"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    /** Prints the message that is displayed after a task is added */"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    private static void printAddedTaskMessage(Task t, int numTasks) {"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"\\t Dook has added task: \");"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"\\t  \" + t);"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"\\t \" + numTasks + \" task(s) in the list now!\");"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    /** Prints all tasks in the list */"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    private static void listTasks(Task[] tasks, int numTasks) {"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"\\t Dook will list your tasks now:\");"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        for (int i\u003d0; i\u003cnumTasks; i++) {"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            int taskNum \u003d i+1;"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "            System.out.println(\"\\t \" + taskNum + \". \" + tasks[i]);"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    /** Prints line divider */"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    private static void br () {"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"    ...................................................\");"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    /** Prints the greeting message */"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    private static void printStartMessage() {"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        String logo \u003d"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"        ┌┬┐┌─┐┌─┐┬┌─\\n\" +"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"         │││ ││ │├┴┐\\n\" +"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"        ─┴┘└─┘└─┘┴ ┴\";"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"\\t Hello! I am \\n\" + logo);"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"\\t Does the human have a request today?\");"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    /** Prints the goodbye message */"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    private static void printEndMessage() {"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"\\t Goodbye, see you in the seventh dimension!\");"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        System.out.println(\"                   *       +\\n\" +"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"             \u0027                  |\\n\" +"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"         ()    .-.,\u003d\\\"``\\\"\u003d.    - o -\\n\" +"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"               \u0027\u003d/_       \\\\     |\\n\" +"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"            *   |  \u0027\u003d._    |\\n\" +"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"                 \\\\     `\u003d./`,        \u0027\\n\" +"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"              .   \u0027\u003d.__.\u003d\u0027 `\u003d\u0027      *\\n\" +"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"     +                         +\\n\" +"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "                \"          O      *        \u0027       .\");"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        br();"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "-"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "g-lilian": 119,
-      "-": 5
+      "g-lilian": 25
     }
   },
   {
-    "path": "src/main/java/Event.java",
+    "path": "src/main/java/task/Todo.java",
     "fileType": "java",
     "lines": [
       {
@@ -986,42 +1668,42 @@
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "public class Event extends Task {"
+        "content": "package task;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "    protected String at;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": ""
+        "content": "public class Todo extends Task {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "    public Event(String description, String at) {"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        super(description);"
+        "content": "    public Todo(String description) {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        this.at \u003d at;"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 7,
@@ -1056,7 +1738,7 @@
         "author": {
           "gitId": "g-lilian"
         },
-        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+        "content": "        return \"[T]\" + super.toString();"
       },
       {
         "lineNumber": 12,
@@ -1075,234 +1757,6 @@
     ],
     "authorContributionMap": {
       "g-lilian": 13
-    }
-  },
-  {
-    "path": "src/main/java/Task.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "public class Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    protected String description;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    protected boolean isDone;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    public Task(String description) {"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        this.description \u003d description;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        this.isDone \u003d false;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    /** Returns tick or X based on task completion */"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    public String getStatusIcon() {"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        // Return tick or X symbols"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        return String.format(\"[%s] %s\", this.getStatusIcon(), this.description);"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "g-lilian": 19
-    }
-  },
-  {
-    "path": "src/main/java/Todo.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "public class Todo extends Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    public Todo(String description) {"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        super(description);"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "        return \"[T]\" + super.toString();"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "g-lilian"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "g-lilian": 11
     }
   }
 ]
