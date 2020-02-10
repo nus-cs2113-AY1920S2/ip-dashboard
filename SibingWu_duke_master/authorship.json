@@ -1,6 +1,6 @@
 [
   {
-    "path": "src/main/java/Deadline.java",
+    "path": "src/main/java/duke/Duke.java",
     "fileType": "java",
     "lines": [
       {
@@ -8,49 +8,49 @@
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "package duke;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    protected String by;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": ""
+        "content": "import duke.exceptions.ChatboxException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    public Deadline(String description, String by) {"
+        "content": "import duke.tasks.Deadline;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        super(description);"
+        "content": "import duke.tasks.Event;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        this.by \u003d by;"
+        "content": "import duke.tasks.Task;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    }"
+        "content": "import duke.tasks.Todo;"
       },
       {
         "lineNumber": 8,
@@ -61,138 +61,1447 @@
       },
       {
         "lineNumber": 9,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        return String.format(\"[D]%s (by: %s)\", super.toString(), by);"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "SibingWu": 13
-    }
-  },
-  {
-    "path": "src/main/java/Duke.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
         "author": {
           "gitId": "SibingWu"
         },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 2,
+        "lineNumber": 10,
         "author": {
           "gitId": "SibingWu"
         },
         "content": "import java.util.List;"
       },
       {
-        "lineNumber": 3,
+        "lineNumber": 11,
         "author": {
           "gitId": "SibingWu"
         },
         "content": "import java.util.Scanner;"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 12,
         "author": {
           "gitId": "SibingWu"
         },
         "content": ""
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 13,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.LIST_COMMAND;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.BYE_COMMAND;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.DONE_COMMAND;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.TODO_COMMAND;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.DEADLINE_COMMAND;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.EVENT_COMMAND;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.DEADLINE_MARKER;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.EVENT_MARKER;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    // a array to store user input task"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static List\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "public class Duke {"
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        displayWelcomeMessage();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        "
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        Scanner in \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String input \u003d null;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        do {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            input \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            String[] split \u003d input.split(\"\\\\s+\", 2); // limit: the number of segments after split"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            String command \u003d split[0];"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            "
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            switch (command) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            case LIST_COMMAND:"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                listTasks();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            case DONE_COMMAND:"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    markAsDone(Integer.parseInt(split[1].trim()));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    displayEmptyDescriptionMessage(command);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    displayInvalidTaskNumberMessage();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                } catch (ChatboxException e) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    displayInvalidTaskNumberMessage();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            case BYE_COMMAND:"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                displayExitMessage();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            case TODO_COMMAND:"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    addTodo(split[1]);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    displayEmptyDescriptionMessage(command);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            case DEADLINE_COMMAND:"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    addDeadline(split[1]);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    displayEmptyDescriptionMessage(command);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            case EVENT_COMMAND:"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    addEvent(split[1]);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                    displayEmptyDescriptionMessage(command);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                displayCommandNotFoundMessage();"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        } while (!input.equals(BYE_COMMAND));"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void displayWelcomeMessage() {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"Hello! I\u0027m Duke\");"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"What can I do for you?\\n\");"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void listTasks() {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"Here are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            Task task \u003d tasks.get(i);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            System.out.print(String.format(\"%d.\", i + 1));"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            System.out.println(task);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void markAsDone(int taskNumber) throws ChatboxException {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        if (taskNumber \u003e tasks.size() || taskNumber \u003c\u003d 0) {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "            throw new ChatboxException();"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        Task task \u003d tasks.get(taskNumber - 1);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        task.markAsDone();"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.print(\"  \");"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(task);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void displayInvalidTaskNumberMessage() {"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"Please enter a valid task number~\");"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void displayExitMessage() {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"Bye. Hope to see you again soon!\");"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void addTodo(String description) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String taskDescription \u003d description.trim();"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        Task task \u003d new Todo(taskDescription);"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        tasks.add(task);"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        displayAddTaskMessage(task);"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void addDeadline(String description) {"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String[] taskBy \u003d description.split(DEADLINE_MARKER);"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String taskDescription \u003d taskBy[0].trim();"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String by \u003d taskBy[1].trim();"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        Task task \u003d new Deadline(taskDescription, by);"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        tasks.add(task);"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        displayAddTaskMessage(task);"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void addEvent(String description) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String[] taskAt \u003d description.split(EVENT_MARKER);"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String taskDescription \u003d taskAt[0].trim();"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        String at \u003d taskAt[1].trim();"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        Task task \u003d new Event(taskDescription, at);"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        tasks.add(task);"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        displayAddTaskMessage(task);"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void displayAddTaskMessage(Task task) {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.print(\"  \");"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(task);"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(String.format(\"Now you have %d tasks in the list.\", tasks.size()));"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void displayCommandNotFoundMessage() {"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    private static void displayEmptyDescriptionMessage(String command) {"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        System.out.println(String.format(\"OOPS!!! The description of a %s cannot be empty.\", command));"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "-": 3,
+      "SibingWu": 159
+    }
+  },
+  {
+    "path": "src/main/java/duke/exceptions/ChatboxException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "package duke.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "public class ChatboxException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "SibingWu": 4
+    }
+  },
+  {
+    "path": "src/main/java/duke/tasks/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "package duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String LIST_COMMAND \u003d \"list\";"
+        "content": "    public Deadline(String description, String by) {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String BYE_COMMAND \u003d \"bye\";"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String DONE_COMMAND \u003d \"done\";"
+        "content": "        this.by \u003d by;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String TODO_COMMAND \u003d \"todo\";"
+        "content": "    }"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String DEADLINE_COMMAND \u003d \"deadline\";"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String EVENT_COMMAND \u003d \"event\";"
+        "content": "    @Override"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String DEADLINE_MARKER \u003d \"/by\";"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static final String EVENT_MARKER \u003d \"/at\";"
+        "content": "        return String.format(\"[D]%s (by: %s)\", super.toString(), by);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "SibingWu": 15
+    }
+  },
+  {
+    "path": "src/main/java/duke/tasks/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "package duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    public Event(String description, String at) {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        this.at \u003d at;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        return String.format(\"[E]%s (at: %s)\", super.toString(), at);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "SibingWu": 15
+    }
+  },
+  {
+    "path": "src/main/java/duke/tasks/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "package duke.tasks;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.YES_ICON;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "import static duke.utils.Constants.NO_ICON;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "SibingWu"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 14,
@@ -206,660 +1515,92 @@
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    // a array to store user input task"
+        "content": "    public String getStatusIcon() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    private static List\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
+        "content": "        return (isDone ? YES_ICON : NO_ICON); // return tick or X symbols"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    "
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "SibingWu"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        displayWelcomeMessage();"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        "
+        "content": "        return String.format(\"[%s] %s\", getStatusIcon(), description);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        String input \u003d null;"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": ""
+        "content": "    public void markAsDone() {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        do {"
+        "content": "        isDone \u003d true;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "            input \u003d in.nextLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "            String[] split \u003d input.split(\"\\\\s+\", 2); // limit: the number of segments after split"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            String command \u003d split[0];"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            "
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            switch (command) {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            case LIST_COMMAND:"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                listTasks();"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            case DONE_COMMAND:"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                markAsDone(Integer.parseInt(split[1].trim()));"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            case BYE_COMMAND:"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                displayExitMessage();"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            default:"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                addTask(command, split[1]);"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        } while (!input.equals(BYE_COMMAND));"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }    "
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    private static void displayWelcomeMessage() {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        String logo \u003d \" ____        _        \\n\""
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(\"Hello! I\u0027m Duke\");"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(\"What can I do for you?\\n\");"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    private static void listTasks() {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(\"Here are the tasks in your list:\");"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            Task task \u003d tasks.get(i);"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            System.out.print(String.format(\"%d.\", i + 1));"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            System.out.println(task);"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    private static void markAsDone(int taskNumber) {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        Task task \u003d tasks.get(taskNumber - 1);"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        task.markAsDone();"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.print(\"  \");"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(task);"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    private static void displayExitMessage() {"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(\"Bye. Hope to see you again soon!\");"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    private static void addTask(String command, String description) {"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        Task task \u003d null;"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        String taskDescription \u003d null;"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        switch (command) {"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        case TODO_COMMAND:"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            taskDescription \u003d description.trim();"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            task \u003d new Todo(taskDescription);"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        case DEADLINE_COMMAND:"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            String[] taskBy \u003d description.split(DEADLINE_MARKER);"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            taskDescription \u003d taskBy[0].trim();"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            String by \u003d taskBy[1].trim();"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            task \u003d new Deadline(taskDescription, by);"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        case EVENT_COMMAND:"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            String[] taskAt \u003d description.split(EVENT_MARKER);"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            taskDescription \u003d taskAt[0].trim();"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            String at \u003d taskAt[1].trim();"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "            task \u003d new Event(taskDescription, at);"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        tasks.add(task);"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.print(\"  \");"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(task);"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        System.out.println(String.format(\"Now you have %d tasks in the list.\", tasks.size()));"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "-"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "-": 11,
-      "SibingWu": 96
+      "SibingWu": 26
     }
   },
   {
-    "path": "src/main/java/Event.java",
+    "path": "src/main/java/duke/tasks/Todo.java",
     "fileType": "java",
     "lines": [
       {
@@ -867,42 +1608,42 @@
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "public class Event extends Task {"
+        "content": "package duke.tasks;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    protected String at;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": ""
+        "content": "public class Todo extends Task {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    public Event(String description, String at) {"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        super(description);"
+        "content": "    public Todo(String description) {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        this.at \u003d at;"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 7,
@@ -937,7 +1678,7 @@
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        return String.format(\"[E]%s (at: %s)\", super.toString(), at);"
+        "content": "        return String.format(\"[T]%s\", super.toString());"
       },
       {
         "lineNumber": 12,
@@ -959,7 +1700,7 @@
     }
   },
   {
-    "path": "src/main/java/Task.java",
+    "path": "src/main/java/duke/utils/Constants.java",
     "fileType": "java",
     "lines": [
       {
@@ -967,258 +1708,102 @@
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "public class Task {"
+        "content": "package duke.utils;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    protected static final String YES_ICON \u003d \"\\u2713\";"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    protected static final String NO_ICON \u003d \"\\u2718\";"
+        "content": "public class Constants {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    "
+        "content": "    public static final String LIST_COMMAND \u003d \"list\";"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    protected String description;"
+        "content": "    public static final String BYE_COMMAND \u003d \"bye\";"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    protected boolean isDone;"
+        "content": "    public static final String DONE_COMMAND \u003d \"done\";"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": ""
+        "content": "    public static final String TODO_COMMAND \u003d \"todo\";"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    public Task(String description) {"
+        "content": "    public static final String DEADLINE_COMMAND \u003d \"deadline\";"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        this.description \u003d description;"
+        "content": "    public static final String EVENT_COMMAND \u003d \"event\";"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        this.isDone \u003d false;"
+        "content": "    public static final String DEADLINE_MARKER \u003d \"/by\";"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    }"
+        "content": "    public static final String EVENT_MARKER \u003d \"/at\";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": ""
+        "content": "    public static final String YES_ICON \u003d \"\\u2713\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "    public String getStatusIcon() {"
+        "content": "    public static final String NO_ICON \u003d \"\\u2718\";"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "        return (isDone ? YES_ICON : NO_ICON); // return tick or X symbols"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        return String.format(\"[%s] %s\", getStatusIcon(), description);"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    public void markAsDone() {"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        isDone \u003d true;"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "SibingWu"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "SibingWu": 24
-    }
-  },
-  {
-    "path": "src/main/java/Todo.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "public class Todo extends Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    public Todo(String description) {"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        super(description);"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "        return String.format(\"[T]%s\", super.toString());"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "SibingWu"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "SibingWu": 11
+      "SibingWu": 14
     }
   },
   {
@@ -1682,7 +2267,7 @@
         "author": {
           "gitId": "SibingWu"
         },
-        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\*"
+        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\duke\\*.java ..\\src\\main\\java\\duke\\exceptions\\*.java ..\\src\\main\\java\\duke\\tasks\\*.java ..\\src\\main\\java\\duke\\utils\\*.java"
       },
       {
         "lineNumber": 11,

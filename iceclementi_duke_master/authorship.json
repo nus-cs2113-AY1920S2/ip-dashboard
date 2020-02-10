@@ -1,6 +1,6 @@
 [
   {
-    "path": "src/main/java/Deadline.java",
+    "path": "src/main/java/duke/Duke.java",
     "fileType": "java",
     "lines": [
       {
@@ -8,49 +8,1207 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "package duke;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    protected String deadline;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "import duke.exception.ExceptionMessage;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public Deadline(String task, String deadline) {"
+        "content": "import duke.exception.InvalidActionException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        super(task);"
+        "content": "import duke.exception.InvalidFormatException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        this.deadline \u003d deadline;"
+        "content": "import duke.exception.InvalidListNumberException;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "iceclementi"
         },
+        "content": "import duke.format.Printer;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import duke.task.Event;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import duke.task.Task;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import duke.task.ToDo;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import java.util.Vector;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private static Vector\u003cTask\u003e list \u003d new Vector\u003c\u003e();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private void doTask(String[] words) throws InvalidFormatException, InvalidListNumberException {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        if (words.length \u003e 2) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            throw new InvalidFormatException();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int listNumber \u003d Integer.parseInt(words[1]) - 1;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        if (listNumber \u003c 0 || listNumber \u003e\u003d list.size()) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            throw new InvalidListNumberException();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        if (list.get(listNumber).getIsDone()) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            Printer.printAlreadyCompletedTaskMessage(list, listNumber);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            list.get(listNumber).setIsDone(true);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            Printer.printCompleteTaskMessage(list, listNumber);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "iceclementi"
+        },
         "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private void addToDo(String input) throws InvalidFormatException {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int indexOfTask \u003d \"todo \".length();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String task \u003d input.substring(indexOfTask).trim();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        if (task.length() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            throw new InvalidFormatException();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        list.add(new ToDo(task));"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Printer.printAddTaskMessage(list);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private void addDeadline(String input) throws InvalidFormatException {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int indexOfTask \u003d \"deadline \".length();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int endIndexOfTask \u003d input.indexOf(\" /by \");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int indexOfDeadline \u003d endIndexOfTask + \" /by \".length();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String task \u003d input.substring(indexOfTask, endIndexOfTask).trim();"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String deadline \u003d input.substring(indexOfDeadline).trim();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        if (task.length() \u003d\u003d 0 || deadline.length() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            throw new InvalidFormatException();"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        list.add(new Deadline(task, deadline));"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Printer.printAddTaskMessage(list);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private void addEvent(String input) throws InvalidFormatException {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int indexOfTask \u003d \"event\".length() + 1;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int endIndexOfTask \u003d input.indexOf(\" /at \");"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        int indexOfEvent \u003d endIndexOfTask + \" /at \".length();"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String task \u003d input.substring(indexOfTask, endIndexOfTask).trim();"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String duration \u003d input.substring(indexOfEvent).trim();"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        if (task.length() \u003d\u003d 0 || duration.length() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            throw new InvalidFormatException();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        list.add(new Event(task, duration));"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Printer.printAddTaskMessage(list);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private void completeAction(String input) throws InvalidActionException {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String[] words \u003d input.split(\" \");"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String action \u003d words[0].toLowerCase();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        switch (action) {"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        case \"done\":"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                doTask(words);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (InvalidFormatException e) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.INVALID_DONE_FORMAT_MESSAGE);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (InvalidListNumberException e) {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.INVALID_LIST_NUMBER_MESSAGE);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                Printer.printList(list, false);"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.ILLEGAL_LIST_NUMBER_MESSAGE);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.MISSING_LIST_NUMBER_MESSAGE);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        case \"todo\":"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                addToDo(input);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.INVALID_TODO_FORMAT_MESSAGE);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (InvalidFormatException e) {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.MISSING_TODO_DESCRIPTION_MESSAGE);"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        case \"deadline\":"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                addDeadline(input);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.INVALID_DEADLINE_FORMAT_MESSAGE);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (InvalidFormatException e) {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.MISSING_DEADLINE_DESCRIPTION_MESSAGE);"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        case \"event\":"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                addEvent(input);"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.INVALID_EVENT_FORMAT_MESSAGE);"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } catch (InvalidFormatException e) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                System.out.println(ExceptionMessage.MISSING_EVENT_DESCRIPTION_MESSAGE);"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            throw new InvalidActionException();"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private void readInput() {"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Scanner scanner \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        while (true) {"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            String input \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            if (input.toLowerCase().equals(\"bye\")) {"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                scanner.close();"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                return;"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } else if (input.toLowerCase().equals(\"list\")) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                Printer.printList(list, true);"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                    completeAction(input);"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                } catch (InvalidActionException e) {"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                    System.out.println(ExceptionMessage.INVALID_ACTION_MESSAGE);"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    private void runChat() {"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Printer.printWelcomeMessage();"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Printer.printLoadMessage();"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        readInput();"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Printer.printExitMessage();"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        Duke chatBot \u003d new Duke();"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        chatBot.runChat();"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "iceclementi": 160,
+      "-": 4
+    }
+  },
+  {
+    "path": "src/main/java/duke/exception/ExceptionMessage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "package duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import duke.format.TextFormatter;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import static java.lang.System.lineSeparator;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "public class ExceptionMessage {"
       },
       {
         "lineNumber": 8,
@@ -64,31 +1222,430 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    @Override"
+        "content": "    public final static String INVALID_ACTION_MESSAGE \u003d"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public String getTaskStatus() {"
+        "content": "            TextFormatter.SHOCK_FACE +"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        return \"[D]\" + super.getTaskStatus() + \" (by: \" + deadline + \")\";"
+        "content": "            \"Oh no!! Lumi has trouble understanding these words... Please try again!\\n\";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 13,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String INVALID_DONE_FORMAT_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.SHOCK_FACE +"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"Oops!! Lumi cannot understand this \" + TextFormatter.toItalic(\"DONE\")  + \" command...\" +"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + \"  Lumi needs you to follow this format:\" +"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + TextFormatter.createSpaces(8) +"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBoldAndItalic(\"done \u003clist number\u003e\") + lineSeparator();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String MISSING_LIST_NUMBER_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.THINKING_FACE +"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"Hmm... Lumi needs you to put in a \" + TextFormatter.toBold(\"list number\") + \" too!\" +"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String INVALID_LIST_NUMBER_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.SHOCK_FACE + \"Whoops!! Lumi\u0027s list does not seem to have that number!\" +"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + \"  Lumi shall print the list for you to check again...\";"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String ILLEGAL_LIST_NUMBER_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.ANGRY_FACE +"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"Hey!! Lumi\u0027s list numbers are \" + TextFormatter.toBold(\"NUMBERS\") + \"!!\" +"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + \"  Lumi needs you to follow this format:\" +"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + TextFormatter.createSpaces(8) +"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBoldAndItalic(\"done \u003clist number\u003e\") + lineSeparator();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String INVALID_TODO_FORMAT_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.SHOCK_FACE +"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"Oops!! Lumi cannot understand this \" + TextFormatter.toItalic(\"TODO\")  + \" command...\" +"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + \"  Lumi needs you to follow this format:\" +"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + TextFormatter.createSpaces(8) +"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBoldAndItalic(\"todo \u003ctask description\u003e\") + lineSeparator();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String MISSING_TODO_DESCRIPTION_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.THINKING_FACE + \"Hmm... Lumi needs you to put in a \" +"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBold(\"task description\") + \" too!\" + lineSeparator();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String INVALID_DEADLINE_FORMAT_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.SHOCK_FACE +"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"Oops!! Lumi cannot understand this \" + TextFormatter.toItalic(\"DEADLINE\")  + \" command...\" +"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + \"  Lumi needs you to follow this format:\" +"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + TextFormatter.createSpaces(8) +"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBoldAndItalic(\"deadline \u003ctask description\u003e /by \u003cdue date\u003e\") + lineSeparator();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String MISSING_DEADLINE_DESCRIPTION_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.THINKING_FACE + \"Hmm... Lumi senses missing information...\" + lineSeparator() +"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"  Lumi needs you to put in either a \" + TextFormatter.toBold(\"task description\") + \" or a \" +"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBold(\"deadline\") + \"!\" + lineSeparator();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String INVALID_EVENT_FORMAT_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.SHOCK_FACE +"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"Oops!! Lumi cannot understand this \" + TextFormatter.toItalic(\"EVENT\")  + \" command...\" +"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + \"  Lumi needs you to follow this format:\" +"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            lineSeparator() + TextFormatter.createSpaces(8) +"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBoldAndItalic(\"event \u003ctask description\u003e /at \u003cduration\u003e\") + lineSeparator();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public final static String MISSING_EVENT_DESCRIPTION_MESSAGE \u003d"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.THINKING_FACE + \"Hmm... Lumi senses missing information...\" + lineSeparator() +"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            \"  Lumi needs you to put in either a \" + TextFormatter.toBold(\"task description\") + \" or a \" +"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            TextFormatter.toBold(\"duration\") + \"!\" + lineSeparator();"
+      },
+      {
+        "lineNumber": 70,
         "author": {
           "gitId": "iceclementi"
         },
@@ -96,11 +1653,11 @@
       }
     ],
     "authorContributionMap": {
-      "iceclementi": 13
+      "iceclementi": 70
     }
   },
   {
-    "path": "src/main/java/Duke.java",
+    "path": "src/main/java/duke/exception/InvalidActionException.java",
     "fileType": "java",
     "lines": [
       {
@@ -108,28 +1665,28 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import java.util.Scanner;"
+        "content": "package duke.exception;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import java.util.Vector;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "public class InvalidActionException extends Exception {"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "iceclementi"
         },
-        "content": "public class Duke {"
+        "content": "}"
       },
       {
         "lineNumber": 5,
@@ -137,20 +1694,138 @@
           "gitId": "iceclementi"
         },
         "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "iceclementi": 5
+    }
+  },
+  {
+    "path": "src/main/java/duke/exception/InvalidFormatException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "package duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "public class InvalidFormatException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "iceclementi": 4
+    }
+  },
+  {
+    "path": "src/main/java/duke/exception/InvalidListNumberException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "package duke.exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "public class InvalidListNumberException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "iceclementi": 4
+    }
+  },
+  {
+    "path": "src/main/java/duke/format/Printer.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "package duke.format;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import duke.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "import java.util.Vector;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private static Vector\u003cTask\u003e list \u003d new Vector\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private static Printer printer \u003d new Printer();"
+        "content": "public class Printer {"
       },
       {
         "lineNumber": 8,
@@ -164,21 +1839,21 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private boolean isValidDoneInput(String[] words) {"
+        "content": "    private static void printSpaces(int numberOfSpaces) {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (words.length !\u003d 2) {"
+        "content": "        for (int i \u003d 0; i \u003c numberOfSpaces; i++) {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return false;"
+        "content": "            System.out.print(\" \");"
       },
       {
         "lineNumber": 12,
@@ -192,140 +1867,140 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        // Checks if second word is a valid list number"
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        return words[1].matches(\"\\\\d+\") \u0026\u0026 Integer.parseInt(words[1]) \u003c\u003d list.size();"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "    public static void printWelcomeMessage() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        String logo \u003d"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private void doTask(String[] words) {"
+        "content": "            \"  __       _______  _______  ________  _______  _______  _______  ________\\n\" +"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (!isValidDoneInput(words)) {"
+        "content": "            \" |\\\\_\\\\     |\\\\___\\\\__\\\\|\\\\ __\\\\__\\\\|\\\\ ______\\\\|\\\\______\\\\|\\\\___\\\\__\\\\|\\\\______\\\\|\\\\ ______\\\\\\n\" +"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return;"
+        "content": "            \" | | |    | |  |  || |  |  | \\\\|__   _|| |  ___|| |  |  || |     | \\\\|__   _|\\n\" +"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "            \" | | |    | |  |  || |  |  |   | | |  | | |    | |  |  || |  |  |   | | |\\n\" +"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int listNumber \u003d Integer.parseInt(words[1]) - 1;"
+        "content": "            \" | | |__  | |  |  || |     | __| | |_ | | |___ | |     || |     |   | | |\\n\" +"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (list.get(listNumber).isDone) {"
+        "content": "            \" | | |__\\\\ | |     || | | | ||\\\\__\\\\| |_\\\\| | |___\\\\| |  |  || |  |  |   | | |\\n\" +"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            printer.printAlreadyCompletedTaskMessage(list, listNumber);"
+        "content": "            \"  \\\\|_____| \\\\|_____| \\\\|_|_|_| \\\\|______| \\\\|_____| \\\\|__|__| \\\\|__|__|    \\\\|_|\";"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } else {"
+        "content": "        System.out.println(\"Welcome to\\n\" + logo);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            list.get(listNumber).isDone \u003d true;"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            printer.printCompleteTaskMessage(list, listNumber);"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "    public static void printLoadMessage() {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"Initializing LumiChat v0.0.1.4...\\n\");"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        System.out.println(\"LumiChat is now ready.\\n\");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private void addToDo(String input) {"
+        "content": "        System.out.println(\"  Hey I\u0027m Lumi!\");"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int indexOfTask \u003d \"todo \".length();"
+        "content": "        System.out.println(\"  How may Lumi assist you today?\\n\");"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String task \u003d input.substring(indexOfTask);"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
@@ -339,14 +2014,14 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        list.add(new ToDo(task));"
+        "content": "    public static void printExitMessage() {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        printer.printAddTaskMessage(list);"
+        "content": "        System.out.println(TextFormatter.SAD_FACE + \"Goodbye! Lumi will miss you!\");"
       },
       {
         "lineNumber": 36,
@@ -367,147 +2042,147 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private void addDeadline(String input) {"
+        "content": "     public static void printAddTaskMessage(Vector\u003cTask\u003e list) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int indexOfTask \u003d \"deadline \".length();"
+        "content": "        System.out.println(TextFormatter.HAPPY_FACE + \"Alright, Lumi has added: \" + list.lastElement().getTask() + \"!\");"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int endIndexOfTask \u003d input.indexOf(\" /by \");"
+        "content": "        System.out.println(TextFormatter.createSpaces(8) + list.lastElement().getTaskStatus());"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int indexOfDeadline \u003d endIndexOfTask + \" /by \".length();"
+        "content": "        if (list.size() \u003d\u003d 1) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String task \u003d input.substring(indexOfTask, endIndexOfTask);"
+        "content": "            System.out.println(\"  You now have \" + list.size() + \" task in Lumi\u0027s list!\\n\");"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String deadline \u003d input.substring(indexOfDeadline);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            System.out.println(\"  You now have \" + list.size() + \" tasks in Lumi\u0027s list!\\n\");"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        list.add(new Deadline(task, deadline));"
+        "content": "        }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        printer.printAddTaskMessage(list);"
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    public static void printCompleteTaskMessage(Vector\u003cTask\u003e list, int listNumber) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private void addEvent(String input) {"
+        "content": "        System.out.println(TextFormatter.HAPPY_FACE + \"Well done! Lumi marks this task as completed!\");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int indexOfTask \u003d \"event\".length() + 1;"
+        "content": "        System.out.println(TextFormatter.createSpaces(8) + list.get(listNumber).getTaskStatus() +"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int endIndexOfTask \u003d input.indexOf(\" /at \");"
+        "content": "                System.lineSeparator());"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        int indexOfEvent \u003d endIndexOfTask + \" /at \".length();"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String task \u003d input.substring(indexOfTask, endIndexOfTask);"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String duration \u003d input.substring(indexOfEvent);"
+        "content": "    public static void printAlreadyCompletedTaskMessage(Vector\u003cTask\u003e list, int listNumber) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        System.out.println(TextFormatter.ANGRY_FACE +"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        list.add(new Event(task, duration));"
+        "content": "        \"Hey!! Lumi already marked \u003c\" + list.get(listNumber).getTask() + \"\u003e as completed!\" + System.lineSeparator());"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        printer.printAddTaskMessage(list);"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 59,
@@ -521,252 +2196,252 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    public static void printList(Vector\u003cTask\u003e list, boolean isStandardPrint) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private void completeAction(String input) {"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String[] words \u003d input.split(\" \");"
+        "content": "        if (isStandardPrint) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            System.out.println(TextFormatter.HAPPY_FACE + \"Sure! Lumi prints your list!\");"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        switch (words[0].toLowerCase()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case \"done\":"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            doTask(words);"
+        "content": "        String listTop \u003d"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            break;"
+        "content": "                \"    +---------+\\n\" +"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case \"todo\":"
+        "content": "                \"+---| L I S T |------------------------------------------------+\\n\" +"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            addToDo(input);"
+        "content": "                \"|   +---------+                                                |\";"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            break;"
+        "content": "        String listLeft \u003d \"| \";"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case \"deadline\":"
+        "content": "        String listRight \u003d \" |\";"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            addDeadline(input);"
+        "content": "        String listBottom \u003d \"+--------------------------------------------------------------+\\n\";"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            break;"
+        "content": "        final int LIST_LENGTH \u003d 60;"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case \"event\":"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            addEvent(input);"
+        "content": "        System.out.println(listTop);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            break;"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        default:"
+        "content": "        // Print list items"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            printer.printInvalidAction();"
+        "content": "        for (int i \u003d 0; i \u003c list.size(); i++) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            break;"
+        "content": "            String listItem \u003d i+1 + \". \" + list.get(i).getTaskStatus();"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            System.out.print(listLeft);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            System.out.print(listItem);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private void readInput() {"
+        "content": "            System.out.print(TextFormatter.createSpaces(LIST_LENGTH-listItem.length()-1));"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        Scanner scanner \u003d new Scanner(System.in);"
+        "content": "            System.out.println(listRight);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        while (true) {"
+        "content": "        }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String input \u003d scanner.nextLine();"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            if (input.toLowerCase().equals(\"bye\")) {"
+        "content": "        System.out.print(listBottom);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "                scanner.close();"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "                return;"
+        "content": "        // Print total number of tasks"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            } else if (input.toLowerCase().equals(\"list\")) {"
+        "content": "        String totalTaskString \u003d \"Total: \" + list.size() + (list.size() \u003d\u003d 1 ? \" task\" : \" tasks\");"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "                printer.printList(list);"
+        "content": "        System.out.print(listLeft);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            } else {"
+        "content": "        System.out.print(totalTaskString);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "                completeAction(input);"
+        "content": "        System.out.print(TextFormatter.createSpaces(LIST_LENGTH-totalTaskString.length()));"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            }"
+        "content": "        System.out.println(listRight);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "        System.out.println(listBottom);"
       },
       {
         "lineNumber": 96,
@@ -780,114 +2455,15 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    private void runChat() {"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        printer.printWelcomeMessage();"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        printer.printLoadMessage();"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        readInput();"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        printer.printExitMessage();"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static void main(String[] args) {"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        Duke chatBot \u003d new Duke();"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        chatBot.runChat();"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "-"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "iceclementi": 107,
-      "-": 4
+      "iceclementi": 97
     }
   },
   {
-    "path": "src/main/java/Event.java",
+    "path": "src/main/java/duke/format/TextFormatter.java",
     "fileType": "java",
     "lines": [
       {
@@ -895,107 +2471,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "public class Event extends Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    protected String duration;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public Event(String task, String duration) {"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        super(task);"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        this.duration \u003d duration;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public String getTaskStatus() {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        return \"[E]\" + super.getTaskStatus() + \" (at: \" + duration + \")\";"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "iceclementi": 13
-    }
-  },
-  {
-    "path": "src/main/java/Printer.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "import java.util.Vector;"
+        "content": "package duke.format;"
       },
       {
         "lineNumber": 2,
@@ -1009,168 +2485,615 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "public class Printer {"
+        "content": "public class TextFormatter {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public void printSpaces(int numberOfSpaces) {"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        for (int i \u003d 0; i \u003c numberOfSpaces; i++) {"
+        "content": "    public final static String HAPPY_FACE \u003d \"  \\u0298\\u15dc\\u0298 \"; // ʘᗜʘ"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            System.out.print(\" \");"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "    public final static String SHOCK_FACE \u003d \"  \\u0298\\u15e9\\u0298\\\" \"; // ʘᗩʘ\""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    public final static String ANGRY_FACE \u003d \"  \\u0ca0~\\u0ca0 \"; // ಠ~ಠ"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public void printWelcomeMessage() {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String logo \u003d"
+        "content": "    public final static String THINKING_FACE \u003d \"  \\u0298o\\u0298? \"; // ʘoʘ?"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"  __       _______  _______  ________  _______  _______  _______  ________\\n\" +"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \" |\\\\_\\\\     |\\\\___\\\\__\\\\|\\\\ __\\\\__\\\\|\\\\ ______\\\\|\\\\______\\\\|\\\\___\\\\__\\\\|\\\\______\\\\|\\\\ ______\\\\\\n\" +"
+        "content": "    public final static String SAD_FACE \u003d \"  \\u0ca5-\\u0ca5 \"; // ಥ-ಥ"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \" | | |    | |  |  || |  |  | \\\\|__   _|| |  ___|| |  |  || |     | \\\\|__   _|\\n\" +"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \" | | |    | |  |  || |  |  |   | | |  | | |    | |  |  || |  |  |   | | |\\n\" +"
+        "content": "    public static String toBold(String string) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \" | | |__  | |  |  || |     | __| | |_ | | |___ | |     || |     |   | | |\\n\" +"
+        "content": "        return \"\\033[1m\" + string + \"\\033[0m\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \" | | |__\\\\ | |     || | | | ||\\\\__\\\\| |_\\\\| | |___\\\\| |  |  || |  |  |   | | |\\n\" +"
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"  \\\\|_____| \\\\|_____| \\\\|_|_|_| \\\\|______| \\\\|_____| \\\\|__|__| \\\\|__|__|    \\\\|_|\";"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        System.out.println(\"Welcome to\\n\" + logo);"
+        "content": "    public static String toItalic(String string) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "        return \"\\033[3m\" + string + \"\\033[0m\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public void printLoadMessage() {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        System.out.println(\"Initializing LumiChat v0.0.1.4...\\n\");"
+        "content": "    public static String toBoldAndItalic(String string) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        System.out.println(\"LumiChat is now ready.\\n\");"
+        "content": "        return \"\\033[1m\\033[3m\" + string + \"\\033[0m\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        System.out.println(\"  Hey I\u0027m Lumi!\");"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        System.out.println(\"  How may I assist you today?\\n\");"
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public static String createSpaces(int numberOfSpaces) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        return \" \".repeat(numberOfSpaces);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "iceclementi": 30
+    }
+  },
+  {
+    "path": "src/main/java/duke/task/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "package duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    protected String deadline;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public Deadline(String task, String deadline) {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        super(task);"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        this.deadline \u003d deadline;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public String getTaskStatus() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        return \"[D]\" + super.getTaskStatus() + \" (by: \" + deadline + \")\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "iceclementi": 15
+    }
+  },
+  {
+    "path": "src/main/java/duke/task/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "package duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    protected String duration;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public Event(String task, String duration) {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        super(task);"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        this.duration \u003d duration;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public String getTaskStatus() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        return \"[E]\" + super.getTaskStatus() + \" (at: \" + duration + \")\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "iceclementi": 15
+    }
+  },
+  {
+    "path": "src/main/java/duke/task/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "package duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "public abstract class Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    protected String task;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public Task(String task) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        this.task \u003d task;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public String getTask() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        return this.task;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public boolean getIsDone() {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        return this.isDone;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public void setIsDone(boolean status) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public String getTaskStatus() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        String icon \u003d isDone ? \"\\u2713\" : \"\\u2718\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        return (\"[\" + icon + \"] \" + task);"
       },
       {
         "lineNumber": 27,
@@ -1184,491 +3107,15 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public void printExitMessage() {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(\"  Goodbye! Lumi will miss you!\");"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public void printInvalidAction() {"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(\"  Sorry, Lumi has trouble understanding those words...\");"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(\"  Please try again!\\n\");"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public void printAddTaskMessage(Vector\u003cTask\u003e list) {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(\"  Alright, Lumi has added: \" + list.lastElement().getTask() + \"!\");"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        printSpaces(8);"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(list.lastElement().getTaskStatus());"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        if (list.size() \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "            System.out.println(\"  You now have \" + list.size() + \" task in Lumi\u0027s list!\\n\");"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "            System.out.println(\"  You now have \" + list.size() + \" tasks in Lumi\u0027s list!\\n\");"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public void printCompleteTaskMessage(Vector\u003cTask\u003e list, int listNumber) {"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(\"  Well done! Lumi marks this task as completed!\");"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        printSpaces(8);"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(list.get(listNumber).getTaskStatus());"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println();"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public void printAlreadyCompletedTaskMessage(Vector\u003cTask\u003e list, int listNumber) {"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(\"  Hey!! Lumi already marked \u003c\" + list.get(listNumber).task + \"\u003e as completed!\");"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println();"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public void printList(Vector\u003cTask\u003e list) {"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(\"  Sure! Lumi prints your list!\");"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        String listTop \u003d"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "                \"    +---------+\\n\" +"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "                \"+---| L I S T |------------------------------------------------+\\n\" +"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "                \"|   +---------+                                                |\";"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        String listLeft \u003d \"| \";"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        String listRight \u003d \" |\";"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        String listBottom \u003d \"+--------------------------------------------------------------+\\n\";"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        final int LIST_LENGTH \u003d 60;"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(listTop);"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        // Print list items"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        for (int i \u003d 0; i \u003c list.size(); i++) {"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "            String listItem \u003d i+1 + \". \" + list.get(i).getTaskStatus();"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "            System.out.print(listLeft);"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "            System.out.print(listItem);"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "            printSpaces(LIST_LENGTH-listItem.length()-1);"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "            System.out.println(listRight);"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.print(listBottom);"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        // Print total number of tasks"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        String totalTaskString \u003d \"Total: \" + list.size() + (list.size() \u003d\u003d 1 ? \" task\" : \" tasks\");"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.print(listLeft);"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.print(totalTaskString);"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        printSpaces(LIST_LENGTH-totalTaskString.length());"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(listRight);"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        System.out.println(listBottom);"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "iceclementi"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "iceclementi": 96
+      "iceclementi": 28
     }
   },
   {
-    "path": "src/main/java/Task.java",
+    "path": "src/main/java/duke/task/ToDo.java",
     "fileType": "java",
     "lines": [
       {
@@ -1676,21 +3123,21 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "public class Task {"
+        "content": "package duke.task;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    protected String task;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    protected boolean isDone;"
+        "content": "import duke.task.Task;"
       },
       {
         "lineNumber": 4,
@@ -1701,176 +3148,69 @@
       },
       {
         "lineNumber": 5,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public Task(String task) {"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        this.task \u003d task;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        this.isDone \u003d false;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public String getTask() {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        return this.task;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public String getTaskStatus() {"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        String icon \u003d isDone ? \"\\u2713\" : \"\\u2718\";"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "        return (\"[\" + icon + \"] \" + task);"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "iceclementi": 18
-    }
-  },
-  {
-    "path": "src/main/java/ToDo.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
         "author": {
           "gitId": "iceclementi"
         },
         "content": "public class ToDo extends Task {"
       },
       {
-        "lineNumber": 2,
+        "lineNumber": 6,
         "author": {
           "gitId": "iceclementi"
         },
         "content": "    public ToDo(String task) {"
       },
       {
-        "lineNumber": 3,
+        "lineNumber": 7,
         "author": {
           "gitId": "iceclementi"
         },
         "content": "        super(task);"
       },
       {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "iceclementi"
-        },
-        "content": "    public String getTaskStatus() {"
-      },
-      {
         "lineNumber": 8,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        return \"[T]\" + super.getTaskStatus();"
+        "content": "    }"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 10,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public String getTaskStatus() {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        return \"[T]\" + super.getTaskStatus();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
         "author": {
           "gitId": "iceclementi"
         },
@@ -1878,7 +3218,7 @@
       }
     ],
     "authorContributionMap": {
-      "iceclementi": 10
+      "iceclementi": 14
     }
   },
   {
@@ -2018,7 +3358,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\*.java"
+        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\duke\\*.java ..\\src\\main\\java\\duke\\task\\*.java ..\\src\\main\\java\\duke\\exception\\*.java ..\\src\\main\\java\\duke\\format\\*.java"
       },
       {
         "lineNumber": 11,
@@ -2074,7 +3414,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "java -classpath ..\\bin Duke \u003c input.txt \u003e ACTUAL.TXT"
+        "content": "java -classpath ..\\bin duke.Duke \u003c input.txt \u003e ACTUAL.TXT"
       },
       {
         "lineNumber": 19,
