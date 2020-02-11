@@ -339,444 +339,892 @@
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "            if (line.equals(\"list\")) {"
+        "content": "            try {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                printListMessage(taskList, taskCount);"
+        "content": "                taskCount \u003d handleCommand(taskList, taskCount, line, words);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "            } else if (words[0].equals(\"done\")) {"
+        "content": "            } catch (EmptyDoneException e) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                int taskNum \u003d Integer.parseInt(line.substring(5,6));"
+        "content": "                printEmptyDoneExceptionMessage();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                Task t\u003dtaskList[taskNum-1];"
+        "content": "            } catch (UnknownWordException e) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                t.markAsDone();"
+        "content": "                printUnknownWordExceptionMessage();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                printDoneMessage(t);"
+        "content": "            } catch (EmptyTodoException e) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "            } else {"
+        "content": "                printEmptyTodoExceptionMessage();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                String taskType \u003d words[0];"
+        "content": "            } catch (EmptyDeadlineException e) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                Task t \u003d new Task(line);"
+        "content": "                printEmptyDeadlineExceptionMessage();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                switch (taskType){"
+        "content": "            } catch (EmptyEventException e) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                    case \"todo\":"
+        "content": "                printEmptyEventExceptionMessage();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        t \u003d new Todo(words[1]);"
+        "content": "            }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        break;"
+        "content": "            line \u003d in.nextLine();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                    case \"deadline\":"
+        "content": "        }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        String[] deadlineWords \u003d words[1].split(\" /by \", 2); // split the deadline task from the by string using /by as the delimiter"
+        "content": "        printGoodbyeMessage();"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        t \u003d new Deadline(deadlineWords[0], deadlineWords[1]);"
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        break;"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                    case \"event\":"
+        "content": "    private static int handleCommand(Task[] taskList, int taskCount, String line, String[] words) throws EmptyDoneException, UnknownWordException, EmptyTodoException, EmptyDeadlineException, EmptyEventException {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        String[] eventWords \u003d words[1].split(\" /at \", 2); // split the event task from the by string using /at as the delimiter"
+        "content": "        if (line.equals(\"list\")) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        t \u003d new Event(eventWords[0], eventWords[1]);"
+        "content": "            printListMessage(taskList, taskCount);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                        break;"
+        "content": "        } else if (words[0].equals(\"done\")) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                }"
+        "content": "            if (words.length \u003c 2){"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                taskList[taskCount] \u003d t;"
+        "content": "                throw new EmptyDoneException();"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                taskCount++;"
+        "content": "            }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": ""
+        "content": "            int taskNum \u003d Integer.parseInt(words[1]);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                printAddTaskMessage(taskCount, t);"
+        "content": "            Task t\u003dtaskList[taskNum-1];"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "            }"
+        "content": "            t.markAsDone();"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "            line \u003d in.nextLine();"
+        "content": "            printDoneMessage(t);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        }"
+        "content": "        } else if (words[0].equals(\"todo\") || words[0].equals(\"deadline\") || words[0].equals(\"event\")){"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        printGoodbyeMessage();"
+        "content": "            String taskType \u003d words[0];"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    }"
+        "content": "            Task t \u003d new Task(line);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": ""
+        "content": "            switch (taskType){"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    private static void printListMessage(Task[] taskList, int taskCount) {"
+        "content": "                case \"todo\":"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+        "content": "                    if (words.length \u003c 2){"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                +\"\\t Here are the tasks in your list:\");"
+        "content": "                        throw new EmptyTodoException();"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        for(int i\u003d0; i\u003ctaskCount; ++i){"
+        "content": "                    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "            Task t \u003d taskList[i];"
+        "content": "                    t \u003d new Todo(words[1]);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "            System.out.println(\"\\t \" + (i+1) + \". \" + t.toString());"
+        "content": "                    break;"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        }"
+        "content": "                case \"deadline\":"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        System.out.println(\"\\t____________________________________________________________\\n\");"
+        "content": "                    if (words.length \u003c 3){"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    }"
+        "content": "                        throw new EmptyDeadlineException();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": ""
+        "content": "                    }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    private static void printDoneMessage(Task t) {"
+        "content": "                    String[] deadlineWords \u003d words[1].split(\" /by \", 2); // split the deadline task from the by string using /by as the delimiter"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+        "content": "                    t \u003d new Deadline(deadlineWords[0], deadlineWords[1]);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                +\"\\t Nice! I\u0027ve marked this task as done:\\n\""
+        "content": "                    break;"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                +\"\\t\" + t.toString() + \"\\n\""
+        "content": "                case \"event\":"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                +\"\\t____________________________________________________________\\n\");"
+        "content": "                    if (words.length \u003c 3){"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    }"
+        "content": "                        throw new EmptyEventException();"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": ""
+        "content": "                    }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    private static void printAddTaskMessage(int taskCount, Task t) {"
+        "content": "                    String[] eventWords \u003d words[1].split(\" /at \", 2); // split the event task from the by string using /at as the delimiter"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+        "content": "                    t \u003d new Event(eventWords[0], eventWords[1]);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                + \"\\t Got it. I\u0027ve added this task:\\n\""
+        "content": "                    break;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                + \"\\t   \" + t.toString() + \"\\n\""
+        "content": "            }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                + \"\\t Now you have \" + taskCount +\" tasks in the list.\\n\""
+        "content": "            taskList[taskCount] \u003d t;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                + \"\\t____________________________________________________________\\n\");"
+        "content": "            taskCount++;"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    }"
+        "content": "            printAddTaskMessage(taskCount, t);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": ""
+        "content": "        } else {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "    private static void printGoodbyeMessage() {"
+        "content": "            throw new UnknownWordException();"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+        "content": "        }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                + \"\\tBye. Hope to see you again soon!\\n\""
+        "content": "        return taskCount;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "lowxizhi"
         },
-        "content": "                + \"\\t____________________________________________________________\\n\");"
+        "content": "    }"
       },
       {
         "lineNumber": 88,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printListMessage(Task[] taskList, int taskCount) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                +\"\\t Here are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        for(int i\u003d0; i\u003ctaskCount; ++i){"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "            Task t \u003d taskList[i];"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "            System.out.println(\"\\t \" + (i+1) + \". \" + t.toString());"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printDoneMessage(Task t) {"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                +\"\\t Nice! I\u0027ve marked this task as done:\\n\""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                +\"\\t\" + t.toString() + \"\\n\""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                +\"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printAddTaskMessage(int taskCount, Task t) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t Got it. I\u0027ve added this task:\\n\""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t   \" + t.toString() + \"\\n\""
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t Now you have \" + taskCount +\" tasks in the list.\\n\""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printGoodbyeMessage() {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t Bye. Hope to see you again soon!\\n\""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 118,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 119,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printEmptyTodoExceptionMessage() {"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t ☹ OOPS!!! The description of a todo must contain a task name in this format:\\n\""
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t todo \u003ctask name\u003e\\n\""
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printEmptyDoneExceptionMessage() {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t☹ OOPS!!! The description of a done must contain a task number in this format:\\n\""
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t done \u003ctask number\u003e\\n\""
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printEmptyDeadlineExceptionMessage() {"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t ☹ OOPS!!! The description of a deadline must contain a task name and a date in this format:\\n\""
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t deadline \u003ctask name\u003e /by \u003cdate\u003e\\n\""
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printEmptyEventExceptionMessage() {"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t ☹ OOPS!!! The description of an event must contain a task name and a location in this format:\\n\""
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t event \u003ctask name\u003e /at \u003clocation\u003e\\n\""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "    private static void printUnknownWordExceptionMessage() {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "        System.out.println(\"\\t____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t ☹ OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\\n\""
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "                + \"\\t____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 153,
         "author": {
           "gitId": "-"
         },
@@ -784,8 +1232,128 @@
       }
     ],
     "authorContributionMap": {
-      "lowxizhi": 79,
-      "-": 10
+      "lowxizhi": 142,
+      "-": 11
+    }
+  },
+  {
+    "path": "src/main/java/EmptyDeadlineException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "public class EmptyDeadlineException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "lowxizhi": 3
+    }
+  },
+  {
+    "path": "src/main/java/EmptyDoneException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "public class EmptyDoneException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "lowxizhi": 3
+    }
+  },
+  {
+    "path": "src/main/java/EmptyEventException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "public class EmptyEventException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "lowxizhi": 3
+    }
+  },
+  {
+    "path": "src/main/java/EmptyTodoException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "public class EmptyTodoException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "lowxizhi": 3
     }
   },
   {
@@ -1191,6 +1759,36 @@
     ],
     "authorContributionMap": {
       "lowxizhi": 11
+    }
+  },
+  {
+    "path": "src/main/java/UnknownWordException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "public class UnknownWordException extends Exception {"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lowxizhi"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "lowxizhi": 3
     }
   }
 ]

@@ -22,357 +22,357 @@
         "author": {
           "gitId": "kcubey"
         },
-        "content": "import tasks.Task;"
+        "content": ""
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "import tasks.Deadline;"
+        "content": "import exceptions.DukeException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "import tasks.Event;"
+        "content": "import tasks.Task;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "import tasks.TaskType;"
+        "content": "import tasks.Deadline;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "import tasks.Event;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "kcubey"
         },
-        "content": "public class Duke {"
+        "content": "import tasks.TaskType;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    private static void addTask(String userCmd, ArrayList\u003cTask\u003e taskArrList) {"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String[] splitCmd \u003d userCmd.split(\"todo \");"
+        "content": "// TODO: Extract existing error handling to exceptions.DukeException where appropriate"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String todoStr \u003d splitCmd[1].trim();"
+        "content": "// TODO: Assess if there is a better way to implement task adding i.e. with splitString() or otherwise"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "// TODO: Check for further modularisation"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        Task newTask \u003d new Task(TaskType.TODO, todoStr);"
+        "content": "// TODO: A general add to arrayList method? reduce LOC"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        taskArrList.add(newTask);"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        System.out.println(\"Task added: \" +todoStr);"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "    /** Helper Functions Start **/"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    // TODO: Check if this method will help, may be unhelpful"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    private static void listTasks(ArrayList\u003cTask\u003e taskArrList) {"
+        "content": "    private static String[] splitString(String[] strArr, String userCmd, String splitCase){"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        if (taskArrList.size() \u003d\u003d 0) {"
+        "content": "        strArr \u003d userCmd.split(splitCase);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            System.out.println(\"List is empty!\");"
+        "content": "        return strArr;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        else {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            System.out.println(\"Current task list: \");"
+        "content": "    public static void printHelp() {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            int index \u003d 1;"
+        "content": "        String helpMsg \u003d \"Here is a list of things you can do: \\n\""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            for (Task t : taskArrList) {"
+        "content": "                + \"\\ttodo:      tasks without a date/time (syntax: todo buy food)\\n\""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "                System.out.println(\"\\t\" +index +\". \" +t.toString());"
+        "content": "                + \"\\tlist:      list your current tasks (syntax: list)\\n\""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "                index++;"
+        "content": "                + \"\\tdeadline:  tasks that need to be done by a date/time (syntax: deadline buy food /by Sunday)\\n\""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            }"
+        "content": "                + \"\\tevent:     tasks that start/end by a specific time (syntax: event food fair /at Mon 2-4pm)\\n\""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        }"
+        "content": "                + \"\\tdone x:    mark the xth task as done (syntax: done 3)\\n\""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "                + \"\\thelp:      launch the help screen (syntax: help)\";"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        System.out.println(helpMsg);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    private static void markTaskDone(String userCmd, ArrayList\u003cTask\u003e taskArrList) {"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        // syntax: done 2"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String[] splitCmd \u003d userCmd.split(\" \");"
+        "content": "    /** Duke Functions Start**/"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        int completedTask \u003d 0;"
+        "content": "    private static void listTasks(ArrayList\u003cTask\u003e taskArrList) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        if (taskArrList.size() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        // error check syntax"
+        "content": "            System.out.println(\"List is empty!\");"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        try {"
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            completedTask \u003d Integer.parseInt(splitCmd[1]);"
+        "content": "        else {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        }"
+        "content": "            System.out.println(\"Current task list: \");"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        catch (Exception e){"
+        "content": "            int index \u003d 1;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            System.out.println(\"Incorrect syntax! Try again\");"
+        "content": "            for (Task t : taskArrList) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            return;"
+        "content": "                System.out.println(\"\\t\" +index +\". \" +t.toString());"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        }"
+        "content": "                index++;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        if (completedTask \u003e taskArrList.size() ) {"
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            System.out.println(\"Task not found!\");"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        else {"
+        "content": "    // java.lang.NumberFormatException"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            int completedIndex \u003d completedTask-1;"
+        "content": "    private static void markTaskDone(String userCmd, ArrayList\u003cTask\u003e taskArrList) throws DukeException {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            Task t \u003d taskArrList.get(completedIndex);"
+        "content": "        // syntax: done 2"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            //todo: need to check if already completed?"
+        "content": "        String[] splitCmd \u003d userCmd.split(\" \");"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            t.setDone();"
+        "content": "        int completedTask \u003d 0;"
       },
       {
         "lineNumber": 54,
@@ -386,133 +386,133 @@
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            System.out.println(\"I\u0027ve marked this task as done:\");"
+        "content": "        // error check syntax"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "            System.out.println(\"\\t\" +t.toString());"
+        "content": "        try {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        }"
+        "content": "            completedTask \u003d Integer.parseInt(splitCmd[1]);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        catch (NumberFormatException e){"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    private static void addDeadline(String userCmd, ArrayList\u003cTask\u003e taskArrList) {"
+        "content": "            throw new DukeException(\"The number must be in number form. Syntax: done 3\");"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        // Syntax: deadline return book /by Sunday"
+        "content": "        }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String[] splitCmd \u003d userCmd.split(\"/by \");"
+        "content": "        catch (ArrayIndexOutOfBoundsException e){"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String deadlineStr \u003d splitCmd[1].trim();"
+        "content": "            throw new DukeException(\"There must be a task number provided to mark as done. Syntax: done 3\");"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String[] splitName \u003d splitCmd[0].split(\"deadline \");"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String taskStr \u003d splitName[1].trim();"
+        "content": "        if (completedTask \u003e taskArrList.size() ) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "            System.out.println(\"Task not found!\");"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        Deadline newDeadline \u003d new Deadline(TaskType.DEADLINE, taskStr, deadlineStr);"
+        "content": "        }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        taskArrList.add(newDeadline);"
+        "content": "        else {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "            int completedIndex \u003d completedTask-1;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \");"
+        "content": "            Task t \u003d taskArrList.get(completedIndex);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        System.out.println(\"\\t\" +newDeadline.toString() );"
+        "content": "            // todo: need to check if already completed?"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "            t.setDone();"
       },
       {
         "lineNumber": 74,
@@ -526,28 +526,28 @@
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    private static void addEvent(String userCmd, ArrayList\u003cTask\u003e taskArrList) {"
+        "content": "            System.out.println(\"I\u0027ve marked this task as done:\");"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        // Syntax: event project meeting /at Mon 2-4pm"
+        "content": "            System.out.println(\"\\t\" +t.toString());"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String[] splitCmd \u003d userCmd.split(\"/at \");"
+        "content": "        }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String dateStr \u003d splitCmd[1].trim();"
+        "content": "    }"
       },
       {
         "lineNumber": 79,
@@ -561,451 +561,808 @@
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String[] splitName \u003d splitCmd[0].split(\"event \");"
+        "content": "    // input: 2do\u003center\u003e error: java.lang.ArrayIndexOutOfBoundsException"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        String eventStr \u003d splitName[1].trim();"
+        "content": "    private static void addTask(String userCmd, ArrayList\u003cTask\u003e taskArrList) throws DukeException {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        String todoStr;"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        Event newEvent \u003d new Event(TaskType.EVENT, eventStr, dateStr);"
+        "content": "        try{"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "            String[] splitCmd \u003d userCmd.split(\"todo \");"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this event: \");"
+        "content": "            todoStr \u003d splitCmd[1].trim();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        System.out.println(\"\\t\" +newEvent.toString() );"
+        "content": "        }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "        catch (ArrayIndexOutOfBoundsException e){"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "            throw new DukeException(\"There must be a description for a todo task. Syntax: todo buy food\");"
       },
       {
         "lineNumber": 89,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static void main(String[] args) {"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        Scanner sc \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        boolean continueRun \u003d true;"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        String userCmd \u003d \"\";"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        ArrayList\u003cTask\u003e taskArrList \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        String logo \u003d \" ____        _        \\n\""
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        while (continueRun) {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            System.out.println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            System.out.println(\"How can I help you?\");"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            userCmd \u003d sc.nextLine();"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            // end program"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            if (userCmd.toLowerCase().equals(\"bye\") ) {"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                System.out.println(\"Bye. Hope to see you again!\");"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                continueRun \u003d false;"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            // List commands"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            else if (userCmd.toLowerCase().equals(\"list\") ) {"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                listTasks(taskArrList);"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            // Mark task as done"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            else if (userCmd.contains(\"done\") ) {"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                markTaskDone(userCmd, taskArrList);"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            // Add task type todos (normal tasks)"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            else if (userCmd.contains(\"todo\") ) {"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                addTask(userCmd, taskArrList);"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            // Add task type deadline"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            else if (userCmd.contains(\"deadline\") ) {"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                addDeadline(userCmd, taskArrList);"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            // Add task type events"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            else if (userCmd.contains(\"event\") ) {"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                addEvent(userCmd, taskArrList);"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            else {"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                String helpMsg \u003d \"Wrong syntax!\\n\\n\""
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                        + \"Here is a list of things you can do: \\n\""
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                        + \"\\ttodo:      tasks without a date/time (syntax: todo buy food\\n\""
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                        + \"\\tlist:      list your current tasks (syntax: list)\\n\""
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                        + \"\\tdeadline:  tasks that need to be done by a date/time (syntax: deadline buy food /by Sunday\\n\""
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                        + \"\\tevent:     tasks that start/end by a specific time (syntax: event food fare /at Mon 2-4pm\";"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "                System.out.println(helpMsg);"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 142,
         "author": {
           "gitId": "kcubey"
         },
         "content": "        }"
       },
       {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        Task newTask \u003d new Task(TaskType.TODO, todoStr);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        taskArrList.add(newTask);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \");"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        System.out.println(\"\\t\" +newTask.toString() );"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    // java.lang.ArrayIndexOutOfBoundsException"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    private static void addDeadline(String userCmd, ArrayList\u003cTask\u003e taskArrList) throws DukeException {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        String taskStr, deadlineStr;"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        // Syntax: deadline return book /by Sunday"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            String[] splitCmd \u003d userCmd.split(\"/by \");"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            deadlineStr \u003d splitCmd[1].trim();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            String[] splitName \u003d splitCmd[0].split(\"deadline \");"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            taskStr \u003d splitName[1].trim();"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        catch (ArrayIndexOutOfBoundsException e){"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            throw new DukeException(\"Wrong syntax for deadline tasks. Syntax: deadline buy food /by Sunday\");"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        Deadline newDeadline \u003d new Deadline(TaskType.DEADLINE, taskStr, deadlineStr);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        taskArrList.add(newDeadline);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \");"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        System.out.println(\"\\t\" +newDeadline.toString() );"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    // java.lang.ArrayIndexOutOfBoundsException"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    private static void addEvent(String userCmd, ArrayList\u003cTask\u003e taskArrList) throws DukeException {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        // Syntax: event project meeting /at Mon 2-4pm"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        String dateStr, eventStr;"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            String[] splitCmd \u003d userCmd.split(\"/at \");"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            dateStr \u003d splitCmd[1].trim();"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            String[] splitName \u003d splitCmd[0].split(\"event \");"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            eventStr \u003d splitName[1].trim();"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        catch (ArrayIndexOutOfBoundsException e){"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            throw new DukeException(\"Wrong syntax for event tasks. Syntax: event food fair /at Mon 2-4pm\");"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        Event newEvent \u003d new Event(TaskType.EVENT, eventStr, dateStr);"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        taskArrList.add(newEvent);"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this event: \");"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        System.out.println(\"\\t\" +newEvent.toString() );"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    /** Main method Start **/"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public static void main(String[] args) throws DukeException {"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        Scanner sc \u003d new Scanner(System.in);"
+      },
+      {
         "lineNumber": 143,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        boolean continueRun \u003d true;"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        String userCmd \u003d \"\";"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        ArrayList\u003cTask\u003e taskArrList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                    + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                    + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                    + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                    + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        while (continueRun) {"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            System.out.println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            System.out.println(\"How can I help you?\");"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            userCmd \u003d sc.nextLine();"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                // end program"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                if (userCmd.toLowerCase().equals(\"bye\")) {"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    System.out.println(\"Bye. Hope to see you again!\");"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    continueRun \u003d false;"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                // List commands"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                else if (userCmd.toLowerCase().equals(\"list\")) {"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    listTasks(taskArrList);"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                // Mark task as done"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                else if (userCmd.contains(\"done\")) {"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    markTaskDone(userCmd, taskArrList);"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                // Add task type todos (normal tasks)"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                else if (userCmd.contains(\"todo\")) {"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    addTask(userCmd, taskArrList);"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                // Add task type deadline"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                else if (userCmd.contains(\"deadline\")) {"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    addDeadline(userCmd, taskArrList);"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                // Add task type events"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                else if (userCmd.contains(\"event\")) {"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    addEvent(userCmd, taskArrList);"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    System.out.println(\"Wrong syntax!\");"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                    printHelp();"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            catch (DukeException e){"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "                System.out.println(e +\"\\nPlease try again\");"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 194,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 195,
         "author": {
           "gitId": "-"
         },
@@ -1013,8 +1370,94 @@
       }
     ],
     "authorContributionMap": {
-      "kcubey": 134,
-      "-": 10
+      "kcubey": 186,
+      "-": 9
+    }
+  },
+  {
+    "path": "src/main/java/exceptions/DukeException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "package exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "// is a checked exception"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "public class DukeException extends Exception{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public DukeException(String message) {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        super(\"A Duke error has occurred! \\n\\t\" +message);"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "//    public exceptions.DukeException(String message, Throwable cause) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "//        super(\"A Duke error has occurred! \" +message + \"\\t\" +cause);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "//    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kcubey": 11
     }
   },
   {
@@ -1639,150 +2082,136 @@
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    public String getTaskName() {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    /** Getters \u0026 Setters **/"
+        "content": "        return taskName;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String getTaskName() {"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        return taskName;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "    public void setTaskName(String taskName) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        this.taskName \u003d taskName;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public void setTaskName(String taskName) {"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        this.taskName \u003d taskName;"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "    public boolean isDone() {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        return isDone;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public boolean isDone() {"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        return isDone;"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "    public void setDone() {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        isDone \u003d true;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public void setDone() {"
+        "content": "    }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        isDone \u003d true;"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        return (\"[\" +getCategory() +\"][\" + getStatusIcon() +\"] \" +getTaskName() );"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        return (\"[\" +getCategory() +\"][\" + getStatusIcon() +\"] \" +getTaskName() );"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "kcubey"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 49,
         "author": {
           "gitId": "kcubey"
         },
@@ -1790,7 +2219,7 @@
       }
     ],
     "authorContributionMap": {
-      "kcubey": 51
+      "kcubey": 49
     }
   },
   {

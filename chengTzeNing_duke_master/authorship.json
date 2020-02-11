@@ -136,7 +136,7 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    static ArrayList\u003cTask\u003e list \u003d new ArrayList\u003cTask\u003e();"
+        "content": "    static ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 6,
@@ -164,7 +164,7 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        for (Task task : list) {"
+        "content": "        for (Task task : tasks) {"
       },
       {
         "lineNumber": 10,
@@ -197,23 +197,23 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    public static void printLogo() {"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "chengTzeNing"
+          "gitId": "-"
         },
-        "content": "        String logo \u003d \" ____         _        \\n\""
+        "content": "        String logo \u003d \" ____        _        \\n\""
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": "                + \"|  _ \\\\ _   _| | __ __ \\n\""
       },
       {
         "lineNumber": 17,
@@ -255,112 +255,112 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        Scanner scan \u003d new Scanner(System.in);"
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        String userInput \u003d scan.nextLine();"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        while (!userInput.equals(\"bye\")) {"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            if (userInput.equals(\"list\")) {"
+        "content": "        printLogo();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                printTasks();"
+        "content": "        Scanner scan \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            } else if (userInput.length() \u003e 4 \u0026\u0026 userInput.substring(0, 5).equals(\"done \")) {"
+        "content": "        String userInput \u003d scan.nextLine();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                list.get(Integer.parseInt(Character.toString("
+        "content": "        while (!userInput.equals(\"bye\")) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        userInput.charAt(userInput.length() - 1))) - 1).setDone();"
+        "content": "            //String[] splitUpInput \u003d userInput.split(\" \");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            } else if (userInput.length() \u003e 4 \u0026\u0026 userInput.substring(0, 5).equals(\"todo \")) {"
+        "content": "            if (userInput.startsWith(\"list\")) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                Task task \u003d new ToDo(userInput.substring(5));"
+        "content": "                printTasks();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                list.add(task);"
+        "content": "            } else if (userInput.startsWith(\"done\")) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
+        "content": "                tasks.get(Integer.parseInt(Character.toString("
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTaskCounter()));"
+        "content": "                        userInput.charAt(userInput.length() - 1))) - 1).setDone();"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            } else if (userInput.length() \u003e 8 \u0026\u0026 userInput.substring(0, 9).equals(\"deadline \")) {"
+        "content": "            } else if (userInput.startsWith(\"todo\")) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                Task task \u003d new Deadline(userInput.substring(9));"
+        "content": "                Task task \u003d new ToDo(userInput.substring(5));"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                list.add(task);"
+        "content": "                tasks.add(task);"
       },
       {
         "lineNumber": 38,
@@ -374,28 +374,28 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTaskCounter()));"
+        "content": "                        + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            } else if (userInput.length() \u003e 5 \u0026\u0026 userInput.substring(0, 6).equals(\"event \")) {"
+        "content": "            } else if (userInput.startsWith(\"deadline\")) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                Task task \u003d new Event(userInput.substring(6));"
+        "content": "                Task task \u003d new Deadline(userInput.substring(9));"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                list.add(task);"
+        "content": "                tasks.add(task);"
       },
       {
         "lineNumber": 43,
@@ -409,87 +409,80 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTaskCounter()));"
+        "content": "                        + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            } else {"
+        "content": "            } else if (userInput.startsWith(\"event\")) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                /*Task task \u003d new Task(userInput);"
+        "content": "                Task task \u003d new Event(userInput.substring(6));"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                list.add(task);"
+        "content": "                tasks.add(task);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + userInput"
+        "content": "                System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTaskCounter()));"
+        "content": "                        + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                 */"
+        "content": "            }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            }"
+        "content": "            userInput \u003d scan.nextLine(); "
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            userInput \u003d scan.nextLine(); "
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "chengTzeNing"
-        },
         "content": "        System.out.println(\"Bye. Hope to see you again soon!\");"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
@@ -498,7 +491,7 @@
     ],
     "authorContributionMap": {
       "chengTzeNing": 47,
-      "-": 9
+      "-": 8
     }
   },
   {
@@ -638,7 +631,7 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    protected static int taskCounter \u003d 0;"
+        "content": "    protected static int totalNumOfTasks \u003d 0;"
       },
       {
         "lineNumber": 6,
@@ -673,7 +666,7 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        this.taskId \u003d ++this.taskCounter;"
+        "content": "        this.taskId \u003d ++this.totalNumOfTasks;"
       },
       {
         "lineNumber": 11,
@@ -820,14 +813,14 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    public static int getTaskCounter() {"
+        "content": "    public static int getTotalNumOfTasks() {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        return taskCounter;"
+        "content": "        return totalNumOfTasks;"
       },
       {
         "lineNumber": 33,
@@ -841,53 +834,11 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "/*"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "chengTzeNing"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "chengTzeNing"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "chengTzeNing"
-        },
-        "content": "        return taskName;"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "chengTzeNing"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "chengTzeNing"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "chengTzeNing"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "chengTzeNing": 40
+      "chengTzeNing": 34
     }
   },
   {
