@@ -1,5 +1,56 @@
 [
   {
+    "path": "data/duke.txt",
+    "fileType": "txt",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "T | 1 | read book"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "D | 0 | return book |June 6th"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "T | 1 | join sports club"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "T | 0 | borrow book"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "D | 0 | return book |Sunday"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "E | 0 | project meeting |Mon 2-4pm"
+      }
+    ],
+    "authorContributionMap": {
+      "trishaangelica": 6
+    }
+  },
+  {
     "path": "src/main/java/Duke.java",
     "fileType": "java",
     "lines": [
@@ -50,630 +101,630 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.io.BufferedReader;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import java.io.BufferedWriter;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "import java.io.FileReader;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "trishaangelica"
         },
-        "content": "public class Duke {"
+        "content": "import java.io.FileWriter;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_TODO \u003d \"todo\";"
+        "content": "import java.io.Writer;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_TODO_DESC \u003d \"Add a simple to-do task.\";"
+        "content": "import java.nio.charset.StandardCharsets;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_DEADLINE \u003d \"deadline\";"
+        "content": "import java.nio.file.Files;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_DEADLINE_DESC \u003d \"Add a deadline.\";"
+        "content": "import java.nio.file.Path;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_EVENT \u003d \"event\";"
+        "content": "import java.nio.file.Paths;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_EVENT_DESC \u003d \"Add an event.\";"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_LIST \u003d \"list\";"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_LIST_DESC \u003d \"List all tasks at hand.\";"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_DELETE \u003d \"delete\";"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "trishaangelica"
+          "gitId": "-"
         },
-        "content": "    private static final String COMMAND_DELETE_DESC \u003d \"Delete specific task from list.\";"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_DONE \u003d \"done\";"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_DONE_DESC \u003d \"Mark specific task as done.\";"
+        "content": "    private static final Path FILENAME \u003d Paths"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_BYE \u003d \"bye\";"
+        "content": "            .get(System.getProperty(\"user.dir\"), \"data\", \"duke.txt\");"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_BYE_DESC \u003d \"Exit program.\";"
+        "content": "    private static String fileDoneStatus;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String COMMAND_MESSAGE \u003d \"|| %s: %s\\n||  Example: %s\\n||\\n\";"
+        "content": "    private static final String COMMAND_TODO \u003d \"todo\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_MESSAGE \u003d \"||\\t\\u2639 OOPS! The %s of a %s command cannot be empty.\\n\";"
+        "content": "    private static final String COMMAND_TODO_DESC \u003d \"Add a simple to-do task.\";"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_TODO_PARAM \u003d \"|| Parameters: todo [DESCRIPTION]\\n\";"
+        "content": "    private static final String COMMAND_DEADLINE \u003d \"deadline\";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_TODO_EXAMPLE \u003d \"|| Example: todo brainstorm ideas\";"
+        "content": "    private static final String COMMAND_DEADLINE_DESC \u003d \"Add a deadline.\";"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_DEADLINES_PARAM \u003d \"|| Parameters: deadline [DESCRIPTION] /by [DUEDATE]\\n\";"
+        "content": "    private static final String COMMAND_EVENT \u003d \"event\";"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_DEADLINES_EXAMPLE \u003d \"|| Example: deadline submit essay /by Tues 4pm\";"
+        "content": "    private static final String COMMAND_EVENT_DESC \u003d \"Add an event.\";"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_EVENTS_PARAM \u003d \"|| Parameters: event [DESCRIPTION] /at [TIME]\\n\";"
+        "content": "    private static final String COMMAND_LIST \u003d \"list\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_EVENTS_EXAMPLE \u003d \"|| Example: event project meeting /at Mon 4pm\";"
+        "content": "    private static final String COMMAND_LIST_DESC \u003d \"List all tasks at hand.\";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_DELETE_PARAM \u003d \"|| Parameters: delete [TASK NUMBER]\\n\";"
+        "content": "    private static final String COMMAND_DELETE \u003d \"delete\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_DELETE_EXAMPLE \u003d \"|| Example: delete 1\";"
+        "content": "    private static final String COMMAND_DELETE_DESC \u003d \"Delete specific task from list.\";"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_DONE_PARAM \u003d \"|| Parameters: done [TASK NUMBER]\\n\";"
+        "content": "    private static final String COMMAND_DONE \u003d \"done\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_DONE_EXAMPLE \u003d \"|| Example: done 1\";"
+        "content": "    private static final String COMMAND_DONE_DESC \u003d \"Mark specific task as done.\";"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_LIST_MESSAGE \u003d \"||\\t\\u2639 OOPS! That task cannot be marked done.\\n|| Try adding a task first. \";"
+        "content": "    private static final String COMMAND_BYE \u003d \"bye\";"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String ERROR_DELETE_MESSAGE \u003d \"||\\t\\u2639 OOPS! I can\u0027t delete that because you haven\u0027t added task %s yet!\";"
+        "content": "    private static final String COMMAND_BYE_DESC \u003d \"Exit program.\";"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    private static final String COMMAND_MESSAGE \u003d \"|| %s: %s\\n||  Example: %s\\n||\\n\";"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    private static final String ERROR_MESSAGE \u003d \"||\\t\\u2639 OOPS! The %s of a %s command cannot be empty.\\n\";"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static final String divider \u003d \"\\n - - - - - - - - - - - - - - - - - - - - - - - - \\n\";"
+        "content": "    private static final String ERROR_TODO_PARAM \u003d \"|| Parameters: todo [DESCRIPTION]\\n\";"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    private static final String ERROR_TODO_EXAMPLE \u003d \"|| Example: todo brainstorm ideas\";"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "-"
+          "gitId": "trishaangelica"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    private static final String ERROR_DEADLINES_PARAM \u003d \"|| Parameters: deadline [DESCRIPTION] /by [DUEDATE]\\n\";"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        String logo \u003d \" _ _ __                           \\n\""
+        "content": "    private static final String ERROR_DEADLINES_EXAMPLE \u003d \"|| Example: deadline submit essay /by Tues 4pm\";"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                + \"|_ _   |  _ _     _   __   _      _   _ _  _ _ _\\n\""
+        "content": "    private static final String ERROR_EVENTS_PARAM \u003d \"|| Parameters: event [DESCRIPTION] /at [TIME]\\n\";"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                + \"    |  | / _ \\\\   | |/ __|[   ]  [   ]|_\u003d_||      |\\n\""
+        "content": "    private static final String ERROR_EVENTS_EXAMPLE \u003d \"|| Example: event project meeting /at Mon 4pm\";"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                + \" _  |  || | | \\\\  |  /     \\\\ \\\\   / /    _   \\\\  \\\\ /\\n\""
+        "content": "    private static final String ERROR_DELETE_PARAM \u003d \"|| Parameters: delete [TASK NUMBER]\\n\";"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                + \"| |_|  || |_|  \\\\ |  |      \\\\ \\\\_/ /    | | | \\\\  \\\\\\n\""
+        "content": "    private static final String ERROR_DELETE_EXAMPLE \u003d \"|| Example: delete 1\";"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                + \"|_ _ _ / \\\\_ _/\\\\_\\\\[_ _]      \\\\__ /     |_| |_ _ _/\";"
+        "content": "    private static final String ERROR_DONE_PARAM \u003d \"|| Parameters: done [TASK NUMBER]\\n\";"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        ArrayList\u003cTask\u003e taskList \u003d new ArrayList\u003c\u003e();"
+        "content": "    private static final String ERROR_DONE_EXAMPLE \u003d \"|| Example: done 1\";"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out.println(\"\\nHello from\\n\" + logo + \",\");"
+        "content": "    private static final String ERROR_LIST_MESSAGE \u003d \"||\\t\\u2639 OOPS! That task cannot be marked done.\\n|| Try adding a task first. \";"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    private static final String ERROR_DELETE_MESSAGE \u003d \"||\\t\\u2639 OOPS! I can\u0027t delete that because you haven\u0027t added task %s yet!\";"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out.println(String.format(divider + \"|             %-34s|\\n|       %-40s|\","
+        "content": "    private static final String divider \u003d \"\\n - - - - - - - - - - - - - - - - - - - - - - - - \\n\";"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                \"Hello! I\u0027m Jarvis :D\", \"What can I do for you today?\") + divider);"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "trishaangelica"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        Scanner scan \u003d new Scanner(System.in);"
+        "content": "        String logo \u003d \" _ _ __                           \\n\""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                + \"|_ _   |  _ _     _   __   _      _   _ _  _ _ _\\n\""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        while (true) {"
+        "content": "                + \"    |  | / _ \\\\   | |/ __|[   ]  [   ]|_\u003d_||      |\\n\""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            System.out.println(\"Enter command: \");"
+        "content": "                + \" _  |  || | | \\\\  |  /     \\\\ \\\\   / /    _   \\\\  \\\\ /\\n\""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            String input \u003d scan.nextLine();"
+        "content": "                + \"| |_|  || |_|  \\\\ |  |      \\\\ \\\\_/ /    | | | \\\\  \\\\\\n\""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            final Command command \u003d splitCommandAndArgs(input);"
+        "content": "                + \"|_ _ _ / \\\\_ _/\\\\_\\\\[_ _]      \\\\__ /     |_| |_ _ _/\";"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "        ArrayList\u003cTask\u003e taskList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            switch (command.getCommandName()) {"
+        "content": "        System.out.println(\"\\nHello from\\n\" + logo + \",\");"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            case COMMAND_BYE: // exit program"
+        "content": "        System.out.println(String.format(divider + \"|             %-34s|\\n|       %-40s|\","
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                System.out"
+        "content": "                \"Hello! I\u0027m Jarvis :D\", \"What can I do for you today?\") + divider);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        .print(divider + \"\\uD83D\\uDC4B Bye. Hope to see you again soon!\" + divider);"
+        "content": "        String input;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                System.exit(0);"
+        "content": "        Scanner scan \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": "        System.out.println(divider + \"Loading previously saved tasks (if any)..\\n\");"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            case COMMAND_LIST: // list tasks"
+        "content": "            readIOFile(taskList);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                System.out.print(divider);"
+        "content": "            printStoredTasks(taskList);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                try {"
+        "content": "            System.out.println(\"\\nGreat all loaded. Let\u0027s begin to add more tasks!\\n\" + divider);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    printStoredTasks(taskList);"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (DukeException e) {"
+        "content": "        } catch (IOException | DukeException e) {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println(System.lineSeparator()"
+        "content": "            System.out.println("
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                            + \"Well, this is awkward. You don\u0027t have any task saved yet...\");"
+        "content": "                    \"Well this is embarrassing, you haven\u0027t got any saved list.\\nLet\u0027s create a new one!\\n\""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                }"
+        "content": "                            + divider);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                System.out.print(divider);"
+        "content": "        }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "        while (true) {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            case COMMAND_DELETE:"
+        "content": "            System.out.println(\"Enter command: \");"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                try {"
+        "content": "            input \u003d scan.nextLine();"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    deleteTask(taskList, command);"
+        "content": "            final Command command \u003d splitCommandAndArgs(input);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (NumberFormatException e) {"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println("
+        "content": "            switch (command.getCommandName()) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                            String.format(divider + ERROR_MESSAGE, \"task number\", COMMAND_DELETE)"
+        "content": "            case COMMAND_BYE: // exit program"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    + ERROR_DELETE_PARAM + ERROR_DELETE_EXAMPLE + divider);"
+        "content": "                System.out.println(\"Hang on, saving your list...\");"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (IndexOutOfBoundsException e) {"
+        "content": "                outWriteTaskList(taskList);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println("
+        "content": "                System.out"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                            divider + String.format(ERROR_DELETE_MESSAGE, command.getArgs())"
+        "content": "                        .print(divider + \"\\uD83D\\uDC4B Bye. Hope to see you again soon!\" + divider);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    + divider);"
+        "content": "                System.exit(0);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                }"
+        "content": "                break;"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            case COMMAND_LIST: // list tasks"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            case COMMAND_DONE: // mark as done"
+        "content": "                System.out.print(divider);"
       },
       {
         "lineNumber": 97,
@@ -687,1165 +738,2180 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    markTaskDone(taskList, command);"
+        "content": "                    printStoredTasks(taskList);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (NumberFormatException e) {"
+        "content": "                } catch (DukeException e) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println("
+        "content": "                    System.out.println(System.lineSeparator()"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                            String.format(divider + ERROR_MESSAGE, \"task number\", COMMAND_DONE)"
+        "content": "                            + \"Well, this is awkward. You don\u0027t have any task saved yet...\");"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    + ERROR_DONE_PARAM + ERROR_DONE_EXAMPLE + divider);"
+        "content": "                }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (IndexOutOfBoundsException e) {"
+        "content": "                System.out.print(divider);"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println(divider + ERROR_LIST_MESSAGE + divider);"
+        "content": "                break;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": "            case COMMAND_DELETE:"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                try {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            case COMMAND_TODO: // add to-do"
+        "content": "                    deleteTask(taskList, command);"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                try {"
+        "content": "                } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    addNewToDo(taskList, command);"
+        "content": "                    System.out.println("
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (StringIndexOutOfBoundsException e) {"
+        "content": "                            String.format(divider + ERROR_MESSAGE, \"task number\", COMMAND_DELETE)"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println("
+        "content": "                                    + ERROR_DELETE_PARAM + ERROR_DELETE_EXAMPLE + divider);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                            String.format(divider + ERROR_MESSAGE, \"description\", COMMAND_TODO)"
+        "content": "                } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    + ERROR_TODO_PARAM + ERROR_TODO_EXAMPLE + divider);"
+        "content": "                    System.out.println("
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                }"
+        "content": "                            divider + String.format(ERROR_DELETE_MESSAGE, command.getArgs())"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": "                                    + divider);"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            case COMMAND_DEADLINE: // add deadlines"
+        "content": "                break;"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                try {"
+        "content": ""
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    addNewDeadline(taskList, command);"
+        "content": "            case COMMAND_DONE: // mark as done"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (NullPointerException | StringIndexOutOfBoundsException e) {"
+        "content": "                try {"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println("
+        "content": "                    markTaskDone(taskList, command);"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                            String.format(divider + ERROR_MESSAGE, \"description and/or due date\","
+        "content": "                } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    COMMAND_DEADLINE) + ERROR_DEADLINES_PARAM"
+        "content": "                    System.out.println("
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    + ERROR_DEADLINES_EXAMPLE + divider);"
+        "content": "                            String.format(divider + ERROR_MESSAGE, \"task number\", COMMAND_DONE)"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                }"
+        "content": "                                    + ERROR_DONE_PARAM + ERROR_DONE_EXAMPLE + divider);"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": "                } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                    System.out.println(divider + ERROR_LIST_MESSAGE + divider);"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            case COMMAND_EVENT: // add event"
+        "content": "                }"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                try {"
+        "content": "                break;"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    addNewEvent(taskList, command);"
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                } catch (NullPointerException | StringIndexOutOfBoundsException e) {"
+        "content": "            case COMMAND_TODO: // add to-do"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    System.out.println("
+        "content": "                try {"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                            String.format(divider + ERROR_MESSAGE, \"description and/or time\","
+        "content": "                    addNewToDo(taskList, command);"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    COMMAND_EVENT) + ERROR_EVENTS_PARAM + ERROR_EVENTS_EXAMPLE"
+        "content": "                    outWriteTaskList(taskList);"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                                    + divider);"
+        "content": "                } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                }"
+        "content": "                    System.out.println("
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": "                            String.format(divider + ERROR_MESSAGE, \"description\", COMMAND_TODO)"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                                    + ERROR_TODO_PARAM + ERROR_TODO_EXAMPLE + divider);"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            default: // Invalid input; List accepted commands"
+        "content": "                }"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                System.out.println(divider"
+        "content": "                break;"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        + \"\\uD83D\\uDEC8 Sorry, you have entered an invalid input. \\uD83D\\uDEC8\\n\\t\\tHere\u0027s a help list to get you started: \\n\");"
+        "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                getCommandInfo();"
+        "content": "            case COMMAND_DEADLINE: // add deadlines"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                break;"
+        "content": "                try {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            }"
+        "content": "                    addNewDeadline(taskList, command);"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": "                    outWriteTaskList(taskList);"
       },
       {
         "lineNumber": 147,
         "author": {
-          "gitId": "-"
+          "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "                } catch (NullPointerException | StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                    System.out.println("
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void deleteTask(ArrayList\u003cTask\u003e taskList, Command command) {"
+        "content": "                            String.format(divider + ERROR_MESSAGE, \"description and/or due date\","
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        int index \u003d Integer.parseInt(String.valueOf(command.getArgs()));"
+        "content": "                                    COMMAND_DEADLINE) + ERROR_DEADLINES_PARAM"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        Task t \u003d retrieveTask(taskList, index - 1);"
+        "content": "                                    + ERROR_DEADLINES_EXAMPLE + divider);"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        taskList.remove(index - 1);"
+        "content": "                }"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out.print(Duke.divider + \" Noted! I\u0027ve removed this task:\" + System.lineSeparator()"
+        "content": "                break;"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                + \"\\t\" + t.toString() + System.lineSeparator() + String"
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                .format(\" Now you have %d tasks in your list.\", taskList.size()) + Duke.divider);"
+        "content": "            case COMMAND_EVENT: // add event"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                try {"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "                    addNewEvent(taskList, command);"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                    outWriteTaskList(taskList);"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void markTaskDone(ArrayList\u003cTask\u003e taskList, Command command) {"
+        "content": "                } catch (NullPointerException | StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        int index \u003d Integer.parseInt(String.valueOf(command.getArgs()));"
+        "content": "                    System.out.println("
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        Task t \u003d retrieveTask(taskList, index - 1);"
+        "content": "                            String.format(divider + ERROR_MESSAGE, \"description and/or time\","
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        t.markAsDone();"
+        "content": "                                    COMMAND_EVENT) + ERROR_EVENTS_PARAM + ERROR_EVENTS_EXAMPLE"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        updateTask(t, taskList, index - 1);"
+        "content": "                                    + divider);"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out"
+        "content": "                }"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                .print(Duke.divider + \" Nice! I\u0027ve marked this task as done: [\" + t.getStatusIcon()"
+        "content": "                break;"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        + \"] \" + t.description + Duke.divider);    }"
+        "content": ""
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            default: // Invalid input; List accepted commands"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void getCommandInfo() {"
+        "content": "                System.out.println(divider"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out.println("
+        "content": "                        + \"\\uD83D\\uDEC8 Sorry, you have entered an invalid input. \\uD83D\\uDEC8\\n\\t\\tHere\u0027s a help list to get you started: \\n\");"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                String.format(COMMAND_MESSAGE, COMMAND_TODO, COMMAND_TODO_DESC, COMMAND_TODO)"
+        "content": "                getCommandInfo();"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        + String.format(COMMAND_MESSAGE, COMMAND_DEADLINE, COMMAND_DEADLINE_DESC,"
+        "content": "                break;"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        COMMAND_DEADLINE) + String"
+        "content": "            }"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        .format(COMMAND_MESSAGE, COMMAND_EVENT, COMMAND_EVENT_DESC, COMMAND_EVENT)"
+        "content": "        }"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        + String"
+        "content": ""
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        .format(COMMAND_MESSAGE, COMMAND_LIST, COMMAND_LIST_DESC, COMMAND_LIST)"
+        "content": "    }"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        + String"
+        "content": ""
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        .format(COMMAND_MESSAGE, COMMAND_DONE, COMMAND_DONE_DESC, COMMAND_DONE)"
+        "content": "    private static void deleteTask(ArrayList\u003cTask\u003e taskList, Command command) {"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        + String.format(COMMAND_MESSAGE, COMMAND_DELETE, COMMAND_DELETE_DESC,"
+        "content": "        int index \u003d Integer.parseInt(String.valueOf(command.getArgs()));"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        COMMAND_DELETE) + String"
+        "content": "        Task t \u003d retrieveTask(taskList, index - 1);"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        .format(COMMAND_MESSAGE, COMMAND_BYE, COMMAND_BYE_DESC, COMMAND_BYE)"
+        "content": "        taskList.remove(index - 1);"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                        + divider);"
+        "content": "        deleteOnIOFile(index);"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "        System.out.print(Duke.divider + \" Noted! I\u0027ve removed this task:\" + System.lineSeparator()"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                + \"\\t\" + t.toString() + System.lineSeparator() + String"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void addNewEvent(ArrayList\u003cTask\u003e taskList, Command command)"
+        "content": "                .format(\" Now you have %d tasks in your list.\", taskList.size()) + Duke.divider);"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throws StringIndexOutOfBoundsException {"
+        "content": ""
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        String description;"
+        "content": "    }"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        final int indexOfAtPrefix \u003d command.getArgs().indexOf(\"/at\");"
+        "content": ""
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        description \u003d command.getArgs().substring(0, indexOfAtPrefix);"
+        "content": "    private static void markTaskDone(ArrayList\u003cTask\u003e taskList, Command command) {"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        String timeOfEvent \u003d command.getArgs().substring(indexOfAtPrefix + 3).trim();"
+        "content": "        int index \u003d Integer.parseInt(String.valueOf(command.getArgs()));"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        if (description.isEmpty() || timeOfEvent.isEmpty()) {"
+        "content": "        Task t \u003d retrieveTask(taskList, index - 1);"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throw new StringIndexOutOfBoundsException();"
+        "content": "        t.markAsDone();"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": "        updateTask(t, taskList, index - 1);"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        Task event \u003d new Events(description, timeOfEvent);"
+        "content": "        updateIOFile(index, t);"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        taskList.add(event);"
+        "content": "        System.out"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        printSuccessfulAddition(taskList, event);"
+        "content": "                .print(Duke.divider + \" Nice! I\u0027ve marked this task as done: [\" + t.getStatusIcon()"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "                        + \"] \" + t.description + Duke.divider);"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void addNewDeadline(ArrayList\u003cTask\u003e taskList, Command command)"
+        "content": ""
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throws StringIndexOutOfBoundsException {"
+        "content": "    private static void getCommandInfo() {"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        String description;"
+        "content": "        System.out.println("
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        final int indexOfByPrefix \u003d command.getArgs().trim().indexOf(\"/by\");"
+        "content": "                String.format(COMMAND_MESSAGE, COMMAND_TODO, COMMAND_TODO_DESC, COMMAND_TODO)"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        description \u003d command.getArgs().trim().substring(0, indexOfByPrefix);"
+        "content": "                        + String.format(COMMAND_MESSAGE, COMMAND_DEADLINE, COMMAND_DEADLINE_DESC,"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        String dueDate \u003d command.getArgs().substring(indexOfByPrefix + 3).trim();"
+        "content": "                        COMMAND_DEADLINE) + String"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        if (description.isEmpty() || dueDate.isEmpty()) {"
+        "content": "                        .format(COMMAND_MESSAGE, COMMAND_EVENT, COMMAND_EVENT_DESC, COMMAND_EVENT)"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throw new StringIndexOutOfBoundsException();"
+        "content": "                        + String"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": "                        .format(COMMAND_MESSAGE, COMMAND_LIST, COMMAND_LIST_DESC, COMMAND_LIST)"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        Task deadline \u003d new Deadlines(description, dueDate);"
+        "content": "                        + String"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        taskList.add(deadline);"
+        "content": "                        .format(COMMAND_MESSAGE, COMMAND_DONE, COMMAND_DONE_DESC, COMMAND_DONE)"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        printSuccessfulAddition(taskList, deadline);"
+        "content": "                        + String.format(COMMAND_MESSAGE, COMMAND_DELETE, COMMAND_DELETE_DESC,"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "                        COMMAND_DELETE) + String"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "                        .format(COMMAND_MESSAGE, COMMAND_BYE, COMMAND_BYE_DESC, COMMAND_BYE)"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void addNewToDo(ArrayList\u003cTask\u003e taskList, Command command)"
+        "content": "                        + divider);"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throws StringIndexOutOfBoundsException {"
+        "content": "    }"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        if (command.getArgs() \u003d\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throw new StringIndexOutOfBoundsException();"
+        "content": "    private static void addNewEvent(ArrayList\u003cTask\u003e taskList, Command command)"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } else {"
+        "content": "            throws StringIndexOutOfBoundsException {"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            Task newTask \u003d new ToDos(command.getArgs());"
+        "content": "        String description;"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            taskList.add(newTask);"
+        "content": "        final int indexOfAtPrefix \u003d command.getArgs().indexOf(\"/at\");"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            printSuccessfulAddition(taskList, newTask);"
+        "content": "        description \u003d command.getArgs().substring(0, indexOfAtPrefix);"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": "        String timeOfEvent \u003d command.getArgs().substring(indexOfAtPrefix + 3).trim();"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "        if (description.isEmpty() || timeOfEvent.isEmpty()) {"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            throw new StringIndexOutOfBoundsException();"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static Command splitCommandAndArgs(String input) {"
+        "content": "        }"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        String com, args;"
+        "content": "        Task event \u003d new Events(description, timeOfEvent);"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        try {"
+        "content": "        taskList.add(event);"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            com \u003d input.trim().substring(0, input.indexOf(\u0027 \u0027));"
+        "content": "        printSuccessfulAddition(taskList, event);"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            args \u003d input.trim().substring(input.indexOf(\u0027 \u0027) + 1, input.length());"
+        "content": "    }"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } catch (StringIndexOutOfBoundsException e) { // input is \"bye\" or \"list\"; set args: null"
+        "content": ""
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            com \u003d input.trim();"
+        "content": "    private static void addNewDeadline(ArrayList\u003cTask\u003e taskList, Command command)"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            args \u003d null;"
+        "content": "            throws StringIndexOutOfBoundsException {"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": "        String description;"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        return new Command(com, args);"
+        "content": "        final int indexOfByPrefix \u003d command.getArgs().trim().indexOf(\"/by\");"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "        description \u003d command.getArgs().trim().substring(0, indexOfByPrefix);"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "        String dueDate \u003d command.getArgs().substring(indexOfByPrefix + 3).trim();"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void printSuccessfulAddition(ArrayList\u003cTask\u003e taskList, Task newTask) {"
+        "content": "        if (description.isEmpty() || dueDate.isEmpty()) {"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out.println(Duke.divider + \"Got it. I\u0027ve added this task: \");"
+        "content": "            throw new StringIndexOutOfBoundsException();"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out.print(\"\\t\" + newTask.toString());"
+        "content": "        }"
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        System.out.printf(\"\\nNow you have %d tasks in your list.\" + Duke.divider, taskList.size());"
+        "content": "        Task deadline \u003d new Deadlines(description, dueDate);"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "        taskList.add(deadline);"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "        printSuccessfulAddition(taskList, deadline);"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void printStoredTasks(ArrayList\u003cTask\u003e taskList) throws DukeException {"
+        "content": "    }"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        int taskCounter \u003d 1;"
+        "content": ""
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        if (taskList.size() \u003d\u003d 0) {"
+        "content": "    private static void addNewToDo(ArrayList\u003cTask\u003e taskList, Command command)"
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throw new DukeException();"
+        "content": "            throws StringIndexOutOfBoundsException {"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } else {"
+        "content": "        if (command.getArgs() \u003d\u003d null) {"
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            System.out.println(System.lineSeparator()"
+        "content": "            throw new StringIndexOutOfBoundsException();"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                    + \"Currently, you have these items in your list: \\uD83D\\uDCCC\\n\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            for (Task t : taskList) {"
+        "content": "            Task newTask \u003d new ToDos(command.getArgs());"
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                System.out.println(taskCounter + \". \" + t.toString());"
+        "content": "            taskList.add(newTask);"
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "                taskCounter++;"
+        "content": "            printSuccessfulAddition(taskList, newTask);"
       },
       {
         "lineNumber": 251,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 252,
         "author": {
           "gitId": "trishaangelica"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 253,
+        "lineNumber": 252,
         "author": {
           "gitId": "trishaangelica"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    private static Command splitCommandAndArgs(String input) {"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static void updateTask(Task task, ArrayList\u003cTask\u003e taskArrayList, int i) {"
+        "content": "        String com, args;"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        taskArrayList.set(i, task);"
+        "content": "        try {"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "            com \u003d input.trim().substring(0, input.indexOf(\u0027 \u0027));"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            if (com.equals(\"done\") || com.equals(\"delete\")) {"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private static Task retrieveTask(ArrayList\u003cTask\u003e taskArrayList, int i) {"
+        "content": "                args \u003d input.trim().substring(input.indexOf(\u0027 \u0027)).trim();"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        return taskArrayList.get(i);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "                args \u003d input.substring(input.indexOf(\u0027 \u0027) + 1);"
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 263,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException e) { // input is \"bye\" or \"list\"; set args: null"
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            com \u003d input.trim();"
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            args \u003d null;"
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        return new Command(com, args);"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 269,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private static void printSuccessfulAddition(ArrayList\u003cTask\u003e taskList, Task newTask) {"
+      },
+      {
+        "lineNumber": 271,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        System.out.println(Duke.divider + \"Got it. I\u0027ve added this task: \");"
+      },
+      {
+        "lineNumber": 272,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        System.out.print(\"\\t\" + newTask.toString());"
+      },
+      {
+        "lineNumber": 273,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        System.out.printf(\"\\nNow you have %d tasks in your list.\" + Duke.divider, taskList.size());"
+      },
+      {
+        "lineNumber": 274,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 275,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 276,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private static void printStoredTasks(ArrayList\u003cTask\u003e taskList) throws DukeException {"
+      },
+      {
+        "lineNumber": 277,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        int taskCounter \u003d 1;"
+      },
+      {
+        "lineNumber": 278,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        if (taskList.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 279,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 280,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 281,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            System.out.println(System.lineSeparator()"
+      },
+      {
+        "lineNumber": 282,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    + \"Currently, you have these items in your list: \\uD83D\\uDCCC\\n\");"
+      },
+      {
+        "lineNumber": 283,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            for (Task t : taskList) {"
+      },
+      {
+        "lineNumber": 284,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                System.out.println(taskCounter + \". \" + t.toString());"
+      },
+      {
+        "lineNumber": 285,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                taskCounter++;"
+      },
+      {
+        "lineNumber": 286,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 287,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 288,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 289,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 290,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private static void updateTask(Task task, ArrayList\u003cTask\u003e taskArrayList, int i) {"
+      },
+      {
+        "lineNumber": 291,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        taskArrayList.set(i, task);"
+      },
+      {
+        "lineNumber": 292,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 293,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 294,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 295,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private static Task retrieveTask(ArrayList\u003cTask\u003e taskArrayList, int i) {"
+      },
+      {
+        "lineNumber": 296,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        return taskArrayList.get(i);"
+      },
+      {
+        "lineNumber": 297,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 298,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 299,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private static void readIOFile(ArrayList\u003cTask\u003e taskArrayList)"
+      },
+      {
+        "lineNumber": 300,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            throws IOException {"
+      },
+      {
+        "lineNumber": 301,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        FileReader fr \u003d new FileReader(String.valueOf(FILENAME));"
+      },
+      {
+        "lineNumber": 302,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        BufferedReader br \u003d new BufferedReader(fr);"
+      },
+      {
+        "lineNumber": 303,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        String line;"
+      },
+      {
+        "lineNumber": 304,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        while ((line \u003d br.readLine()) !\u003d null) {"
+      },
+      {
+        "lineNumber": 305,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            String[] parse \u003d line.trim().split(\"\\\\s*\\\\|\\\\s*\");"
+      },
+      {
+        "lineNumber": 306,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            if (parse.length \u003d\u003d 3) {"
+      },
+      {
+        "lineNumber": 307,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                ToDos t \u003d new ToDos(parse[2]);"
+      },
+      {
+        "lineNumber": 308,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                if (parse[1].equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 309,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    t.markAsDone();"
+      },
+      {
+        "lineNumber": 310,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 311,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                taskArrayList.add(t);"
+      },
+      {
+        "lineNumber": 312,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            } else if (parse.length \u003d\u003d 4) {"
+      },
+      {
+        "lineNumber": 313,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                if (parse[0].equals(\"D\")) {"
+      },
+      {
+        "lineNumber": 314,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    Deadlines d \u003d new Deadlines(parse[2], parse[3]);"
+      },
+      {
+        "lineNumber": 315,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    if (parse[1].equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 316,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        d.markAsDone();"
+      },
+      {
+        "lineNumber": 317,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 318,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    taskArrayList.add(d);"
+      },
+      {
+        "lineNumber": 319,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 320,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    Events e \u003d new Events(parse[2], parse[3]);"
+      },
+      {
+        "lineNumber": 321,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    if (parse[1].equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 322,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        e.markAsDone();"
+      },
+      {
+        "lineNumber": 323,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 324,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    taskArrayList.add(e);"
+      },
+      {
+        "lineNumber": 325,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 326,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 327,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 328,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 329,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        br.close();"
+      },
+      {
+        "lineNumber": 330,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        fr.close();"
+      },
+      {
+        "lineNumber": 331,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 332,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 333,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    //write to duke.txt"
+      },
+      {
+        "lineNumber": 334,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private static void outWriteTaskList(ArrayList\u003cTask\u003e taskArrayList) {"
+      },
+      {
+        "lineNumber": 335,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        boolean directoryExists \u003d Files.exists(FILENAME); // C:\\cs2113T\\duke\\data\\duke.txt"
+      },
+      {
+        "lineNumber": 336,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 337,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            if (directoryExists) {"
+      },
+      {
+        "lineNumber": 338,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                FileWriter fw \u003d new FileWriter(String.valueOf(FILENAME));"
+      },
+      {
+        "lineNumber": 339,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                Writer output \u003d new BufferedWriter(fw);"
+      },
+      {
+        "lineNumber": 340,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                for (Task t : taskArrayList) {"
+      },
+      {
+        "lineNumber": 341,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    if (t.getStatusIcon().equals(\"\\u2713\")) {"
+      },
+      {
+        "lineNumber": 342,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        fileDoneStatus \u003d \"1\";"
+      },
+      {
+        "lineNumber": 343,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    } else {"
+      },
+      {
+        "lineNumber": 344,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        fileDoneStatus \u003d \"0\";"
+      },
+      {
+        "lineNumber": 345,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 346,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    if (t instanceof ToDos) {"
+      },
+      {
+        "lineNumber": 347,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        output.write("
+      },
+      {
+        "lineNumber": 348,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                t.getTaskType() + \" | \" + fileDoneStatus + \" | \" + t.description"
+      },
+      {
+        "lineNumber": 349,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                        + \"\\n\");"
+      },
+      {
+        "lineNumber": 350,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    } else if (t instanceof Events) {"
+      },
+      {
+        "lineNumber": 351,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        output.write("
+      },
+      {
+        "lineNumber": 352,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                t.getTaskType() + \" | \" + fileDoneStatus + \" | \" + t.description"
+      },
+      {
+        "lineNumber": 353,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                        + \"|\" + ((Events) t).getTimeOfEvent() + \"\\n\");"
+      },
+      {
+        "lineNumber": 354,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    } else if (t instanceof Deadlines) {"
+      },
+      {
+        "lineNumber": 355,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        output.write("
+      },
+      {
+        "lineNumber": 356,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                t.getTaskType() + \" | \" + fileDoneStatus + \" | \" + t.description"
+      },
+      {
+        "lineNumber": 357,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                        + \"|\" + ((Deadlines) t).getDueDate() + \"\\n\");"
+      },
+      {
+        "lineNumber": 358,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 359,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 360,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                output.close();"
+      },
+      {
+        "lineNumber": 361,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 362,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 363,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 364,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 365,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 366,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 367,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    //edit specific task in duke.txt"
+      },
+      {
+        "lineNumber": 368,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public static void updateIOFile(int lineNumber, Task t) {"
+      },
+      {
+        "lineNumber": 369,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        if (t.getStatusIcon().equals(\"\\u2713\")) {"
+      },
+      {
+        "lineNumber": 370,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            fileDoneStatus \u003d \"1\";"
+      },
+      {
+        "lineNumber": 371,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 372,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            fileDoneStatus \u003d \"0\";"
+      },
+      {
+        "lineNumber": 373,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 374,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 375,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            List\u003cString\u003e lines \u003d new ArrayList\u003c\u003e("
+      },
+      {
+        "lineNumber": 376,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    Files.readAllLines(FILENAME, StandardCharsets.UTF_8));"
+      },
+      {
+        "lineNumber": 377,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 378,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            if (t instanceof ToDos) {"
+      },
+      {
+        "lineNumber": 379,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                lines.set(lineNumber - 1,"
+      },
+      {
+        "lineNumber": 380,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        t.getTaskType() + \" | \" + fileDoneStatus + \" | \" + t.description + \"\\n\");"
+      },
+      {
+        "lineNumber": 381,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            } else if (t instanceof Events) {"
+      },
+      {
+        "lineNumber": 382,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                lines.set(lineNumber - 1,"
+      },
+      {
+        "lineNumber": 383,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        t.getTaskType() + \" | \" + fileDoneStatus + \" | \" + t.description + \"| \""
+      },
+      {
+        "lineNumber": 384,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                + ((Events) t).getTimeOfEvent() + \"\\n\");"
+      },
+      {
+        "lineNumber": 385,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            } else if (t instanceof Deadlines) {"
+      },
+      {
+        "lineNumber": 386,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                lines.set(lineNumber - 1,"
+      },
+      {
+        "lineNumber": 387,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                        t.getTaskType() + \" | \" + fileDoneStatus + \" | \" + t.description + \"| \""
+      },
+      {
+        "lineNumber": 388,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                                + ((Deadlines) t).getDueDate() + \"\\n\");"
+      },
+      {
+        "lineNumber": 389,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                Files.write(FILENAME, lines, StandardCharsets.UTF_8);"
+      },
+      {
+        "lineNumber": 390,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 391,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            Files.write(FILENAME, lines, StandardCharsets.UTF_8);"
+      },
+      {
+        "lineNumber": 392,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 393,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            System.out.println(e.getMessage());"
+      },
+      {
+        "lineNumber": 394,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 395,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 396,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 397,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 398,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public static void deleteOnIOFile(int lineNumber) {"
+      },
+      {
+        "lineNumber": 399,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 400,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            List\u003cString\u003e lines \u003d new ArrayList\u003c\u003e("
+      },
+      {
+        "lineNumber": 401,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "                    Files.readAllLines(FILENAME, StandardCharsets.UTF_8));"
+      },
+      {
+        "lineNumber": 402,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            lines.remove(lineNumber - 1);"
+      },
+      {
+        "lineNumber": 403,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            Files.write(FILENAME, lines, StandardCharsets.UTF_8);"
+      },
+      {
+        "lineNumber": 404,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 405,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            System.out.println(e.getMessage());"
+      },
+      {
+        "lineNumber": 406,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 407,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 408,
         "author": {
           "gitId": "-"
         },
         "content": "}"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 409,
         "author": {
           "gitId": "trishaangelica"
         },
@@ -1854,7 +2920,7 @@
     ],
     "authorContributionMap": {
       "-": 5,
-      "trishaangelica": 259
+      "trishaangelica": 404
     }
   },
   {
@@ -2087,122 +3153,129 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  protected String dueDate;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "  protected String dueDate;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  public Deadlines(String description, String dueDate) {"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    super(description);"
+        "content": "  public Deadlines(String description, String dueDate) {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    super.setTaskType(\"D\");"
+        "content": "    super(description);"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    this.dueDate \u003d dueDate;"
+        "content": "    super.setTaskType(\"D\");"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    this.dueDate \u003d dueDate;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  }"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "  }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  public String getDueDate() {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    return dueDate;"
+        "content": "  public String getDueDate() {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  }"
+        "content": "    return dueDate;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "  }"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  @Override"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  public String toString() {"
+        "content": "  @Override"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    return \"[\" + super.getTaskType() + \"]\" + super.toString() + \"(by: \" + getDueDate() + \")\";"
+        "content": "  public String toString() {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "  }"
+        "content": "    return \"[\" + super.getTaskType() + \"]\" + super.toString() + \"(by: \" + getDueDate() + \")\";"
       },
       {
         "lineNumber": 21,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "  }"
+      },
+      {
+        "lineNumber": 22,
         "author": {
           "gitId": "trishaangelica"
         },
@@ -2210,7 +3283,7 @@
       }
     ],
     "authorContributionMap": {
-      "trishaangelica": 21
+      "trishaangelica": 22
     }
   },
   {
