@@ -1,6 +1,6 @@
 [
   {
-    "path": "src/main/java/Deadline.java",
+    "path": "src/main/java/duke/Duke.java",
     "fileType": "java",
     "lines": [
       {
@@ -8,450 +8,392 @@
         "author": {
           "gitId": "synCKun"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "import duke.*;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    public Deadline(String command) {"
+        "content": "import duke.command.*;"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        super(\"[D][✗] \""
+        "content": "import duke.command.Event;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + command.replaceFirst(\"deadline\\\\s\",\"\").replaceFirst(\"/by\",\"(by:\").trim()"
+        "content": "import duke.command.Task;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \")\");"
+        "content": "import duke.command.Todo;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 7,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "synCKun": 7
-    }
-  },
-  {
-    "path": "src/main/java/Duke.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
         "author": {
           "gitId": "synCKun"
         },
         "content": "import java.util.ArrayList;"
       },
       {
-        "lineNumber": 2,
+        "lineNumber": 8,
         "author": {
           "gitId": "synCKun"
         },
         "content": "import java.util.Scanner;"
       },
       {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "// unicode-character reference list: \\u2717 \u003d ✗, \\u2713 ✓"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class Duke {"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static void main(String[] args) {"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "        System.out.println(\"    ____________________________________________________________\\n\""
-      },
-      {
         "lineNumber": 9,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"     Hello! I\u0027m Duke\\n\""
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"     What can I do for you?\\n\""
+        "content": "// unicode-character reference list: \\u2717 \u003d ✗, \\u2713 ✓"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"    ____________________________________________________________\\n\");"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "synCKun"
+          "gitId": "-"
         },
-        "content": "        Scanner scanner \u003d new Scanner(System.in);"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        ArrayList\u003cTask\u003e list \u003d new ArrayList\u003cTask\u003e();"
+        "content": "    public static void main(String[] args) throws DukeException {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "synCKun"
         },
-        "content": ""
+        "content": "        System.out.println(\"    ____________________________________________________________\\n\""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        while (true) {"
+        "content": "                + \"     Hello! I\u0027m Duke\\n\""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            String command \u003d scanner.nextLine();"
+        "content": "                + \"     What can I do for you?\\n\""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "synCKun"
         },
-        "content": ""
+        "content": "                + \"    ____________________________________________________________\\n\");"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            if (command.matches(\"done\\\\s\\\\d+\")) { //Level 3: Mark as Done"
+        "content": "        Scanner scanner \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                processDoneCommand(list, command);"
+        "content": "        ArrayList\u003cTask\u003e list \u003d new ArrayList\u003cTask\u003e();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            } else if (command.equals(\"list\")) { //Level 2: List (Add-function is included in level 4)"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                processListCommand(list);"
+        "content": "        while (true) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            } else if (command.matches(\"todo\\\\s.*\")){ //Level 4: ToDos"
+        "content": "            String command \u003d scanner.nextLine();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                list.add(new Todo(command));"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                list.get(list.size()-1).printMessage(list.size());"
+        "content": "            if (command.matches(\"done\\\\s\\\\d+\")) { //Level 3: Mark as Done"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            } else if (command.matches(\"deadline\\\\s.*\")){ //Level 4: Deadlines"
+        "content": "                processDoneCommand(list, command);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                list.add(new Deadline(command));"
+        "content": "            } else if (command.equals(\"list\")) { //Level 2: List (Add-function is included in level 4)"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                list.get(list.size()-1).printMessage(list.size());"
+        "content": "                processListCommand(list);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            } else if (command.matches(\"event\\\\s.*\")) { //Level 4: Events"
+        "content": "            } else if (command.matches(\"todo\\\\s.*\")){ //Level 4: ToDos"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                list.add(new Event(command));"
+        "content": "                try {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                list.get(list.size()-1).printMessage(list.size());"
+        "content": "                    list.add(new Todo(command));"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            } else if (command.equals(\"bye\")) { //Terminate"
+        "content": "                    list.get(list.size()-1).printMessage(list.size());"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                processByeCommand();"
+        "content": "                } catch (Exception e) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                return;"
+        "content": "                    System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            }"
+        "content": "                }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        }"
+        "content": "            } else if (command.matches(\"deadline\\\\s.*\")){ //Level 4: Deadlines"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "-"
+          "gitId": "synCKun"
         },
-        "content": "    }"
+        "content": "                try {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "synCKun"
         },
-        "content": ""
+        "content": "                    list.add(new Deadline(command));"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    private static void processDoneCommand(ArrayList\u003cTask\u003e list, String command) {"
+        "content": "                    list.get(list.size()-1).printMessage(list.size());"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        int listIndex \u003d Integer.parseInt(command.replaceAll(\"[^\\\\d]\",\"\"));"
+        "content": "                } catch (Exception e){"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        list.get(listIndex-1).filteredTask \u003d list.get(listIndex-1).filteredTask.replace(\"✗\",\"✓\");"
+        "content": "                    System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        System.out.println(\"    ____________________________________________________________\\n\""
+        "content": "                }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"     Nice! I\u0027ve marked this task as done:\\n       \" + list.get(listIndex - 1).filteredTask"
+        "content": "            } else if (command.matches(\"event\\\\s.*\")) { //Level 4: Events"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"\\n    ____________________________________________________________\");"
+        "content": "                try {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    }"
+        "content": "                    list.add(new Event(command));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "synCKun"
         },
-        "content": ""
+        "content": "                    list.get(list.size()-1).printMessage(list.size());"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    private static void processByeCommand() {"
+        "content": "                } catch (Exception e){"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        System.out.println(\"    ____________________________________________________________\\n\""
+        "content": "                    System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"     Bye. Hope to see you again soon!\\n\""
+        "content": "                }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"    ____________________________________________________________\");"
+        "content": "            } else if (command.equals(\"bye\")) { //Terminate"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    }"
+        "content": "                processByeCommand();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "synCKun"
         },
-        "content": ""
+        "content": "                return;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    private static void processListCommand(ArrayList\u003cTask\u003e list) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        System.out.println(\"    ____________________________________________________________\\n\""
+        "content": "                System.out.println(\"    ____________________________________________________________\\n\" +"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"     Here are the tasks in your list:\");"
+        "content": "                        \"     ☹ OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\\n\" +"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        for (int i \u003d 0; i \u003c list.size(); i++) {"
+        "content": "                        \"    ____________________________________________________________\");"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "            System.out.println(\"     \" + (i + 1) + \".\" + list.get(i).filteredTask);"
+        "content": "            }"
       },
       {
         "lineNumber": 57,
@@ -465,216 +407,240 @@
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        System.out.print(\"    ____________________________________________________________\\n\");"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "synCKun"
         },
-        "content": ""
+        "content": "    private static void processDoneCommand(ArrayList\u003cTask\u003e list, String command) {"
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "-"
+          "gitId": "synCKun"
         },
-        "content": "}"
+        "content": "        try {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "synCKun"
         },
-        "content": ""
-      }
-    ],
-    "authorContributionMap": {
-      "synCKun": 58,
-      "-": 4
-    }
-  },
-  {
-    "path": "src/main/java/Event.java",
-    "fileType": "java",
-    "lines": [
+        "content": "            int listIndex \u003d Integer.parseInt(command.replaceAll(\"[^\\\\d]\", \"\"));"
+      },
       {
-        "lineNumber": 1,
+        "lineNumber": 63,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "public class Event extends Task{"
+        "content": "            list.get(listIndex - 1).filteredTask \u003d list.get(listIndex - 1).filteredTask.replace(\"✗\", \"✓\");"
       },
       {
-        "lineNumber": 2,
+        "lineNumber": 64,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    public Event(String command) {"
+        "content": "            System.out.println(\"    ____________________________________________________________\\n\""
       },
       {
-        "lineNumber": 3,
+        "lineNumber": 65,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        super(\"[E][✗] \""
+        "content": "                    + \"     Nice! I\u0027ve marked this task as done:\\n       \" + list.get(listIndex - 1).filteredTask"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 66,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + command.replaceFirst(\"event\\\\s\",\"\").replaceFirst(\"/at\",\"(at:\").trim()"
+        "content": "                    + \"\\n    ____________________________________________________________\");"
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 67,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \")\");"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 68,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            System.out.println(\"    ____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                    + \"     Task does not exist!\\n\""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                    + \"    ____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 72,
         "author": {
           "gitId": "synCKun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "synCKun": 7
-    }
-  },
-  {
-    "path": "src/main/java/Task.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "public class Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "    public String filteredTask;"
-      },
-      {
-        "lineNumber": 3,
+        "lineNumber": 73,
         "author": {
           "gitId": "synCKun"
         },
         "content": ""
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 74,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    public Task(String task){"
+        "content": "    private static void processByeCommand() {"
       },
       {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "        this.filteredTask \u003d task;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "    public void printMessage(int size) {"
-      },
-      {
-        "lineNumber": 9,
+        "lineNumber": 75,
         "author": {
           "gitId": "synCKun"
         },
         "content": "        System.out.println(\"    ____________________________________________________________\\n\""
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 76,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + \"     Got it. I\u0027ve added this task:\\n       \""
+        "content": "                + \"     Bye. Hope to see you again soon!\\n\""
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 77,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "                + filteredTask"
+        "content": "                + \"    ____________________________________________________________\");"
       },
       {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "                + \"\\n     Now you have \" + size + \" tasks in the list.\""
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "synCKun"
-        },
-        "content": "                + \"\\n    ____________________________________________________________\");"
-      },
-      {
-        "lineNumber": 14,
+        "lineNumber": 78,
         "author": {
           "gitId": "synCKun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 79,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    private static void processListCommand(ArrayList\u003cTask\u003e list) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        System.out.println(\"    ____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + \"     Here are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        for (int i \u003d 0; i \u003c list.size(); i++) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            System.out.println(\"     \" + (i + 1) + \".\" + list.get(i).filteredTask);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        System.out.print(\"    ____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
         "author": {
           "gitId": "synCKun"
         },
         "content": "}"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
       }
     ],
     "authorContributionMap": {
-      "synCKun": 15
+      "synCKun": 89,
+      "-": 1
     }
   },
   {
-    "path": "src/main/java/Todo.java",
+    "path": "src/main/java/duke/DukeException.java",
     "fileType": "java",
     "lines": [
       {
@@ -682,31 +648,311 @@
         "author": {
           "gitId": "synCKun"
         },
-        "content": "public class Todo extends Task{"
+        "content": "/* Exception code list:"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    public Todo (String command) {"
+        "content": " * 1 - Empty parameter"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "        super(\"[T][✗] \" + command.replaceFirst(\"todo\\\\s\", \"\").trim());"
+        "content": " * 2 - Incomplete parameter"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "synCKun"
         },
-        "content": "    }"
+        "content": " *"
       },
       {
         "lineNumber": 5,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "package duke;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "public class DukeException extends Exception{"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public int exceptionCode;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public String[] field \u003d new String[2];"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public DukeException(int exceptionCode, String field){"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        this.exceptionCode \u003d exceptionCode;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        this.field[0] \u003d field;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        switch (field) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        case \"deadline\":"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            this.field[1] \u003d \"/by\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        case \"event\":"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            this.field[1] \u003d \"/at\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public String getMessage(){"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        switch (exceptionCode) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        case 1:"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            return (\"    ____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                    + \"     ☹ OOPS!!! The description of \" + field[0] + \" cannot be empty.\\n\""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                    + \"    ____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        case 2:"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            return (\"    ____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                    + \"     ☹ OOPS!!! You forgot to add \\\"\" + field[1] + \" [insert time]\\\"\\n\""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                    + \"    ____________________________________________________________\\n\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            return \"\";"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "synCKun"
         },
@@ -714,7 +960,484 @@
       }
     ],
     "authorContributionMap": {
-      "synCKun": 5
+      "synCKun": 45
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "import duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public Deadline(String command) throws DukeException {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        super(\"[D][✗] \""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + command.replaceFirst(\"deadline\\\\s\",\"\").replaceFirst(\"/by\",\"(by:\").trim()"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + \")\");"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        if (command.matches(\"deadline\\\\s+\")){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            throw new DukeException(1,\"deadline\");"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        if (!command.matches(\".*/by.*\")){"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            throw new DukeException(2,\"deadline\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "synCKun": 17
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "import duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "public class Event extends Task{"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public Event(String command) throws DukeException {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        super(\"[E][✗] \""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + command.replaceFirst(\"event\\\\s\",\"\").replaceFirst(\"/at\",\"(at:\").trim()"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + \")\");"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        if (command.matches(\"event\\\\s+\")){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            throw new DukeException(1,\"event\");"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        if (!command.matches(\".*/at.*\")){"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            throw new DukeException(2,\"event\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "synCKun": 17
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public String filteredTask;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public Task(String task){"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        this.filteredTask \u003d task;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public void printMessage(int size) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        System.out.println(\"    ____________________________________________________________\\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + \"     Got it. I\u0027ve added this task:\\n       \""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + filteredTask"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + \"\\n     Now you have \" + size + \" tasks in the list.\""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "                + \"\\n    ____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "synCKun": 17
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Todo.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "import duke.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "public class Todo extends Task{"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    public Todo (String command) throws DukeException {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        super(\"[T][✗] \" + command.replaceFirst(\"todo\\\\s\", \"\").trim());"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        if (command.matches(\"todo\\\\s+\")) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "            throw new DukeException(1,\"todo\");"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "synCKun"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "synCKun": 12
     }
   },
   {

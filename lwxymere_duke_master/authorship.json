@@ -50,77 +50,77 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "lwxymere"
         },
-        "content": "public class Duke {"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private static final String DUKE_LOGO \u003d"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "lwxymere"
+          "gitId": "-"
         },
-        "content": "            \" ____        _        \\n\""
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                    + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": "    private static final String DUKE_LOGO \u003d"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                    + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": "            \" ____        _        \\n\""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                    + \"| |_| | |_| |   \u003c  __/\\n\""
+        "content": "                    + \"|  _ \\\\ _   _| | _____ \\n\""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                    + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+        "content": "                    + \"| | | | | | | |/ / _ \\\\\\n\""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "                    + \"| |_| | |_| |   \u003c  __/\\n\""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private static TaskList tasks \u003d new TaskList();"
+        "content": "                    + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
       },
       {
         "lineNumber": 18,
@@ -132,16 +132,16 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "lwxymere"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    private static Storage storage \u003d new Storage();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        printWelcomeBanner();"
+        "content": "    private static TaskList tasks;"
       },
       {
         "lineNumber": 21,
@@ -153,191 +153,191 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "lwxymere"
+          "gitId": "-"
         },
-        "content": "        Scanner scanner \u003d new Scanner(System.in);"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        printWelcomeBanner();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        // Loop terminates on receiving a \"bye\" command, which calls System.exit(0)"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        //noinspection InfiniteLoopStatement"
+        "content": "        Scanner scanner \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        while (true) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            System.out.print(\"\u003e \");"
+        "content": "            tasks \u003d storage.load();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String fullCommand \u003d scanner.nextLine();"
+        "content": "        } catch (FileNotFoundException e) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            // no save file found"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            try {"
+        "content": "            tasks \u003d new TaskList();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                parseCommand(fullCommand);"
+        "content": "        } catch (DukeException e) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            } catch (DukeException e) {"
+        "content": "            System.out.println(e.toString());"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                System.out.println(e.toString());"
+        "content": "            tasks \u003d new TaskList();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            } finally {"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                printDividerLine();"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": "        // Loop terminates on receiving a \"bye\" command, which calls System.exit(0)"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        }"
+        "content": "        //noinspection InfiniteLoopStatement"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "        while (true) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            System.out.print(\"\u003e \");"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private static void parseCommand(String fullCommand) throws DukeException {"
+        "content": "            String fullCommand \u003d scanner.nextLine();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        String[] commandTokens \u003d fullCommand.split(\" \");"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        String commandType \u003d commandTokens[0].toLowerCase();"
+        "content": "            try {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "                parseCommand(fullCommand);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        switch(commandType) {"
+        "content": "            } catch (DukeException e) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        case \"bye\":"
+        "content": "                System.out.println(e.toString());"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // exit duke"
+        "content": "            } finally {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            printByeMessage();"
+        "content": "                printDividerLine();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            System.exit(0);"
+        "content": "            }"
       },
       {
         "lineNumber": 49,
@@ -351,563 +351,829 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        case \"list\":"
+        "content": "            try {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // show all tasks in the list"
+        "content": "                storage.save(tasks);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            tasks.showTasks();"
+        "content": "            } catch (IOException e) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            break;"
+        "content": "                System.out.println(e.getMessage());"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        case \"done\":"
+        "content": "        }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // mark a task as done"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            int taskIndex \u003d Character.getNumericValue(fullCommand.charAt(5)) - 1;"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            tasks.markTaskAsDone(taskIndex);"
+        "content": "    private static void parseCommand(String fullCommand) throws DukeException {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            break;"
+        "content": "        String[] commandTokens \u003d fullCommand.split(\" \");"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        String commandType \u003d commandTokens[0].toLowerCase();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        case \"todo\":"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // add todo to tasks"
+        "content": "        switch(commandType) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // input follows format \u003ctaskType\u003e \u003ctaskName\u003e"
+        "content": "        case \"bye\":"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String description \u003d null;"
+        "content": "            // exit duke"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            try {"
+        "content": "            printByeMessage();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                description \u003d fullCommand.substring(5);"
+        "content": "            System.exit(0);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            } catch (StringIndexOutOfBoundsException e) {"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                throw new DukeException(\"The description of a todo cannot be empty\");"
+        "content": "        case \"list\":"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": "            // show all tasks in the list"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            tasks.showTasks();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            tasks.addTask(new Todo(description));"
+        "content": "            break;"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            break;"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        case \"delete\":"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        case \"deadline\":"
+        "content": "            // delete a task by its displayed list index"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // add deadline to tasks"
+        "content": "            try {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // input follows format \u003ctaskType\u003e \u003ctaskName\u003e /\u003cdate\u003e"
+        "content": "                int deleteIndex \u003d Integer.parseInt(commandTokens[1]) - 1;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String[] deadlineInfo \u003d null;"
+        "content": "                tasks.deleteTask(deleteIndex);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            try {"
+        "content": "            } catch (ArrayIndexOutOfBoundsException aioobe) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                deadlineInfo \u003d fullCommand.substring(9).trim().split(\" /by \");"
+        "content": "                // deleteIndex is not specified"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            } catch (StringIndexOutOfBoundsException e) {"
+        "content": "                throw new DukeException(\"Please specify a task number to be deleted\");"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                throw new DukeException(\"The description and date of a deadline cannot be empty\");"
+        "content": "            } catch (NumberFormatException nfe) {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": "                throw new DukeException(\"Please specify an integer for the task number to be deleted\");"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            if (deadlineInfo.length !\u003d 2) {"
+        "content": "            break;"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                throw new DukeException(\"The description and date of a deadline cannot be empty\");"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": "        case \"done\":"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String deadlineName \u003d deadlineInfo[0].trim();"
+        "content": "            // mark a task as done"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String deadlineDate \u003d deadlineInfo[1].trim();"
+        "content": "            try {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            tasks.addTask(new Deadline(deadlineName, deadlineDate));"
+        "content": "                int taskIndex \u003d Integer.parseInt(commandTokens[1]) - 1;"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            break;"
+        "content": "                tasks.markTaskAsDone(taskIndex);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            } catch (IndexOutOfBoundsException aioobe) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        case \"event\":"
+        "content": "                // taskIndex is not specified"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // add event to tasks"
+        "content": "                throw new DukeException(\"Please specify a valid task number to be marked as done\");"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            // input follows format \u003ctaskType\u003e \u003ctaskName\u003e /\u003cdate\u003e"
+        "content": "            } catch (NumberFormatException nfe) {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String[] eventInfo \u003d null;"
+        "content": "                throw new DukeException(\"Please specify an integer for the task number to be marked as done\");"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            try {"
+        "content": "            }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                eventInfo \u003d fullCommand.substring(6).trim().split(\" /at \");"
+        "content": "            break;"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            } catch (StringIndexOutOfBoundsException e) {"
+        "content": ""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                throw new DukeException(\"The description and date of an event cannot be empty\");"
+        "content": "        case \"todo\":"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": "            // add to`do to tasks"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            // input follows format \u003ctaskType\u003e \u003ctaskName\u003e"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            if (eventInfo.length !\u003d 2) {"
+        "content": "            String description \u003d null;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                throw new DukeException(\"The description and date of an event cannot be empty\");"
+        "content": "            try {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": "                description \u003d fullCommand.substring(5);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String eventName \u003deventInfo[0].trim();"
+        "content": "            } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            String eventDate\u003deventInfo[1].trim();"
+        "content": "                throw new DukeException(\"The description of a todo cannot be empty\");"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            tasks.addTask(new Event(eventName, eventDate));"
+        "content": "            }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            break;"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            tasks.addTaskWithMessage(new Todo(description));"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        default:"
+        "content": "            break;"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            throw new DukeException(\"I\u0027m not very sure what that means...\");"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        }"
+        "content": "        case \"deadline\":"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "            // add deadline to tasks"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            // input follows format \u003ctaskType\u003e \u003ctaskName\u003e /\u003cdate\u003e"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private static void printDividerLine() {"
+        "content": "            String[] deadlineInfo \u003d null;"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"_________________________________________________\");"
+        "content": "            try {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "                deadlineInfo \u003d fullCommand.substring(9).trim().split(\" /by \");"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private static void printWelcomeBanner() {"
+        "content": "                throw new DukeException(\"The description and date of a deadline cannot be empty\");"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        printDividerLine();"
+        "content": "            }"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"This is\\n\" + DUKE_LOGO);"
+        "content": ""
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"How can I help you today?\");"
+        "content": "            if (deadlineInfo.length !\u003d 2) {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        printDividerLine();"
+        "content": "                throw new DukeException(\"The description and date of a deadline cannot be empty\");"
       },
       {
         "lineNumber": 124,
         "author": {
-          "gitId": "-"
+          "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "            String deadlineName \u003d deadlineInfo[0].trim();"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private static void printByeMessage() {"
+        "content": "            String deadlineDate \u003d deadlineInfo[1].trim();"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"Goodbye\");"
+        "content": "            tasks.addTaskWithMessage(new Deadline(deadlineName, deadlineDate));"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        printDividerLine();"
+        "content": "            break;"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 130,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        case \"event\":"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            // add event to tasks"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            // input follows format \u003ctaskType\u003e \u003ctaskName\u003e /\u003cdate\u003e"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            String[] eventInfo \u003d null;"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                eventInfo \u003d fullCommand.substring(6).trim().split(\" /at \");"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                throw new DukeException(\"The description and date of an event cannot be empty\");"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            if (eventInfo.length !\u003d 2) {"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                throw new DukeException(\"The description and date of an event cannot be empty\");"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            String eventName \u003deventInfo[0].trim();"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            String eventDate \u003d eventInfo[1].trim();"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            tasks.addTaskWithMessage(new Event(eventName, eventDate));"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            throw new DukeException(\"I\u0027m not very sure what that means...\");"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    private static void printDividerLine() {"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        System.out.println(\"_________________________________________________\");"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    private static void printWelcomeBanner() {"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        System.out.println(\"This is\" + System.lineSeparator() + DUKE_LOGO);"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        System.out.println(\"How can I help you today?\");"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    private static void printByeMessage() {"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        System.out.println(\"Goodbye\");"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        printDividerLine();"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 168,
         "author": {
           "gitId": "-"
         },
@@ -915,7 +1181,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 126,
+      "lwxymere": 164,
       "-": 4
     }
   },
@@ -1013,6 +1279,477 @@
     }
   },
   {
+    "path": "src/main/java/duke/Storage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "package duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import duke.task.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import duke.task.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import duke.task.Todo;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "import java.util.StringJoiner;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    private static final String DEFAULT_FILE_PATH \u003d \"./dukeData.txt\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    private String filePath;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public Storage() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        this(DEFAULT_FILE_PATH);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public Storage(String path) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        this.filePath \u003d path;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public TaskList load() throws DukeException, FileNotFoundException {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        File f \u003d new File(filePath);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        Scanner scanner \u003d new Scanner(f);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        TaskList taskList \u003d new TaskList();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        while (scanner.hasNextLine()) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            String taskLine \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            switch (taskLine.charAt(0)) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            case \u0027T\u0027:"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                // todo"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                taskList.addTask(Todo.decodeTask(taskLine));"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            case \u0027D\u0027:"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                // deadline"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                taskList.addTask(Deadline.decodeTask(taskLine));"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            case \u0027E\u0027:"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                // event"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                taskList.addTask(Event.decodeTask(taskLine));"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                throw new DukeException(\"Unknown save file format encountered\""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                        + System.lineSeparator()"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                        + \"Exit now to manually fix and retain saved data\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return taskList;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public void save(TaskList taskList) throws IOException {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        StringJoiner sj \u003d new StringJoiner(System.lineSeparator());"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        for (Task task : taskList.getTasks()) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            sj.add(task.encodeTask());"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(filePath); // throws IOException"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        fw.write(sj.toString()); // throws IOException"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        fw.close();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "lwxymere": 66
+    }
+  },
+  {
     "path": "src/main/java/duke/TaskList.java",
     "fileType": "java",
     "lines": [
@@ -1049,28 +1786,28 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "public class TaskList {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    // assume list holds a maximum of 100 tasks"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private Task[] list;"
+        "content": "public class TaskList {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    private int numTasks;"
+        "content": "    private ArrayList\u003cTask\u003e tasks;"
       },
       {
         "lineNumber": 9,
@@ -1091,147 +1828,147 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.list \u003d new Task[100];"
+        "content": "        this.tasks \u003d new ArrayList\u003cTask\u003e();"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.numTasks \u003d 0;"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "    public ArrayList\u003cTask\u003e getTasks() {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public void addTask(Task task) {"
+        "content": "        return tasks;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.list[numTasks] \u003d task;"
+        "content": "    }"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        numTasks++;"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"Task added:\");"
+        "content": "    public int getNumTasks() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"  \" + task);"
+        "content": "        return tasks.size();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"You have \" + numTasks + \" task\" + (numTasks \u003d\u003d 1 ? \"\" : \"s\") + \" in the list\");"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "    public void addTask(Task task) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public void showTasks() {"
+        "content": "        tasks.add(task);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        if (numTasks \u003d\u003d 0) {"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            System.out.println(\"Nice, nothing to see here\");"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        } else {"
+        "content": "    public void addTaskWithMessage(Task task) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            System.out.println(\"Quite a few tasks you got there\");"
+        "content": "        addTask(task);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            for (int i \u003d 0; i \u003c numTasks; ++i) {"
+        "content": "        System.out.println(\"Task added:\");"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "                System.out.printf(\"%3d. %s\\n\", i + 1, list[i]);"
+        "content": "        System.out.println(\"  \" + task);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "            }"
+        "content": "        System.out.println(\"You have \" + tasks.size() + \" task\" +"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        }"
+        "content": "                (tasks.size() \u003d\u003d 1 ? \"\" : \"s\") + \" in the list\");"
       },
       {
         "lineNumber": 32,
@@ -1252,38 +1989,234 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public void markTaskAsDone(int index) {"
+        "content": "    public void deleteTask(int index) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        list[index].markAsDone();"
+        "content": "        try {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"Well, that\u0027s one task down\");"
+        "content": "            Task deletedTask \u003d tasks.get(index);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        System.out.println(\"  \" + list[index]);"
+        "content": "            tasks.remove(index);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "            System.out.println(\"Task deleted:\");"
       },
       {
         "lineNumber": 39,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            System.out.println(\"  \" + deletedTask);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            System.out.println(\"You have \" + tasks.size() + \" task\" +"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                    (tasks.size() \u003d\u003d 1 ? \"\" : \"s\") + \" in the list\");"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            if (tasks.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                System.out.println(\"You have no tasks to be deleted\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                System.out.println(\"Please specify a task number between 1 and \" + tasks.size());"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public void showTasks() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        if (tasks.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            System.out.println(\"Nice, nothing to see here\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            System.out.println(\"Quite a few tasks you got there\");"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            for (int i \u003d 0; i \u003c tasks.size(); ++i) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "                System.out.printf(\"%3d. %s%n\", i + 1, tasks.get(i));"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public void markTaskAsDone(int index) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        tasks.get(index).markAsDone();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        System.out.println(\"Well, that\u0027s one task down\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        System.out.println(\"  \" + tasks.get(index));"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
         "author": {
           "gitId": "lwxymere"
         },
@@ -1291,7 +2224,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 39
+      "lwxymere": 67
     }
   },
   {
@@ -1324,7 +2257,7 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    protected String by;"
+        "content": "    protected static final String DEADLINE_ICON \u003d \"D\";"
       },
       {
         "lineNumber": 5,
@@ -1338,66 +2271,199 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public Deadline(String description, String by) {"
+        "content": "    protected String by;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.by \u003d by;"
+        "content": "    public Deadline(String description, String by) {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        this.by \u003d by;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+        "content": "    @Override"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "    public String encodeTask() {"
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return String.format(\"%s|%s|%s|%s\", DEADLINE_ICON, isDone, description, by);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "   }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public static Deadline decodeTask(String encodedTask) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String[] tokens \u003d encodedTask.split(\"\\\\\" + DELIMITER);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        boolean isDone \u003d Boolean.parseBoolean(tokens[1]);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String description \u003d tokens[2];"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String by \u003d tokens[3];"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        Deadline deadline \u003d new Deadline(description, by);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        if (isDone) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            deadline.markAsDone();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return deadline;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return \"[\" + DEADLINE_ICON + \"]\" + super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "lwxymere"
         },
@@ -1405,7 +2471,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 15
+      "lwxymere": 34
     }
   },
   {
@@ -1438,7 +2504,7 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    protected String time;"
+        "content": "    protected static final String EVENT_ICON \u003d \"E\";"
       },
       {
         "lineNumber": 5,
@@ -1452,66 +2518,199 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public Event(String description, String time) {"
+        "content": "    protected String time;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.time \u003d time;"
+        "content": "    public Event(String description, String time) {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        this.time \u003d time;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        return \"[E]\" + super.toString() + \" (at: \" + time + \")\";"
+        "content": "    @Override"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "    public String encodeTask() {"
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return String.format(\"%s|%s|%s|%s\", EVENT_ICON, isDone, description, time);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public static Event decodeTask(String encodedTask) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String[] tokens \u003d encodedTask.split(\"\\\\\" + DELIMITER);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        boolean isDone \u003d Boolean.parseBoolean(tokens[1]);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String description \u003d tokens[2];"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String time \u003d tokens[3];"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        Event event \u003d new Event(description, time);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        if (isDone) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            event.markAsDone();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return event;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return \"[\" + EVENT_ICON + \"]\" + super.toString() + \" (at: \" + time + \")\";"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "lwxymere"
         },
@@ -1519,7 +2718,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 15
+      "lwxymere": 34
     }
   },
   {
@@ -1545,77 +2744,77 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "public class Task {"
+        "content": "public abstract class Task {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    protected String description;"
+        "content": "    protected static final String DELIMITER \u003d \"|\";"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    protected boolean isDone;"
+        "content": "    protected static final String TASK_DONE_ICON \u003d \"✓\";"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "    protected static final String TASK_NOT_DONE_ICON \u003d \"✘\";"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public Task (String description) {"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.description \u003d description;"
+        "content": "    protected String description;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.isDone \u003d false;"
+        "content": "    protected boolean isDone;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "    public Task (String description) {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public String getStatusIcon() {"
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
+        "content": "        this.isDone \u003d false;"
       },
       {
         "lineNumber": 14,
@@ -1636,14 +2835,14 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public void markAsDone() {"
+        "content": "    public String getStatusIcon() {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        this.isDone \u003d true;"
+        "content": "        return (isDone ? TASK_DONE_ICON : TASK_NOT_DONE_ICON);"
       },
       {
         "lineNumber": 18,
@@ -1664,31 +2863,73 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    @Override"
+        "content": "    public void markAsDone() {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public String toString() {"
+        "content": "        this.isDone \u003d true;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        return \"[\" + getStatusIcon() + \"] \" + description;"
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 24,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public abstract String encodeTask();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return \"[\" + getStatusIcon() + \"] \" + description;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
         "author": {
           "gitId": "lwxymere"
         },
@@ -1696,7 +2937,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 24
+      "lwxymere": 30
     }
   },
   {
@@ -1729,59 +2970,185 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public Todo(String description) {"
+        "content": "    protected static final String TODO_ICON \u003d \"T\";"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "    public Todo(String description) {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": ""
+        "content": "        super(description);"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "        return \"[T]\" + super.toString();"
+        "content": "    @Override"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "    }"
+        "content": "    public String encodeTask() {"
       },
       {
         "lineNumber": 12,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return String.format(\"%s|%s|%s\", TODO_ICON, isDone, description);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public static Todo decodeTask(String encodedTask) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String[] tokens \u003d encodedTask.split(\"\\\\\" + DELIMITER);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        boolean isDone \u003d Boolean.parseBoolean(tokens[1]);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        String description \u003d tokens[2];"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        Todo todo \u003d new Todo(description);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        if (isDone) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "            todo.markAsDone();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return todo;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "        return \"[\" + TODO_ICON + \"]\" + super.toString();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
         "author": {
           "gitId": "lwxymere"
         },
@@ -1789,7 +3156,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 12
+      "lwxymere": 30
     }
   },
   {
@@ -1871,654 +3238,815 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Task added:"
+        "content": "\u003e You have no tasks to be deleted"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "You have 1 task in the list"
+        "content": "\u003e Task added:"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  [T][?] borrow book"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Quite a few tasks you got there"
+        "content": "You have 1 task in the list"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  1. [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Quite a few tasks you got there"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Task added:"
+        "content": "  1. [T][?] borrow book"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [D][?] return book (by: Sunday)"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "You have 2 tasks in the list"
+        "content": "\u003e Task added:"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  [D][?] return book (by: Sunday)"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Task added:"
+        "content": "You have 2 tasks in the list"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "You have 3 tasks in the list"
+        "content": "\u003e Task added:"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Quite a few tasks you got there"
+        "content": "You have 3 tasks in the list"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  1. [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  2. [D][?] return book (by: Sunday)"
+        "content": "\u003e Quite a few tasks you got there"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "  1. [T][?] borrow book"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  2. [D][?] return book (by: Sunday)"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Well, that\u0027s one task down"
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [D][?] return book (by: Sunday)"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Well, that\u0027s one task down"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Quite a few tasks you got there"
+        "content": "  [D][?] return book (by: Sunday)"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  1. [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  2. [D][?] return book (by: Sunday)"
+        "content": "\u003e Quite a few tasks you got there"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "  1. [T][?] borrow book"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  2. [D][?] return book (by: Sunday)"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Well, that\u0027s one task down"
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Well, that\u0027s one task down"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Well, that\u0027s one task down"
+        "content": "  [T][?] borrow book"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Well, that\u0027s one task down"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Quite a few tasks you got there"
+        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  1. [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  2. [D][?] return book (by: Sunday)"
+        "content": "\u003e Quite a few tasks you got there"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "  1. [T][?] borrow book"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  2. [D][?] return book (by: Sunday)"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Task added:"
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [D][?] finish reading book (by: Sat maybe?)"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "You have 4 tasks in the list"
+        "content": "\u003e Task added:"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  [D][?] finish reading book (by: Sat maybe?)"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Task added:"
+        "content": "You have 4 tasks in the list"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [T][?] i want to write a slash here /by doing sth like this"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "You have 5 tasks in the list"
+        "content": "\u003e Task added:"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  [T][?] i want to write a slash here /by doing sth like this"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Quite a few tasks you got there"
+        "content": "You have 5 tasks in the list"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  1. [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  2. [D][?] return book (by: Sunday)"
+        "content": "\u003e Quite a few tasks you got there"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "  1. [T][?] borrow book"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  4. [D][?] finish reading book (by: Sat maybe?)"
+        "content": "  2. [D][?] return book (by: Sunday)"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  5. [T][?] i want to write a slash here /by doing sth like this"
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  4. [D][?] finish reading book (by: Sat maybe?)"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Well, that\u0027s one task down"
+        "content": "  5. [T][?] i want to write a slash here /by doing sth like this"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Well, that\u0027s one task down"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Well, that\u0027s one task down"
+        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [D][?] finish reading book (by: Sat maybe?)"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Well, that\u0027s one task down"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Well, that\u0027s one task down"
+        "content": "  [D][?] finish reading book (by: Sat maybe?)"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [T][?] i want to write a slash here /by doing sth like this"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Well, that\u0027s one task down"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Quite a few tasks you got there"
+        "content": "  [T][?] i want to write a slash here /by doing sth like this"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  1. [T][?] borrow book"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  2. [D][?] return book (by: Sunday)"
+        "content": "\u003e Task deleted:"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "  [T][?] i want to write a slash here /by doing sth like this"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  4. [D][?] finish reading book (by: Sat maybe?)"
+        "content": "You have 4 tasks in the list"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  5. [T][?] i want to write a slash here /by doing sth like this"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Quite a few tasks you got there"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e ☹ OOPS!!! The description of a todo cannot be empty"
+        "content": "  1. [T][?] borrow book"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  2. [D][?] return book (by: Sunday)"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e ☹ OOPS!!! The description and date of a deadline cannot be empty"
+        "content": "  3. [E][?] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "  4. [D][?] finish reading book (by: Sat maybe?)"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e ☹ OOPS!!! The description and date of a deadline cannot be empty"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e ☹ OOPS!!! The description of a todo cannot be empty"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e ☹ OOPS!!! The description and date of a deadline cannot be empty"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e ☹ OOPS!!! The description and date of a deadline cannot be empty"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Task added:"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [D][?] to-trim deadline (by: to-trim date)"
+        "content": "\u003e ☹ OOPS!!! The description and date of a deadline cannot be empty"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "You have 6 tasks in the list"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e ☹ OOPS!!! The description and date of a deadline cannot be empty"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e ☹ OOPS!!! The description and date of an event cannot be empty"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e Task added:"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e ☹ OOPS!!! The description and date of an event cannot be empty"
+        "content": "  [D][?] to-trim deadline (by: to-trim date)"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "You have 5 tasks in the list"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e ☹ OOPS!!! The description and date of an event cannot be empty"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e ☹ OOPS!!! The description and date of an event cannot be empty"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Task added:"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "  [E][?] to-trim event (at: to-trim date)"
+        "content": "\u003e ☹ OOPS!!! The description and date of an event cannot be empty"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "You have 7 tasks in the list"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "_________________________________________________"
+        "content": "\u003e ☹ OOPS!!! The description and date of an event cannot be empty"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "\u003e Goodbye"
+        "content": "_________________________________________________"
       },
       {
         "lineNumber": 104,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task added:"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [E][?] to-trim event (at: to-trim date)"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 6 tasks in the list"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Please specify a task number between 1 and 6"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task deleted:"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [D][?] return book (by: Sunday)"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 5 tasks in the list"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Task deleted:"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  [E][?] project meeting (at: Mon 2-4pm)"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "You have 4 tasks in the list"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Quite a few tasks you got there"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  1. [T][?] borrow book"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  2. [D][?] finish reading book (by: Sat maybe?)"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  3. [D][?] to-trim deadline (by: to-trim date)"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "  4. [E][?] to-trim event (at: to-trim date)"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Please specify a task number between 1 and 4"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "_________________________________________________"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "\u003e Goodbye"
+      },
+      {
+        "lineNumber": 127,
         "author": {
           "gitId": "lwxymere"
         },
@@ -2526,7 +4054,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 104
+      "lwxymere": 127
     }
   },
   {
@@ -2538,185 +4066,234 @@
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "todo borrow book"
+        "content": "delete 1"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "list"
+        "content": "todo borrow book"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "deadline return book /by Sunday"
+        "content": "list"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "event project meeting /at Mon 2-4pm"
+        "content": "deadline return book /by Sunday"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "list"
+        "content": "event project meeting /at Mon 2-4pm"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "done 2"
+        "content": "list"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "list"
+        "content": "done 2"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "done 1"
+        "content": "list"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "done 3"
+        "content": "done 1"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "list"
+        "content": "done 3"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "deadline finish reading book /by  Sat maybe?"
+        "content": "list"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "todo i want to write a slash here /by doing sth like this"
+        "content": "deadline finish reading book /by  Sat maybe?"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "list"
+        "content": "todo i want to write a slash here /by doing sth like this"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "done 3"
+        "content": "list"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "done 4"
+        "content": "done 3"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "done 5"
+        "content": "done 4"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "list"
+        "content": "done 5"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "todo"
+        "content": "delete 5"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "deadline"
+        "content": "list"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "deadline   /by some time"
+        "content": "todo"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "deadline  hello /by"
+        "content": "deadline"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "deadline    to-trim deadline      /by   to-trim date"
+        "content": "deadline   /by some time"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "event"
+        "content": "deadline  hello /by"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "event   /at  some time"
+        "content": "deadline    to-trim deadline      /by   to-trim date"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "event  yes  no  /at"
+        "content": "event"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "lwxymere"
         },
-        "content": "event       to-trim event    /at   to-trim date"
+        "content": "event   /at  some time"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "event  yes  no  /at"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "event       to-trim event    /at   to-trim date"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "delete 0"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "delete 2"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "delete 2"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "list"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "lwxymere"
+        },
+        "content": "delete 5"
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "lwxymere"
         },
@@ -2724,7 +4301,7 @@
       }
     ],
     "authorContributionMap": {
-      "lwxymere": 27
+      "lwxymere": 34
     }
   },
   {
