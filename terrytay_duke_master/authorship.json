@@ -50,479 +50,1039 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.io.File;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "public class Data {"
+        "content": "import java.io.FileWriter;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    private static String[] availableTasks \u003d {\"todo\", \"deadline\", \"event\"};"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    private static ArrayList\u003cTodo\u003e todos;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public Data() {"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        this.todos \u003d new ArrayList\u003cTodo\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "public class Data {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "    private static String[] availableTasks \u003d {\"todo\", \"deadline\", \"event\"};"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public static void newTask(String cmd) throws DukeException {"
+        "content": "    private static ArrayList\u003cTodo\u003e todos;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        if (cmd.isEmpty()) {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            throw new DukeException(\"Please type something.\");"
+        "content": "    public Data() throws FileNotFoundException {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        }"
+        "content": "        this.todos \u003d new ArrayList\u003cTodo\u003e();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        if (!cmd.contains(\" \") \u0026\u0026 cmd.length() \u003e 0) {"
+        "content": "        File f \u003d new File(\"src/main/java/duke/data.txt\");"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            if (cmd.equals(availableTasks[0]) || cmd.equals(availableTasks[1])"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                    || cmd.equals(availableTasks[2])) {"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                throw new DukeException(\"OOPS!!! The description of a \" + cmd + \" cannot be empty.\");"
+        "content": "        // Adapted from https://nus-cs2113-ay1920s2.github.io/website/schedule/week6/topics.html"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            }"
+        "content": "        Scanner s \u003d new Scanner(f);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            throw new DukeException(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+        "content": "        int i \u003d 0;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        }"
+        "content": "        while (s.hasNext()) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "            String line \u003d s.nextLine();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        String taskType \u003d cmd.substring(0, cmd.indexOf(\" \"));"
+        "content": "            String taskType \u003d line.substring(0, line.indexOf(\" \"));"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        String description;"
+        "content": "            String description;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        switch (taskType) {"
+        "content": "            switch (taskType) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        case \"todo\":"
+        "content": "                case \"todo\":"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            if (cmd.indexOf(\" \") + 1 \u003e\u003d cmd.length()) {"
+        "content": "                    description \u003d line.substring(line.indexOf(\" \")+1);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                throw new DukeException(\"OOPS!!! The description of a todo cannot be empty. Follow format: todo [message]\");"
+        "content": "                    todos.add(new Todo(description));"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            }"
+        "content": "                    break;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            description \u003d cmd.substring(cmd.indexOf(\" \")+1);"
+        "content": "                case \"deadline\":"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            todos.add(new Todo(description));"
+        "content": "                    description \u003d line.substring(line.indexOf(\" \") + 1, line.indexOf(\"/\") - 1);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            break;"
+        "content": "                    String by \u003d line.substring(line.indexOf(\"/\") + 4);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        case \"deadline\":"
+        "content": "                    todos.add(new Deadline(description, by));"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            if ((cmd.indexOf(\" \") + 1 \u003e\u003d cmd.length() || cmd.contains(\"/by\") \u003d\u003d false) \u0026\u0026 cmd.length() \u003e 0) {"
+        "content": "                    break;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                throw new DukeException(\"OOPS!!! The description of a deadline cannot be empty. Follow format: dead\" +"
+        "content": "                case \"event\":"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                        \"line [message] /by [date]\");"
+        "content": "                    description \u003d line.substring(line.indexOf(\" \")+1, line.indexOf(\"/\") - 1);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            }"
+        "content": "                    String at \u003d line.substring(line.indexOf(\"/\") + 4);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            description \u003d cmd.substring(cmd.indexOf(\" \") + 1, cmd.indexOf(\"/\") - 1);"
+        "content": "                    todos.add(new Event(description, at));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            String by \u003d cmd.substring(cmd.indexOf(\"/\") + 4);"
+        "content": "                    break;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            todos.add(new Deadline(description, by));"
+        "content": "                default:"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            break;"
+        "content": "                    break;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        case \"event\":"
+        "content": "            }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            if ((cmd.indexOf(\" \") + 1 \u003e\u003d cmd.length() || cmd.contains(\"/at\") \u003d\u003d false) \u0026\u0026 cmd.length() \u003e 0) {"
+        "content": "            boolean isDone \u003d Boolean.parseBoolean(s.nextLine());"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                throw new DukeException(\"OOPS!!! The description of a event cannot be empty. Follow format: event [message] /at [location]\");"
+        "content": "            if (isDone) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            }"
+        "content": "                setDone(i);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            description \u003d cmd.substring(cmd.indexOf(\" \")+1, cmd.indexOf(\"/\") - 1);"
+        "content": "            }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            String at \u003d cmd.substring(cmd.indexOf(\"/\") + 4);"
+        "content": "            i++;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            todos.add(new Event(description, at));"
+        "content": "        }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            break;"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        default:"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            throw new DukeException(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        }"
+        "content": "    public static void newTask(String cmd) throws DukeException {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"  Got it. I\u0027ve added this task:\");"
+        "content": "        if (cmd.isEmpty()) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"     \" + todos.get(getSize() - 1));"
+        "content": "            throw new DukeException(\"Please type something.\");"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"  Now you have \" + getSize() + \" tasks in the list.\");"
+        "content": "        }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "        if (cmd.substring(0, 6).equals(\"delete\")) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "            todos.remove(Integer.parseInt(cmd.substring(cmd.indexOf(\" \")+1))-1);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "            System.out.println(\"  Noted. I\u0027ve removed this task:\");"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public static int getSize() {"
+        "content": "            System.out.println(\"     \" + todos.get(getSize() - 1));"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        return todos.size();"
+        "content": "            System.out.println(\"  Now you have \" + getSize() + \" tasks in the list.\");"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "            if (!cmd.contains(\" \") \u0026\u0026 cmd.length() \u003e 0) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public String printItem(int i) {"
+        "content": "                if (cmd.equals(availableTasks[0]) || cmd.equals(availableTasks[1])"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        return todos.get(i).toString();"
+        "content": "                        || cmd.equals(availableTasks[2])) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "                    throw new DukeException(\"OOPS!!! The description of a \" + cmd + \" cannot be empty.\");"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public void setDone(int i) {"
+        "content": "                }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        todos.get(i).setDone();"
+        "content": "                throw new DukeException(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 75,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            String taskType \u003d cmd.substring(0, cmd.indexOf(\" \"));"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            String description;"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            switch (taskType) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                case \"todo\":"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    if (cmd.indexOf(\" \") + 1 \u003e\u003d cmd.length()) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                        throw new DukeException(\"OOPS!!! The description of a todo cannot be empty. Follow format: todo [message]\");"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    description \u003d cmd.substring(cmd.indexOf(\" \") + 1);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    todos.add(new Todo(description));"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                case \"deadline\":"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    if ((cmd.indexOf(\" \") + 1 \u003e\u003d cmd.length() || cmd.contains(\"/by\") \u003d\u003d false) \u0026\u0026 cmd.length() \u003e 0) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                        throw new DukeException(\"OOPS!!! The description of a deadline cannot be empty. Follow format: dead\" +"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                                \"line [message] /by [date]\");"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    description \u003d cmd.substring(cmd.indexOf(\" \") + 1, cmd.indexOf(\"/\") - 1);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    String by \u003d cmd.substring(cmd.indexOf(\"/\") + 4);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    todos.add(new Deadline(description, by));"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                case \"event\":"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    if ((cmd.indexOf(\" \") + 1 \u003e\u003d cmd.length() || cmd.contains(\"/at\") \u003d\u003d false) \u0026\u0026 cmd.length() \u003e 0) {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                        throw new DukeException(\"OOPS!!! The description of a event cannot be empty. Follow format: event [message] /at [location]\");"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    description \u003d cmd.substring(cmd.indexOf(\" \") + 1, cmd.indexOf(\"/\") - 1);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    String at \u003d cmd.substring(cmd.indexOf(\"/\") + 4);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    todos.add(new Event(description, at));"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    throw new DukeException(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            System.out.println(\"  Got it. I\u0027ve added this task:\");"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            System.out.println(\"     \" + todos.get(getSize() - 1));"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            System.out.println(\"  Now you have \" + getSize() + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public static int getSize() {"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        return todos.size();"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public String printItem(int i) {"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        return todos.get(i).toString();"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public void setDone(int i) {"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        todos.get(i).setDone();"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public String getDescription(int i) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        return todos.get(i).getDescription();"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public void saveToFile() throws IOException {"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(\"src/main/java/duke/data.txt\");"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        for (Todo todo : todos) {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            String description \u003d todo.getDescription();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            boolean isDone \u003d todo.isItDone();"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            char taskType \u003d todo.getTaskType();"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            String toBeWritten \u003d null;"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            String at \u003d null;"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            String by \u003d null;"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            switch (taskType) {"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                case \u0027T\u0027:"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    toBeWritten \u003d \"todo \" + description;"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                case \u0027E\u0027:"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    Event e \u003d (Event) todo;"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    toBeWritten \u003d \"event \" + description + \" /at \" + e.getAt() ;"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                case \u0027D\u0027:"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    Deadline d \u003d (Deadline) todo;"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    toBeWritten \u003d \"deadline \" + description + \" /by \" + d.getBy(); ;"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            fw.write(toBeWritten);"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "            fw.write(\"\\n\" + isDone + \"\\n\");"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        fw.close();"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 155,
         "author": {
           "gitId": "terrytay"
         },
@@ -530,7 +1090,7 @@
       }
     ],
     "authorContributionMap": {
-      "terrytay": 75
+      "terrytay": 155
     }
   },
   {
@@ -556,77 +1116,77 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "public class Duke implements Logo {"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public static void main(String[] args) throws DukeException {"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "public class Duke implements Logo {"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+        "content": "    public static void main(String[] args) throws DukeException, IOException {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"What can I do for you?\");"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "        Data data \u003d new Data();"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        Scanner input \u003d new Scanner(System.in);"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "terrytay"
+          "gitId": "-"
         },
-        "content": "        String cmd \u003d input.nextLine();"
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        Data data \u003d new Data();"
+        "content": "        System.out.println(\"What can I do for you?\");"
       },
       {
         "lineNumber": 14,
@@ -640,14 +1200,14 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        while (!cmd.equals(\"bye\")) {"
+        "content": "        Scanner input \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            lineBreak();"
+        "content": "        String cmd \u003d input.nextLine();"
       },
       {
         "lineNumber": 17,
@@ -661,63 +1221,63 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            if (cmd.equals(\"list\")) {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                System.out.println(\"  Here are the tasks in your list:\");"
+        "content": "        while (!cmd.equals(\"bye\")) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                for (int k \u003d 1; k \u003c\u003d data.getSize(); ++k) {"
+        "content": "            lineBreak();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                    System.out.println(\"    \" + k + \". \" + data.printItem(k-1));"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                }"
+        "content": "            if (cmd.equals(\"list\")) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "                System.out.println(\"  Here are the tasks in your list:\");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            } else if (cmd.contains(\"done\")){"
+        "content": "                for (int k \u003d 1; k \u003c\u003d data.getSize(); ++k) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                int option \u003d Integer.parseInt(cmd.substring(cmd.length()-1));"
+        "content": "                    System.out.println(\"    \" + k + \". \" + data.printItem(k-1));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                data.setDone(option-1);"
+        "content": "                }"
       },
       {
         "lineNumber": 27,
@@ -731,119 +1291,119 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            } else {"
+        "content": "            } else if (cmd.contains(\"done\")){"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                try {"
+        "content": "                int option \u003d Integer.parseInt(cmd.substring(cmd.length()-1));"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                    Data.newTask(cmd);"
+        "content": "                data.setDone(option-1);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                } catch(DukeException e) {"
+        "content": "                System.out.println(\"  Nice! I\u0027ve marked this task as done:\");"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                    System.out.println(e);"
+        "content": "                System.out.println(\"  \" + \"[✓] \" + data.getDescription(option-1));"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            }"
+        "content": "            } else {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            "
+        "content": "                try {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            lineBreak();"
+        "content": "                    Data.newTask(cmd);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            System.out.println();"
+        "content": "                } catch(DukeException e) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "            cmd \u003d input.nextLine();"
+        "content": "                    System.out.println(e);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        lineBreak();"
+        "content": "            "
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"  Bye. Hope to see you again soon!\");"
+        "content": "            lineBreak();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        lineBreak();"
+        "content": "            System.out.println();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "            cmd \u003d input.nextLine();"
       },
       {
         "lineNumber": 45,
@@ -857,38 +1417,80 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public final static void lineBreak() {"
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"  ____________________________________________________________\");"
+        "content": "        lineBreak();"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "-"
+          "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"  Bye. Hope to see you again soon!\");"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "-"
+          "gitId": "terrytay"
         },
-        "content": "}"
+        "content": "        lineBreak();"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "        data.saveToFile();"
       },
       {
         "lineNumber": 51,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public final static void lineBreak() {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        System.out.println(\"  ____________________________________________________________\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 57,
         "author": {
           "gitId": "terrytay"
         },
@@ -896,7 +1498,7 @@
       }
     ],
     "authorContributionMap": {
-      "terrytay": 48,
+      "terrytay": 54,
       "-": 3
     }
   },
@@ -1144,14 +1746,14 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public char getTaskType() {"
+        "content": "    public String getBy() {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        return taskType;"
+        "content": "        return this.by;"
       },
       {
         "lineNumber": 16,
@@ -1172,14 +1774,14 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public String toString() {"
+        "content": "    public char getTaskType() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        return super.toString() + \" (by: \" + by + \")\";"
+        "content": "        return taskType;"
       },
       {
         "lineNumber": 20,
@@ -1193,11 +1795,39 @@
         "author": {
           "gitId": "terrytay"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        return super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "terrytay"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "terrytay": 21
+      "terrytay": 25
     }
   },
   {
@@ -1328,14 +1958,14 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public String toString() {"
+        "content": "    public String getAt() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        return super.toString() + \" (at: \" + at + \")\";"
+        "content": "        return this.at;"
       },
       {
         "lineNumber": 20,
@@ -1349,11 +1979,39 @@
         "author": {
           "gitId": "terrytay"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        return super.toString() + \" (at: \" + at + \")\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "terrytay"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "terrytay": 21
+      "terrytay": 25
     }
   },
   {
@@ -1477,63 +2135,63 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public void setDone() {"
+        "content": "    public String getDescription() {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        this.isDone \u003d true;"
+        "content": "        return this.description;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"  Nice! I\u0027ve marked this task as done:\");"
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        System.out.println(\"  \" + \"[✓] \" + this.description);"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "    public boolean isItDone() {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "terrytay"
         },
-        "content": ""
+        "content": "        return this.isDone;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public char getTaskType() {"
+        "content": "    }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        return taskType;"
+        "content": "    public void setDone() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "        this.isDone \u003d true;"
       },
       {
         "lineNumber": 26,
@@ -1547,24 +2205,66 @@
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    public String toString() {"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "        return String.format(\"[%c]\", getTaskType()) + isDone() + this.description;"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "terrytay"
         },
-        "content": "    }"
+        "content": "    public char getTaskType() {"
       },
       {
         "lineNumber": 30,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        return taskType;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "        return String.format(\"[%c]\", getTaskType()) + isDone() + this.description;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "terrytay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
         "author": {
           "gitId": "terrytay"
         },
@@ -1572,7 +2272,7 @@
       }
     ],
     "authorContributionMap": {
-      "terrytay": 30
+      "terrytay": 36
     }
   }
 ]

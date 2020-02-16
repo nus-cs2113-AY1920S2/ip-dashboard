@@ -6731,91 +6731,91 @@
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.io.FileReader;"
+        "content": "import java.io.FileOutputStream;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.io.FileWriter;"
+        "content": "import java.io.FileReader;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.io.IOException;"
+        "content": "import java.io.FileWriter;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.io.InputStream;"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.io.InputStreamReader;"
+        "content": "import java.nio.file.Path;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.io.OutputStream;"
+        "content": "import java.nio.file.Paths;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.nio.file.Path;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.nio.file.Paths;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import java.util.List;"
+        "content": "import duke.task.TaskList;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": ""
+        "content": "import storage.InvalidStorageFilePathException;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import duke.task.TaskList;"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import storage.InvalidStorageFilePathException;"
+        "content": "import static misc.Messages.MESSAGE_READ_WRITE_FAILURE;"
       },
       {
         "lineNumber": 20,
@@ -6829,21 +6829,21 @@
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "import static misc.Messages.MESSAGE_READ_WRITE_FAILURE;"
+        "content": "public class Storage {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": ""
+        "content": "    "
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "public class Storage {"
+        "content": "    public static final String DEFAULT_STORAGE_FILEPATH \u003d \"storage.txt\";"
       },
       {
         "lineNumber": 24,
@@ -6857,7 +6857,7 @@
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public static final String DEFAULT_STORAGE_FILEPATH \u003d \"data/storage.txt\";"
+        "content": "    public final Path path;"
       },
       {
         "lineNumber": 26,
@@ -6871,360 +6871,381 @@
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public final Path path;"
+        "content": "    public Storage() {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    "
+        "content": "        this(DEFAULT_STORAGE_FILEPATH);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public Storage() {"
+        "content": "    }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        this(DEFAULT_STORAGE_FILEPATH);"
+        "content": "    "
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    }"
+        "content": "    "
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    "
+        "content": "    public Storage(String filePath) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    "
+        "content": "        this.path \u003d Paths.get(filePath);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public Storage(String filePath) {"
+        "content": "        "
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        this.path \u003d Paths.get(filePath);"
+        "content": "        if (!isValidPath(this.path)) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        "
+        "content": "            throw new InvalidStorageFilePathException(this.path.toString(),"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        if (!isValidPath(this.path)) {"
+        "content": "                     \"The current file does not end with a .txt\");"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            throw new InvalidStorageFilePathException(this.path.toString(),"
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "                     \"The current file does not end with a .txt\");"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        }"
+        "content": "    "
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    }"
+        "content": "    public TaskList load() throws IOException {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    "
+        "content": "        List\u003cString\u003e lines \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public TaskList load() throws IOException {"
+        "content": "        "
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        List\u003cString\u003e lines \u003d new ArrayList\u003c\u003e();"
+        "content": "        // Find an existing storage.txt file first, else create a new storage.txt."
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        "
+        "content": "        File f \u003d new File(this.path.toString()); "
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        try {"
+        "content": "        f.createNewFile();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            String line;"
+        "content": "        FileOutputStream outputFile \u003d new FileOutputStream(f, false);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            File f \u003d new File(this.path.toString());        "
+        "content": "        outputFile.close();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            BufferedReader br \u003d new BufferedReader(new FileReader(f));"
+        "content": "        "
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            while ((line \u003d br.readLine()) !\u003d null) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "                lines.add(line);"
+        "content": "            String line;                       "
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            }"
+        "content": "            BufferedReader br \u003d new BufferedReader(new FileReader(this.path.toString()));"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "            while ((line \u003d br.readLine()) !\u003d null) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            throw new StorageReadWriteException(MESSAGE_READ_WRITE_FAILURE);"
+        "content": "                lines.add(line);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        return TaskListDecoder.decodeTaskList(lines);"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    }"
+        "content": "            throw new StorageReadWriteException(MESSAGE_READ_WRITE_FAILURE);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "     "
+        "content": "        }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public void save(String filePath, TaskList taskList) throws IOException {      "
+        "content": "        return TaskListDecoder.decodeTaskList(lines);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        try {"
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            FileWriter fw \u003d new FileWriter(filePath);"
+        "content": "     "
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            BufferedWriter bw \u003d new BufferedWriter(fw);"
+        "content": "    public void save(String filePath, TaskList taskList) throws IOException {      "
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            String encodedTaskList \u003d TaskListEncoder.encodeTaskList(taskList); "
+        "content": "        try {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            bw.write(encodedTaskList);"
+        "content": "            FileWriter fw \u003d new FileWriter(filePath);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            bw.close();"
+        "content": "            BufferedWriter bw \u003d new BufferedWriter(fw);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "            String encodedTaskList \u003d TaskListEncoder.encodeTaskList(taskList); "
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "            throw new StorageReadWriteException(MESSAGE_READ_WRITE_FAILURE);"
+        "content": "            bw.write(encodedTaskList);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        }        "
+        "content": "            bw.close();"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    }"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    "
+        "content": "            throw new StorageReadWriteException(MESSAGE_READ_WRITE_FAILURE);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public String getFilePath() {"
+        "content": "        }        "
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        return this.path.toString();"
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    }"
+        "content": "    "
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    "
+        "content": "    public String getFilePath() {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    public boolean isValidPath(Path filePath) {"
+        "content": "        return this.path.toString();"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "        return filePath.toString().endsWith(\".txt\");"
+        "content": "    }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
-        "content": "    }   "
+        "content": "    "
       },
       {
         "lineNumber": 78,
+        "author": {
+          "gitId": "JosephLimWeiJie"
+        },
+        "content": "    public boolean isValidPath(Path filePath) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JosephLimWeiJie"
+        },
+        "content": "        return filePath.toString().endsWith(\".txt\");"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "JosephLimWeiJie"
+        },
+        "content": "    }   "
+      },
+      {
+        "lineNumber": 81,
         "author": {
           "gitId": "JosephLimWeiJie"
         },
@@ -7232,7 +7253,7 @@
       }
     ],
     "authorContributionMap": {
-      "JosephLimWeiJie": 78
+      "JosephLimWeiJie": 81
     }
   },
   {
