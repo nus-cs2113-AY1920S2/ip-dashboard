@@ -1,6 +1,6 @@
 [
   {
-    "path": "src/main/java/Deadline.java",
+    "path": "src/main/java/duke/Duke.java",
     "fileType": "java",
     "lines": [
       {
@@ -8,7 +8,7 @@
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "package duke;"
       },
       {
         "lineNumber": 2,
@@ -22,84 +22,84 @@
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    protected String by;"
+        "content": "import duke.task.Deadline;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "import duke.task.Event;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    /**"
+        "content": "import duke.task.Task;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "     * Returns the task created with the specified"
+        "content": "import duke.task.Todo;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "     * description."
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "     *"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "     * @param description the description of the task"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "Shannonwje"
+          "gitId": "-"
         },
-        "content": "     */"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    public Deadline(String description, String by) {"
+        "content": "    private static final String STANDARD_SEPARATOR \u003d \"____________________________________________________________\";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        super(description);"
+        "content": "    private static final String SHANNON \u003d \"Shannon\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        this.by \u003d by;"
+        "content": "    private static Task[] listOfTasks \u003d new Task[100]; // array of tasks that is \u003c\u003d100"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    }"
+        "content": "    private static int sizeOfList \u003d 0; // number of items in the list"
       },
       {
         "lineNumber": 15,
@@ -111,33 +111,1422 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "Shannonwje"
+          "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    public String toString() {"
+        "content": "        printWelcomeMessage();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        return \"[D]\" + super.toString() + \" (by: \" + this.by + \")\";"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    }"
+        "content": "        // Reads in the first command from the user"
       },
       {
         "lineNumber": 20,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        Scanner scanner \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String inputLine \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String inputCommand \u003d inputLine.substring(0, 3);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        while (!inputCommand.contains(\"bye\")) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            if (inputCommand.contains(\"lis\")) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                // prints out the list"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                printsOutTheList();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            } else if (inputCommand.contains(\"don\")) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                // marks task in the stated index as done"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                indicateTaskAsDone(inputLine);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                    addInNewTask(inputLine);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                    System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                    System.out.println(\"\\u2639 OOPS!!! The description of a \" + inputLine + \" cannot be empty.\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                    System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                    System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                    System.out.println(\"\\u2639 OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                    System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                // adds a new task into the list"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                //addInNewTask(inputLine);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            // take in the next command"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            inputLine \u003d scanner.nextLine();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            inputCommand \u003d inputLine.substring(0, 3);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        printExitMessage();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Prints the exit message"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void printExitMessage() {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\" Bye. Hope to see you again soon!\");"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Differentiates task and adds into array"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * @param inputLine name of the task to add"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void addInNewTask(String inputLine) throws DukeException {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String inputCommand \u003d inputLine.substring(0, 4);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        if (inputCommand.contains(\"todo\")) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            if (inputLine.equals(\"todo\")) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                throw new IndexOutOfBoundsException();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            addToDo(inputLine);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        } else if (inputCommand.contains(\"dead\")) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            if (inputLine.equals(\"deadline\")) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                throw new IndexOutOfBoundsException();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            addDeadline(inputLine);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        } else if (inputCommand.contains(\"even\")){"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            if (inputLine.equals(\"event\")) {"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "                throw new IndexOutOfBoundsException();"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            addEvent(inputLine);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        // creates new task"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        // informs user that task has been added to list"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\" Got it. I\u0027ve added this task:\");"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\"  \" + listOfTasks[sizeOfList-1].toString());"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\" Now you have \" + sizeOfList + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Adds in new Event to the array,"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * @param inputLine name of the task to add"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void addEvent(String inputLine) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String description;"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        int indexOfEvent \u003d inputLine.indexOf(\"/at\") + 4;"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        int descriptionStart \u003d 6;"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        int descriptionEnd \u003d inputLine.indexOf(\" /at\");"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        description \u003d inputLine.substring(descriptionStart, descriptionEnd);"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String at \u003d inputLine.substring(indexOfEvent);"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        Event newEvent \u003d new Event(description, at);"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        listOfTasks[sizeOfList] \u003d newEvent;"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        sizeOfList++;"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Adds in new Deadline to the array,"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * @param inputLine name of the task to add"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void addDeadline(String inputLine) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String description;"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        int indexOfDeadline \u003d inputLine.indexOf(\"/by\") + 4;"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        int descriptionStart \u003d 9;"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        int descriptionEnd \u003d inputLine.indexOf(\" /by\");"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        description \u003d inputLine.substring(descriptionStart, descriptionEnd);"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String by \u003d inputLine.substring(indexOfDeadline);"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        Deadline newDeadline \u003d new Deadline(description, by);"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        listOfTasks[sizeOfList] \u003d newDeadline;"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        sizeOfList++;"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Adds in new Todo to array,"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * @param inputLine name of the task to add"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void addToDo(String inputLine) {"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String description \u003d inputLine.substring(5);"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        Todo newToDo \u003d new Todo(description);"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        listOfTasks[sizeOfList] \u003d newToDo;"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        sizeOfList++;"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Prints acknowledgment that the specified task is done,"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * sets the task in the array to be done"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * @param inputLine name of task to set as done"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void indicateTaskAsDone(String inputLine) {"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\" Nice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        // obtain index of task to set as done"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        String indexInString \u003d inputLine.substring(5);"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        int index \u003d Integer.parseInt(indexInString) - 1;"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        // mark as done"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        listOfTasks[index].markAsDone();"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\"   \" + listOfTasks[index].toString());"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Prints out the entire list"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void printsOutTheList() {"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\" Here are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        for (int i \u003d 0; i \u003c sizeOfList; i++) {"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            int k \u003d i + 1;"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "            System.out.println(\" \" + k + \".\" + listOfTasks[i].toString());"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Prints out the welcome message"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    private static void printWelcomeMessage() {"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\"Hello from \" + SHANNON);"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(\" Hello! I\u0027m \" + SHANNON + System.lineSeparator() + \" What can I do for you?\");"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        System.out.println(STANDARD_SEPARATOR);"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Shannonwje": 209,
+      "-": 4
+    }
+  },
+  {
+    "path": "src/main/java/duke/DukeException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "package duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "public class DukeException extends Exception {"
+      },
+      {
+        "lineNumber": 4,
         "author": {
           "gitId": "Shannonwje"
         },
@@ -145,11 +1534,11 @@
       }
     ],
     "authorContributionMap": {
-      "Shannonwje": 20
+      "Shannonwje": 4
     }
   },
   {
-    "path": "src/main/java/Duke.java",
+    "path": "src/main/java/duke/task/Deadline.java",
     "fileType": "java",
     "lines": [
       {
@@ -157,7 +1546,7 @@
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "import java.util.Scanner;"
+        "content": "package duke.task;"
       },
       {
         "lineNumber": 2,
@@ -169,37 +1558,363 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "Shannonwje"
         },
-        "content": "public class Duke {"
+        "content": "public class Deadline extends Task {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    private static final String STANDARD_SEPARATOR \u003d \"____________________________________________________________\";"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    private static final String SHANNON \u003d \"Shannon\";"
+        "content": "    protected String by;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    private static Task[] listOfTasks \u003d new Task[100]; // array of tasks that is \u003c\u003d100"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    private static int sizeOfList \u003d 0; // number of items in the list"
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Returns the task created with the specified"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * description."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * @param description the description of the task"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    public Deadline(String description, String by) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        this.by \u003d by;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + this.by + \")\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Shannonwje": 22
+    }
+  },
+  {
+    "path": "src/main/java/duke/task/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "package duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * Returns the task created with the specified"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * description."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     * @param description the description of the task"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    public Event(String description, String at) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        this.at \u003d at;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + this.at + \")\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "Shannonwje": 22
+    }
+  },
+  {
+    "path": "src/main/java/duke/task/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "package duke.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    public static final String TICK \u003d \"\\u2713\";"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    public static final String CROSS \u003d \"\\u2718\";"
       },
       {
         "lineNumber": 8,
@@ -211,86 +1926,86 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "Shannonwje"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        printWelcomeMessage();"
+        "content": "     * Returns the task created with the specified"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "     * description."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        // Reads in the first command from the user"
+        "content": "     *"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        Scanner scanner \u003d new Scanner(System.in);"
+        "content": "     * @param description the description of the task"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        String inputLine \u003d scanner.nextLine();"
+        "content": "     */"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        String inputCommand \u003d inputLine.substring(0, 3);"
+        "content": "    public Task(String description) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        while (!inputCommand.contains(\"bye\")) {"
+        "content": "        this.isDone \u003d false;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "            if (inputCommand.contains(\"lis\")) {"
+        "content": "    }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "                // prints out the list"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "                printsOutTheList();"
+        "content": ""
       },
       {
         "lineNumber": 21,
@@ -304,91 +2019,91 @@
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "            } else if (inputCommand.contains(\"don\")) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "                // marks task in the stated index as done"
+        "content": "     * Returns the tick or the cross icon of the specified tsk"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "                indicateTaskAsDone(inputLine);"
+        "content": "     * If the task\u0027s isDone is false, a cross is returned, else its a tick"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "            } else {"
+        "content": "     * @return either tick or cross"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "                // adds a new task into the list"
+        "content": "     */"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "                addInNewTask(inputLine);"
+        "content": "    public String getStatusIcon() {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "        if (isDone) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "            }"
+        "content": "            return TICK;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "            // take in the next command"
+        "content": "        } else {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "            inputLine \u003d scanner.nextLine();"
+        "content": "            return CROSS;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "            inputCommand \u003d inputLine.substring(0, 3);"
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
@@ -402,84 +2117,84 @@
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        printExitMessage();"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "     * Sets the specified task\u0027s isDone to be true"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    /**"
+        "content": "    public void markAsDone() {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "     * Prints the exit message"
+        "content": "        isDone \u003d true;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    private static void printExitMessage() {"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        System.out.println(\" Bye. Hope to see you again soon!\");"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
+        "content": "        return \"[\" + getStatusIcon() + \"] \" + this.description;"
       },
       {
         "lineNumber": 48,
@@ -500,940 +2215,15 @@
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Differentiates task and adds into array"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @param inputLine name of the task to add"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    private static void addInNewTask(String inputLine) {"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        String inputCommand \u003d inputLine.substring(0, 6);"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        if (inputCommand.contains(\"todo\")) {"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "            addToDo(inputLine);"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        } else if (inputCommand.contains(\"dead\")) {"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "            addDeadline(inputLine);"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "            addEvent(inputLine);"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        // creates new task"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        // informs user that task has been added to list"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\" Got it. I\u0027ve added this task:\");"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\"  \" + listOfTasks[sizeOfList-1].toString());"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\" Now you have \" + sizeOfList + \" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Adds in new Event to the array,"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @param inputLine name of the task to add"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    private static void addEvent(String inputLine) {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        String description;"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        int indexOfEvent \u003d inputLine.indexOf(\"/at\") + 4;"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        int descriptionStart \u003d 6;"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        int descriptionEnd \u003d inputLine.indexOf(\" /at\");"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        description \u003d inputLine.substring(descriptionStart, descriptionEnd);"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        String at \u003d inputLine.substring(indexOfEvent);"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        Event newEvent \u003d new Event(description, at);"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        listOfTasks[sizeOfList] \u003d newEvent;"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        sizeOfList++;"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Adds in new Deadline to the array,"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @param inputLine name of the task to add"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    private static void addDeadline(String inputLine) {"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        String description;"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        int indexOfDeadline \u003d inputLine.indexOf(\"/by\") + 4;"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        int descriptionStart \u003d 9;"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        int descriptionEnd \u003d inputLine.indexOf(\" /by\");"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        description \u003d inputLine.substring(descriptionStart, descriptionEnd);"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        String by \u003d inputLine.substring(indexOfDeadline);"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        Deadline newDeadline \u003d new Deadline(description, by);"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        listOfTasks[sizeOfList] \u003d newDeadline;"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        sizeOfList++;"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Adds in new Todo to array,"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @param inputLine name of the task to add"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    private static void addToDo(String inputLine) {"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        String description \u003d inputLine.substring(5);"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        Todo newToDo \u003d new Todo(description);"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        listOfTasks[sizeOfList] \u003d newToDo;"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        sizeOfList++;"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Prints acknowledgment that the specified task is done,"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * sets the task in the array to be done"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @param inputLine name of task to set as done"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    private static void indicateTaskAsDone(String inputLine) {"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\" Nice! I\u0027ve marked this task as done:\");"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        // obtain index of task to set as done"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        String indexInString \u003d inputLine.substring(5);"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        int index \u003d Integer.parseInt(indexInString) - 1;"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        // mark as done"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        listOfTasks[index].markAsDone();"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\"   \" + listOfTasks[index].toString());"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Prints out the entire list"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    private static void printsOutTheList() {"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\" Here are the tasks in your list:\");"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        for (int i \u003d 0; i \u003c sizeOfList; i++) {"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "            int k \u003d i + 1;"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "            System.out.println(\" \" + k + \".\" + listOfTasks[i].toString());"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Prints out the welcome message"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    private static void printWelcomeMessage() {"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\"Hello from \" + SHANNON);"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(\" Hello! I\u0027m \" + SHANNON + System.lineSeparator() + \" What can I do for you?\");"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        System.out.println(STANDARD_SEPARATOR);"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "-"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "Shannonwje": 178,
-      "-": 4
+      "Shannonwje": 50
     }
   },
   {
-    "path": "src/main/java/Event.java",
+    "path": "src/main/java/duke/task/Todo.java",
     "fileType": "java",
     "lines": [
       {
@@ -1441,7 +2231,7 @@
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "public class Event extends Task {"
+        "content": "package duke.task;"
       },
       {
         "lineNumber": 2,
@@ -1452,591 +2242,111 @@
       },
       {
         "lineNumber": 3,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    protected String at;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Returns the task created with the specified"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * description."
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @param description the description of the task"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public Event(String description, String at) {"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        super(description);"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        this.at \u003d at;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        return \"[E]\" + super.toString() + \" (at: \" + this.at + \")\";"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "Shannonwje": 20
-    }
-  },
-  {
-    "path": "src/main/java/Task.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "public class Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    protected String description;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    protected boolean isDone;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public static final String TICK \u003d \"\\u2713\";"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public static final String CROSS \u003d \"\\u2718\";"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Returns the task created with the specified"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * description."
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @param description the description of the task"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public Task(String description) {"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        this.description \u003d description;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        this.isDone \u003d false;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Returns the tick or the cross icon of the specified tsk"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * If the task\u0027s isDone is false, a cross is returned, else its a tick"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * @return either tick or cross"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public String getStatusIcon() {"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        if (isDone) {"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "            return TICK;"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "            return CROSS;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     * Sets the specified task\u0027s isDone to be true"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public void markAsDone() {"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        isDone \u003d true;"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "        return \"[\" + getStatusIcon() + \"] \" + this.description;"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "Shannonwje": 48
-    }
-  },
-  {
-    "path": "src/main/java/Todo.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "public class Todo extends Task {"
       },
       {
-        "lineNumber": 2,
+        "lineNumber": 4,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 3,
+        "lineNumber": 5,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "     * Returns the task created with the specified"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 6,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "     * description."
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 7,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 8,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "     * @param description the description of the task"
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 9,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 10,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "    public Todo(String description) {"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 11,
         "author": {
           "gitId": "Shannonwje"
         },
         "content": "        super(description);"
       },
       {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Shannonwje"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 12,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "        return \"[T]\" + super.toString();"
+        "content": "    @Override"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Shannonwje"
         },
-        "content": "    }"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 16,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "        return \"[T]\" + super.toString();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Shannonwje"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
         "author": {
           "gitId": "Shannonwje"
         },
@@ -2044,7 +2354,7 @@
       }
     ],
     "authorContributionMap": {
-      "Shannonwje": 16
+      "Shannonwje": 18
     }
   }
 ]
