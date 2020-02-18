@@ -176,7 +176,7 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "    archiveVersion \u003d \"v0.1.1\""
+        "content": "    archiveVersion \u003d \"v0.1.2\""
       },
       {
         "lineNumber": 26,
@@ -1595,91 +1595,91 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        try {"
+        "content": "        filePath \u003d DEFAULT_FILE_PATH;"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"May I know where your file for storing tasks is located?\");"
+        "content": "        // Solution below adapted from: https://nus-cs2113-ay1920s2.github.io/website/schedule/week6/topics"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            filePath \u003d SCANNER.nextLine().trim();"
+        "content": "        // .html#w6-3-java-file-access"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            // Solution below adapted from: https://howtodoinjava.com/java/io/how-to-check-if-file-exists-in-java/"
+        "content": "        File file \u003d new File(System.getProperty(\"user.dir\"), filePath);"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            if (Files.notExists(Paths.get(filePath))) {"
+        "content": "        System.out.println(\"Reading tasks from disk...\");"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                System.out.println(\"The path you specify is not valid, using default file path...\");"
+        "content": "        try {"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                filePath \u003d DEFAULT_FILE_PATH;"
+        "content": "            // Solution below adapted from: https://stackoverflow"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            }"
+        "content": "            // .com/questions/6142901/how-to-create-a-file-in-a-directory-in-java"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"Reading tasks from disk...\");"
+        "content": "            file.getParentFile().mkdirs();"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": ""
+        "content": "            if (file.createNewFile()) {"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            // Solution below adapted from: https://nus-cs2113-ay1920s2.github.io/website/schedule/week6/topics"
+        "content": "                System.out.println(\"New output file created\");"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            // .html#w6-3-java-file-access"
+        "content": "                System.out.println(file.getAbsolutePath());"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            File file \u003d new File(filePath);"
+        "content": "            }"
       },
       {
         "lineNumber": 203,
@@ -1728,528 +1728,542 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            listAllTasks(tasks);"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        } catch (FileNotFoundException e) {"
+        "content": "            System.out.println(\"Exception occurred while reading file...\");"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"Input file not found! Initializing empty task list...\");"
+        "content": "            System.out.println(\"Initializing empty tasks list\");"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        }"
+        "content": "            e.printStackTrace();"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": ""
+        "content": "        listAllTasks(tasks);"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "    private static void saveDataToFile(List\u003cTask\u003e tasks) {"
+        "content": "    }"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        try {"
+        "content": ""
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            FileWriter fileWriter \u003d new FileWriter(filePath);"
+        "content": "    private static void saveDataToFile(List\u003cTask\u003e tasks) {"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            for (Task task : tasks) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                fileWriter.write(task.getFileString() + NEW_LINE);"
+        "content": "            FileWriter fileWriter \u003d new FileWriter(filePath);"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            }"
+        "content": "            for (Task task : tasks) {"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            fileWriter.close();"
+        "content": "                fileWriter.write(task.getFileString() + NEW_LINE);"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"Your tasks have been successfully saved to disk!\");"
+        "content": "            }"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "            fileWriter.close();"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"Oops! Exception occurred when saving data to file.\");"
+        "content": "            System.out.println(\"Your tasks have been successfully saved to disk!\");"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        }"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "    }"
+        "content": "            System.out.println(\"Oops! Exception occurred when saving data to file.\");"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "    private static Optional\u003cTask\u003e stringToTask(String taskStr) {"
+        "content": "    }"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        String[] fields \u003d taskStr.split(FILE_FIELD_SEPARATOR);"
+        "content": ""
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        if (fields.length \u003c MINIMUM_FIELD_NUM_FOR_TASK) {"
+        "content": "    private static Optional\u003cTask\u003e stringToTask(String taskStr) {"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"Invalid line in input file:\");"
+        "content": "        String[] fields \u003d taskStr.split(FILE_FIELD_SEPARATOR);"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(taskStr);"
+        "content": "        if (fields.length \u003c MINIMUM_FIELD_NUM_FOR_TASK) {"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            return Optional.empty();"
+        "content": "            System.out.println(\"Invalid line in input file:\");"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        }"
+        "content": "            System.out.println(taskStr);"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": ""
+        "content": "            return Optional.empty();"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        String taskType \u003d fields[0];"
+        "content": "        }"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        boolean isDone;"
+        "content": ""
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        if (fields[1].equals(\"true\")) {"
+        "content": "        String taskType \u003d fields[0];"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            isDone \u003d true;"
+        "content": "        boolean isDone;"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        } else if (fields[1].equals(\"false\")) {"
+        "content": "        if (fields[1].equals(\"true\")) {"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            isDone \u003d false;"
+        "content": "            isDone \u003d true;"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        } else {"
+        "content": "        } else if (fields[1].equals(\"false\")) {"
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"Wrong format - please use true or false to mark task as done or not done\");"
+        "content": "            isDone \u003d false;"
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(taskStr);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            return Optional.empty();"
+        "content": "            System.out.println(\"Wrong format - please use true or false to mark task as done or not done\");"
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        }"
+        "content": "            System.out.println(taskStr);"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        String description \u003d fields[2];"
+        "content": "            return Optional.empty();"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        Task task;"
+        "content": "        }"
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": ""
+        "content": "        String description \u003d fields[2];"
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        switch (taskType) {"
+        "content": "        Task task;"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        case \"T\":"
+        "content": ""
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            task \u003d new ToDo(description);"
+        "content": "        switch (taskType) {"
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            break;"
+        "content": "        case \"T\":"
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        case \"E\":"
+        "content": "            task \u003d new ToDo(description);"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            if (fields.length \u003c MINIMUM_FIELD_NUM_FOR_EVENT_AND_DEADLINE) {"
+        "content": "            break;"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                System.out.println(\"Wrong format for Event in input file:\");"
+        "content": "        case \"E\":"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                System.out.println(taskStr);"
+        "content": "            if (fields.length \u003c MINIMUM_FIELD_NUM_FOR_EVENT_AND_DEADLINE) {"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                return Optional.empty();"
+        "content": "                System.out.println(\"Wrong format for Event in input file:\");"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            }"
+        "content": "                System.out.println(taskStr);"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            String eventPeriod \u003d fields[3];"
+        "content": "                return Optional.empty();"
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            task \u003d new Event(description, eventPeriod);"
+        "content": "            }"
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            break;"
+        "content": "            String eventPeriod \u003d fields[3];"
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        case \"D\":"
+        "content": "            task \u003d new Event(description, eventPeriod);"
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            if (fields.length \u003c MINIMUM_FIELD_NUM_FOR_EVENT_AND_DEADLINE) {"
+        "content": "            break;"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                System.out.println(\"Wrong format for Deadline in input file:\");"
+        "content": "        case \"D\":"
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                System.out.println(taskStr);"
+        "content": "            if (fields.length \u003c MINIMUM_FIELD_NUM_FOR_EVENT_AND_DEADLINE) {"
       },
       {
         "lineNumber": 267,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "                return Optional.empty();"
+        "content": "                System.out.println(\"Wrong format for Deadline in input file:\");"
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            }"
+        "content": "                System.out.println(taskStr);"
       },
       {
         "lineNumber": 269,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            String dateTime \u003d fields[3];"
+        "content": "                return Optional.empty();"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            task \u003d new Deadline(description, dateTime);"
+        "content": "            }"
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            break;"
+        "content": "            String dateTime \u003d fields[3];"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        default:"
+        "content": "            task \u003d new Deadline(description, dateTime);"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(\"Task type not specified in input file:\");"
+        "content": "            break;"
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            System.out.println(taskStr);"
+        "content": "        default:"
       },
       {
         "lineNumber": 275,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            return Optional.empty();"
+        "content": "            System.out.println(\"Task type not specified in input file:\");"
       },
       {
         "lineNumber": 276,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        }"
+        "content": "            System.out.println(taskStr);"
       },
       {
         "lineNumber": 277,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": ""
+        "content": "            return Optional.empty();"
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        if (isDone) {"
+        "content": "        }"
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "            task.markAsDone();"
+        "content": ""
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        }"
+        "content": "        if (isDone) {"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": ""
+        "content": "            task.markAsDone();"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "        return Optional.of(task);"
+        "content": "        }"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 284,
+        "author": {
+          "gitId": "Zhilin-Huang"
+        },
+        "content": "        return Optional.of(task);"
+      },
+      {
+        "lineNumber": 285,
+        "author": {
+          "gitId": "Zhilin-Huang"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 286,
         "author": {
           "gitId": "Zhilin-Huang"
         },
@@ -2257,7 +2271,7 @@
       }
     ],
     "authorContributionMap": {
-      "Zhilin-Huang": 284
+      "Zhilin-Huang": 286
     }
   },
   {
@@ -3233,91 +3247,91 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "May I know where your file for storing tasks is located?"
+        "content": "Reading tasks from disk..."
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Reading tasks from disk..."
+        "content": "Invalid line in input file:"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Invalid line in input file:"
+        "content": "T|invalid task with not enough fields"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "T|invalid task with not enough fields"
+        "content": "Wrong format for Event in input file:"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Wrong format for Event in input file:"
+        "content": "E|true|invalid event with not enough fields"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "E|true|invalid event with not enough fields"
+        "content": "Wrong format - please use true or false to mark task as done or not done"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Wrong format - please use true or false to mark task as done or not done"
+        "content": "D|not boolean|deadline|next month"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "D|not boolean|deadline|next month"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 18,
@@ -3331,28 +3345,28 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Sorry, I can\u0027t help you with that yet"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Sorry, I can\u0027t help you with that yet"
+        "content": "I\u0027m Chatty Chat Bot"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "I\u0027m Chatty Chat Bot"
+        "content": "How may I help you?"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "How may I help you?"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 23,
@@ -3366,28 +3380,28 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Got it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Got it. I\u0027ve added this task:"
+        "content": "[T][✘] This is a todo task"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[T][✘] This is a todo task"
+        "content": "Now you have 5 tasks in the list."
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Now you have 5 tasks in the list."
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 28,
@@ -3401,14 +3415,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Sure, let me know what ToDo task you would like to add!"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Sure, let me know what ToDo task you would like to add!"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 31,
@@ -3422,49 +3436,49 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 39,
@@ -3478,28 +3492,28 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Got it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Got it. I\u0027ve added this task:"
+        "content": "[E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "Now you have 6 tasks in the list."
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Now you have 6 tasks in the list."
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 44,
@@ -3513,14 +3527,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Sure, let me know what Event task you would like to add!"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Sure, let me know what Event task you would like to add!"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 47,
@@ -3534,14 +3548,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Please specify the time of your event"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Please specify the time of your event"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 50,
@@ -3555,56 +3569,56 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 59,
@@ -3618,28 +3632,28 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Got it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Got it. I\u0027ve added this task:"
+        "content": "[D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "Now you have 7 tasks in the list."
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Now you have 7 tasks in the list."
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 64,
@@ -3653,14 +3667,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Sure, let me know what Deadline task you would like to add!"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Sure, let me know what Deadline task you would like to add!"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 67,
@@ -3674,14 +3688,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Please specify the deadline of your task"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Please specify the deadline of your task"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 70,
@@ -3695,63 +3709,63 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 80,
@@ -3765,28 +3779,28 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Got it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Got it. I\u0027ve added this task:"
+        "content": "[T][✘] Another todo task"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[T][✘] Another todo task"
+        "content": "Now you have 8 tasks in the list."
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Now you have 8 tasks in the list."
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 85,
@@ -3800,70 +3814,70 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "8. [T][✘] Another todo task"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [T][✘] Another todo task"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 96,
@@ -3877,28 +3891,28 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Got it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Got it. I\u0027ve added this task:"
+        "content": "[E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "Now you have 9 tasks in the list."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Now you have 9 tasks in the list."
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 101,
@@ -3912,77 +3926,77 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✘] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "8. [T][✘] Another todo task"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [T][✘] Another todo task"
+        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 113,
@@ -3996,14 +4010,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Let me know which task you would like to mark as done?"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Let me know which task you would like to mark as done?"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 116,
@@ -4017,14 +4031,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "The number you entered does not match any task in your list"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "The number you entered does not match any task in your list"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 119,
@@ -4038,21 +4052,21 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Congratulations! You\u0027ve successfully marked the following task as done:"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Congratulations! You\u0027ve successfully marked the following task as done:"
+        "content": "[E][✓] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[E][✓] workshop event (at: May 4th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 123,
@@ -4066,77 +4080,77 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "8. [T][✘] Another todo task"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [T][✘] Another todo task"
+        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 135,
@@ -4150,14 +4164,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "The number you entered does not match any task in your list"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "The number you entered does not match any task in your list"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 138,
@@ -4171,21 +4185,21 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Congratulations! You\u0027ve successfully marked the following task as done:"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Congratulations! You\u0027ve successfully marked the following task as done:"
+        "content": "[D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[D][✓] write assignment (by: tomorrow)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 142,
@@ -4199,77 +4213,77 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "8. [T][✘] Another todo task"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [T][✘] Another todo task"
+        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 154,
@@ -4283,14 +4297,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Please enter a valid task number"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Please enter a valid task number"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 157,
@@ -4304,77 +4318,77 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "8. [T][✘] Another todo task"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [T][✘] Another todo task"
+        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 169,
@@ -4388,14 +4402,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "The number you entered does not match any task in your list"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "The number you entered does not match any task in your list"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 172,
@@ -4409,77 +4423,77 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [E][✓] workshop event (at: May 4th 10-11am)"
+        "content": "3. [T][✓] attend lab"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✓] attend lab"
+        "content": "4. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [D][✘] submit lab (by: next week Monday)"
+        "content": "5. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [T][✘] This is a todo task"
+        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "8. [T][✘] Another todo task"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [T][✘] Another todo task"
+        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "9. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 184,
@@ -4493,21 +4507,21 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Successfully deleted the following task:"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Successfully deleted the following task:"
+        "content": "[E][✓] workshop event (at: May 4th 10-11am)"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[E][✓] workshop event (at: May 4th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 188,
@@ -4521,70 +4535,70 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [T][✓] attend lab"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [T][✓] attend lab"
+        "content": "3. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [D][✘] submit lab (by: next week Monday)"
+        "content": "4. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [T][✘] This is a todo task"
+        "content": "5. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "6. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "7. [T][✘] Another todo task"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [T][✘] Another todo task"
+        "content": "8. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 199,
@@ -4598,14 +4612,14 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "The number you entered does not match any task in your list"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "The number you entered does not match any task in your list"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 202,
@@ -4619,70 +4633,70 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [T][✓] attend lab"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [T][✓] attend lab"
+        "content": "3. [D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [D][✘] submit lab (by: next week Monday)"
+        "content": "4. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [T][✘] This is a todo task"
+        "content": "5. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "6. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "7. [T][✘] Another todo task"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [T][✘] Another todo task"
+        "content": "8. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "8. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 213,
@@ -4696,21 +4710,21 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Successfully deleted the following task:"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Successfully deleted the following task:"
+        "content": "[D][✘] submit lab (by: next week Monday)"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "[D][✘] submit lab (by: next week Monday)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 217,
@@ -4724,63 +4738,63 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Here are the tasks in your list:"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Here are the tasks in your list:"
+        "content": "1. [D][✓] write assignment (by: tomorrow)"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "1. [D][✓] write assignment (by: tomorrow)"
+        "content": "2. [T][✓] attend lab"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "2. [T][✓] attend lab"
+        "content": "3. [T][✘] This is a todo task"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "3. [T][✘] This is a todo task"
+        "content": "4. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "4. [E][✘] This is an event happening (at: Feb 10th 2-4pm)"
+        "content": "5. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "5. [D][✘] This is a task with deadline (by: tomorrow 6pm)"
+        "content": "6. [T][✘] Another todo task"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "6. [T][✘] Another todo task"
+        "content": "7. [E][✘] Another event (at: Nov 7th 10-11am)"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "7. [E][✘] Another event (at: Nov 7th 10-11am)"
+        "content": "____________________________________________________________"
       },
       {
         "lineNumber": 227,
@@ -4794,31 +4808,24 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "____________________________________________________________"
+        "content": "Your tasks have been successfully saved to disk!"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Your tasks have been successfully saved to disk!"
+        "content": "Thanks for chatting with Chatty Chat Bot"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "Thanks for chatting with Chatty Chat Bot"
-      },
-      {
-        "lineNumber": 231,
-        "author": {
-          "gitId": "Zhilin-Huang"
-        },
         "content": "See you again soon!"
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 231,
         "author": {
           "gitId": "Zhilin-Huang"
         },
@@ -4826,7 +4833,7 @@
       }
     ],
     "authorContributionMap": {
-      "Zhilin-Huang": 232
+      "Zhilin-Huang": 231
     }
   },
   {
@@ -4838,241 +4845,234 @@
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "../data/chattychatbot.txt"
+        "content": "blahblah"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "blahblah"
+        "content": "todo This is a todo task"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "todo This is a todo task"
+        "content": "todo"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "todo"
+        "content": "list"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "event This is an event happening /at Feb 10th 2-4pm"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "event This is an event happening /at Feb 10th 2-4pm"
+        "content": "event"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "event"
+        "content": "event This is an event without a specified time"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "event This is an event without a specified time"
+        "content": "list"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "deadline This is a task with deadline /by tomorrow 6pm"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "deadline This is a task with deadline /by tomorrow 6pm"
+        "content": "deadline"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "deadline"
+        "content": "deadline This is a deadline task without a specified deadline"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "deadline This is a deadline task without a specified deadline"
+        "content": "list"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "todo Another todo task"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "todo Another todo task"
+        "content": "list"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "event Another event /at Nov 7th 10-11am"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "event Another event /at Nov 7th 10-11am"
+        "content": "list"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "done"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "done"
+        "content": "done -1"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "done -1"
+        "content": "done 2"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "done 2"
+        "content": "list"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "done 100"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "done 100"
+        "content": "done 1"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "done 1"
+        "content": "list"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "delete nonsense"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "delete nonsense"
+        "content": "list"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "delete 100"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "delete 100"
+        "content": "list"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "delete 2"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "delete 2"
+        "content": "list"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "delete 0"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "delete 0"
+        "content": "list"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "list"
+        "content": "delete 3"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Zhilin-Huang"
         },
-        "content": "delete 3"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "Zhilin-Huang"
-        },
         "content": "list"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "Zhilin-Huang"
         },
@@ -5080,7 +5080,7 @@
       }
     ],
     "authorContributionMap": {
-      "Zhilin-Huang": 35
+      "Zhilin-Huang": 34
     }
   },
   {
