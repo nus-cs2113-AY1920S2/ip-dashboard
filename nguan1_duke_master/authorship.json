@@ -298,7 +298,7 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "2. [T][✘] left"
+        "content": "2. [T][✓] left"
       },
       {
         "lineNumber": 3,
@@ -319,11 +319,32 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "5. [T][✘] work"
+        "content": "5. [T][✓] work"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "6. [T][✘] sleep"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "7. [D][✘] return book  (by:Sunday))"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "8. [E][✓] project meeting  (at:Mon 2-4pm))"
       }
     ],
     "authorContributionMap": {
-      "nguan1": 5
+      "nguan1": 8
     }
   },
   {
@@ -456,836 +477,234 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "import duke.Deadline;"
+        "content": ""
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "import java.io.FileWriter;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "import java.io.IOException;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "nguan1"
         },
-        "content": ""
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "import java.util.ArrayList;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "import java.util.Scanner;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "nguan1"
-        },
         "content": ""
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
         "content": "public class Duke {"
       },
       {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private TaskList tasks;"
+      },
+      {
         "lineNumber": 11,
         "author": {
           "gitId": "nguan1"
         },
-        "content": ""
+        "content": "    private Ui ui;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "nguan1"
         },
-        "content": ""
+        "content": "    public Duke(String filePath, Scanner input) {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "    public static void main(String[] args) throws IOException {"
+        "content": "        this.ui \u003d new Ui(input);"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "nguan1"
         },
-        "content": ""
+        "content": "        this.storage \u003d new Storage(filePath);"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003cTask\u003e();"
+        "content": "        try {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        int counter \u003d 0;"
+        "content": "            this.tasks \u003d storage.readFromFile(filePath);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        System.out.println(\"Hello! I\u0027m duke.Duke\");"
+        "content": "        } catch (FileNotFoundException e){"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        System.out.println(\"What can I do for you?\");"
+        "content": "            ui.showLoadingError();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        Scanner input \u003d new Scanner(System.in);"
+        "content": "            this.tasks \u003d new TaskList();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        boolean ifError \u003d false;"
+        "content": "        }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        while (true){"
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "            String next \u003d input.nextLine();"
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "            if (next.equals(\"bye\")){"
+        "content": "        ui.showWelcomeMessage();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                System.out.println(\"Bye. Hope to see you again soon! :)\");"
+        "content": "        while (true) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                break;"
+        "content": "            String command \u003d ui.getUserCommand();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "            } else if (next.equals(\"list\")) {"
+        "content": "            Parser.parseCommand(command, this.tasks);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                System.out.println(\"Here are the tasks on your list:\");"
+        "content": "        }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                for (int i \u003d 0; i \u003c counter; i++) {"
+        "content": "     }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                System.out.printf(\"%d. %s\\n\",i +1,tasks.get(i).toString());"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                }"
+        "content": "        Scanner input \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "            } else if (next.startsWith(\"done\")){"
+        "content": "        new Duke(\"./duke.txt\",input).run();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                String temp \u003d next.replaceAll(\"\\\\D+\",\"\");"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                int FinishedNumber \u003d Integer.parseInt(temp);"
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                tasks.get(FinishedNumber-1).markAsDone();"
+        "content": ""
       },
       {
         "lineNumber": 35,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                System.out.printf(\"  [%s] %s\\n\",tasks.get(FinishedNumber-1).getStatusIcon(),tasks.get(FinishedNumber-1).getDescription());"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                String[] splitString \u003d next.split(\" \", 2);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                if (splitString[0].equals(\"deadline\")){"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    if (splitString.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        System.out.println(\"The description of deadline cannot be empty\");"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        ifError \u003d true;"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    } else{"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        String[] splitString2 \u003d splitString[1].split(\"/by\", 2);"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        if (splitString2.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            System.out.println(\"duke.Deadline requires to be separated by a \u0027/by\u0027 statement\");"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            ifError \u003d true;"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        } else{"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            gotItMessage();"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            tasks.add(counter,new Deadline(splitString2[0],splitString2[1]));"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            System.out.printf(\"  %s\\n\",tasks.get(counter).toString());"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        }"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                } else if (splitString[0].equals(\"todo\")) {"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    if (splitString.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        System.out.println(\"OOPS!!! The description of todo cannot be empty\");"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        ifError \u003d true;"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    } else{"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        gotItMessage();"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        tasks.add(counter,new Todo(splitString[1]));"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        System.out.printf(\"  %s\\n\",tasks.get(counter).toString());"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                } else if (splitString[0].equals(\"event\")) {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    if (splitString.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        System.out.println(\"OOPS!!! The description of event cannot be empty\");"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        ifError \u003d true;"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    } else {"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        String[] splitString2 \u003d splitString[1].split(\"/at\", 2);"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        if (splitString2.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            System.out.println(\"duke.Event is required to be separated by a \u0027/at\u0027 statement\");"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            ifError \u003d true;"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        } else {"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            gotItMessage();"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            tasks.add(counter,new Event(splitString2[0], splitString2[1]));"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                            System.out.printf(\"  %s\\n\",tasks.get(counter).toString());"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        }"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                } else if (splitString[0].equals(\"delete\")){"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    if (splitString.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        System.out.println(\"OOPS!!! The description of event cannot be empty\");"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        ifError \u003d true;"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    } else {"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        System.out.println(\"Noted: I\u0027ve removed this task:\");"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        System.out.printf(\"  %s\\n\",tasks.get(Integer.parseInt(splitString[1]) - 1).toString());"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        tasks.remove(Integer.parseInt(splitString[1]) - 1);"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                        counter \u003d counter - 2;"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                } else if (splitString[0].equals(\"save\")){"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    writeToFile(\"./duke.txt\",tasks);"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    counter \u003d counter -1;"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                else{"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    System.out.println(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    ifError \u003d true;"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "//                    tasks[counter] \u003d new duke.Task(next);"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "//                    System.out.println(\"added: \"+ next);"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                if (ifError \u003d\u003d false) {"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    counter +\u003d1;"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                    System.out.printf(\"Now you have %d tasks in the list\\n\", counter);"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "                ifError \u003d false;"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "    private static void gotItMessage() {"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "nguan1"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 121,
         "author": {
           "gitId": "-"
         },
         "content": "}"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 36,
         "author": {
           "gitId": "nguan1"
         },
@@ -1293,8 +712,8 @@
       }
     ],
     "authorContributionMap": {
-      "-": 3,
-      "nguan1": 119
+      "-": 2,
+      "nguan1": 34
     }
   },
   {
@@ -1420,10 +839,801 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "public class Parser {"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 4,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public static void parseCommand(String command, TaskList tasks) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        if (command.equals(\"list\")){"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            listCommand(tasks);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else if (command.startsWith(\"done\")){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            doneCommand(command,tasks);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else if (command.equals(\"bye\")){"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                Storage.writeToFile(\"./duke.txt\",tasks);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                System.out.println(\"Error writing to file\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"Bye. Hope to see you again soon! :)\");"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.exit(0);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString \u003d command.split(\" \", 2);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            if (splitString[0].equals(\"deadline\")){"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                deadlineCommand(splitString,tasks);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            } else if (splitString[0].equals(\"todo\")){"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                todoCommand(splitString,tasks);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            } else if (splitString[0].equals(\"event\")) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                eventCommand(splitString,tasks);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            } else if (splitString[0].equals(\"delete\")){"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                deleteCommand(splitString,tasks);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                errorCommand();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static void listCommand(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        System.out.println(\"Here are the tasks on your list:\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.getSize(); i++) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.printf(\"%d. %s\\n\",i +1,tasks.getIndex(i).toString());"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static void doneCommand(String command,TaskList tasks){"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        String temp \u003d command.replaceAll(\"\\\\D+\",\"\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        int FinishedNumber \u003d Integer.parseInt(temp);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        if (FinishedNumber \u003e tasks.getSize()) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"Incorrect index\");"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            tasks.getIndex(FinishedNumber-1).markAsDone();"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.printf(\"  [%s] %s\\n\",tasks.getIndex(FinishedNumber-1).getStatusIcon(),tasks.getIndex(FinishedNumber-1).getDescription());"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static  void deadlineCommand(String[] splitString,TaskList tasks) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        if (splitString.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"The description of deadline cannot be empty\");"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else{"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString2 \u003d splitString[1].split(\"/by\", 2);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            if (splitString2.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                System.out.println(\"duke.Deadline requires to be separated by a \u0027/by\u0027 statement\");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            } else{"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                gotItMessage();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                tasks.addTask(new Deadline(splitString2[0],splitString2[1]));"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                System.out.printf(\"  %s\\n\",tasks.getIndex(tasks.getSize()-1).toString());"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static void todoCommand(String[] splitString, TaskList tasks) {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        if (splitString.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"OOPS!!! The description of todo cannot be empty\");"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else{"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            gotItMessage();"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            tasks.addTask(new Todo(splitString[1]));"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.printf(\"  %s\\n\",tasks.getIndex(tasks.getSize()-1).toString());"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static void eventCommand(String[] splitString, TaskList tasks) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        if (splitString.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"OOPS!!! The description of event cannot be empty\");"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString2 \u003d splitString[1].split(\"/at\", 2);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            if (splitString2.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                System.out.println(\"duke.Event is required to be separated by a \u0027/at\u0027 statement\");"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                gotItMessage();"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                tasks.addTask(new Event(splitString2[0], splitString2[1]));"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                System.out.printf(\"  %s\\n\",tasks.getIndex(tasks.getSize()-1).toString());"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static void deleteCommand(String[] splitString, TaskList tasks) {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        //need to note wrong index"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        if (splitString.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"OOPS!!! The description of event cannot be empty\");"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.println(\"Noted: I\u0027ve removed this task:\");"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            System.out.printf(\"  %s\\n\", tasks.getIndex(Integer.parseInt(splitString[1]) - 1).toString());"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            tasks.removeTask(Integer.parseInt(splitString[1]) - 1);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static void errorCommand(){"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        System.out.println(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private static void gotItMessage() {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 117,
         "author": {
           "gitId": "nguan1"
         },
@@ -1431,7 +1641,7 @@
       }
     ],
     "authorContributionMap": {
-      "nguan1": 4
+      "nguan1": 117
     }
   },
   {
@@ -1534,7 +1744,7 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "    private static void writeToFile(String filePath, ArrayList\u003cTask\u003e tasksToWrite) throws IOException {"
+        "content": "    public static void writeToFile(String filePath, TaskList tasksToWrite) throws IOException {"
       },
       {
         "lineNumber": 15,
@@ -1555,14 +1765,14 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "            for (int i \u003d 0; i \u003c tasksToWrite.size(); i++) {"
+        "content": "            for (int i \u003d 0; i \u003c tasksToWrite.getSize(); i++) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "                String writtenString \u003d String.format(\"%d. %s\\n\", i + 1, tasksToWrite.get(i).toString());"
+        "content": "                String writtenString \u003d String.format(\"%d. %s\\n\", i + 1, tasksToWrite.getIndex(i).toString());"
       },
       {
         "lineNumber": 19,
@@ -1618,7 +1828,7 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "    private static ArrayList\u003cString\u003e readFromFile(String filePath) throws FileNotFoundException {"
+        "content": "    public static TaskList readFromFile(String filePath) throws FileNotFoundException {"
       },
       {
         "lineNumber": 27,
@@ -1639,14 +1849,14 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        ArrayList\u003cString\u003e tasks \u003d new ArrayList\u003cString\u003e();"
+        "content": "        TaskList tasks1 \u003d new TaskList();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        try {"
+        "content": "        if (file.exists()){"
       },
       {
         "lineNumber": 31,
@@ -1674,21 +1884,21 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "            }"
+        "content": "                Task task1 \u003d createTask(task);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        }catch (FileNotFoundException e) {"
+        "content": "                tasks1.addTask(task1);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "            System.out.println(\"File Not Found\");"
+        "content": "            }"
       },
       {
         "lineNumber": 37,
@@ -1702,7 +1912,7 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": ""
+        "content": "        sc.close();"
       },
       {
         "lineNumber": 39,
@@ -1716,46 +1926,249 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        }"
+        "content": "        return tasks1;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "nguan1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "nguan1"
         },
-        "content": ""
+        "content": "    public static Task createTask(String task) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "    }"
+        "content": "        String[] splitString \u003d task.split(\"]\",2);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "nguan1"
         },
-        "content": "}"
+        "content": "        Task newTask;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        if (splitString[0].contains(\"T\")){"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            //Todo"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString1 \u003d splitString[1].split(\"] \", 2);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            newTask\u003d new Todo(splitString1[1]);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            if (splitString1[0].contains(\"\\u2713\")){"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                newTask.markAsDone();"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else if (splitString[0].contains(\"E\")){"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            //Event"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString1 \u003d splitString[1].split(\"] \",2);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString2 \u003d splitString1[1].split(\" \\\\(at: \");"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            newTask \u003d new Event(splitString2[0],splitString2[1]);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            if (splitString1[0].contains(\"\\u2713\")){"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                newTask.markAsDone();"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            //Deadline"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString1 \u003d splitString[1].split(\"] \",2);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            String[] splitString2 \u003d splitString1[1].split(\" \\\\(by: \", 2);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            newTask \u003d new Deadline(splitString2[0],splitString2[1]);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            if (splitString1[0].contains(\"\\u2713\")){"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "                newTask.markAsDone();"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        return  newTask;"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
       }
     ],
     "authorContributionMap": {
-      "nguan1": 45
+      "nguan1": 74
     }
   },
   {
@@ -1958,10 +2371,171 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "public class TaskList {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 4,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private ArrayList\u003cTask\u003e tasks;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private int counter;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public TaskList() {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        this.tasks \u003d new ArrayList\u003cTask\u003e();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        this.counter \u003d0;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public void addTask(Task task) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        tasks.add(task);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        this.counter \u003d tasks.size();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public void removeTask(int number) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        tasks.remove(number -1);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        this.counter \u003d tasks.size();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public int getSize() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        return this.counter;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public Task getIndex(int number) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        return tasks.get(number);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "nguan1"
         },
@@ -1969,7 +2543,7 @@
       }
     ],
     "authorContributionMap": {
-      "nguan1": 4
+      "nguan1": 27
     }
   },
   {
@@ -2095,10 +2669,122 @@
         "author": {
           "gitId": "nguan1"
         },
-        "content": "public class Ui {"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 4,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    private final Scanner input;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public Ui (Scanner input) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        this.input \u003d input;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public static void showWelcomeMessage() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        System.out.println(\"Hello! I\u0027m duke.Duke\");"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        System.out.println(\"What can I do for you?\");"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public String getUserCommand() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        return input.nextLine();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    public static void showLoadingError() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "        System.out.println(\"File Not Found\");"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nguan1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
         "author": {
           "gitId": "nguan1"
         },
@@ -2106,7 +2792,7 @@
       }
     ],
     "authorContributionMap": {
-      "nguan1": 4
+      "nguan1": 20
     }
   }
 ]
