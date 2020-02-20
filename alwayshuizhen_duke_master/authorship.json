@@ -1,6 +1,6 @@
 [
   {
-    "path": "src/main/java/exceptionHandler/inputValidation.java",
+    "path": "src/main/java/Duke.java",
     "fileType": "java",
     "lines": [
       {
@@ -8,105 +8,105 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "package exceptionHandler;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "import java.sql.SQLOutput;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "import Parser.ParseCommand;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "public class inputValidation {"
+        "content": "import Storage.FileOperation;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    protected String defaultStr \u003d \"I couldn\u0027t process that: \";"
+        "content": "import Ui.TextUi;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    protected String doneNumErr \u003d defaultStr + \"Please indicate the item number without letters (i.e. done 2)\";"
+        "content": "import Exception.*;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    protected String doneParamCount \u003d defaultStr + \"Please indicate an item number (i.e. done 2)\";"
+        "content": "import TaskList.*;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    protected String doneNotenough \u003d defaultStr + \"There isn\u0027t that many tasks :(\";"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "alwayshuizhen"
+          "gitId": "-"
         },
-        "content": "    protected String todoParamCount \u003d defaultStr + \"Please give me a todo detail\";"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    protected String eventDateMissing \u003d defaultStr + \"When is the event?\";"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    protected String eventMissingDesc \u003d defaultStr + \"I need more info!\";"
+        "content": "    private FileOperation storage;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public inputValidation() {"
+        "content": "    private TextUi ui;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "    private ParseCommand command;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "    private ArrayList\u003cTask\u003e taskList;"
       },
       {
         "lineNumber": 16,
@@ -120,379 +120,247 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public Boolean validatingDone(String cmd, int taskCount) {"
+        "content": "    public Duke(String filepath) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        // checks if the item number is given"
+        "content": "        ui \u003d new TextUi();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        if (cmd.length() \u003c\u003d 4) {"
+        "content": "        storage \u003d new FileOperation(filepath);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            System.out.println(doneParamCount);"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            return false;"
+        "content": "        try {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        }"
+        "content": "            taskList \u003d storage.loadTaskList();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        // checks if the given item number is numeric"
+        "content": "        } catch (FileNotFoundException e) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        int itemNumber;"
+        "content": "            ui.showLoadingError();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        try {"
+        "content": "            taskList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            itemNumber \u003d Integer.parseInt(cmd.substring(5));"
+        "content": "        }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        } catch (NumberFormatException nfe) {"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            System.out.println(doneNumErr);"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            return false;"
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        }"
+        "content": "        ui.printWelcomeMsg();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        // check if item number is within the list count"
+        "content": "        boolean isExit \u003d false;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        if (itemNumber \u003c\u003d taskCount) {"
+        "content": "        while (!isExit) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            return true;"
+        "content": "            String fullCommand \u003d ui.readCommand();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        } else {"
+        "content": "            try {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            System.out.println(doneNotenough);"
+        "content": "                command \u003d new ParseCommand(fullCommand);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            return false;"
+        "content": "                command.execute(taskList, ui, storage);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        }"
+        "content": "                isExit \u003d command.isExit();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "            } catch (IOException e) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": ""
+        "content": "                ui.printIOError();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    public Boolean validatingTodo(String cmd) {"
+        "content": "            } catch (DukeException | NullPointerException e){"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        // checks if the item number is given"
+        "content": "                ui.printFormatError();"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        if (cmd.length() \u003c\u003d 4) {"
+        "content": "            }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            System.out.println(todoParamCount);"
+        "content": "        }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            return false;"
+        "content": "        ui.printExitMsg();"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        } else {"
+        "content": "    }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "            return true;"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "        }"
+        "content": "    public static void main(String[] args){"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "    }"
+        "content": "        new Duke(\"tasksData.txt\").run();"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public Boolean validatingEventDeadline(String cmd) {"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        if (cmd.length() \u003c\u003d 5) {"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            System.out.println(eventMissingDesc);"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            int indexOfAt \u003d cmd.indexOf(\"/at\");"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            int indexOfby \u003d cmd.indexOf(\"/by\");"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (indexOfAt \u003d\u003d -1 \u0026\u0026 indexOfby \u003d\u003d -1) {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                System.out.println(eventDateMissing);"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                return false;"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            String eventDate \u003d cmd.substring(indexOfAt+4);"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        } catch (NumberFormatException missingItem) {"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            System.out.println(eventDateMissing);"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return true;"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "alwayshuizhen"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 50,
         "author": {
-          "gitId": "alwayshuizhen"
+          "gitId": "-"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "alwayshuizhen": 69
+      "alwayshuizhen": 47,
+      "-": 3
     }
   },
   {
-    "path": "src/main/java/taskManager/Deadline.java",
+    "path": "src/main/java/Exception/DukeException.java",
     "fileType": "java",
     "lines": [
       {
@@ -500,7 +368,1441 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "package taskManager;"
+        "content": "package Exception;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "public class DukeException extends Exception{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alwayshuizhen": 4
+    }
+  },
+  {
+    "path": "src/main/java/Parser/ParseCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "package Parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import TaskList.*;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import Ui.TextUi;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import Storage.FileOperation;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import Exception.DukeException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "public class ParseCommand {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    private Boolean exitStatus \u003d false;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    private String cmdType;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    private String fullCommand;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public ParseCommand(String fullCommand) throws DukeException {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        this.fullCommand \u003d fullCommand;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        this.cmdType \u003d cmdTypeIdentifier(fullCommand);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    private String cmdTypeIdentifier(String cmd) throws DukeException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (cmd.equalsIgnoreCase(\"list\")){"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"LIST\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            } else if (cmd.equalsIgnoreCase(\"bye\")) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                exitStatus \u003d true;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"BYE\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }else if (cmd.substring(0,4).equalsIgnoreCase(\"done\")) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"DONE\";"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            } else if (cmd.substring(0,4).equalsIgnoreCase(\"todo\")) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"TODO\";"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            } else if (cmd.substring(0,5).equalsIgnoreCase(\"event\")) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"EVENT\";"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            } else if (cmd.substring(0,6).equalsIgnoreCase(\"delete\")) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"DELETE\";"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            } else if (cmd.substring(0,8).equalsIgnoreCase(\"deadline\")) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                return \"DEADLINE\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public boolean isExit () {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return exitStatus;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void execute(ArrayList\u003cTask\u003e taskList, TextUi ui, FileOperation storage) throws IOException, DukeException {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (cmdType !\u003d null) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            switch (cmdType) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            case \"LIST\":"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                ui.printTaskList(taskList);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            case \"DONE\":"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                markTaskAsDone(taskList);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            case \"TODO\":"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                taskList.add(createToDo(taskList));"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            case \"EVENT\":"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                taskList.add(createEvent(taskList));"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            case \"DEADLINE\":"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                taskList.add(createDeadline(taskList));"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            case \"DELETE\":"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                taskList.remove(findObjectToRemove(taskList));"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            storage.saveTaskList(taskList);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void markTaskAsDone(ArrayList\u003cTask\u003e taskList) throws DukeException {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        int lenOfCmd \u003d fullCommand.length() - 1;"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            int index \u003d Integer.parseInt(fullCommand.substring(lenOfCmd)) - 1;"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            taskList.get(index).setDone();"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Nice! I\u0027ve marked this task as done: \" + taskList.get(index).printObject());"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (IndexOutOfBoundsException | NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public Todo createToDo(ArrayList\u003cTask\u003e taskList) throws DukeException {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            Todo item \u003d new Todo(fullCommand.substring(5));"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Now you have \" + (taskList.size() + 1) + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return item;"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException  e) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public Event createEvent(ArrayList\u003cTask\u003e taskList) throws DukeException {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            int indexOfAt \u003d fullCommand.indexOf(\"/at\");"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            String eventDescription \u003d fullCommand.substring(6, indexOfAt - 1);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            String eventDate \u003d fullCommand.substring(indexOfAt + 4);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            Event item \u003d new Event(eventDescription, eventDate);"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Now you have \" + (taskList.size() + 1) + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return item;"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public Deadline createDeadline(ArrayList\u003cTask\u003e taskList) throws DukeException {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            int indexOfBy \u003d fullCommand.indexOf(\"/by\");"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            String deadlineDesc \u003d fullCommand.substring(9, indexOfBy-1);"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            String deadlineDate \u003d fullCommand.substring(indexOfBy+4);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            Deadline item \u003d new Deadline(deadlineDesc, deadlineDate);"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Now you have \"+ (taskList.size()+1) +\" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return item;"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public int findObjectToRemove(ArrayList\u003cTask\u003e taskList) throws DukeException {"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            int indexOfObject \u003d Integer.parseInt(fullCommand.substring(7)) - 1;"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Noted. I\u0027ve removed this task: \" + taskList.get(indexOfObject).printObject());"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"Now you have \" + (taskList.size() - 1) + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            return indexOfObject;"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException e){"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alwayshuizhen": 138
+    }
+  },
+  {
+    "path": "src/main/java/Storage/FileOperation.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "package Storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import TaskList.*;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "public class FileOperation {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public int COUNTER \u003d 0;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    File f;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    String PATHNAME;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public FileOperation(String filepath) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        f \u003d new File(filepath);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        PATHNAME \u003d f.getAbsolutePath();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public ArrayList\u003cTask\u003e loadTaskList() throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        ArrayList\u003cTask\u003e taskList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (f.exists()) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            Scanner s \u003d new Scanner(f); // create a Scanner using the File as the source"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            while (s.hasNext()) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                String newline \u003d s.nextLine();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                String[] newlineByPart \u003d newline.replaceAll(\"[\\\\s][\\\\|][\\\\s]\",\",\").split(\",\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                String typeOfTask \u003d newlineByPart[0];"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "               if (typeOfTask.equalsIgnoreCase(\"t\")){"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                   Todo item \u003d new Todo(newlineByPart[2]);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                   taskList.add(item);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "               } else if (typeOfTask.equalsIgnoreCase(\"d\")) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                   Deadline item \u003d new Deadline(newlineByPart[2], newlineByPart[3]);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                   taskList.add(item);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "               } else if (typeOfTask.equalsIgnoreCase(\"e\")) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                   Event item \u003d new Event(newlineByPart[2], newlineByPart[3]);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                   taskList.add(item);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "               }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "               if (newlineByPart[1].equalsIgnoreCase(\"1\")) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                   taskList.get(COUNTER).setDone();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "               }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "               COUNTER++;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return taskList;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void saveTaskList (ArrayList\u003cTask\u003e taskList) throws IOException {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(PATHNAME);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        for (int i \u003d 0; i \u003c taskList.size(); i++) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            String convertedTask \u003d taskList.get(i).createStrForSaving();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            if (i !\u003d taskList.size() - 1) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                fw.write(convertedTask + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                fw.write(convertedTask);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        fw.close();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alwayshuizhen": 59
+    }
+  },
+  {
+    "path": "src/main/java/TaskList/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "package TaskList;"
       },
       {
         "lineNumber": 2,
@@ -641,7 +1943,7 @@
     }
   },
   {
-    "path": "src/main/java/taskManager/Duke.java",
+    "path": "src/main/java/TaskList/Event.java",
     "fileType": "java",
     "lines": [
       {
@@ -649,1025 +1951,7 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "package taskManager;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.io.FileNotFoundException;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.io.IOException;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.util.Scanner;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.util.ArrayList;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import exceptionHandler.inputValidation;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class Duke {"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    private static int MAXIMUM_TASKS \u003d 100;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static  void printWelcomeMsg() {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String logo \u003d \" ____        _        \\n\""
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___| \";"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(logo + \" says hello :)\");"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"\\nWhat can i do for you?\");"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static void printTaskList(ArrayList\u003cTask\u003e taskList){"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        if (taskList.size() \u003d\u003d 0) {"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            System.out.println(\"There are currently nothing to do! Add something!\");"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        for (int i \u003d 0; i \u003c taskList.size(); i++) {"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            System.out.println(i + 1 + \". \" + taskList.get(i).printObject());"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static void markTaskAsDone(ArrayList\u003cTask\u003e taskList, String cmd){"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int index \u003d Integer.parseInt(cmd.substring(cmd.length() - 1)) - 1;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        taskList.get(index).setDone();"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Nice! I\u0027ve marked this task as done: \" + taskList.get(index).printObject());"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static Todo createToDo(ArrayList\u003cTask\u003e taskList, String cmd) {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Todo item \u003d new Todo(cmd.substring(5));"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Now you have \" + (taskList.size()+1) +\" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return item;"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static Event createEvent(ArrayList\u003cTask\u003e taskList, String cmd) {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int indexOfAt \u003d cmd.indexOf(\"/at\");"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String eventDescription \u003d cmd.substring(6, indexOfAt-1);"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String eventDate \u003d cmd.substring(indexOfAt+4);"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Event item \u003d new Event(eventDescription, eventDate);"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Now you have \" + (taskList.size()+1) + \" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return item;"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static Deadline createDeadline(ArrayList\u003cTask\u003e taskList, String cmd) {"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int indexOfBy \u003d cmd.indexOf(\"/by\");"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String deadlineDesc \u003d cmd.substring(9, indexOfBy-1);"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String deadlineDate \u003d cmd.substring(indexOfBy+4);"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Deadline item \u003d new Deadline(deadlineDesc, deadlineDate);"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task: \" + item.printObject());"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Now you have \"+ (taskList.size()+1) +\" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return item;"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static int findObjectToRemove(ArrayList\u003cTask\u003e taskList, String cmd) {"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int indexOfObject \u003d Integer.parseInt(cmd.substring(7)) - 1;"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Noted. I\u0027ve removed this task: \" + taskList.get(indexOfObject).printObject());"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Now you have \"+ (taskList.size()-1) +\" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return indexOfObject;"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    private static String cmdTypeIdentifier(String cmd, int taskCount) {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        inputValidation exception \u003d new inputValidation();"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        if (cmd.equalsIgnoreCase(\"list\")){"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            return \"LIST\";"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        } else if (cmd.substring(0,4).equalsIgnoreCase(\"done\")) {"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (exception.validatingDone(cmd, taskCount)) {"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                return \"DONE\";"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        } else if (cmd.substring(0,4).equalsIgnoreCase(\"todo\")) {"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (exception.validatingTodo(cmd)) {"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                return \"TODO\";"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        } else if (cmd.substring(0,5).equalsIgnoreCase(\"event\")) {"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (exception.validatingEventDeadline(cmd)) {"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                return \"EVENT\";"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        } else if (cmd.substring(0,8).equalsIgnoreCase(\"deadline\")) {"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (exception.validatingEventDeadline(cmd)) {"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                return \"DEADLINE\";"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        } else if (cmd.substring(0,6).equalsIgnoreCase(\"delete\")) {"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            return \"DELETE\";"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return null;"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static ArrayList\u003cTask\u003e fillTasks(FileOperation fileOp) {"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        ArrayList\u003cTask\u003e taskList \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            taskList \u003d fileOp.loadTaskList();"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        } catch (FileNotFoundException e) {"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            System.out.println(\"File not found!\");"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return taskList;"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public static void main(String[] args) throws IOException {"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        printWelcomeMsg();"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        FileOperation fileOp \u003d new FileOperation();"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        ArrayList\u003cTask\u003e taskList \u003d fillTasks(fileOp);"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        int counter \u003d fileOp.COUNTER;"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        Scanner myObj \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        String cmd \u003d myObj.nextLine();"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        while (!cmd.equalsIgnoreCase(\"bye\")) {"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            String cmdType \u003d cmdTypeIdentifier(cmd, taskList.size());"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (cmdType !\u003d null) {"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                switch (cmdType) {"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                case \"LIST\":"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    printTaskList(taskList);"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                case \"DONE\":"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    markTaskAsDone(taskList, cmd);"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                case \"TODO\":"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    taskList.add(createToDo(taskList, cmd));"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                case \"EVENT\":"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    taskList.add(createEvent(taskList, cmd));"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                case \"DEADLINE\":"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    taskList.add(createDeadline(taskList, cmd));"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                case \"DELETE\":"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    taskList.remove(findObjectToRemove(taskList, cmd));"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                default:"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    System.out.printf(\"error :(\");"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            fileOp.saveTaskList(taskList, counter);"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            cmd \u003d myObj.nextLine();"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        System.out.println(\"Bye bye! Talk to me again soon!\");"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "alwayshuizhen": 141,
-      "-": 3
-    }
-  },
-  {
-    "path": "src/main/java/taskManager/Event.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "package taskManager;"
+        "content": "package TaskList;"
       },
       {
         "lineNumber": 2,
@@ -1801,7 +2085,7 @@
     }
   },
   {
-    "path": "src/main/java/taskManager/FileOperation.java",
+    "path": "src/main/java/TaskList/Task.java",
     "fileType": "java",
     "lines": [
       {
@@ -1809,408 +2093,7 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "package taskManager;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.io.File;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.io.FileNotFoundException;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.io.FileWriter;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.io.IOException;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.util.ArrayList;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "import java.util.Scanner;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "public class FileOperation {"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    int COUNTER \u003d 0;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    File f \u003d new File(\"tasksData.txt\");"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    String PATHNAME \u003d f.getAbsolutePath();"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public FileOperation() {"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public ArrayList\u003cTask\u003e loadTaskList() throws FileNotFoundException {"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        ArrayList\u003cTask\u003e taskList \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        if (f.exists()) {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            Scanner s \u003d new Scanner(f); // create a Scanner using the File as the source"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            while (s.hasNext()) {"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                String newline \u003d s.nextLine();"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                String[] newlineByPart \u003d newline.replaceAll(\"[\\\\s][\\\\|][\\\\s]\",\",\").split(\",\");"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                String typeOfTask \u003d newlineByPart[0];"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "               if (typeOfTask.equalsIgnoreCase(\"t\")){"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                   Todo item \u003d new Todo(newlineByPart[2]);"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                   taskList.add(item);"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "               } else if (typeOfTask.equalsIgnoreCase(\"d\")) {"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                   Deadline item \u003d new Deadline(newlineByPart[2], newlineByPart[3]);"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                   taskList.add(item);"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "               } else if (typeOfTask.equalsIgnoreCase(\"e\")) {"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                   Event item \u003d new Event(newlineByPart[2], newlineByPart[3]);"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                   taskList.add(item);"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "               }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "               if (newlineByPart[1].equalsIgnoreCase(\"1\")) {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                   taskList.get(COUNTER).setDone();"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "               }"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "               COUNTER++;"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        return taskList;"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    public void saveTaskList (ArrayList\u003cTask\u003e taskList, int taskCount) throws IOException {"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        FileWriter fw \u003d new FileWriter(PATHNAME);"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        for (int i \u003d 0; i \u003c taskCount; i++) {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            String convertedTask \u003d taskList.get(i).createStrForSaving();"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            if (i !\u003d taskCount-1) {"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                fw.write(convertedTask + System.lineSeparator());"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "                fw.write(convertedTask);"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "        fw.close();"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "alwayshuizhen": 56
-    }
-  },
-  {
-    "path": "src/main/java/taskManager/Task.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "alwayshuizhen"
-        },
-        "content": "package taskManager;"
+        "content": "package TaskList;"
       },
       {
         "lineNumber": 2,
@@ -2407,7 +2290,7 @@
     }
   },
   {
-    "path": "src/main/java/taskManager/Todo.java",
+    "path": "src/main/java/TaskList/Todo.java",
     "fileType": "java",
     "lines": [
       {
@@ -2415,7 +2298,7 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "package taskManager;"
+        "content": "package TaskList;"
       },
       {
         "lineNumber": 2,
@@ -2535,6 +2418,358 @@
     }
   },
   {
+    "path": "src/main/java/Ui/TextUi.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "package Ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import TaskList.Task;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "public class TextUi {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public TextUi(){}"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void printWelcomeMsg() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___| \";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(logo + \" says hello :)\");"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"\\nWhat can i do for you?\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void printExitMsg() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Bye bye! Talk to me again soon!\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public String readCommand() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        Scanner myObj \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        String cmd \u003d myObj.nextLine();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        return cmd;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void showLoadingError() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"Duke has encountered a loading error :( Let\u0027s create one!\");"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void printIOError() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"IO saving tasklist error occured!\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void printFormatError() {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        System.out.println(\"I cannot understand the command, please check again.\");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    public void printTaskList(ArrayList\u003cTask\u003e taskList){"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        if (taskList.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(\"There are currently nothing to do! Add something!\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        for (int i \u003d 0; i \u003c taskList.size(); i++) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "            System.out.println(i + 1 + \". \" + taskList.get(i).printObject());"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "alwayshuizhen": 49
+    }
+  },
+  {
     "path": "tasksData.txt",
     "fileType": "txt",
     "lines": [
@@ -2572,10 +2807,17 @@
           "gitId": "alwayshuizhen"
         },
         "content": "T | 0 | buy grocery"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "alwayshuizhen"
+        },
+        "content": "E | 0 | concert | sunday"
       }
     ],
     "authorContributionMap": {
-      "alwayshuizhen": 5
+      "alwayshuizhen": 6
     }
   },
   {
@@ -2757,7 +2999,7 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\taskManager\\*.java ..\\src\\main\\java\\exceptionHandler\\*.java"
+        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\TaskList\\*.java ..\\src\\main\\java\\Ui\\*.java"
       },
       {
         "lineNumber": 11,
@@ -2813,7 +3055,7 @@
         "author": {
           "gitId": "alwayshuizhen"
         },
-        "content": "java -Dfile.encoding\u003dUTF8 -classpath ..\\bin taskManager.Duke \u003c input.txt \u003e ACTUAL.TXT"
+        "content": "java -Dfile.encoding\u003dUTF8 -classpath ..\\bin Duke \u003c input.txt \u003e ACTUAL.TXT"
       },
       {
         "lineNumber": 19,
