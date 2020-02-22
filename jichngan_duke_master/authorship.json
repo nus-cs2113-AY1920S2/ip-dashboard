@@ -292,10 +292,24 @@
           "gitId": "jichngan"
         },
         "content": "[T][✓] buy bread"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "[E][✓] proj meeting (at: 2pm)"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "[T][✘] buy book"
       }
     ],
     "authorContributionMap": {
-      "jichngan": 1
+      "jichngan": 3
     }
   },
   {
@@ -377,7 +391,7 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static final String END_COMMAND \u003d \"bye\";"
+        "content": "    //public static final String END_COMMAND \u003d \"bye\";"
       },
       {
         "lineNumber": 12,
@@ -503,124 +517,124 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        while (true) {"
+        "content": "        boolean isExit \u003d false;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            try {"
+        "content": "        while (!isExit) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                String userInput \u003d ui.readCommand();"
+        "content": "            try {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                if (userInput.equals(END_COMMAND)) {"
+        "content": "                String userInput \u003d ui.readCommand();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                    ui.endMessage();"
+        "content": "                ui.displayDividerLine();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                    break;"
+        "content": "                Command command \u003d Parser.parse(userInput);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                } else {"
+        "content": "                command.execute(tasks, storage);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                    ui.displayDividerLine();"
+        "content": "                isExit \u003d command.isExit();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                    Command command \u003d Parser.parse(userInput);"
+        "content": "            } catch (DukeException err) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                    command.execute(tasks, storage);"
+        "content": "                ui.displayErrorMessage(err.toString());"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                }"
+        "content": "            } finally {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            } catch (DukeException err) {"
+        "content": "                ui.displayDividerLine();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                ui.displayErrorMessage(err.toString());"
+        "content": "            }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            } finally {"
+        "content": "        }"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "jichngan"
+          "gitId": "-"
         },
-        "content": "                ui.displayDividerLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            }"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        }"
+        "content": "        new Duke().run();"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "-"
+          "gitId": "jichngan"
         },
         "content": "    }"
       },
@@ -629,31 +643,10 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static void main(String[] args) {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "jichngan"
-        },
-        "content": "        new Duke().run();"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "jichngan"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "jichngan"
-        },
         "content": ""
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
@@ -661,7 +654,7 @@
       }
     ],
     "authorContributionMap": {
-      "jichngan": 48,
+      "jichngan": 45,
       "-": 3
     }
   },
@@ -688,262 +681,269 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.command.Command;"
+        "content": "import duke.command.*;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.command.DeadlineCommand;"
+        "content": "import duke.exception.UnknownInputException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.command.DeleteCommand;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.command.DoneCommand;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.command.EventCommand;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.command.ListCommand;"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.command.TodoCommand;"
+        "content": "    public static final String DONE_COMMAND \u003d \"done\";"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "import duke.exception.UnknownInputException;"
+        "content": "    public static final String LIST_COMMAND \u003d \"list\";"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    public static final String TODO_COMMAND \u003d \"todo\";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    public static final String EVENT_COMMAND \u003d \"event\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "public class Parser {"
+        "content": "    public static final String DEADLINE_COMMAND \u003d \"deadline\";"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static final String DONE_COMMAND \u003d \"done\";"
+        "content": "    public static final String DELETE_COMMAND \u003d \"delete\";"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static final String LIST_COMMAND \u003d \"list\";"
+        "content": "    public static final String END_COMMAND \u003d \"bye\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static final String TODO_COMMAND \u003d \"todo\";"
+        "content": "    public static final String FIND_COMMAND \u003d \"find\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static final String EVENT_COMMAND \u003d \"event\";"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static final String DEADLINE_COMMAND \u003d \"deadline\";"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static final String DELETE_COMMAND \u003d \"delete\";"
+        "content": "    public static Command parse(String userInput) throws UnknownInputException {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "        String[] words \u003d userInput.split(\" \");"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "        if (words[0].equals(TODO_COMMAND)) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public static Command parse(String userInput) throws UnknownInputException {"
+        "content": "            return new TodoCommand(userInput);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        String[] words \u003d userInput.split(\" \");"
+        "content": "        } else if (words[0].equals(EVENT_COMMAND)) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        if (words[0].equals(TODO_COMMAND)) {"
+        "content": "            return new EventCommand(userInput);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            return new TodoCommand(userInput);"
+        "content": "        } else if (words[0].equals(DEADLINE_COMMAND)) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else if (words[0].equals(EVENT_COMMAND)) {"
+        "content": "            return new DeadlineCommand(userInput);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            return new EventCommand(userInput);"
+        "content": "        } else if (words[0].equals(LIST_COMMAND)) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else if (words[0].equals(DEADLINE_COMMAND)) {"
+        "content": "            return new ListCommand();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            return new DeadlineCommand(userInput);"
+        "content": "        } else if (words[0].equals(DELETE_COMMAND)) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else if (words[0].equals(LIST_COMMAND)) {"
+        "content": "            return new DeleteCommand(userInput);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            return new ListCommand();"
+        "content": "        } else if (words[0].equals(DONE_COMMAND)) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else if (words[0].equals(DELETE_COMMAND)) {"
+        "content": "            return new DoneCommand(userInput);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            return new DeleteCommand(userInput);"
+        "content": "        } else if (words[0].equals(END_COMMAND)) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else if (words[0].equals(DONE_COMMAND)) {"
+        "content": "            return new ByeCommand();"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            return new DoneCommand(userInput);"
+        "content": "        } else if (words[0].equals(FIND_COMMAND)) {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else {"
+        "content": "            return new FindCommand(userInput);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            throw new UnknownInputException(\"There is no such input!\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        }"
+        "content": "            throw new UnknownInputException(\"There is no such input!\");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 40,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
         "author": {
           "gitId": "jichngan"
         },
@@ -951,7 +951,7 @@
       }
     ],
     "authorContributionMap": {
-      "jichngan": 40
+      "jichngan": 41
     }
   },
   {
@@ -2169,11 +2169,165 @@
         "author": {
           "gitId": "jichngan"
         },
+        "content": "    public void findTask(String findString) {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        ArrayList\u003cInteger\u003e matchList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        for (int i \u003d 1; i \u003c tasks.size() + 1; i++) {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            if (tasks.get(i-1).toString().contains(findString)) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "                matchList.add(i);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        if (matchList.size() \u003e 0) {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            System.out.println(\"I\u0027ve found the follow tasks matching your search: \");"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            for (int i \u003d 0; i \u003c matchList.size(); i++) {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "                String index \u003d matchList.get(i).toString();"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "                System.out.println(index + \".\" + tasks.get(matchList.get(i) - 1));"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            System.out.println(\"Sorry! I could not find any tasks matching your searches!\");"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "jichngan"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "jichngan": 90
+      "jichngan": 112
     }
   },
   {
@@ -2501,6 +2655,141 @@
     }
   },
   {
+    "path": "src/main/java/duke/command/ByeCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "import duke.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "public class ByeCommand extends Command {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    public ByeCommand() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        this.isExit \u003d true;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    public void execute(TaskList tasks, Storage storage) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        System.out.println(\"Bob thanks you for coming! See you again soon!\");"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jichngan": 18
+    }
+  },
+  {
     "path": "src/main/java/duke/command/Command.java",
     "fileType": "java",
     "lines": [
@@ -2572,14 +2861,14 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    protected boolean isExit;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    abstract public void execute(TaskList tasks, Storage storage) throws DukeException;"
+        "content": ""
       },
       {
         "lineNumber": 12,
@@ -2593,10 +2882,52 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    abstract public void execute(TaskList tasks, Storage storage) throws DukeException;"
       },
       {
         "lineNumber": 14,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        return isExit;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
         "author": {
           "gitId": "jichngan"
         },
@@ -2604,7 +2935,7 @@
       }
     ],
     "authorContributionMap": {
-      "jichngan": 14
+      "jichngan": 20
     }
   },
   {
@@ -2714,126 +3045,126 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": "        this.isExit \u003d false;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskException, MissingDeadlineDateException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        if (!userInput.trim().equals(DEADLINE_COMMAND)) {"
+        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskException, MissingDeadlineDateException {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            int indexOfBy \u003d userInput.indexOf(\"/by\");"
+        "content": "        if (!userInput.trim().equals(DEADLINE_COMMAND)) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            if (indexOfBy \u003d\u003d -1) {"
+        "content": "            int indexOfBy \u003d userInput.indexOf(\"/by\");"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                throw new MissingDeadlineDateException(\"Please specify a deadline using \\\u0027/by\\\u0027!\");"
+        "content": "            if (indexOfBy \u003d\u003d -1) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            }"
+        "content": "                throw new MissingDeadlineDateException(\"Please specify a deadline using \\\u0027/by\\\u0027!\");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            String deadlineTask \u003d userInput.substring(DEADLINE_COMMAND.length() + 1, indexOfBy - 1);"
+        "content": "            }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            String byDate \u003d userInput.substring(indexOfBy + \"/by\".length() + 1);"
+        "content": "            String deadlineTask \u003d userInput.substring(DEADLINE_COMMAND.length() + 1, indexOfBy - 1);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            tasks.addDeadline(deadlineTask, byDate);"
+        "content": "            String byDate \u003d userInput.substring(indexOfBy + \"/by\".length() + 1);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            storage.save(tasks);"
+        "content": "            tasks.addDeadline(deadlineTask, byDate);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else {"
+        "content": "            storage.save(tasks);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            throw new MissingTaskException(\"Deadline tasks cannot be empty!\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        }"
+        "content": "            throw new MissingTaskException(\"Deadline tasks cannot be empty!\");"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 33,
@@ -2847,11 +3178,18 @@
         "author": {
           "gitId": "jichngan"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jichngan"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "jichngan": 34
+      "jichngan": 35
     }
   },
   {
@@ -2947,122 +3285,129 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": "        this.isExit \u003d false;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskNumberException, MissingTaskNumberDescriptionException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        if (!userInput.trim().equals(DELETE_COMMAND)) {"
+        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskNumberException, MissingTaskNumberDescriptionException {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            String[] words \u003d userInput.split(\" \");"
+        "content": "        if (!userInput.trim().equals(DELETE_COMMAND)) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            int taskNum \u003d Integer.parseInt(words[1]);"
+        "content": "            String[] words \u003d userInput.split(\" \");"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            if(taskNum \u003c\u003d tasks.getListSize()) {"
+        "content": "            int taskNum \u003d Integer.parseInt(words[1]);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                tasks.deleteTask(taskNum);"
+        "content": "            if(taskNum \u003c\u003d tasks.getListSize()) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                storage.save(tasks);"
+        "content": "                tasks.deleteTask(taskNum);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            } else {"
+        "content": "                storage.save(tasks);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                throw new MissingTaskNumberException(\"This task number does not exist on the list!\");"
+        "content": "            } else {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            }"
+        "content": "                throw new MissingTaskNumberException(\"This task number does not exist on the list!\");"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else {"
+        "content": "            }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            throw new MissingTaskNumberDescriptionException(\"Please add a task number to \\\u0027delete\\\u0027 to delete a task!\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        }"
+        "content": "            throw new MissingTaskNumberDescriptionException(\"Please add a task number to \\\u0027delete\\\u0027 to delete a task!\");"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "jichngan"
         },
@@ -3070,7 +3415,7 @@
       }
     ],
     "authorContributionMap": {
-      "jichngan": 30
+      "jichngan": 31
     }
   },
   {
@@ -3166,140 +3511,140 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": "        this.isExit \u003d false;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskNumberException, MissingTaskNumberDescriptionException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        if (!userInput.trim().equals(DONE_COMMAND)) {"
+        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskNumberException, MissingTaskNumberDescriptionException {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            String[] words \u003d userInput.split(\" \");"
+        "content": "        if (!userInput.trim().equals(DONE_COMMAND)) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            int taskNum \u003d Integer.parseInt(words[1]);"
+        "content": "            String[] words \u003d userInput.split(\" \");"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            int sizeOfArray \u003d tasks.getListSize();"
+        "content": "            int taskNum \u003d Integer.parseInt(words[1]);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            if (taskNum \u003c\u003d sizeOfArray) {"
+        "content": "            int sizeOfArray \u003d tasks.getListSize();"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                tasks.markDone(taskNum);"
+        "content": "            if (taskNum \u003c\u003d sizeOfArray) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                storage.save(tasks);"
+        "content": "                tasks.markDone(taskNum);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            } else {"
+        "content": "                storage.save(tasks);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                throw new MissingTaskNumberException(\"This task number does not exist on the list!\");"
+        "content": "            } else {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            }"
+        "content": "                throw new MissingTaskNumberException(\"This task number does not exist on the list!\");"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else {"
+        "content": "            }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            throw new MissingTaskNumberDescriptionException(\"Please add a task number to \\\u0027done\\\u0027 to mark task as done!\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        }"
+        "content": "            throw new MissingTaskNumberDescriptionException(\"Please add a task number to \\\u0027done\\\u0027 to mark task as done!\");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 33,
@@ -3313,11 +3658,18 @@
         "author": {
           "gitId": "jichngan"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "jichngan"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "jichngan": 34
+      "jichngan": 35
     }
   },
   {
@@ -3420,6 +3772,239 @@
         "author": {
           "gitId": "jichngan"
         },
+        "content": "        this.isExit \u003d false;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskException, MissingEventDateException {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        if (!userInput.trim().equals(EVENT_COMMAND)) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            int indexOfAt \u003d userInput.indexOf(\"/at\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            if (indexOfAt \u003d\u003d -1) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "                throw new MissingEventDateException(\"Please specify the date for event using \\\u0027at\\\u0027!\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            String eventTask \u003d userInput.substring(EVENT_COMMAND.length() + 1, indexOfAt - 1);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            String atDate \u003d userInput.substring(indexOfAt + \"/at\".length() + 1);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            tasks.addEvent(eventTask, atDate);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            storage.save(tasks);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "            throw new MissingTaskException(\"Event tasks cannot be empty!\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "jichngan": 32
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/FindCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "import duke.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "import duke.exception.MissingTaskException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "public class FindCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    private final String FIND_COMMAND \u003d \"find\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "    public FindCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        this.userInput \u003d userInput;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "jichngan"
+        },
+        "content": "        this.isExit \u003d false;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "jichngan"
+        },
         "content": "    }"
       },
       {
@@ -3441,101 +4026,73 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskException, MissingEventDateException {"
+        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskException {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        if (!userInput.trim().equals(EVENT_COMMAND)) {"
+        "content": "        if (!userInput.trim().equals(FIND_COMMAND)) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            int indexOfAt \u003d userInput.indexOf(\"/at\");"
+        "content": "            tasks.findTask(userInput.substring(FIND_COMMAND.length() + 1));"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            if (indexOfAt \u003d\u003d -1) {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "                throw new MissingEventDateException(\"Please specify the date for event using \\\u0027at\\\u0027!\");"
+        "content": "            throw new MissingTaskException(\"Please specify a word or phrase to search for!\");"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            String eventTask \u003d userInput.substring(EVENT_COMMAND.length() + 1, indexOfAt - 1);"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            String atDate \u003d userInput.substring(indexOfAt + \"/at\".length() + 1);"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            tasks.addEvent(eventTask, atDate);"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            storage.save(tasks);"
+        "content": ""
       },
       {
         "lineNumber": 27,
-        "author": {
-          "gitId": "jichngan"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "jichngan"
-        },
-        "content": "            throw new MissingTaskException(\"Event tasks cannot be empty!\");"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "jichngan"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "jichngan"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 31,
         "author": {
           "gitId": "jichngan"
         },
@@ -3543,7 +4100,7 @@
       }
     ],
     "authorContributionMap": {
-      "jichngan": 31
+      "jichngan": 27
     }
   },
   {
@@ -3739,98 +4296,98 @@
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": "        this.isExit \u003d false;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        if (!userInput.trim().equals(TODO_COMMAND)) {"
+        "content": "    public void execute(TaskList tasks, Storage storage) throws MissingTaskException {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            String todoTask \u003d userInput.substring(TODO_COMMAND.length() + 1);"
+        "content": "        if (!userInput.trim().equals(TODO_COMMAND)) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            tasks.addTodo(todoTask);"
+        "content": "            String todoTask \u003d userInput.substring(TODO_COMMAND.length() + 1);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            storage.save(tasks);"
+        "content": "            tasks.addTodo(todoTask);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        } else {"
+        "content": "            storage.save(tasks);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "            throw new MissingTaskException(\"Todo tasks cannot be empty!\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "        }"
+        "content": "            throw new MissingTaskException(\"Todo tasks cannot be empty!\");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "jichngan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "jichngan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 27,
@@ -3858,11 +4415,18 @@
         "author": {
           "gitId": "jichngan"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "jichngan"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "jichngan": 30
+      "jichngan": 31
     }
   },
   {
