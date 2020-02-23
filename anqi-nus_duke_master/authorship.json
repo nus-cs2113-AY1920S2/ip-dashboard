@@ -1,5 +1,21 @@
 [
   {
+    "path": "data/myTasks.txt",
+    "fileType": "txt",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "T|ToDo|N"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 1
+    }
+  },
+  {
     "path": "src/main/java/duke/Duke.java",
     "fileType": "java",
     "lines": [
@@ -22,434 +38,789 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.exceptions.IllegalCommandException;"
+        "content": "import duke.Util.*;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.exceptions.IllegalDeleteException;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.exceptions.IllegalDoneTaskException;"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.exceptions.IllegalTypeException;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.taskmanager.Deadline;"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.taskmanager.Event;"
+        "content": "    private UI ui;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.taskmanager.TaskManager;"
+        "content": "    private Parser parser;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import duke.taskmanager.ToDo;"
+        "content": "    public Duke() {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "        ui \u003d new UI();"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import java.io.FileWriter;"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import java.io.IOException;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "    public static void main(String[] args) throws IOException {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import java.util.Arrays;"
+        "content": "        Duke duke \u003d new Duke();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import java.util.List;"
+        "content": "        duke.run();"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "import java.util.Scanner;"
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "    public void run() throws IOException {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "public class Duke {"
+        "content": "        ui.printIntro();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final int TASK_NUMBER \u003d 100;"
+        "content": "        ui.printExeType();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String ADD_TASK \u003d \"1\";"
+        "content": "        String exeCommand \u003d ui.getStringInput();"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String PRINT_TASKS \u003d \"2\";"
+        "content": "        while (!exeCommand.equals(\"6\")) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String MARK_AS_DONE \u003d \"3\";"
+        "content": "            parser \u003d new Parser(ui);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String DELETE_TASK \u003d \"4\";"
+        "content": "            parser.parseCommand(exeCommand); //to select the exeType and execute it"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String EXIT_COMMAND \u003d \"5\";"
+        "content": "            ui.printExeType(); //user guide after execution of command"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String TODO \u003d \"1\";"
+        "content": "            exeCommand \u003d ui.getStringInput(); //get the next command"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String DEADLINE \u003d \"2\";"
+        "content": "        }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static final String EVENT \u003d \"3\";"
+        "content": "        ui.printExit();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static int Task_No \u003d 0;"
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 29,
+      "-": 1
+    }
+  },
+  {
+    "path": "src/main/java/duke/Util/CommandType.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.Util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public enum CommandType {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    ADD_TASK(\"1\"),"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    PRINT_TASKS(\"2\"),"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    MARK_AS_DONE(\"3\"),"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    DELETE_TASK(\"4\"),"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    FIND_TASK(\"5\"),"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    ;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public final String commandType;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    CommandType(String taskType) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        this.commandType \u003d taskType;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String getCommandType() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return this.commandType;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 18
+    }
+  },
+  {
+    "path": "src/main/java/duke/Util/Load.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.Util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.Deadline;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.Tasks;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.ToDo;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.regex.Pattern;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class Load {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private static Path path;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static List\u003cTasks\u003e list \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static List\u003cString\u003e lines \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static UI ui;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public Load(Path path) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Load.path \u003d path;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void loadData() throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        String line;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        File file \u003d new File(String.valueOf(path)); // create a File for the given file path"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Scanner readFile \u003d new Scanner(file);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    private static TaskManager[] manageTask \u003d new TaskManager[TASK_NUMBER];"
+        "content": "        while (readFile.hasNext()) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    private static Scanner userInput \u003d new Scanner(System.in);"
+        "content": "            line \u003d readFile.nextLine();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    private static FileWriter Duke_fw;"
+        "content": "            lines.add(line);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    static {"
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        try {"
+        "content": "        System.out.println(lines);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            Duke_fw \u003d new FileWriter(\"data/TaskManagement.txt\");"
+        "content": "        System.out.println(\"aoisdioasj\");"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            e.printStackTrace();"
+        "content": "    public List\u003cTasks\u003e readData() throws FileNotFoundException {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        }"
+        "content": "        loadData();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "        for (String line: lines) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "            if(line !\u003d null) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void main(String[] args) throws IOException {"
+        "content": "                String[] data \u003d line.split(Pattern.quote(\"|\"));"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        printIntro();"
+        "content": "                switch (data[0]) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        printExeType();"
+        "content": "                case \"E\":"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        exeCommands();"
+        "content": "                    Event e \u003d new Event(data[1], data[3]);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        printExit();"
+        "content": "                    if (data[2].equals(\"Y\")) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        saveFile();"
+        "content": "                        e.markAsDone();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "                    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "                    list.add(e);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    /*"
+        "content": "                    break;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    exeCommand identifies whether the user is going to"
+        "content": "                case \"D\":"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    1. add a task"
+        "content": "                    Deadline d \u003d new Deadline(data[1], data[3]);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    2. print a task"
+        "content": "                    if (data[2].equals(\"Y\")) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    3. mark task as done"
+        "content": "                        d.markAsDone();"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    4. deleteTask or"
+        "content": "                    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    5. exit programme"
+        "content": "                    list.add(d);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    for further data processing"
+        "content": "                    break;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "     */"
+        "content": "                case \"T\":"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void exeCommands() {"
+        "content": "                    ToDo t \u003d new ToDo(data[1]);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        String exeCommand \u003d getStringInput(userInput);"
+        "content": "                    if (data[2].equals(\"Y\")) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        try {"
+        "content": "                        t.markAsDone();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            while (!exeCommand.equals(EXIT_COMMAND)) {"
+        "content": "                    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                exeType(exeCommand); //to select the exeType and execute it"
+        "content": "                    list.add(t);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                printExeType(); //user guide after execution of command"
+        "content": "                    break;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                exeCommand \u003d getStringInput(userInput); //get the next command"
+        "content": "                }"
       },
       {
         "lineNumber": 65,
@@ -463,1496 +834,3148 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        } catch (IllegalCommandException e) {"
+        "content": "        }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            System.out.println(\"    Sorry,we do not understand your command. \" +"
+        "content": "        return list;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                    \"(IllegalCommandException). \" +"
+        "content": "    }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                    \"Please follow the instructions below.\");"
-      },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 69
+    }
+  },
+  {
+    "path": "src/main/java/duke/Util/Parser.java",
+    "fileType": "java",
+    "lines": [
       {
-        "lineNumber": 70,
+        "lineNumber": 1,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            printExeType();"
+        "content": "package duke.Util;"
       },
       {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            exeCommands();"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 74,
+        "lineNumber": 2,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": ""
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 3,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    /*"
+        "content": "import duke.commands.*;"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 4,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    exeType receives the command from exeCommand and it executes the command received."
+        "content": "import duke.taskmanager.Deadline;"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 5,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "     */"
+        "content": "import duke.taskmanager.Event;"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 6,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void exeType(String exeCommand) throws IllegalCommandException {"
+        "content": "import duke.taskmanager.Tasks;"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 7,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        try {"
+        "content": "import duke.taskmanager.ToDo;"
       },
       {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            switch (exeCommand) {"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            case ADD_TASK:"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                printTaskType();"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                addTask();"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            case PRINT_TASKS:"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                printTasks();"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            case MARK_AS_DONE:"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                doneTask();"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            case DELETE_TASK:"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                deleteTask();"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            default:"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                throw new IllegalCommandException();"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        } catch (IllegalTypeException e) {"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            System.out.println(\"    Sorry,we do not understand your command. \" +"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                    \"(IllegalTypeException). \" +"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                    \"Please follow the instructions below.\");"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            exeType(exeCommand);"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        } catch (IllegalDeleteException e) {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            System.out.println(\"    Sorry, task does not exist \" +"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                    \"(IllegalDeleteException). \");"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            exeType(exeCommand);"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        } catch (IllegalDoneTaskException e) {"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            System.out.println(\"    Sorry, task does not exist \" +"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                    \"(IllegalDoneTaskException). \");"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            exeType(exeCommand);"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 112,
+        "lineNumber": 8,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": ""
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 9,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    /*"
+        "content": "import java.io.IOException;"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 10,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    addTask adds task to manageTask array."
+        "content": "import java.util.List;"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 11,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    Firstly, addTask gets the type of task input from the user."
+        "content": ""
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 12,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    Secondly, based on the type, it will prompt the user to key"
+        "content": "public class Parser {"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 13,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    in the task (and by...)."
+        "content": "    public static final String TODO \u003d \"1\";"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 14,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    Lastly, it adds the task (and by...) to the manageTask array."
+        "content": "    public static final String DEADLINE \u003d \"2\";"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 15,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "     */"
+        "content": "    public static final String EVENT \u003d \"3\";"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 16,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void addTask() throws IllegalTypeException {"
+        "content": "    private static UI ui;"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 17,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        String taskType; //taskType \u003d ToDoo||Event||Deadline"
+        "content": "    private static List\u003cTasks\u003e list \u003d Tasklist.getTasks();"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 18,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        taskType \u003d getStringInput(userInput);"
+        "content": "    public Parser(UI ui) {"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 19,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        String task, by;"
+        "content": "        Parser.ui \u003d ui;"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 20,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        switch (taskType) {"
+        "content": "    }"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 21,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        case TODO:"
+        "content": ""
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 22,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            printUserInputTask();"
+        "content": "    public void parseCommand(String exeCommand) throws IOException {"
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 23,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            task \u003d getStringInput(userInput);"
+        "content": "        CommandType commandType \u003d CommandType.valueOf(exeCommand);"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 24,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            manageTask[Task_No] \u003d new ToDo(task);"
+        "content": "        switch (commandType) {"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 25,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            Task_No++;"
+        "content": "        case ADD_TASK:"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 26,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            printRespondToAddTask(task);"
+        "content": "            Parser.ui.printTaskType();"
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            parseAddCommand();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            Storage.writeData(list);"
+      },
+      {
+        "lineNumber": 29,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 30,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        case DEADLINE:"
+        "content": "        case PRINT_TASKS:"
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 31,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            printUserInputTask();"
+        "content": "            ListCommand listCommand \u003d new ListCommand();"
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 32,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            task \u003d getStringInput(userInput);"
+        "content": "            listCommand.execute();"
       },
       {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            System.out.println(\"    Please enter the deadline of your task: \");"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            by \u003d getStringInput(userInput);"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            manageTask[Task_No] \u003d new Deadline(task, by);"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            Task_No++;"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            printRespondToAddTask(task);"
-      },
-      {
-        "lineNumber": 140,
+        "lineNumber": 33,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 34,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        case EVENT:"
+        "content": "        case MARK_AS_DONE:"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 35,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            printUserInputTask();"
+        "content": "            DoneCommand doneCommand \u003d new DoneCommand(ui);"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 36,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            task \u003d getStringInput(userInput);"
+        "content": "            doneCommand.execute();"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 37,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            System.out.println(\"    Please enter the venue of your task: \" +"
+        "content": "            int indexDoneTask \u003d doneCommand.getIndexOfTask();"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 38,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                    \"(format at: )\");"
+        "content": "            saveDoneList(indexDoneTask);"
       },
       {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            by \u003d getStringInput(userInput);"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            manageTask[Task_No] \u003d new Event(task, by);"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            Task_No++;"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            printRespondToAddTask(task);"
-      },
-      {
-        "lineNumber": 150,
+        "lineNumber": 39,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 40,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        default: throw new IllegalTypeException();"
+        "content": "        case DELETE_TASK:"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 41,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        }"
+        "content": "            DeleteCommand delete \u003d new DeleteCommand(ui);"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 42,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "            delete.execute();"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 43,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "            break;"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 44,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    /*"
+        "content": "        case FIND_TASK:"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 45,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    deleteTask deletes a certain task from manageTask array."
+        "content": "            FindCommand findCommand \u003d new FindCommand(ui);"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 46,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    It prompts the user to key in the task index and show task"
+        "content": "            findCommand.execute();"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 47,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    list. Then delete the element of respective index in the"
+        "content": "            break;"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 48,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    manageTask array."
+        "content": "        default:"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 49,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "     */"
+        "content": "            System.out.println(\"    Wrong command. Please try again.\");"
       },
       {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    public static void deleteTask() throws IllegalDeleteException {"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        int index;"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        System.out.println(\"     Please enter the index of the task \" +"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"you want to delete\");"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        printTasks();"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        index \u003d getIntegerInput(userInput);"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        clearInput();"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        if (index \u003c Task_No){"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            List \u003cTaskManager\u003e tempList \u003d new ArrayList\u003c\u003e(Arrays.asList(manageTask));"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            System.out.println(\"     You have successfully deleted the task \""
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                    + manageTask[index]);"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            tempList.remove(index);"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            Task_No --;"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            manageTask \u003d tempList.toArray(new TaskManager[0]);"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            printTasks();"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            throw new IllegalDeleteException();"
-      },
-      {
-        "lineNumber": 178,
+        "lineNumber": 50,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 51,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 52,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": ""
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 53,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    /*"
+        "content": "    private static void parseAddCommand() {"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 54,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "   doneTask mark a certain task in manageTask array as done."
+        "content": "        String task \u003d Parser.ui.getStringInput();"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 55,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "   It prompts the user to key in the task index and show task"
+        "content": "        TaskType taskType \u003d TaskType.valueOf(task);"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 56,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "   list. Then mark the element of respective index in the"
+        "content": "        String by;"
       },
       {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "   manageTask array as a done task."
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    */"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    public static void doneTask() throws IllegalDoneTaskException {"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        System.out.println(\"    Please choose the task that you have completed \" +"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"(select the no)\");"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        printTasks();"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        int doneTask \u003d getIntegerInput(userInput);"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        clearInput();"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        if (doneTask \u003c Task_No) {"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            manageTask[doneTask].markAsDone();"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            throw new IllegalDoneTaskException();"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        System.out.println(\"    Congrats! Task \" + doneTask + \": \" +"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                manageTask[doneTask] +  \" has been completed!\");"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    "
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    public static void printRespondToAddTask(String task) {"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        System.out.println(\"    You have successfully added \" + task + \"!\");"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        System.out.println(\"    You have \"+ Task_No + \" task(s) now in total\");"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    public static void printUserInputTask() {"
-      },
-      {
-        "lineNumber": 208,
+        "lineNumber": 57,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "        System.out.println(\"    Please enter the task: \");"
       },
       {
-        "lineNumber": 209,
+        "lineNumber": 58,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "        task \u003d Parser.ui.getStringInput();"
       },
       {
-        "lineNumber": 210,
+        "lineNumber": 59,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "        boolean isRepeat \u003d checkRepeat(task);"
       },
       {
-        "lineNumber": 211,
+        "lineNumber": 60,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    private static String getStringInput(Scanner userInput) {"
+        "content": "        if (!isRepeat) {"
       },
       {
-        "lineNumber": 212,
+        "lineNumber": 61,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        return userInput.nextLine();"
+        "content": "            switch (taskType) {"
       },
       {
-        "lineNumber": 213,
+        "lineNumber": 62,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "            case TODO:"
       },
       {
-        "lineNumber": 214,
+        "lineNumber": 63,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    private static Integer getIntegerInput(Scanner userInput) {"
+        "content": "                ToDo t \u003d new ToDo(task);"
       },
       {
-        "lineNumber": 215,
+        "lineNumber": 64,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        return userInput.nextInt();"
+        "content": "                Tasklist.add(t);"
       },
       {
-        "lineNumber": 216,
+        "lineNumber": 65,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "                break;"
       },
       {
-        "lineNumber": 217,
+        "lineNumber": 66,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "            case DEADLINE:"
       },
       {
-        "lineNumber": 218,
+        "lineNumber": 67,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void printIntro() {"
+        "content": "                System.out.println(\"    Please enter the deadline of your task: \");"
       },
       {
-        "lineNumber": 219,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        String logo \u003d \" ____        _        \\n\""
-      },
-      {
-        "lineNumber": 220,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 222,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 223,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"    Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 225,
+        "lineNumber": 68,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "                by \u003d Parser.ui.getStringInput();"
       },
       {
-        "lineNumber": 226,
+        "lineNumber": 69,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "                Deadline d \u003d new Deadline(task, by);"
       },
       {
-        "lineNumber": 227,
+        "lineNumber": 70,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void printExeType() {"
+        "content": "                Tasklist.add(d);"
       },
       {
-        "lineNumber": 228,
+        "lineNumber": 71,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        System.out.println(\"    ~·~·~·~·~·~·~·~·~·~·~·~·~·\\n\" +"
+        "content": "                break;"
       },
       {
-        "lineNumber": 229,
+        "lineNumber": 72,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    Hi what can I do for you? (please key in the number):\" +"
+        "content": "            case EVENT:"
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 73,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"\\n    1. Add a new task, \\n\" +"
+        "content": "                System.out.println(\"    Please enter the venue of your task: \");"
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 74,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    2. Show my tasks,\\n\"+"
+        "content": "                by \u003d Parser.ui.getStringInput();"
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 75,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    3. I\u0027ve completed my task!\\n\" +"
+        "content": "                Event e \u003d new Event(task, by);"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 76,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    4. Delete a task,  or \\n\" +"
+        "content": "                Tasklist.add(e);"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 77,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    5. See you next time! \\n\" +"
+        "content": "                break;"
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 78,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    to end this conversation \\n\" +"
+        "content": "            default:"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 79,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    ~·~·~·~·~·~·~·~·~·~·~·~·~·\\n\");"
+        "content": "                System.out.println(\"    Sorry,we do not understand your command. \" +"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 80,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "                        \"Please follow the instructions below.\");"
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 81,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": ""
+        "content": "                parseAddCommand();"
       },
       {
-        "lineNumber": 239,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    public static void printTaskType() {"
-      },
-      {
-        "lineNumber": 240,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        System.out.println(\"    Which category does your task belong to? \\n\"+"
-      },
-      {
-        "lineNumber": 241,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"   1. ToDos: tasks without any date/time attached to it \" +"
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"(e.g., visit new theme park)\\n\" +"
-      },
-      {
-        "lineNumber": 243,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"   2. Deadlines: tasks that need to be done before a \" +"
-      },
-      {
-        "lineNumber": 244,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"specific date/time\" +"
-      },
-      {
-        "lineNumber": 245,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \" (e.g., submit report by 11/10/2019 5pm)\\n\" +"
-      },
-      {
-        "lineNumber": 246,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"   3. Events: tasks that start at a specific time and ends at \" +"
-      },
-      {
-        "lineNumber": 247,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \"a specific time\" +"
-      },
-      {
-        "lineNumber": 248,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                \" (e.g., team project meeting on 2/10/2019 2-4pm)\") ;"
-      },
-      {
-        "lineNumber": 249,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 250,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 251,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "    public static void printTasks() {"
-      },
-      {
-        "lineNumber": 252,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        System.out.println(\"    Your current task list:\");"
-      },
-      {
-        "lineNumber": 253,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        if (Task_No \u003d\u003d 0){"
-      },
-      {
-        "lineNumber": 254,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            System.out.println(\"    You have no ongoing task.\");"
-      },
-      {
-        "lineNumber": 255,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 256,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "            for (int i \u003d 0; i \u003c Task_No; i++){"
-      },
-      {
-        "lineNumber": 257,
-        "author": {
-          "gitId": "anqi-nus"
-        },
-        "content": "                System.out.println(\"    Task \" + i + \": \" + manageTask[i]);"
-      },
-      {
-        "lineNumber": 258,
+        "lineNumber": 82,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 259,
+        "lineNumber": 83,
         "author": {
-          "gitId": "-"
+          "gitId": "anqi-nus"
+        },
+        "content": "            Parser.ui.printRespondToAddTask(task);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "anqi-nus"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 260,
+        "lineNumber": 85,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 261,
+        "lineNumber": 86,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": ""
       },
       {
-        "lineNumber": 262,
+        "lineNumber": 87,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void printExit() {"
+        "content": "    private static boolean checkRepeat(String task) {"
       },
       {
-        "lineNumber": 263,
+        "lineNumber": 88,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        System.out.println(\"    ~·~·~·~·~·~·~·~·~·~·~·~·~·\\n\" +"
+        "content": "        if (list!\u003dnull \u0026\u0026 !list.isEmpty()) {"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 89,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            for (Tasks i : list) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                if (i !\u003d null \u0026\u0026 i.task.equals(task)) {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                    System.out.println(\"    The is a repeated task.\");"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                    return true;"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private static void saveDoneList(int indexDoneTask) {"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasks task \u003d list.get(indexDoneTask);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        task.markAsDone();"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        list.set(indexDoneTask, task);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Storage.writeData(list);"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Parser.ui.clearInput();"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 106
+    }
+  },
+  {
+    "path": "src/main/java/duke/Util/Storage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.Util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.Tasks;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private static Path path \u003d Paths.get(\"data/myTasks.txt\");"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public Storage() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static void writeData(List\u003cTasks\u003e taskList) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        for (Tasks temp : taskList) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            String store \u003d temp.contentToFile();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                writeToFile(store+System.lineSeparator());"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                System.out.println(\"Something went wrong: \" + e.getMessage());"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private static void writeToFile(String textToAdd) throws IOException {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(String.valueOf(path));"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        fw.write(textToAdd);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        fw.close();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 32
+    }
+  },
+  {
+    "path": "src/main/java/duke/Util/TaskType.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.Util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public enum TaskType {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    TODO (\"1\"),"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    DEADLINE(\"2\"),"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    EVENT(\"3\")"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    ;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private final String taskType;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    TaskType(String taskType) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        this.taskType \u003d taskType;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String getTaskType() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return this.taskType;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 16
+    }
+  },
+  {
+    "path": "src/main/java/duke/Util/Tasklist.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.Util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.Tasks;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class Tasklist {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static List\u003cTasks\u003e tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private Load load;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public Tasklist() throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Load load \u003d new Load(Paths.get(\"data/myTasks.txt\"));"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        tasks \u003d load.readData();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static void find(String input) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        int index \u003d 0;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        for (Tasks task : tasks) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            if (task.getTask().contains(input)) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                System.out.println(\"    \"+ index + \": \" +"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                        task);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            index ++;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static void saveTaskList() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Storage.writeData(tasks);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static List\u003cTasks\u003e getTasks() {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return tasks;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static Tasks getTask(int index) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return tasks.get(index);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static void add(Tasks task) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        tasks.add(task);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static void delete(int index) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        tasks.remove(index);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Storage.writeData(tasks);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static int getSize() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return tasks.size();"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static void showList() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    Your current task list:\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        if (getSize() \u003d\u003d 0){"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            System.out.println(\"    You have no ongoing task.\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            int index \u003d 0;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            for (Tasks task : tasks) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                System.out.println(\"    \" + index + \". \" + task.toString());"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                index++;"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 63
+    }
+  },
+  {
+    "path": "src/main/java/duke/Util/UI.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.Util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class UI {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private static Scanner userInput \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    private final String SPLIT \u003d \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public UI(){"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void printRespondToAddTask(String task) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    You have successfully added \" + task + \"!\");"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    You have \"+ Tasklist.getSize() + \" task(s) now in total\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String getStringInput() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return userInput.nextLine();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public Integer getIntegerInput() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return userInput.nextInt();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void getDoneTask() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    Please choose the task that you have completed \" +"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"(select the no)\");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasklist.showList();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void printIntro() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    Hello from\\n\" + logo);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void printExeType() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\" +"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    Hi what can I do for you? (please key in the number):\" +"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"\\n    1. Add a new task, \\n\" +"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    2. Show my tasks,\\n\"+"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    3. I\u0027ve completed my task!\\n\" +"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    4. Delete a task,  or \\n\" +"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    5. Find a task,  or \\n\" +"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    6. See you next time! \\n\" +"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    to end this conversation \\n\" +"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void printTaskType() {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    Which category does your task belong to? \\n\"+"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"   1. ToDos: tasks without any date/time attached to it \" +"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"(e.g., visit new theme park)\\n\" +"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"   2. Deadlines: tasks that need to be done before a \" +"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"specific date/time\" +"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \" (e.g., submit report by 11/10/2019 5pm)\\n\" +"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"   3. Events: tasks that start at a specific time and ends at \" +"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \"a specific time\" +"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                \" (e.g., team project meeting on 2/10/2019 2-4pm)\") ;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void printExit() {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\" +"
+      },
+      {
+        "lineNumber": 66,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "                \"    Bye. Hope to see you again soon!\\n\" +"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 67,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "                \"    ~·~·~·~·~·~·~·~·~·~·~·~·~·\" );"
+        "content": "                \"    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\" );"
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 68,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 69,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": ""
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 70,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void clearInput(){"
+        "content": "    public void clearInput(){"
       },
       {
-        "lineNumber": 269,
+        "lineNumber": 71,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "        userInput.nextLine();"
       },
       {
-        "lineNumber": 270,
+        "lineNumber": 72,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 271,
+        "lineNumber": 73,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": ""
       },
       {
-        "lineNumber": 272,
+        "lineNumber": 74,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public static void saveFile() throws IOException {"
-      },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 74
+    }
+  },
+  {
+    "path": "src/main/java/duke/commands/AddCommand.java",
+    "fileType": "java",
+    "lines": [
       {
-        "lineNumber": 273,
+        "lineNumber": 1,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        for (int i \u003d 0; i \u003c Task_No; i++){"
+        "content": "package duke.commands;"
       },
       {
-        "lineNumber": 274,
+        "lineNumber": 2,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            Duke_fw.write(manageTask[i].toString()+\"\\n\");"
+        "content": ""
       },
       {
-        "lineNumber": 275,
+        "lineNumber": 3,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        }"
+        "content": "import duke.Util.Tasklist;"
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 4,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        Duke_fw.close();"
+        "content": "import duke.taskmanager.Tasks;"
       },
       {
-        "lineNumber": 277,
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class AddCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    Tasks task;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public AddCommand(Tasks task) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        this.task \u003d task;"
+      },
+      {
+        "lineNumber": 10,
         "author": {
           "gitId": "anqi-nus"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 278,
+        "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void execute() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasklist.add(task);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "anqi-nus": 270,
-      "-": 8
+      "anqi-nus": 16
+    }
+  },
+  {
+    "path": "src/main/java/duke/commands/Command.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public Command() {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    };"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void execute() throws IOException {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    };"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 11
+    }
+  },
+  {
+    "path": "src/main/java/duke/commands/DeleteCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.Util.Tasklist;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.Util.UI;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.Tasks;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.util.InputMismatchException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class DeleteCommand extends Command{"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    protected int index;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public UI ui;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public DeleteCommand (UI ui)  {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        this.ui \u003d ui;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public boolean isExist() {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasklist.showList();"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        int index \u003d ui.getIntegerInput();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        ui.clearInput();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return index \u003c Tasklist.getSize();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void execute() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasks task \u003d Tasklist.getTask(index);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            if (isExist()) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                Tasklist.delete(index);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                System.out.println(\"    Task \" + index + \": \" +"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                        task.getTask() + \" has been deleted!\\n\" +"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                        \"    Input Any key to continue.\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                Tasklist.saveTaskList();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                System.out.println(\"    Sorry, task does not exist \");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        } catch (InputMismatchException e) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            System.out.println(\"    Not a valid input.\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            ui.clearInput();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 41
+    }
+  },
+  {
+    "path": "src/main/java/duke/commands/DoneCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.Util.Tasklist;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.Util.UI;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.taskmanager.Tasks;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class DoneCommand extends Command {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public UI ui;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static int taskNo;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public static String task;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public DoneCommand(UI ui) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        taskNo \u003d Tasklist.getSize();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        this.ui \u003d ui;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void execute() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        ui.getDoneTask();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        int indexOfTask \u003d getIndexOfTask();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasks task \u003d Tasklist.getTask(indexOfTask);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasks tasks \u003d new Tasks(task.getTask());"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        ui.clearInput();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        if (indexOfTask \u003c taskNo) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            tasks.markAsDone();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            System.out.println(\"    Congrats! Task \" + indexOfTask + \": \" +"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                    task.getTask() +  \" has been completed!\\n\" +"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "                    \"    Enter any key to continue.\");"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            System.out.println(\"    Wrong task selected.\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public int getIndexOfTask() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return Integer.parseInt(ui.getStringInput());"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 36
+    }
+  },
+  {
+    "path": "src/main/java/duke/commands/FindCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.Util.Tasklist;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.Util.UI;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class FindCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    UI ui;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public FindCommand(UI ui) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        this.ui \u003d ui;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void execute() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        System.out.println(\"    Please enter the task that you want to find:\");"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        String keyword \u003d ui.getStringInput();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasklist.find(keyword);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 19
+    }
+  },
+  {
+    "path": "src/main/java/duke/commands/ListCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "package duke.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import duke.Util.Tasklist;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "public class ListCommand extends Command {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public ListCommand() {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public void execute() throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        Tasklist tasklist \u003d new Tasklist();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        tasklist.showList();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "anqi-nus": 17
     }
   },
   {
@@ -2126,7 +4149,7 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "public class Deadline extends TaskManager {"
+        "content": "public class Deadline extends Tasks {"
       },
       {
         "lineNumber": 4,
@@ -2182,45 +4205,115 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public String toString() {"
+        "content": "    public String getTask() {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        if (by.equals(\"\")) {"
+        "content": "        return task + by;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            return \"[D]\" + super.toString();"
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+        "content": "    @Override"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        if (by.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            return \"[D]\" + super.toString();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String contentToFile() { return \"D\" + \"|\" +"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            super.contentToFile() + \"|\" + by;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "anqi-nus"
         },
@@ -2228,7 +4321,7 @@
       }
     ],
     "authorContributionMap": {
-      "anqi-nus": 17
+      "anqi-nus": 27
     }
   },
   {
@@ -2254,7 +4347,7 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "public class Event extends TaskManager {"
+        "content": "public class Event extends Tasks {"
       },
       {
         "lineNumber": 4,
@@ -2310,57 +4403,141 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public String toString() {"
+        "content": "    public String getTask() {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        if (by.equals(\"\")) {"
+        "content": "        return task + by;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "            return \"[E]\" + super.toString();"
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        return \"[E]\" + super.toString() + \"( at: \" + by + \")\";"
+        "content": "    @Override"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "anqi-nus"
         },
+        "content": "        if (by.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            return \"[E]\" + super.toString();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return \"[E]\" + super.toString() + \"( at: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String contentToFile() { return \"E\" + \"|\" +"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "            super.contentToFile() + \"|\" + by; }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
         "content": "}"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "//if task \u003d event by tmr"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "//return task \u003d [E][Done]event by tmr"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "//return contentToFile \u003d E| [E][Done]event by tmr | Y"
       }
     ],
     "authorContributionMap": {
-      "anqi-nus": 17
+      "anqi-nus": 29
     }
   },
   {
-    "path": "src/main/java/duke/taskmanager/TaskManager.java",
+    "path": "src/main/java/duke/taskmanager/Tasks.java",
     "fileType": "java",
     "lines": [
       {
@@ -2382,122 +4559,213 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "public class TaskManager {"
+        "content": "public class Tasks {"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    protected String task;"
+        "content": "    private static boolean isDone;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    protected boolean isDone;"
+        "content": "    public String task;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public TaskManager(String task) {"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        this.task \u003d task;"
+        "content": "    public Tasks(String task) {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        this.isDone \u003d false;"
+        "content": "        this.task \u003d task;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "        isDone \u003d false;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public String getTaskStatus() {"
+        "content": "    }"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
+        "content": "    public void markAsDone() {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "        isDone \u003d true;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public void markAsDone() {"
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        isDone \u003d true;"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "    public String getTaskStatus() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    @Override"
+        "content": "        return (isDone ? \"Done\" : \"Not Done\");"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    public String toString() {"
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "        return \"[\" + getTaskStatus() + \"]\" + task;"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "    }"
+        "content": "    public String getTask() {"
       },
       {
         "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return task;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String contentToFile() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return task + \"|\" + (isDone? \"Y\" : \"N\");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "        return \"[\" + getTaskStatus() + \"]\" + task;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
         "author": {
           "gitId": "anqi-nus"
         },
@@ -2505,7 +4773,7 @@
       }
     ],
     "authorContributionMap": {
-      "anqi-nus": 20
+      "anqi-nus": 33
     }
   },
   {
@@ -2531,7 +4799,7 @@
         "author": {
           "gitId": "anqi-nus"
         },
-        "content": "public class ToDo extends TaskManager {"
+        "content": "public class ToDo extends Tasks {"
       },
       {
         "lineNumber": 4,
@@ -2608,11 +4876,60 @@
         "author": {
           "gitId": "anqi-nus"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "    public String contentToFile() { return \"T\" + \"|\" + super.contentToFile(); }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "anqi-nus"
+        },
         "content": "}"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "//if task \u003d td"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "//return task \u003d [T][Done]td"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "anqi-nus"
+        },
+        "content": "//return contentToFile \u003d T| [T][Done]td | N"
       }
     ],
     "authorContributionMap": {
-      "anqi-nus": 14
+      "anqi-nus": 21
     }
   },
   {

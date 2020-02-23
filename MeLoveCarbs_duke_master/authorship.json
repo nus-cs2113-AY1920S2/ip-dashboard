@@ -609,640 +609,745 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "import java.util.Scanner;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "MeLoveCarbs"
         },
-        "content": "public class Duke {"
+        "content": " * Main bot control class for users to manage their tasks."
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    private Storage myStorage;"
+        "content": " * It includes features like setting deadlines, events and todos."
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    private TaskList myTasks;"
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "MeLoveCarbs"
+          "gitId": "-"
         },
-        "content": "    private UI myUI;"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "    private Storage myStorage;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public Duke(File f) {"
+        "content": "    private TaskList myTasks;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        myUI \u003d new UI();"
+        "content": "    private UI myUI;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        myStorage \u003d new Storage(f);"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        try {"
+        "content": "    /**"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            myTasks \u003d new TaskList(myStorage.loadFromFile());"
+        "content": "     * Initialise the required class instances."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "     * Loads the previous task list from file with \u003ccode\u003eStorage\u003c/code\u003e object."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(e);"
+        "content": "     * @param f Location of the previously stored text file."
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "     */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    public Duke(File f) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "        myUI \u003d new UI();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    //Main bot control"
+        "content": "        myStorage \u003d new Storage(f);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    private void botResponse(String keyword, String userInput) throws DukeException {"
+        "content": "        try {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        switch (keyword) {"
+        "content": "            myTasks \u003d new TaskList(myStorage.loadFromFile());"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            case \"list\": myTasks.listCommand();"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                break;"
+        "content": "            System.out.println(e);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            case \"delete\":"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                myTasks.deleteCommand(userInput);"
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                break;"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            case \"done\":"
+        "content": "    /**"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                myTasks.doneCommand(userInput);"
+        "content": "     *"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                break;"
+        "content": "     * @param keyword First keyword that user inputs into the CLI."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            case \"todo\":"
+        "content": "     * @param userInput The whole sentence that user inputs."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                myTasks.addCommand(userInput, \"todo\");"
+        "content": "     * @throws DukeException If keyword is not regcognized."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                break;"
+        "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            case \"event\":"
+        "content": "    private void botResponse(String keyword, String userInput) throws DukeException {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                myTasks.addCommand(userInput, \"event\");"
+        "content": "        switch (keyword) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                break;"
+        "content": "            case \"list\": myTasks.listCommand();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            case \"deadline\":"
+        "content": "                break;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                myTasks.addCommand(userInput, \"deadline\");"
+        "content": "            case \"delete\":"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                break;"
+        "content": "                myTasks.deleteCommand(userInput);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            default:"
+        "content": "                break;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                throw new DukeException(\"Unknown command.\");"
+        "content": "            case \"done\":"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "                myTasks.doneCommand(userInput);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "                break;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "            case \"todo\":"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public void run() {"
+        "content": "                myTasks.addCommand(userInput, \"todo\");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        myUI.intro();"
+        "content": "                break;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
+        "content": "            case \"event\":"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String userInput \u003d in.nextLine();"
+        "content": "                myTasks.addCommand(userInput, \"event\");"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        ArrayList\u003cString\u003e words \u003d new ArrayList\u003cString\u003e(Arrays.asList(userInput.split(\" \")));"
+        "content": "                break;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String keyword \u003d words.get(0);"
+        "content": "            case \"deadline\":"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "                myTasks.addCommand(userInput, \"deadline\");"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        while (!keyword.equals(\"bye\")) {"
+        "content": "                break;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            try {"
+        "content": "            case \"find\":"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                botResponse(keyword, userInput);"
+        "content": "                myTasks.findCommand(userInput);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            } catch (DukeException e) {"
+        "content": "                break;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                UI.printLines();"
+        "content": "            default:"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                System.out.println(\"OOPS!! \" + e);"
+        "content": "                throw new DukeException(\"Unknown command.\");"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                UI.printLines();"
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            } finally {"
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                userInput \u003d in.nextLine();"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                words \u003d new ArrayList\u003cString\u003e(Arrays.asList(userInput.split(\" \")));"
+        "content": "    /**"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                keyword \u003d words.get(0);"
+        "content": "     * Main bot loop, stops when user inputs keyword \"bye\"."
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            }"
+        "content": "     */"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        try {"
+        "content": "        myUI.intro();"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            ArrayList\u003cTask\u003e listToSave \u003d myTasks.getUserList();"
+        "content": "        Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            if (!listToSave.equals(myStorage.loadFromFile())) {"
+        "content": "        String userInput \u003d in.nextLine();"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                myStorage.saveToFile(listToSave);"
+        "content": "        ArrayList\u003cString\u003e words \u003d Parser.convertStringToArr(userInput, \" \");"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            }"
+        "content": "        String keyword \u003d words.get(0);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "        while (!keyword.equals(\"bye\")) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(e);"
+        "content": "            try {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "                botResponse(keyword, userInput);"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        myUI.exit();"
+        "content": "            } catch (DukeException e) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "                UI.printLines();"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "                System.out.println(\"OOPS!! \" + e);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public static void main(String[] args) throws IOException, DukeException {"
+        "content": "                UI.printLines();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        java.util.Properties properties \u003d System.getProperties();"
+        "content": "            } finally {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "                userInput \u003d in.nextLine();"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        // to print all the keys in the properties map \u003cfor testing\u003e"
+        "content": "                words \u003d Parser.convertStringToArr(userInput, \" \");"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        //properties.list(System.out);"
+        "content": "                keyword \u003d words.get(0);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        // get Operating System home directory(PLATFORM INDEPENDENT METHOD)"
+        "content": "            }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String home \u003d properties.get(\"user.home\").toString();"
+        "content": "        }"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        // get Operating System separator"
+        "content": "        try {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String separator \u003d properties.get(\"file.separator\").toString();"
+        "content": "            ArrayList\u003cTask\u003e listToSave \u003d myTasks.getUserList();"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        // your directory name"
+        "content": "            if (!listToSave.equals(myStorage.loadFromFile())) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String directoryName \u003d \"duke\";"
+        "content": "                myStorage.saveToFile(listToSave);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        // your file name"
+        "content": "            }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String fileName \u003d \"savedTasks.txt\";"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        File dir \u003d new File(home + separator + directoryName);"
+        "content": "            System.out.println(e);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        File f \u003d new File(dir, fileName);"
+        "content": "        }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        new Duke(f).run();"
+        "content": "        myUI.exit();"
       },
       {
         "lineNumber": 96,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        java.util.Properties properties \u003d System.getProperties();"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        String home \u003d properties.get(\"user.home\").toString();"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        // get Operating System separator"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        String separator \u003d properties.get(\"file.separator\").toString();"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        // your directory name"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        String directoryName \u003d \"duke\";"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        // your file name"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        String fileName \u003d \"savedTasks.txt\";"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        File dir \u003d new File(home + separator + directoryName);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        File f \u003d new File(dir, fileName);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        new Duke(f).run();"
+      },
+      {
+        "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 112,
         "author": {
           "gitId": "-"
         },
@@ -1250,8 +1355,8 @@
       }
     ],
     "authorContributionMap": {
-      "-": 3,
-      "MeLoveCarbs": 94
+      "-": 4,
+      "MeLoveCarbs": 108
     }
   },
   {
@@ -1335,87 +1440,157 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "public class Deadline extends Task{"
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public Deadline(String description, String by) {"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "       super(description);"
+        "content": "/**"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "       this.timeToComplete \u003d by;"
+        "content": " * Extension of \u003ccode\u003eTask\u003c/code\u003e class specifying an \u003ccode\u003eDeadline\u003c/code\u003e task."
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": " */"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String getType() {"
+        "content": "public class Deadline extends Task{"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return \"Deadline\";"
+        "content": "    public Deadline(String description, String userDate) {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "       super(description);"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    @Override"
+        "content": "       this.dateToCompleteString \u003d userDate;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String toString() {"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return \"[D]\" + super.toString() + \" (by: \" + this.timeToComplete + \")\";"
+        "content": "    public Deadline(String description, LocalDate userDate, String userTime) {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        this.timeToComplete \u003d userTime;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        this.dateToCompleteLocalDate \u003d userDate;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String getType() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return \"Deadline\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + this.getTimeToComplete() + \")\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
         "author": {
           "gitId": "MeLoveCarbs"
         },
@@ -1423,7 +1598,7 @@
       }
     ],
     "authorContributionMap": {
-      "MeLoveCarbs": 15
+      "MeLoveCarbs": 25
     }
   },
   {
@@ -1449,94 +1624,164 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "public class Event extends Task{"
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public Event(String description, String at) {"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        super(description);"
+        "content": "/**"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        this.timeToComplete \u003d at;"
+        "content": " * Extension of \u003ccode\u003eTask\u003c/code\u003e class specifying an \u003ccode\u003eEvent\u003c/code\u003e task."
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": " */"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "public class Event extends Task{"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String getType() {"
+        "content": "    public Event(String description, String userDate) {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return \"Event\";"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        this.dateToCompleteString \u003d userDate;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String toString() {"
+        "content": "    public Event(String description, LocalDate userDate, String userTime) {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return \"[E]\" + super.toString() + \" (at: \" + this.timeToComplete + \")\";"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        this.dateToCompleteLocalDate \u003d userDate;"
       },
       {
         "lineNumber": 16,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        this.timeToComplete \u003d userTime;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String getType() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return \"Event\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + this.getTimeToComplete() + \")\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
         "author": {
           "gitId": "MeLoveCarbs"
         },
@@ -1544,7 +1789,7 @@
       }
     ],
     "authorContributionMap": {
-      "MeLoveCarbs": 16
+      "MeLoveCarbs": 26
     }
   },
   {
@@ -1570,185 +1815,304 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "public abstract class Task {"
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    protected String description;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    protected boolean isDone;"
+        "content": "/**"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    protected String timeToComplete;"
+        "content": " * Base class for the 3 specific task type: \u003ccode\u003eEvent Deadline Todo\u003c/code\u003e."
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public Task(String description) {"
+        "content": " * Contain methods to check the elements of each task object."
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        this.description \u003d description;"
+        "content": " */"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        this.isDone \u003d false;"
+        "content": "public abstract class Task {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    protected String description;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String getTimeToComplete() {"
+        "content": "    protected boolean isDone;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return this.timeToComplete;"
+        "content": "    protected String dateToCompleteString;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    protected LocalDate dateToCompleteLocalDate;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String getStatusIcon() {"
+        "content": "    protected String timeToComplete;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    public Task(String description) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String getDescription() {"
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return this.description;"
+        "content": "        this.isDone \u003d false;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        dateToCompleteLocalDate \u003d null;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String getType() {return \"Task\";}"
+        "content": "        dateToCompleteString \u003d \"\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public void setIsDone(boolean isDone) {"
+        "content": "        timeToComplete \u003d \"\";"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "       this.isDone \u003d isDone;"
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    public String getTimeToComplete() {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public boolean getIsDone() {return isDone;}"
+        "content": "       if (dateToCompleteLocalDate !\u003d null) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    @Override"
+        "content": "           return Integer.toString(dateToCompleteLocalDate.getMonthValue()) + \" \" + dateToCompleteLocalDate.getMonth() + \" \" +"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String toString() {"
+        "content": "                   dateToCompleteLocalDate.getYear() + \", \" + dateToCompleteLocalDate.getDayOfWeek() + \" \" + timeToComplete;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return \"[\" + this.getStatusIcon() + \"] \" + this.getDescription();"
+        "content": "       } else {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "           return dateToCompleteString + \" \" + timeToComplete;"
       },
       {
         "lineNumber": 29,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "       }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String getStatusIcon() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String getDescription() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return this.description;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String getType() {return \"Task\";}"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public void setIsDone(boolean isDone) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "       this.isDone \u003d isDone;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public boolean getIsDone() {return isDone;}"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return \"[\" + this.getStatusIcon() + \"] \" + this.getDescription();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
         "author": {
           "gitId": "MeLoveCarbs"
         },
@@ -1756,7 +2120,7 @@
       }
     ],
     "authorContributionMap": {
-      "MeLoveCarbs": 29
+      "MeLoveCarbs": 46
     }
   },
   {
@@ -1782,87 +2146,108 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "public class Todo extends Task {"
+        "content": "/**"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public Todo(String description) {"
+        "content": " * Extension of \u003ccode\u003eTask\u003c/code\u003e class specifying an \u003ccode\u003eTodo\u003c/code\u003e task."
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        super(description);"
+        "content": " */"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "public class Todo extends Task {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "    public Todo(String description) {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String getType() {"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return \"Todo\";"
+        "content": "    }"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    @Override"
+        "content": "    public String getType() {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public String toString() {"
+        "content": "        return \"Todo\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return \"[T]\" + super.toString();"
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return \"[T]\" + super.toString();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
         "author": {
           "gitId": "MeLoveCarbs"
         },
@@ -1870,7 +2255,247 @@
       }
     ],
     "authorContributionMap": {
-      "MeLoveCarbs": 15
+      "MeLoveCarbs": 18
+    }
+  },
+  {
+    "path": "src/main/java/Parser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "import java.lang.reflect.Array;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": " * Contain methods that parses user input into java objects and vice versa."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public static ArrayList\u003cString\u003e convertStringToArr(String userInput , String delimiter) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return new ArrayList\u003c\u003e(Arrays.asList(userInput.split(delimiter)));"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public static ArrayList\u003cString\u003e convertStringToArr(String userInput, String delimiter, int arrSize) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return new ArrayList\u003c\u003e(Arrays.asList(userInput.split(delimiter, arrSize)));"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public static ArrayList\u003cString\u003e descriptionFilter(int filterIndex, ArrayList\u003cString\u003e userInputInArray) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        ArrayList\u003cString\u003e toReturn \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        String description \u003d \"\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        String furtherDescription \u003d \"\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        for (int i\u003d0; i\u003cfilterIndex; i++) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            description +\u003d userInputInArray.get(i);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            description +\u003d \" \";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        toReturn.add(description.substring(0, description.length()-1));"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        for (int i\u003dfilterIndex+1; i \u003c userInputInArray.size(); i++) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            furtherDescription +\u003d userInputInArray.get(i);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            furtherDescription +\u003d \" \";"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        toReturn.add(furtherDescription.substring(0, furtherDescription.length()-1));"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return toReturn;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "MeLoveCarbs": 33
     }
   },
   {
@@ -1952,437 +2577,591 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "public class Storage {"
+        "content": "/**"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    private File f;"
+        "content": " * Contain methods required to load and save from the saved textfile."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public Storage(File userFile) {"
+        "content": "public class Storage {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        this.f \u003d userFile;"
+        "content": "    private File f;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "    public Storage(File userFile) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public void saveToFile(ArrayList\u003cTask\u003e userList) throws IOException {"
+        "content": "        this.f \u003d userFile;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        FileWriter fw \u003d new FileWriter(f);"
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        for (Task elem : userList) {"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            String toSave \u003d elem.getType() + \" , \" + elem.getIsDone() + \" , \" + elem.getDescription();"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            if (!elem.getType().equals(\"Todo\")) {"
+        "content": "     * Saves the current tasks list into textfile when user inputs \"bye\"."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                toSave \u003d toSave + \" , \" + elem.getTimeToComplete();"
+        "content": "     * @param userList \u003ccode\u003eArrayList\u003c/code\u003e of \u003ccode\u003eTask\u003c/code\u003e object that is to be saved into the textfile."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            }"
+        "content": "     * @throws IOException If file doesn\u0027t exist or corrupted."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            fw.write(toSave + \"\\n\");"
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "    public void saveToFile(ArrayList\u003cTask\u003e userList) throws IOException {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        fw.close();"
+        "content": "        FileWriter fw \u003d new FileWriter(f);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        for (Task elem : userList) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public ArrayList\u003cTask\u003e loadFromFile() throws IOException {"
+        "content": "            String toSave \u003d elem.getType() + \" , \" + elem.getIsDone() + \" , \" + elem.getDescription();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        if (f.exists()) {"
+        "content": "            if (!elem.getType().equals(\"Todo\")) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            try {"
+        "content": "                toSave \u003d toSave + \" , \" + elem.getTimeToComplete();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                return taskFromFile();"
+        "content": "            }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            } catch (DukeException | FileNotFoundException e) {"
+        "content": "            fw.write(toSave + \"\\n\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                System.out.println(\"OOPS! \" + e);"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            }"
+        "content": "        fw.close();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } else {"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            f.createNewFile();"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return new ArrayList\u003c\u003e();"
+        "content": "     * Returns an \u003ccode\u003eArrayList\u003c/code\u003e of \u003ccode\u003eTask\u003c/code\u003e previously stored in the textfile"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "     * If textfile doesn\u0027t exist, returns a new \u003ccode\u003eArrayList\u003c/code\u003e of \u003ccode\u003eTask\u003c/code\u003e instead."
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public ArrayList\u003cTask\u003e taskFromFile() throws FileNotFoundException, DukeException {"
+        "content": "     * @return List of tasks user previously input."
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        Scanner s \u003d new Scanner(f);"
+        "content": "     * @throws IOException If textfile is unable to be created. For eg, no space in disk."
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        ArrayList\u003cTask\u003e savedUserList \u003d new ArrayList\u003c\u003e();"
+        "content": "     */"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String currTaskString \u003d \"\"; //Follows format: TASK | 1 | DESCRIPTION | TIME"
+        "content": "    public ArrayList\u003cTask\u003e loadFromFile() throws IOException {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        while (s.hasNext()) {"
+        "content": "        if (f.exists()) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            currTaskString \u003d s.nextLine();"
+        "content": "            try {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            ArrayList\u003cString\u003e savedString \u003d new ArrayList\u003cString\u003e(Arrays.asList(currTaskString.split(\" , \")));"
+        "content": "                return taskFromFile();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            ArrayList\u003cString\u003e savedDescription \u003d new ArrayList\u003cString\u003e();"
+        "content": "            } catch (DukeException | FileNotFoundException e) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            savedDescription.add(savedString.get(2));"
+        "content": "                System.out.println(\"OOPS! \" + e);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            Task taskToLoad \u003d null;"
+        "content": "            }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            switch(savedString.get(0)) {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                case \"Todo\":"
+        "content": "            f.createNewFile();"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    taskToLoad \u003d TaskList.newTodo(savedDescription);"
+        "content": "        }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    break;"
+        "content": "        return new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                case \"Deadline\":"
+        "content": "    }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    savedDescription.add(\"/by\");"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    savedDescription.add(savedString.get(3));"
+        "content": "    /**"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    taskToLoad \u003d TaskList.newDeadline(savedDescription);"
+        "content": "     * Parses the file into an \u003ccode\u003eArrayList\u003c/code\u003e of \u003ccode\u003eTask\u003c/code\u003e object and returns it."
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    break;"
+        "content": "     * @return Returns the parsed task list."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                case \"Event\":"
+        "content": "     * @throws DukeException If user edits the textfile such that the textfile is un-parseable by application."
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    savedDescription.add(\"/at\");"
+        "content": "     * @throws FileNotFoundException If user deletes the textfile during runtime."
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    savedDescription.add(savedString.get(3));"
+        "content": "     */"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    taskToLoad \u003d TaskList.newEvent(savedDescription);"
+        "content": "    public ArrayList\u003cTask\u003e taskFromFile() throws DukeException, FileNotFoundException {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    break;"
+        "content": "        Scanner s \u003d new Scanner(f);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                default:"
+        "content": "        ArrayList\u003cTask\u003e savedUserList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    throw new DukeException(\"File is corrupted. Unable to find task name.\");"
+        "content": "        String currTaskString \u003d \"\"; //Follows format: TASK | 1 | DESCRIPTION | TIME"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            }"
+        "content": "        while (s.hasNext()) {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            taskToLoad.setIsDone(Boolean.parseBoolean(savedString.get(1)));"
+        "content": "            currTaskString \u003d s.nextLine();"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            savedUserList.add(taskToLoad);"
+        "content": "            ArrayList\u003cString\u003e savedString \u003d Parser.convertStringToArr(currTaskString, \" , \");"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "            ArrayList\u003cString\u003e savedDescription \u003d new ArrayList\u003cString\u003e();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return savedUserList;"
+        "content": "            savedDescription.add(savedString.get(2));"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "            Task taskToLoad;"
       },
       {
         "lineNumber": 73,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            switch(savedString.get(0)) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                case \"Todo\":"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    taskToLoad \u003d TaskList.newTodo(savedDescription);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                case \"Deadline\":"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    savedDescription.add(\"/by\");"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    savedDescription.add(savedString.get(3));"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    taskToLoad \u003d TaskList.newDeadline(savedDescription);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                case \"Event\":"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    savedDescription.add(\"/at\");"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    savedDescription.add(savedString.get(3));"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    taskToLoad \u003d TaskList.newEvent(savedDescription);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                    throw new DukeException(\"File is corrupted. Unable to find task name.\");"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            taskToLoad.setIsDone(Boolean.parseBoolean(savedString.get(1)));"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            savedUserList.add(taskToLoad);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        return savedUserList;"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 95,
         "author": {
           "gitId": "MeLoveCarbs"
         },
@@ -2390,7 +3169,7 @@
       }
     ],
     "authorContributionMap": {
-      "MeLoveCarbs": 73
+      "MeLoveCarbs": 95
     }
   },
   {
@@ -2444,997 +3223,1445 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.time.LocalDate;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.time.format.DateTimeParseException;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "public class TaskList {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    private ArrayList\u003cTask\u003e userList;"
+        "content": "/**"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    private String lines \u003d \"____________________________________________________________\\n\";"
+        "content": " * Contain the list of tasks added by user."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": " * Contain methods that edits the list of tasks and to add specific type of task depending on keyword by user."
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public TaskList(ArrayList\u003cTask\u003e savedList) {"
+        "content": " */"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "       this.userList \u003d savedList;"
+        "content": "public class TaskList {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    private ArrayList\u003cTask\u003e userList;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public TaskList() {"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        this.userList \u003d new ArrayList\u003c\u003e();"
+        "content": "    public TaskList(ArrayList\u003cTask\u003e savedList) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        this.userList \u003d savedList;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public ArrayList\u003cTask\u003e getUserList() {"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return this.userList;"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    public ArrayList\u003cTask\u003e getUserList() {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public static Todo newTodo(ArrayList\u003cString\u003e userInputDetails) throws DukeException {"
+        "content": "        return this.userList;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String task \u003d String.join(\" \", userInputDetails);"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        if (task.length() \u003d\u003d 0) { // if user inputs nothing after todo"
+        "content": "    /**"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            throw new DukeException(\"Format error, please follow: todo \u003ctask\u003e\");"
+        "content": "     * Returns a new To-do task object."
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "     * @param userInputInArray Sentence containing the keyword and description of the to-do that user had typed into CLI."
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return new Todo (task);"
+        "content": "     * @return A new \u003ccode\u003eTodo\u003c/code\u003e object containing the description."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "     * @throws DukeException If user types in a blank description."
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public static Event newEvent(ArrayList\u003cString\u003e userInputDetails) throws DukeException {"
+        "content": "     */"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String description \u003d \"\";"
+        "content": "    public static Todo newTodo(ArrayList\u003cString\u003e userInputInArray) throws DukeException {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String at \u003d \"\";"
+        "content": "        String task \u003d String.join(\" \", userInputInArray);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        int atIndex \u003d -1;"
+        "content": "        if (task.length() \u003d\u003d 0) { // if user inputs nothing after to-do"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        atIndex \u003d userInputDetails.indexOf(\"/at\");"
+        "content": "            throw new DukeException(\"Format error, please follow: todo \u003ctask\u003e\");"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        if (atIndex \u003d\u003d -1) {"
+        "content": "        }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            throw new DukeException(\"Format error, please follow: event \u003ctask\u003e /at \u003ctime\u003e\");"
+        "content": "        return new Todo (task);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        for (int i\u003d0; i\u003catIndex; i++) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            description +\u003d userInputDetails.get(i);"
+        "content": "     * Returns a new Event task object."
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            description +\u003d \" \";"
+        "content": "     * @param userInputInArray Sentence containing the keyword and description of the event that user had typed into CLI."
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "     * @return A new \u003ccode\u003eEvent\u003c/code\u003e object containing the description and datetime(if any)."
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        description \u003d description.substring(0, description.length()-1);"
+        "content": "     * @throws DukeException If user did not follow the format required. For eg, missing \"/at\" keyword."
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        for (int i\u003datIndex+1; i \u003c userInputDetails.size(); i++) {"
+        "content": "     */"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            at +\u003d userInputDetails.get(i);"
+        "content": "    public static Event newEvent(ArrayList\u003cString\u003e userInputInArray) throws DukeException {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            at +\u003d \" \";"
+        "content": "       int atIndex \u003d userInputInArray.indexOf(\"/at\");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "        if (atIndex \u003d\u003d -1) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        at \u003d at.substring(0, at.length()-1);"
+        "content": "            throw new DukeException(\"Format error, please follow: event \u003ctask\u003e /at \u003cdatetime\u003e.\" +"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return new Event(description, at);"
+        "content": "                    \"\\nFeature: you can use \u003cdatetime\u003e as \\\"yyyy-mm-dd hr:min\\\" and we can format it for you!\");"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "        ArrayList\u003cString\u003e filterByArr \u003d Parser.descriptionFilter(atIndex, userInputInArray);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public static Deadline newDeadline(ArrayList\u003cString\u003e userInputDetails) throws DukeException {"
+        "content": "        String description \u003d filterByArr.get(0);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String description \u003d \"\";"
+        "content": "        String at \u003d filterByArr.get(1);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String by \u003d \"\";"
+        "content": "        ArrayList\u003cString\u003e userInputDelimit \u003d Parser.convertStringToArr(at, \" \", 2);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        int byIndex \u003d -1;"
+        "content": "        LocalDate myDate;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        byIndex \u003d userInputDetails.indexOf(\"/by\");"
+        "content": "        String myTime \u003d \"\";"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        if (byIndex \u003d\u003d -1) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            throw new DukeException(\"Format error, please follow: deadline \u003ctask\u003e /by \u003ctime\u003e\");"
+        "content": "            myDate \u003d LocalDate.parse(userInputDelimit.get(0));"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "            myTime \u003d userInputDelimit.get(1);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        for (int i\u003d0; i\u003cbyIndex; i++) {"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            description +\u003d userInputDetails.get(i);"
+        "content": "        } catch (DateTimeParseException e) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            description +\u003d \" \";"
+        "content": "            return new Event(description, String.join(\" \", userInputDelimit));"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        description \u003d description.substring(0, description.length()-1);"
+        "content": "            myDate \u003d LocalDate.parse(userInputDelimit.get(0));"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        for (int i\u003dbyIndex+1; i \u003c userInputDetails.size(); i++) {"
+        "content": "            return new Event(description, myDate, myTime);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            by +\u003d userInputDetails.get(i);"
+        "content": "        }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            by +\u003d \" \";"
+        "content": "        return new Event(description, myDate, myTime);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        by \u003d by.substring(0, by.length()-1);"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        return new Deadline(description, by);"
+        "content": "    /** Returns a new Deadline task object."
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "     * @param userInputInArray Sentence containing the keyword and description of the deadline that user had typed into CLI."
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "     * @return A new \u003ccode\u003eDeadline\u003c/code\u003e object containing the description and datetime(if any)."
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public void addCommand(String userInput, String taskType) {"
+        "content": "     * @throws DukeException If user did not follow the format required. For eg, missing \"/by\" keyword."
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "     */"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        ArrayList\u003cString\u003e userInputDetails \u003d new ArrayList\u003cString\u003e(Arrays.asList(userInput.split(\" \")));"
+        "content": "    public static Deadline newDeadline(ArrayList\u003cString\u003e userInputInArray) throws DukeException {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        userInputDetails.remove(0);"
+        "content": "        int byIndex \u003d userInputInArray.indexOf(\"/by\");"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        try {"
+        "content": "        if (byIndex \u003d\u003d -1) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            switch (taskType) {"
+        "content": "            throw new DukeException(\"Format error, please follow: deadline \u003ctask\u003e /by \u003cdatetime\u003e.\" +"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                case \"todo\":"
+        "content": "                    \"\\nFeature: you can use \u003cdatetime\u003e as \\\"yyyy-mm-dd hr:min\\\" and we can format it for you!\");"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    userList.add(newTodo(userInputDetails));"
+        "content": "        }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    break;"
+        "content": "        ArrayList\u003cString\u003e filterByArr \u003d Parser.descriptionFilter(byIndex, userInputInArray);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                case \"event\":"
+        "content": "        String description \u003d filterByArr.get(0);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    userList.add(newEvent(userInputDetails));"
+        "content": "        String by \u003d filterByArr.get(1);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    break;"
+        "content": "        ArrayList\u003cString\u003e userInputDelimit \u003d Parser.convertStringToArr(by, \" \", 2);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                case \"deadline\":"
+        "content": "        LocalDate myDate;"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    userList.add(newDeadline(userInputDetails));"
+        "content": "        String myTime \u003d \"\";"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "                    break;"
+        "content": "        try {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            }"
+        "content": "            myDate \u003d LocalDate.parse(userInputDelimit.get(0));"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            UI.printAddedInfo(this.userList);"
+        "content": "            myTime \u003d userInputDelimit.get(1);"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } catch (DukeException e) {"
+        "content": "        } catch (DateTimeParseException e) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"OOPS!! \" + e);"
+        "content": "            return new Deadline(description, String.join(\" \", userInputDelimit));"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "            myDate \u003d LocalDate.parse(userInputDelimit.get(0));"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "            return new Deadline(description, myDate, myTime);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public void deleteCommand(String userInput) throws DukeException {"
+        "content": "        return new Deadline(description, myDate, myTime);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String[] words \u003d userInput.split(\" \");"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        if (words.length !\u003d 2) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            throw new DukeException(\"Format error, please follow: \\\"delete \u003ctask number\u003e\\\"\");"
+        "content": "     * Adds one of the three task: \u003ccode\u003e Todo Event Deadline\u003c/code\u003e ."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "     * @param userInput Sentence that user typed into CLI."
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        try {"
+        "content": "     * @param taskType Type of task in \u003ccode\u003eString\u003c/code\u003e."
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            Integer deleteIndex \u003d Integer.parseInt((words[1]));"
+        "content": "     */"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            deleteIndex--;    // decrement doneIndex from one-based indexing to zero-based indexing to access ArrayList using it"
+        "content": "    public void addCommand(String userInput, String taskType) {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"Noted, I\u0027ve removed this task:\\n\" + userList.get(deleteIndex));"
+        "content": "        UI.printLines();"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            userList.remove(userList.get(deleteIndex));"
+        "content": "        ArrayList\u003cString\u003e userInputInArr \u003d Parser.convertStringToArr(userInput, \" \");"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "        userInputInArr.remove(0);"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"OOPS!! Task number \" + words[1] + \" is not within your list. type \\\"list\\\" for more info.\");"
+        "content": "        try {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            switch (taskType) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"OOPS!! \" + words[1] + \" is not a valid task number\");"
+        "content": "                case \"todo\":"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "                    userList.add(newTodo(userInputInArr));"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "                    break;"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "                case \"event\":"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "                    userList.add(newEvent(userInputInArr));"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public void listCommand() {"
+        "content": "                    break;"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "                case \"deadline\":"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        if (userList.size() \u003d\u003d 0) {"
+        "content": "                    userList.add(newDeadline(userInputInArr));"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"No items added!\");"
+        "content": "                    break;"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } else {"
+        "content": "            }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"Here are the tasks in your list:\");"
+        "content": "            UI.printAddedInfo(this.userList);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "        } catch (DukeException e) {"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        for (int i\u003d0; i\u003cuserList.size(); i++) {"
+        "content": "            System.out.println(\"OOPS!! \" + e);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            Integer index \u003d i+1;"
+        "content": "        }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.print(index + \".\");"
+        "content": "        UI.printLines();"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(userList.get(i));"
+        "content": "    }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "    /**"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "     * Deletes a specific task via index."
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "     * @param userInput Sentence that user typed into CLI."
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public void doneCommand( String userInput) throws DukeException {"
+        "content": "     * @throws DukeException If user inputs an invalid task index. For eg, an out of bound index."
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "     */"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String[] words \u003d userInput.split(\" \");"
+        "content": "    public void deleteCommand(String userInput) throws DukeException {"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        if (words.length !\u003d 2) {"
+        "content": "        UI.printLines();"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            throw new DukeException(\"Format error, please follow: \\\"done \u003ctask number\u003e\\\"\");"
+        "content": "        String[] words \u003d userInput.split(\" \");"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "        if (words.length !\u003d 2) {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        try {"
+        "content": "            throw new DukeException(\"Format error, please follow: \\\"delete \u003ctask number\u003e\\\"\");"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            Integer doneIndex \u003d Integer.parseInt((words[1]));"
+        "content": "        }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            doneIndex--;    // decrement doneIndex from one-based indexing to zero-based indexing to access ArrayList using it"
+        "content": "        try {"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            userList.get(doneIndex).setIsDone(true);"
+        "content": "            Integer deleteIndex \u003d Integer.parseInt((words[1]));"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+        "content": "            deleteIndex--;    // decrement doneIndex from one-based indexing to zero-based indexing to access ArrayList using it"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(userList.get(doneIndex));"
+        "content": "            System.out.println(\"Noted, I\u0027ve removed this task:\\n\" + userList.get(deleteIndex));"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "            userList.remove(userList.get(deleteIndex));"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"OOPS!! Task number \" + words[1] + \" is not within your list. type \\\"list\\\" for more info.\");"
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            System.out.println(\"OOPS!! Task number \" + words[1] + \" is not within your list. type \\\"list\\\" for more info.\");"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "            System.out.println(\"OOPS!! \" + words[1] + \" is not a valid task number\");"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        }"
+        "content": "            System.out.println(\"OOPS!! \" + words[1] + \" is not a valid task number\");"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines);"
+        "content": "        }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        UI.printLines();"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 149,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     * Print out all tasks and its corresponding \u003ccode\u003eisDone\u003c/code\u003e and \u003ccode\u003eLocalDate\u003c/code\u003e within the task list."
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public void listCommand() {"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        UI.printLines();"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        if (userList.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(\"No items added!\");"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(\"Here are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        for (int i\u003d0; i\u003cuserList.size(); i++) {"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            Integer index \u003d i+1;"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.print(index + \".\");"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(userList.get(i));"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        UI.printLines();"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     * Marks a specific task via index as \u003ccode\u003eDONE\u003c/code\u003e"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     * @param userInput Sentence that user typed into CLI."
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     * @throws DukeException If user inputs an invalid task index. For eg, an out of bound index."
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public void doneCommand( String userInput) throws DukeException {"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        UI.printLines();"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        String[] words \u003d userInput.split(\" \");"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        if (words.length !\u003d 2) {"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            throw new DukeException(\"Format error, please follow: \\\"done \u003ctask number\u003e\\\"\");"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            Integer doneIndex \u003d Integer.parseInt((words[1]));"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            doneIndex--;    // decrement doneIndex from one-based indexing to zero-based indexing to access ArrayList using it"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            userList.get(doneIndex).setIsDone(true);"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(userList.get(doneIndex));"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(\"OOPS!! Task number \" + words[1] + \" is not within your list. type \\\"list\\\" for more info.\");"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(\"OOPS!! \" + words[1] + \" is not a valid task number\");"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        UI.printLines();"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     * finds similar word pattern in user\u0027s task list."
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     * @param userInput Sentence that user typed in."
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    public void findCommand(String userInput) {"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        UI.printLines();"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        ArrayList\u003cString\u003e delimitBySpace \u003d Parser.convertStringToArr(userInput, \" \", 2);"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        int counter \u003d 0;"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        System.out.println(\"Here are the matching task/s in your list:\");"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        for (Task elem : userList) {"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            if (elem.getDescription().toLowerCase().contains(delimitBySpace.get(1).toLowerCase())) {"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                counter +\u003d 1;"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "                System.out.println(counter + \". \" + elem);"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        if (counter \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "            System.out.println(\"Nothing was found.\");"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        UI.printLines();"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 213,
         "author": {
           "gitId": "MeLoveCarbs"
         },
@@ -3442,7 +4669,7 @@
       }
     ],
     "authorContributionMap": {
-      "MeLoveCarbs": 149
+      "MeLoveCarbs": 213
     }
   },
   {
@@ -3475,105 +4702,105 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "public class UI {"
+        "content": "/**"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    private static String lines \u003d \"____________________________________________________________\\n\";"
+        "content": " * Contain methods to beautify the output text in CLI."
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public static void printAddedInfo(ArrayList\u003cTask\u003e userList) {"
+        "content": " */"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.println(\"Got it . I\u0027ve added this task:\");"
+        "content": "public class UI {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(\"  \");"
+        "content": "    private static String lines \u003d \"____________________________________________________________\\n\";"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.println(userList.get(userList.size()-1));"
+        "content": "    public static void printAddedInfo(ArrayList\u003cTask\u003e userList) {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.println(\"Now you have \" + userList.size() + \" tasks in the list.\");"
+        "content": "        System.out.println(\"Got it . I\u0027ve added this task:\");"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "        System.out.print(\"  \");"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": ""
+        "content": "        System.out.println(userList.get(userList.size()-1));"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public  void intro() {"
+        "content": "        System.out.println(\"Now you have \" + userList.size() + \" tasks in the list.\");"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        String toPrint \u003d lines + \"Hello! I\u0027m Duke\\n\" + \"What can I do for you?\\n\" + lines;"
+        "content": "    }"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(toPrint);"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    }"
+        "content": "    public  void intro() {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public static void printLines() {"
+        "content": "        String toPrint \u003d lines + \"Hello! I\u0027m Duke\\n\" + \"What can I do for you?\\n\" + lines;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.println(lines);"
+        "content": "        System.out.print(toPrint);"
       },
       {
         "lineNumber": 19,
@@ -3587,14 +4814,14 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "    public  void exit() {"
+        "content": "    public static void printLines() {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "MeLoveCarbs"
         },
-        "content": "        System.out.print(lines + \"Bye. Hope to see you again soon!\\n\" + lines);"
+        "content": "        System.out.println(lines);"
       },
       {
         "lineNumber": 22,
@@ -3608,11 +4835,32 @@
         "author": {
           "gitId": "MeLoveCarbs"
         },
+        "content": "    public  void exit() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "        System.out.print(lines + \"Bye. Hope to see you again soon!\\n\" + lines);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "MeLoveCarbs"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "MeLoveCarbs": 23
+      "MeLoveCarbs": 26
     }
   },
   {
