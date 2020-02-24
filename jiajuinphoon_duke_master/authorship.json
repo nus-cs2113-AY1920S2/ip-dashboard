@@ -397,126 +397,126 @@
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    private static Command splitCommand(String line) {"
+        "content": "    private static final String ERROR_DELETE_MESSAGE \u003d \"I can\u0027t delete that because\""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String word;"
+        "content": "            + \" you haven\u0027t\" + \" added task %s yet!\";"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String argument;"
+        "content": "    private static final String ERROR_MESSAGE \u003d \"The %s of a %s command cannot be empty.\\n\";"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        try {"
+        "content": "    private static final String ERROR_DELETE_PARAM \u003d \"Parameters: delete [TASK NUMBER]\\n\";"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            word \u003d line.substring(0, line.indexOf(\u0027 \u0027));"
+        "content": "    private static final String ERROR_DELETE_EXAMPLE \u003d \"Example: delete 1\";"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            argument \u003d line.substring(line.indexOf(\u0027 \u0027) + 1);"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        } catch (IndexOutOfBoundsException e) {"
+        "content": "    private static Command splitCommand(String line) {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            word \u003d line;"
+        "content": "        String word;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            argument \u003d \" \";"
+        "content": "        String argument;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        }"
+        "content": "        try {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        return new Command(word, argument);"
+        "content": "            word \u003d line.substring(0, line.indexOf(\u0027 \u0027));"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    }"
+        "content": "            argument \u003d line.substring(line.indexOf(\u0027 \u0027) + 1);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    public static Task getTheTask(ArrayList\u003cTask\u003e List, int j)"
+        "content": "            word \u003d line;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    {"
+        "content": "            argument \u003d \" \";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        return List.get(j);"
+        "content": "        }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    }"
+        "content": "        return new Command(word, argument);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 24,
@@ -530,703 +530,983 @@
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    public static void updateCommand(Task task, ArrayList\u003cTask\u003e List, int count)"
+        "content": "    private static void executeDeleteCommand(ArrayList\u003cTask\u003e taskList, Command command) throws NumberFormatException, IndexOutOfBoundsException {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    {"
+        "content": "        int index;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        List.set(count,task);"
+        "content": "        if (command.getArgs() \u003d\u003d null) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "    }"
+        "content": "            throw new NumberFormatException();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "jiajuinphoon"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "        index \u003d Integer.parseInt(String.valueOf(command.getArgs()));"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        System.out.println(\"Hello ! I\u0027m Duke\\n\");"
+        "content": "        if (index \u003e taskList.size()) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        System.out.println(\"What can I do for you ? \\n\");"
+        "content": "            throw new IndexOutOfBoundsException();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String command;"
+        "content": "        Task t \u003d taskList.get(index - 1);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String description;"
+        "content": "        taskList.remove(index - 1);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        ArrayList\u003cTask\u003e list \u003d new ArrayList\u003c\u003e();"
+        "content": "        System.out.println(\"-------------------------------------------\");"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        Scanner in \u003d new Scanner (System.in);"
+        "content": "        System.out.println(\" Noted! I\u0027ve removed this task:\");"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String option_1 \u003d \"bye\";"
+        "content": "        System.out.println(t.toString());"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String option_2 \u003d \"list\";"
+        "content": "        System.out.printf(\" Now you have %d tasks in your list.\\n\", taskList.size());"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String option_3 \u003d \"done\";"
+        "content": "        System.out.println(\"-------------------------------------------\");"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String option_4 \u003d \"todo\";"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String option_5 \u003d \"event\";"
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        String option_6 \u003d \"deadline\";"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "    public static Task getTheTask(ArrayList\u003cTask\u003e List, int j)"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        while (true)"
+        "content": "    {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        {"
+        "content": "        return List.get(j);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            command \u003d in.nextLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            final Command option \u003d splitCommand(command);"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            String choice \u003d option.getCommandName();"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "    public static void updateCommand(Task task, ArrayList\u003cTask\u003e List, int count)"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            if (choice.equals(option_1)) {"
+        "content": "    {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": "        List.set(count,task);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"Bye, see you again soon!\");"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "jiajuinphoon"
+          "gitId": "-"
         },
-        "content": "                System.exit(0);"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            } else if (choice.equals(option_2)) {"
+        "content": "        System.out.println(\"Hello ! I\u0027m Duke\\n\");"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": "        System.out.println(\"What can I do for you ? \\n\");"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                int count \u003d 1;"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\" Here are the tasks in your list: \");"
+        "content": "        String command;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                for (Task t : list) {"
+        "content": "        String description;"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.print(count);"
+        "content": "        ArrayList\u003cTask\u003e list \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.print(\".\");"
+        "content": "        Scanner in \u003d new Scanner (System.in);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.println(t.toString());"
+        "content": "        String option_1 \u003d \"bye\";"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    count++;"
+        "content": "        String option_2 \u003d \"list\";"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                }"
+        "content": "        String option_3 \u003d \"done\";"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": "        String option_4 \u003d \"todo\";"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            } else if (choice.equals(option_3)) {"
+        "content": "        String option_5 \u003d \"event\";"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                int taskNumber \u003d Integer.parseInt(String.valueOf(option.getArgs()));"
+        "content": "        String option_6 \u003d \"deadline\";"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                Task t \u003d getTheTask(list,taskNumber-1);"
+        "content": "        String option_7 \u003d \"delete\";"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                t.markAsDone();"
+        "content": "        while (true)"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                updateCommand(t,list,taskNumber-1);"
+        "content": "        {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------------------------\");"
+        "content": "            command \u003d in.nextLine();"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.print(\"Nice! I\u0027ve marked this task as done: [\");"
+        "content": "            final Command option \u003d splitCommand(command);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.print(t.getStatusIcon());"
+        "content": "            String choice \u003d option.getCommandName();"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.print(\"]\");"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(t.description);"
+        "content": "            if (choice.equals(option_1)) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------------------------\");"
+        "content": "                System.out.println(\"------------------------\");"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            } else if (choice.equals(option_4)) {"
+        "content": "                System.out.println(\"Bye, see you again soon!\");"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                Task newTask \u003d new ToDos(option.getArgs());"
+        "content": "                System.out.println(\"------------------------\");"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                if ( option.getArgs() \u003d\u003d \" \")"
+        "content": "                System.exit(0);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                {"
+        "content": "            } else if (choice.equals(option_2)) {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.println(\"-------------------------------------------\");"
+        "content": "                System.out.println(\"------------------------\");"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.println(\"Uh Oh! The description cannot be empty ~\");"
+        "content": "                int count \u003d 1;"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.println(\"-------------------------------------------\");"
+        "content": "                System.out.println(\" Here are the tasks in your list: \");"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                } else {"
+        "content": "                for (Task t : list) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    list.add(newTask);"
+        "content": "                    System.out.print(count);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.println(\"------------------------\");"
+        "content": "                    System.out.print(\".\");"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.println(\"Added : \");"
+        "content": "                    System.out.println(t.toString());"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.println(newTask.toString());"
+        "content": "                    count++;"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                    System.out.printf(\"You have %d tasks in your list ^^ \\n\" , list.size());"
+        "content": "                }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                }"
+        "content": "                System.out.println(\"------------------------\");"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "            } else if (choice.equals(option_3)) {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            } else if (choice.equals(option_5)) {"
+        "content": "                int taskNumber \u003d Integer.parseInt(String.valueOf(option.getArgs()));"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                final int indexOfAtPrefix \u003d option.getArgs().indexOf(\"/at\");"
+        "content": "                Task t \u003d getTheTask(list,taskNumber-1);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                description \u003d option.getArgs().substring(0, indexOfAtPrefix);"
+        "content": "                t.markAsDone();"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                String Time \u003d option.getArgs().substring(indexOfAtPrefix + 3).trim();"
+        "content": "                updateCommand(t,list,taskNumber-1);"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                Task newEvent \u003d new Events(description, Time);"
+        "content": "                System.out.println(\"------------------------------------------\");"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                list.add(newEvent);"
+        "content": "                System.out.print(\"Nice! I\u0027ve marked this task as done: [\");"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": "                System.out.print(t.getStatusIcon());"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"Added: \");"
+        "content": "                System.out.print(\"]\");"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(newEvent.toString());"
+        "content": "                System.out.println(t.description);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.printf(\"You have %d tasks in your list ^^ \\n\" , list.size());"
+        "content": "                System.out.println(\"------------------------------------------\");"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": "            } else if (choice.equals(option_4)) {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "                Task newTask \u003d new ToDos(option.getArgs());"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            } else if (choice.equals(option_6)) {"
+        "content": "                if ( option.getArgs() \u003d\u003d \" \")"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                final int indexOfByPrefix \u003d option.getArgs().indexOf(\"/by\");"
+        "content": "                {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                description \u003d option.getArgs().substring(0, indexOfByPrefix);"
+        "content": "                    System.out.println(\"-------------------------------------------\");"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                String Date \u003d option.getArgs().substring(indexOfByPrefix + 3).trim();"
+        "content": "                    System.out.println(\"Uh Oh! The description cannot be empty ~\");"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                Task newDeadline \u003d new Deadlines(description, Date);"
+        "content": "                    System.out.println(\"-------------------------------------------\");"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                list.add(newDeadline);"
+        "content": "                } else {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": "                    list.add(newTask);"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"Added : \");"
+        "content": "                    System.out.println(\"------------------------\");"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(newDeadline.toString());"
+        "content": "                    System.out.println(\"Added : \");"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.printf(\"You have %d tasks in your list ^^ \\n\" , list.size());"
+        "content": "                    System.out.println(newTask.toString());"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"------------------------\");"
+        "content": "                    System.out.printf(\"You have %d tasks in your list ^^ \\n\" , list.size());"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            } else {"
+        "content": "                    System.out.println(\"------------------------\");"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                // if there is no \"done\", \"bye\", \"list\" in the string"
+        "content": ""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"-------------------------------------------\");"
+        "content": "                }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"Try again maybe? Choose the right option :) \");"
+        "content": ""
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "                System.out.println(\"--------------------------------------------\");"
+        "content": "            } else if (choice.equals(option_5)) {"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "            }"
+        "content": "                final int indexOfAtPrefix \u003d option.getArgs().indexOf(\"/at\");"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": "        }"
+        "content": "                description \u003d option.getArgs().substring(0, indexOfAtPrefix);"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "jiajuinphoon"
         },
-        "content": ""
+        "content": "                String Time \u003d option.getArgs().substring(indexOfAtPrefix + 3).trim();"
       },
       {
         "lineNumber": 124,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                Task newEvent \u003d new Events(description, Time);"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                list.add(newEvent);"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"------------------------\");"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"Added: \");"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(newEvent.toString());"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.printf(\"You have %d tasks in your list ^^ \\n\" , list.size());"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"------------------------\");"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "            } else if (choice.equals(option_6)) {"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                final int indexOfByPrefix \u003d option.getArgs().indexOf(\"/by\");"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                description \u003d option.getArgs().substring(0, indexOfByPrefix);"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                String Date \u003d option.getArgs().substring(indexOfByPrefix + 3).trim();"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                Task newDeadline \u003d new Deadlines(description, Date);"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                list.add(newDeadline);"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"------------------------\");"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"Added : \");"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(newDeadline.toString());"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.printf(\"You have %d tasks in your list ^^ \\n\" , list.size());"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"------------------------\");"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "            } else if (choice.equals(option_7)){"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                try {"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                    executeDeleteCommand(list, option);"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                } catch (NumberFormatException e) {"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                    System.out.println(\"------------------------------------------\");"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                    System.out.println(String.format(ERROR_MESSAGE, \"task number\", option_7)"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                            + ERROR_DELETE_PARAM + ERROR_DELETE_EXAMPLE);"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                    System.out.println(\"------------------------------------------\");"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                    System.out.println(\"------------------------------------------\");"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                    System.out.println(String.format(ERROR_DELETE_MESSAGE, option.getArgs()));"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                    System.out.println(\"------------------------------------------\");"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                // if there is no \"done\", \"bye\", \"list\" in the string"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"-------------------------------------------\");"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"Try again maybe? Choose the right option :) \");"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "                System.out.println(\"--------------------------------------------\");"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "jiajuinphoon"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
@@ -1234,7 +1514,7 @@
       }
     ],
     "authorContributionMap": {
-      "jiajuinphoon": 121,
+      "jiajuinphoon": 161,
       "-": 4
     }
   },

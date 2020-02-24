@@ -455,1641 +455,206 @@
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "import duke.task.Deadline;"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "import duke.task.Event;"
+        "content": "import duke.command.Command;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "import duke.task.Task;"
+        "content": "import duke.command.ExitCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "import duke.task.Todo;"
+        "content": ""
       },
       {
         "lineNumber": 7,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "import java.util.Scanner;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "import java.io.File;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "import java.io.FileWriter;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "import java.io.IOException;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "import java.util.ArrayList;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": "public class Duke {"
       },
       {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final int CAPACITY \u003d 100;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final String BORDER \u003d \"____________________________________________________________\";"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final int TODO \u003d 5;"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final int DEADLINE \u003d 9;"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final int EVENT \u003d 6;"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final int DONE \u003d 5;"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final int DATE \u003d 4;"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final int DELETE \u003d 7;"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static final String PATH \u003d \"duke.txt\";"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    public static int taskCounter \u003d 0;"
-      },
-      {
-        "lineNumber": 25,
+        "lineNumber": 8,
         "author": {
           "gitId": "nigellenl"
         },
         "content": ""
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 9,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "    private static void writeToFile(String filePath, String textToAdd) throws IOException {"
+        "content": "    private static TaskList tasks \u003d new TaskList();"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 10,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "        FileWriter fw \u003d new FileWriter(filePath);"
+        "content": "    private static Parser parser \u003d new Parser();"
       },
       {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        fw.write(textToAdd);"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        fw.close();"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 31,
+        "lineNumber": 11,
         "author": {
           "gitId": "nigellenl"
         },
         "content": ""
       },
       {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    private static void appendToFile(String filePath, String textToAppend) throws IOException {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        FileWriter fw \u003d new FileWriter(filePath, true); // create a FileWriter in append mode"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        fw.write(textToAppend);"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        fw.close();"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    private static void copyList(ArrayList\u003cTask\u003e tasks, int taskCounter) throws IOException {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        File f \u003d new File(PATH);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        if (!f.exists()) {"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            f.createNewFile();"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        String status;"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        writeToFile(PATH, \"\");"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        for (int i \u003d 0; i \u003c taskCounter; i++) {"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            String line \u003d tasks.get(i).toString();"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            String[] sentence \u003d line.split(\"]\");"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            String taskType \u003d sentence[0].substring(1).toLowerCase();"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            if (tasks.get(i).isDone) {"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                status \u003d \"0\";"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                status \u003d \"1\";"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            if (taskType.equals(\"t\")) {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                appendToFile(PATH, (taskType + \" | \" + status + \" | \" + tasks.get(i).description + System.lineSeparator()));"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            } else {"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                String [] newSentence \u003d line.split(\":\");"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                String dueDate \u003d newSentence[1].substring(1);"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                int length \u003d dueDate.length();"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                String newDate \u003d newSentence[1].substring(1,length);"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                appendToFile(PATH, (taskType + \" | \" + status + \" | \" + tasks.get(i).description + \"| \" + newDate + System.lineSeparator()));"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    private static void insertFileContents(ArrayList\u003cTask\u003e tasks) throws IOException {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        File f \u003d new File(PATH); // create a File for the given file path"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        if (!f.exists()) {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            f.createNewFile();"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        Scanner s \u003d new Scanner(f); // create a Scanner using the File as the source"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        while (s.hasNext()) {"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            String line;"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            line \u003d s.nextLine();"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            String[] sentence \u003d line.split(\"\\\\|\");"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            String taskType \u003d sentence[0].toLowerCase();"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            switch(taskType) {"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            case \"t \":"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                Task t \u003d new Todo(sentence[2]);"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                tasks.add(t);"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                taskCounter++;"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                copyList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            case \"d \":"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                Task d \u003d new Deadline(sentence[2], sentence[3]);"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                tasks.add(d);"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                taskCounter++;"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                copyList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            case \"e \":"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                Task e \u003d new Event(sentence[2], sentence[3]);"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                tasks.add(e);"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                taskCounter++;"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                copyList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": "    public static void main(String[] args) {"
       },
       {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        printWelcomeMessage();"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        Scanner input \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 107,
+        "lineNumber": 13,
         "author": {
           "gitId": "nigellenl"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 14,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            insertFileContents(tasks);"
+        "content": "            Storage.insertFileContents(tasks);"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 15,
         "author": {
           "gitId": "nigellenl"
         },
         "content": "        } catch (IOException e) {"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 16,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            System.out.println(\"Input/Output Error!\");"
+        "content": "            System.out.println(\"Input Error!\");"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 17,
         "author": {
           "gitId": "nigellenl"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 18,
         "author": {
           "gitId": "nigellenl"
         },
         "content": ""
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 19,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "        while(true) {"
+        "content": "        Ui.printWelcomeMessage();"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 20,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            String line;"
+        "content": ""
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 21,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            line \u003d input.nextLine();"
+        "content": "        while (true) {"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 22,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            String[] sentence \u003d line.split(\" \");"
+        "content": "            Command command \u003d parser.getCommand();"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 23,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            String taskType \u003d sentence[0].toLowerCase();"
+        "content": "            if (command \u003d\u003d null) {"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 24,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            if (taskType.equalsIgnoreCase(\"bye\")) {"
+        "content": "                continue;"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 25,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "                printByeMessage();"
+        "content": "            }"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            if (ExitCommand.isExit(command)) {"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "nigellenl"
         },
         "content": "                break;"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 28,
         "author": {
           "gitId": "nigellenl"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 29,
         "author": {
           "gitId": "nigellenl"
         },
-        "content": "            try {"
+        "content": "            command.executeCommand(tasks);"
       },
       {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                switch(taskType) {"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                case \"list\":"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    printList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                case \"todo\":"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    line \u003d line.substring(TODO);"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    Task t \u003d new Todo(line);"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    tasks.add(t);"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    printAcknowledgement(tasks.get(taskCounter), taskCounter);"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    taskCounter++;"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    copyList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                case \"deadline\":"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String[] deadlineWords \u003d line.split(\"/\");"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String deadlineDescription \u003d deadlineWords[0].substring(DEADLINE);"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String by \u003d deadlineWords[1].substring(DATE);"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    Task d \u003d new Deadline(deadlineDescription, by);"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    tasks.add(d);"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    printAcknowledgement(tasks.get(taskCounter), taskCounter);"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    taskCounter++;"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    copyList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                case \"event\":"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String[] eventWords \u003d line.split(\"/\");"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String eventDescription \u003d eventWords[0].substring(EVENT);"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String at \u003d eventWords[1].substring(DATE);"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    Task e \u003d new Event(eventDescription, at);"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    tasks.add(e);"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    printAcknowledgement(tasks.get(taskCounter), taskCounter);"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    taskCounter++;"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    copyList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                case \"done\":"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String doneNumber \u003d line.substring(DONE);"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    int doneTaskNum \u003d Integer.parseInt(doneNumber);"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    tasks.get(doneTaskNum - 1).markAsDone();"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    System.out.println(\"Nice! I\u0027ve marked this task as done: \" + tasks.get(doneTaskNum - 1).description);"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    copyList(tasks, taskCounter);"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                case \"delete\":"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String deleteNumber \u003d line.substring(DELETE);"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    int delTaskNum \u003d Integer.parseInt(deleteNumber);"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    String delTaskName \u003d tasks.get(delTaskNum -1).description;"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    tasks.remove(delTaskNum - 1);"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    System.out.println(\"Noted! I\u0027ve removed this task:  \" + delTaskName);"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    System.out.println(\"Now you have \" + (tasks.size()) + \" tasks in your list!\");"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    taskCounter--;"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    copyList(tasks,taskCounter);"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                default:"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                    throw new DukeException();"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(\"☹ OH NO!!! I\u0027m sorry, but I don\u0027t know what that means! :o(\");"
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            } catch (NullPointerException e) {"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(\"☹ OH NO!!! There is no such task to be done! :o(\");"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            } catch (StringIndexOutOfBoundsException e) {"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(\"☹ OH NO!!! The description of a \" + taskType + \" cannot be empty! :o(\");"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            } catch (ArrayIndexOutOfBoundsException e) {"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(\"☹ OH NO!!! The description of a \" + taskType + \" cannot be empty! :o(\");"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            } catch (IOException e) {"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                System.out.println(\"Input/Output Error!\");"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 199,
+        "lineNumber": 30,
         "author": {
           "gitId": "nigellenl"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    private static void printList(ArrayList\u003cTask\u003e tasks, int taskCounter) {"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(\"Here are the tasks in your list:\");"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        for (int i \u003d 0; i \u003c taskCounter; i++){"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "            System.out.println(i+1 + \". \" + tasks.get(i).toString());"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    private static void printAcknowledgement(Task task, int counter) {"
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(\"Got it! I\u0027ve added this task: \");"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(task.toString());"
-      },
-      {
-        "lineNumber": 215,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(\"Now you have \" + (counter + 1) + \" tasks in your list!\");"
-      },
-      {
-        "lineNumber": 216,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 217,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 219,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    private static void printByeMessage() {"
-      },
-      {
-        "lineNumber": 220,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(\"Bye! Hope to see you again soon!\");"
-      },
-      {
-        "lineNumber": 222,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 223,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 225,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "    private static void printWelcomeMessage() {"
-      },
-      {
-        "lineNumber": 226,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        String logo \u003d \" ____        _        \\n\""
-      },
-      {
-        "lineNumber": 227,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
-      },
-      {
-        "lineNumber": 228,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
-      },
-      {
-        "lineNumber": 229,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 230,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
-      },
-      {
-        "lineNumber": 231,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 232,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 233,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(\"Hello! I\u0027m Duke!\");"
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(\"What can I do for you?\");"
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "nigellenl"
-        },
-        "content": "        System.out.println(BORDER);"
-      },
-      {
-        "lineNumber": 236,
+        "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
@@ -2097,7 +662,7 @@
       }
     ],
     "authorContributionMap": {
-      "nigellenl": 233,
+      "nigellenl": 28,
       "-": 4
     }
   },
@@ -2136,6 +701,2812 @@
     ],
     "authorContributionMap": {
       "nigellenl": 4
+    }
+  },
+  {
+    "path": "src/main/java/duke/Parser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.command.*;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private static final String LIST \u003d \"list\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private static final String TODO \u003d \"todo\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private static final String DEADLINE \u003d \"deadline\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private static final String EVENT \u003d \"event\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private static final String DONE \u003d \"done\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private static final String DELETE \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private static final String BYE \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final String BORDER \u003d \"____________________________________________________________\\n\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    Scanner input;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public Parser() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        input \u003d new Scanner(System.in);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public Command getCommand() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        Command command \u003d null;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        String line;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        line \u003d input.nextLine();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        String[] sentence \u003d line.split(\" \",2);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        String taskType \u003d sentence[0].toLowerCase();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            switch (taskType) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case (LIST):"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                command \u003d new ListCommand(\"\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case (TODO):"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                command \u003d  new AddCommand(sentence[1], sentence[0]);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case (DEADLINE):"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                command \u003d  new AddCommand(sentence[1], sentence[0]);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case (EVENT):"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                command \u003d  new AddCommand(sentence[1], sentence[0]);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case (DONE):"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                command \u003d new DoneCommand(sentence[1]);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case (DELETE):"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                command \u003d new DeleteCommand(sentence[1]);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case (BYE):"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                command \u003d new ExitCommand(\"\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                System.out.println(BORDER + \"☹ OH NO!!! I\u0027m sorry, but I don\u0027t know what that means! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! The description of a \" + command + \" cannot be empty! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            command \u003d null;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        return command;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 63
+    }
+  },
+  {
+    "path": "src/main/java/duke/Storage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Todo;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import java.io.*;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final String PATH \u003d \"duke.txt\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void saveFile(TaskList tasks) throws IOException {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        File f \u003d new File(PATH);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        FileOutputStream fos \u003d new FileOutputStream(f);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        PrintWriter pw \u003d new PrintWriter(fos);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        String status;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.getSize(); i++) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String line \u003d tasks.get(i).toString();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String[] sentence \u003d line.split(\"]\");"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String taskType \u003d sentence[0].substring(1).toLowerCase();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            if (tasks.get(i).isDone) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                status \u003d \"done\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                status \u003d \"pending\";"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            if (taskType.equals(\"t\")) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                pw.println(taskType + \" | \" + status + \" | \" + tasks.get(i).description + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String [] newSentence \u003d line.split(\":\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String dueDate \u003d newSentence[1].substring(1);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                int length \u003d dueDate.length();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String newDate \u003d newSentence[1].substring(1,length);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                pw.println(taskType + \" | \" + status + \" | \" + tasks.get(i).description + \"| \" + newDate + System.lineSeparator());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        pw.close();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        fos.close();"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void insertFileContents(TaskList tasks) throws IOException {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        File f \u003d new File(PATH); // create a File for the given file path"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        Scanner s \u003d new Scanner(f); // create a Scanner using the File as the source"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        while (s.hasNext()) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String line;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            line \u003d s.nextLine();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String[] sentence \u003d line.split(\"\\\\|\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String taskType \u003d sentence[0].toLowerCase();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            Task task;"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            switch(taskType) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                case \"t \":"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    task \u003d new Todo(sentence[2]);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    tasks.add(task);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    if (sentence[1].equals(\" done \")) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                        tasks.get(tasks.getSize() - 1).markAsDone();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                case \"d \":"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    task \u003d new Deadline(sentence[2], sentence[3]);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    tasks.add(task);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    if (sentence[1].equals(\" done \")) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                        tasks.get(tasks.getSize() - 1).markAsDone();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                case \"e \":"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    task \u003d new Event(sentence[2], sentence[3]);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    tasks.add(task);"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    if (sentence[1].equals(\" done \")) {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                        tasks.get(tasks.getSize() - 1).markAsDone();"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        s.close();"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 84
+    }
+  },
+  {
+    "path": "src/main/java/duke/TaskList.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    private ArrayList\u003cTask\u003e tasks;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public TaskList() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        this.tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public Task get(int i) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        return tasks.get(i);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public int getSize() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        return tasks.size();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void remove(int i) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        tasks.remove(i);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void add(Task task) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        tasks.add(task);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 28
+    }
+  },
+  {
+    "path": "src/main/java/duke/Ui.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final String BORDER \u003d \"____________________________________________________________ \\n\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void printWelcomeMessage() {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        String logo \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(\"Hello from\\n\" + logo + BORDER + \"Hello! I\u0027m Duke!\\n\" + \"What can I do for you?\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void printList(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(BORDER + \"Here are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.getSize(); i++){"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(i+1 + \". \" + tasks.get(i).toString());"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(BORDER);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void printAcknowledgement(TaskList tasks, int counter) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(BORDER + \"Got it! I\u0027ve added this task: \");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(tasks.get(counter - 1));"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(\"Now you have \" + counter + \" tasks in your list!\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void doneAcknowledgement(TaskList tasks, int doneTaskNum) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(BORDER + \"Nice! I\u0027ve marked this task as done: \" + tasks.get(doneTaskNum - 1).description);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(BORDER);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void deleteAcknowledgement(TaskList tasks, String delTaskName) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(BORDER + \"Noted! I\u0027ve removed this task:  \" + delTaskName);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(\"Now you have \" + (tasks.getSize()) + \" tasks in your list!\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static void printByeMessage() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        System.out.println(BORDER + \"Bye! Hope to see you again soon!\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 43
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/AddCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Event;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Task;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.task.Todo;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.Ui;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class AddCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    String command;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final int TODO \u003d 5;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final int DEADLINE \u003d 10;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final int EVENT \u003d 6;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final int DATE \u003d 3;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final String BORDER \u003d \"____________________________________________________________\\n\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public AddCommand(String details, String command) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        super(details);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        this.command \u003d command;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void executeCommand(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        Task task;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            switch (this.command) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case \"todo\":"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                task \u003d new Todo(this.details);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                tasks.add(task);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case \"deadline\":"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String[] deadlineWords \u003d this.details.split(\"/\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String deadlineDescription \u003d deadlineWords[0];"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String by \u003d deadlineWords[1].substring(DATE);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                task \u003d new Deadline(deadlineDescription, by);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                tasks.add(task);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            case \"event\":"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String[] eventWords \u003d this.details.split(\"/\");"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String eventDescription \u003d eventWords[0];"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                String at \u003d eventWords[1].substring(DATE);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                task \u003d new Event(eventDescription, at);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                tasks.add(task);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            Ui.printAcknowledgement(tasks, tasks.getSize());"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (NullPointerException e) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! There is no such task to be done! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! The description of a \" + this.command + \" cannot be empty! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! The description of a \" + this.command + \" cannot be empty! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 57
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Command.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    protected String details;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public Command(String details) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        this.details \u003d details;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void executeCommand(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            Storage.saveFile(tasks);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(\"Error!\");"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 22
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/DeleteCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class DeleteCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final String BORDER \u003d \"____________________________________________________________\\n\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public DeleteCommand(String details) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        super(details);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void executeCommand(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String deleteNumber \u003d this.details;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            int delTaskNum \u003d Integer.parseInt(deleteNumber);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String delTaskName \u003d tasks.get(delTaskNum -1).description;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            tasks.remove(delTaskNum - 1);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            Ui.deleteAcknowledgement(tasks, delTaskName);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (NullPointerException e) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! There is no such task to delete! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! There is no such task to delete! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        super.executeCommand(tasks);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 28
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/DoneCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class DoneCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static final String BORDER \u003d \"____________________________________________________________\\n\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public DoneCommand (String details) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        super(details);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void executeCommand(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            String doneNumber \u003d this.details;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            int doneTaskNum \u003d Integer.parseInt(doneNumber);"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            tasks.get(doneTaskNum - 1).markAsDone();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            Ui.doneAcknowledgement(tasks, doneTaskNum);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (NullPointerException e) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! There is no such task to delete! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        } catch (ArrayIndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "            System.out.println(BORDER + \"☹ OH NO!!! There is no such task to delete! :o(\\n\" + BORDER);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        super.executeCommand(tasks);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 27
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ExitCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class ExitCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public ExitCommand (String details) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        super(details);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void executeCommand(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        Ui.printByeMessage();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public static boolean isExit(Command command) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        return command instanceof ExitCommand;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 19
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ListCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "import duke.Ui;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "public class ListCommand extends Command{"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public ListCommand (String details) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        super(details);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    public void executeCommand(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "        Ui.printList(tasks);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "nigellenl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "nigellenl": 17
     }
   },
   {
