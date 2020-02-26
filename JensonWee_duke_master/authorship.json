@@ -271,148 +271,6 @@
     }
   },
   {
-    "path": "src/main/java/Deadline.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "public class Deadline extends Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    protected String by;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public Deadline(String description, String by) {"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        super(description);"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        this.by \u003d by;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getType(){"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"D\";"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getExtra(){"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return this.by;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "JensonWee": 19
-    }
-  },
-  {
     "path": "src/main/java/Duke.java",
     "fileType": "java",
     "lines": [
@@ -421,112 +279,1246 @@
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "import java.io.FileWriter;"
+        "content": "import Duke.data.Storage;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import Duke.data.TaskList;"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "import java.io.File;"
+        "content": "import Duke.data.exceptions.DukeExceptions;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import Duke.data.objects.Deadline;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "JensonWee"
         },
-        "content": "public class Duke {"
+        "content": "import Duke.data.objects.Event;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static final int MAXIMUM_CAPACITY \u003d 100;"
+        "content": "import Duke.data.objects.Task;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static final String SAVE_FILE_DIRECTORY \u003d System.getProperty(\"user.dir\") + \"\\\\duke.txt\";"
+        "content": "import Duke.data.objects.ToDo;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private static final Scanner SCANNER \u003d new Scanner(System.in);"
+        "content": "import Duke.parser.Parser;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private static ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003cTask\u003e();"
+        "content": "import Duke.ui.TextUi;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private static int taskCount \u003d 0;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private Parser parser;"
+        "content": "import java.io.FileWriter;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private DukeExceptions dukeExceptions;"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": ""
+        "content": "import java.io.File;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public Duke(){"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "JensonWee"
+          "gitId": "-"
         },
-        "content": "        parser \u003d new Parser();"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        dukeExceptions \u003d new DukeExceptions();"
+        "content": "    private TextUi ui;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private TaskList taskList;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private Parser parser;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /** Version info of the program. */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String VERSION \u003d \"\u003e Version 1.1\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Sets up the required objects, and prints the welcome message."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private void start() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.ui \u003d new TextUi();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.taskList \u003d new TaskList();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.parser \u003d new Parser();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.storage \u003d new Storage();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        storage.loadList(taskList);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ui.showWelcomeMessage(VERSION);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private static void exitProgram() {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.exit(0);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private void run(){"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        start();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        runCommandLoopUntilExitCommand();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        exit();"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /** Reads the user command and executes it, until the user issues the exit command.  */"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private void runCommandLoopUntilExitCommand() {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        boolean runStill \u003d true;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        do {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            String userCommandText \u003d ui.getUserCommand();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            runStill \u003d parser.execute(ui, taskList, userCommandText);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        } while (runStill);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        exit();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /** Prints the Farewell message and exits. */"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private void exit() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ui.showFarewellMessage();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.exit(0);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        new Duke().run();"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "-": 4,
+      "JensonWee": 58
+    }
+  },
+  {
+    "path": "src/main/java/Duke/common/Messages.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.common;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Messages {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_GREETING \u003d \"\\tHello! I\u0027m Duke\\n\\tWhat can I do for you?\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_FAREWELL \u003d \"\\tBye. Hope to see you again soon!\";"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_GETLIST \u003d \"\\tHere are the tasks in your list:\";"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_ADDTASK \u003d \"\\tGot it. I\u0027ve added this task:\";"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_DELTASK \u003d \"\\tNoted. I\u0027ve removed this task:\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_TASKDONE \u003d \"\\tNice! I\u0027ve marked this task as done:\";"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_HELP \u003d \"\\tHere is a list of command:\\n\"+\"\\tbye\\t\\t\\t\\t\\t- Exit Duke.\\n\" +"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            \"\\tdeadline \u003citem\u003e /by \u003cdate\u003e\\t\\t\\t\\t\\t- Add Duke.data.objects.Deadline item into List.\\n\" +"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            \"\\tdone \u003citem number\u003e\\t\\t\\t\\t\\t- Mark item number as done. Ex \u0027done 1\u0027 to mark item(1) as done\\n\" +"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            \"\\tevent \u003citem\u003e /at \u003clocation\u003e\\t\\t\\t\\t\\t- Add Duke.data.objects.Event item into List.\"+"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            \"\\thelp \\t\\t\\t\\t\\t- Displays all function\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String MESSAGE_FIND \u003d \"\\tHere are the matching tasks in your list:\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 17
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/Storage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.objects.Deadline;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.objects.Event;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.objects.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.objects.ToDo;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String SAVE_FILE_DIRECTORY \u003d System.getProperty(\"user.dir\") + \"\\\\duke.txt\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void loadList(TaskList taskList){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        int taskCounter \u003d 0;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ArrayList\u003cTask\u003e tasks \u003d taskList.getList();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            File file \u003d"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    new File(SAVE_FILE_DIRECTORY);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            if(file.exists()) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                Scanner sc \u003d new Scanner(file);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                while (sc.hasNextLine()) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    String text \u003d sc.nextLine();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    String[] scanned \u003d text.split(\" \\\\| \");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    switch (scanned[0]) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    case \"T\":"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        tasks.add(new ToDo(scanned[2]));"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        if (scanned[1].equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                            tasks.get(taskCounter).markAsDone();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        taskCounter++;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        break;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    case \"D\":"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        tasks.add(new Deadline(scanned[2], scanned[3]));"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        if (scanned[1].equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                            tasks.get(taskCounter).markAsDone();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        taskCounter++;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        break;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    case \"E\":"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        tasks.add(new Event(scanned[2], scanned[3]));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        if (scanned[1].equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                            tasks.get(taskCounter).markAsDone();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        taskCounter++;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                        break;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                System.out.println(\"Duke List loaded.\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }catch (Exception e){"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            System.out.println(\"Error loading file.\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static void saveList(TaskList taskList){"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ArrayList\u003cTask\u003e tasks \u003d taskList.getList();"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        try{"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            FileWriter fw \u003dnew FileWriter(SAVE_FILE_DIRECTORY, false);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            for(int i \u003d0; i\u003ctasks.size();i++){"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                String data \u003d \"\";"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                if(tasks.get(i).getType().equals(\"T\")){"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    int dataBoolean \u003d tasks.get(i).getIsDone() ? 1:0;"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    data \u003d tasks.get(i).getType() + \" | \" + dataBoolean + \" | \" + tasks.get(i).getDescription() + \"\\n\";"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                }else{"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    int dataBoolean \u003d tasks.get(i).getIsDone() ? 1:0;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                    data \u003d tasks.get(i).getType() + \" | \" + dataBoolean + \" | \" + tasks.get(i).getDescription()"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                            + \" | \" + tasks.get(i).getExtra() + \"\\n\";"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                fw.write(data);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            fw.close();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }catch (Exception e){"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            System.out.println(\"Writing to file failed.\");"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 79
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/TaskList.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.objects.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /** The list of task  */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private static ArrayList\u003cTask\u003e tasks;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public TaskList(){"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        tasks \u003d new ArrayList\u003cTask\u003e();"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public ArrayList getList(){"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return tasks;"
       },
       {
         "lineNumber": 17,
@@ -540,35 +1532,170 @@
         "author": {
           "gitId": "JensonWee"
         },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 18
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/exceptions/DukeExceptions.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class DukeExceptions {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
         "content": "    public static void doLine(){"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 5,
         "author": {
           "gitId": "JensonWee"
         },
         "content": "        String line \u003d \"_\".repeat(60);"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 6,
         "author": {
           "gitId": "JensonWee"
         },
         "content": "        System.out.println(\"\\t\"+line);"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 7,
         "author": {
           "gitId": "JensonWee"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static void printInvalidCommandException(){"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tHere is a list of command:\");"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tbye\\t\\t\\t\\t\\t- Exit Duke.\");"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tdeadline \u003citem\u003e /by \u003cdate\u003e\\t\\t\\t\\t\\t- Add Duke.data.objects.Deadline item into List.\");"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tdone \u003citem number\u003e\\t\\t\\t\\t\\t- Mark item number as done. Ex \u0027done 1\u0027 to mark item(1) as done\");"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tevent \u003citem\u003e /at \u003clocation\u003e\\t\\t\\t\\t\\t- Add Duke.data.objects.Event item into List.\");"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static void printInvalidEventException(){"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tHere is a example of the Duke.data.objects.Event command:\");"
+      },
+      {
         "lineNumber": 22,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void doGreeting(){"
+        "content": "        System.out.println(\"\\tevent \u003citem\u003e /at \u003clocation\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027event CTF /at COM2\u0027\");"
       },
       {
         "lineNumber": 23,
@@ -582,42 +1709,42 @@
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHello! I\u0027m Duke\\n\\tWhat can I do for you?\");"
+        "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "    public static void printInvalidDeadlineException(){"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "        doLine();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void doFarewell(){"
+        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        System.out.println(\"\\tHere is a example of the Duke.data.objects.Deadline command:\");"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tBye. Hope to see you again soon!\");"
+        "content": "        System.out.println(\"\\tdeadline \u003citem\u003e /by \u003cdate/time\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027deadline level-5 assignment /by tomorrow\u0027\");"
       },
       {
         "lineNumber": 30,
@@ -631,7 +1758,1024 @@
         "author": {
           "gitId": "JensonWee"
         },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static void printInvalidToDoException(){"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tHere is a example of the Duke.data.objects.ToDo command:\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\ttodo \u003citem\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027todo readbook\u0027\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JensonWee"
+        },
         "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static void printInvalidDoneException(){"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tHere is a example of the done command:\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tdone \u003citem number\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027done 1\u0027\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static void printInvalidDeleteException(){"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tHere is a example of the done command:\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tdelete \u003citem number\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027delete 1\u0027\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static void printIndexOutOfBoundsException(){"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tYou have entered an item number that does not exist. Please try again.\");"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        System.out.println(\"\\tTry \u0027list\u0027 to display the items that exists in the Duke.data.objects.Task list.\");"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        doLine();"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 61
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": " * Represents the deadline command. Upon execution, prints out unique Strings."
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Deadline extends Task {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    protected String by;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"deadline\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public Deadline(String description, String by) {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.by \u003d by;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getType(){"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return \"D\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getExtra(){"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return this.by;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 24
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/Delete.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Delete {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 5
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/Done.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Done {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"done\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 5
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/Event.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": " * Represents the Event command. Upon execution, prints out unique Strings."
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Event extends Task {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    protected String at;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"event\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public Event(String description, String at) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.at \u003d at;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getType(){"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return \"E\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getExtra(){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return this.at;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 23
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/Find.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Find {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 6
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/Help.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Help {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"help\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 6
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/List.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class List {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 5
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/Task.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "package Duke.data.objects;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Task {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    protected String description;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    protected boolean isDone;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Represents the Task class. Parent class of Deadline, Event, ToDo."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public Task(String description) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.isDone \u003d false;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void markAsDone(){"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        this.isDone \u003d true;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getDescription(){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return this.description;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public boolean getIsDone(){"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return this.isDone;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getStatusIcon() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        //return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return (isDone ? \"Done\" : \"Not Done\");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String toString(){"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return \"[\"+getStatusIcon() +\"]\" +\" \"+ this.description;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getType(){"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return \"\";"
       },
       {
         "lineNumber": 32,
@@ -645,707 +2789,1096 @@
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public void loadList(){"
+        "content": "    public String getExtra(){"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        int taskCounter \u003d 0;"
+        "content": "        return \"\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        try {"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            File file \u003d"
-      },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 36
+    }
+  },
+  {
+    "path": "src/main/java/Duke/data/objects/ToDo.java",
+    "fileType": "java",
+    "lines": [
       {
-        "lineNumber": 37,
+        "lineNumber": 1,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    new File(SAVE_FILE_DIRECTORY);"
+        "content": "package Duke.data.objects;"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 2,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            if(file.exists()) {"
+        "content": "/**"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 3,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                Scanner sc \u003d new Scanner(file);"
+        "content": " * Represents the ToDo command. Upon execution, prints out unique Strings."
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 4,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                while (sc.hasNextLine()) {"
+        "content": " */"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 5,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    String text \u003d sc.nextLine();"
+        "content": "public class ToDo extends Task {"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 6,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    String[] scanned \u003d text.split(\" \\\\| \");"
+        "content": "    public static final String COMMAND_WORD \u003d \"todo\";"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 7,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    switch (scanned[0]) {"
+        "content": "    public ToDo(String description) {"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 8,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    case \"T\":"
+        "content": "        super(description);"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 9,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                        tasks.add(new ToDo(scanned[2]));"
+        "content": "    }"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 10,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                        if (scanned[1].equals(\"1\")) {"
+        "content": "    public String getType(){"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 11,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                            tasks.get(taskCounter).markAsDone();"
+        "content": "        return \"T\";"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 12,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                        }"
+        "content": "    }"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 13,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                        taskCounter++;"
+        "content": "    @Override"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 14,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                        break;"
+        "content": "    public String toString() {"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 15,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    case \"D\":"
+        "content": "        return \"[T]\" + super.toString();"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 16,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                        tasks.add(new Deadline(scanned[2], scanned[3]));"
+        "content": "    }"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 17,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                        if (scanned[1].equals(\"1\")) {"
-      },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JensonWee": 17
+    }
+  },
+  {
+    "path": "src/main/java/Duke/parser/Parser.java",
+    "fileType": "java",
+    "lines": [
       {
-        "lineNumber": 54,
+        "lineNumber": 1,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                            tasks.get(taskCounter).markAsDone();"
+        "content": "package Duke.parser;"
       },
       {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        }"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        taskCounter++;"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        break;"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    case \"E\":"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        tasks.add(new Event(scanned[2], scanned[3]));"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        if (scanned[1].equals(\"1\")) {"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                            tasks.get(taskCounter).markAsDone();"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        }"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        taskCounter++;"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        break;"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                System.out.println(\"Duke List loaded.\");"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        }catch (Exception e){"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            System.out.println(\"Error loading file.\");"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 72,
+        "lineNumber": 2,
         "author": {
           "gitId": "JensonWee"
         },
         "content": ""
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.data.objects.*;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import Duke.ui.TextUi;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import static Duke.data.exceptions.DukeExceptions.printInvalidCommandException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "import static Duke.data.exceptions.DukeExceptions.printInvalidDeadlineException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Executes the command and returns a boolean whether the while loop continues."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param ui - TextUi object"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *           taskList - TaskList object"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *           String - String command Line"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @return boolean"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public Boolean execute(TextUi ui, TaskList taskList, String userInput) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        String[] commands \u003d userInput.trim().split(\" \", 2);  // split the input into command and arguments"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        if (commands.length \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            printInvalidCommandException();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        final String commandWord \u003d commands[0];"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        final String arguments \u003d userInput.replaceFirst(commandWord, \"\").trim();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        switch (commandWord) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case Deadline.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeDeadlineCommand(ui, taskList, arguments);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case Event.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeEventCommand(ui, taskList, arguments);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case ToDo.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeToDoCommand(ui, taskList, arguments);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case Delete.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeDeleteCommand(ui, taskList, arguments);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case Done.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeDoneCommand(ui, taskList, arguments);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case List.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeListCommand(ui, taskList);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case Help.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeHelpCommand(ui);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case Find.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            executeFindCommand(ui, taskList, arguments);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        case \"bye\":"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            printInvalidCommandException();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
         "author": {
           "gitId": "JensonWee"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Executes showTaskList from TextUi object to print out Task List items."
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param ui - TextUi object"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *           taskList - TaskList object"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void executeListCommand(TextUi ui, TaskList taskList){"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ui.showTaskList(taskList);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Executes showHelpMessage from TextUi object to print out all Functions usage guide."
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param ui - TextUi object"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void saveList(){"
+        "content": "     */"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        try{"
+        "content": "    public void executeHelpCommand(TextUi ui){"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            FileWriter fw \u003dnew FileWriter(SAVE_FILE_DIRECTORY, false);"
+        "content": "        ui.showHelpMessage();"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            for(int i \u003d0; i\u003ctasks.size();i++){"
+        "content": "    }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                String data \u003d \"\";"
+        "content": "    /**"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                if(tasks.get(i).getType().equals(\"T\")){"
+        "content": "     * Adds Task object into TaskList"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    int dataBoolean \u003d tasks.get(i).getIsDone() ? 1:0;"
+        "content": "     *"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    data \u003d tasks.get(i).getType() + \" | \" + dataBoolean + \" | \" + tasks.get(i).getDescription() + \"\\n\";"
+        "content": "     * @param taskList - TaskList object"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                }else{"
+        "content": "     *                 task - Task Object"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    int dataBoolean \u003d tasks.get(i).getIsDone() ? 1:0;"
+        "content": "     */"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                    data \u003d tasks.get(i).getType() + \" | \" + dataBoolean + \" | \" + tasks.get(i).getDescription()"
+        "content": "    public void addTask(TaskList taskList, Task task){"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                            + \" | \" + tasks.get(i).getExtra() + \"\\n\";"
+        "content": "        ArrayList\u003cTask\u003e taskArrayList \u003d taskList.getList();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                }"
+        "content": "        taskArrayList.add(task);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "                fw.write(data);"
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            fw.close();"
+        "content": "    private void executeDeadlineCommand(TextUi ui, TaskList taskList, String arguments){"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        }catch (Exception e){"
+        "content": "        try{"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            System.out.println(\"Writing to file failed.\");"
+        "content": "            String[] argumentArray \u003d arguments.split(\" /by \");"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        }"
+        "content": "            addTask(taskList, new Deadline(argumentArray[0], argumentArray[1]));"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "            ui.showAddTask(taskList);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void getList(){"
+        "content": "            Storage.saveList(taskList);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        }catch(ArrayIndexOutOfBoundsException err){"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHere are the tasks in your list:\");"
+        "content": "            printInvalidDeadlineException();"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        for(int i \u003d 0; i\u003c tasks.size(); i++){"
+        "content": "        }"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            System.out.println(\"\\t\"+(i+1)+\".\"+tasks.get(i).toString());"
+        "content": ""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "    private void executeFindCommand(TextUi ui, TaskList taskList, String arguments){"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "        ArrayList\u003cTask\u003e taskArrayList \u003d taskList.getList();"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private static String getUserInput() {"
+        "content": "        ArrayList\u003cTask\u003e tempFindList \u003d new ArrayList\u003cTask\u003e();"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        String inputLine \u003d SCANNER.nextLine();"
+        "content": "        for(Task a : taskArrayList){"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        while (inputLine.trim().isEmpty()) {"
+        "content": "            if(a.getDescription().contains(arguments)){"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "            inputLine \u003d SCANNER.nextLine();"
+        "content": "                tempFindList.add(a);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        return inputLine;"
+        "content": "        }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "        ui.showFindList(tempFindList);"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private static void addTask(Task task){"
+        "content": "    }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        tasks.add(task);"
+        "content": "    private void executeEventCommand(TextUi ui, TaskList taskList, String arguments){"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        String[] argumentArray \u003d arguments.split(\" /at \");"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tGot it. I\u0027ve added this task:\");"
+        "content": "        addTask(taskList, new Event(argumentArray[0], argumentArray[1]));"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\t\\t\"+tasks.get(tasks.size()-1).toString());"
+        "content": "        ui.showAddTask(taskList);"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tNow you have \"+ tasks.size() +\" tasks in the list.\");"
+        "content": "        Storage.saveList(taskList);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "    private void executeToDoCommand(TextUi ui, TaskList taskList, String arguments){"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private static void deleteTask(String taskCount){"
+        "content": "        addTask(taskList, new ToDo(arguments));"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        int taskNumber \u003d Integer.parseInt(taskCount) -1;"
+        "content": "        ui.showAddTask(taskList);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        String taskString \u003d tasks.get(taskNumber).toString();"
+        "content": "        Storage.saveList(taskList);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tNoted. I\u0027ve removed this task:\");"
+        "content": "    private void executeDeleteCommand(TextUi ui, TaskList taskList, String arguments){"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\t\\t\"+ taskString);"
+        "content": "        ArrayList\u003cTask\u003e taskArrayList \u003d taskList.getList();"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        tasks.remove(taskNumber);"
+        "content": "        int delNumber \u003d Integer.parseInt(arguments)-1;"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tNow you have \"+ tasks.size() +\" tasks in the list.\");"
+        "content": "        ui.showDeleteTask(taskList, delNumber);"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        taskArrayList.remove(delNumber);"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "        Storage.saveList(taskList);"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    private static void completeTask(String taskCount){"
+        "content": "    }"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        int taskNumber \u003d Integer.parseInt(taskCount) -1;"
+        "content": "    private void executeDoneCommand(TextUi ui, TaskList taskList, String arguments){"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        tasks.get(taskNumber).markAsDone();"
+        "content": "        ArrayList\u003cTask\u003e taskArrayList \u003d taskList.getList();"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        int taskNumber \u003d Integer.parseInt(arguments)-1;"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tNice! I\u0027ve marked this task as done:\");"
+        "content": "        taskArrayList.get(taskNumber).markAsDone();"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\t\\t\"+tasks.get(taskNumber).toString());"
+        "content": "        ui.showDoneTask(taskList, taskNumber);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        Storage.saveList(taskList);"
       },
       {
         "lineNumber": 134,
@@ -1359,639 +3892,22 @@
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public void processInput(String input){"
+        "content": ""
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        try{"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            parser.setInput(input);"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            String firstCommand \u003d parser.getFirst();"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            if(firstCommand.equals(\"bye\")){"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                doFarewell();"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                exitProgram();"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }else if(firstCommand.equals(\"list\")) {"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                getList();"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }else if(firstCommand.equals(\"deadline\")){"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                try {"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    if(parser.getDeadlineItem().equals(\" \") || parser.getDeadlineBy().isEmpty() || parser.getDeadlineItem().isEmpty() || parser.getDeadlineBy().equals(\" \")){"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        throw new ArrayIndexOutOfBoundsException();"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    addTask(new Deadline(parser.getDeadlineItem(), parser.getDeadlineBy()));"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    saveList();"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }catch (ArrayIndexOutOfBoundsException e){"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    dukeExceptions.printInvalidDeadlineException();"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }else if(firstCommand.equals(\"delete\")){"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                try {"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    if(parser.getSecond().equals(\" \")  || parser.getSecond().isEmpty()){"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        throw new ArrayIndexOutOfBoundsException();"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    deleteTask(parser.getSecond());"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    saveList();"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }catch (NumberFormatException e){"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    dukeExceptions.printInvalidDeleteException();"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }catch (IndexOutOfBoundsException e){"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    dukeExceptions.printIndexOutOfBoundsException();"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }else if(firstCommand.equals(\"event\")){"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                try {"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    if(parser.getEventItem().equals(\" \") || parser.getEventItem().isEmpty() || parser.getEventAt().isEmpty() || parser.getEventAt().equals(\" \")){"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        throw new ArrayIndexOutOfBoundsException();"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    addTask(new Event(parser.getEventItem(), parser.getEventAt()));"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    saveList();"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }catch (ArrayIndexOutOfBoundsException e){"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    dukeExceptions.printInvalidEventException();"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }else if(firstCommand.equals(\"todo\")){"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                try{"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    if(parser.getToDo().equals(\" \") || parser.getToDo().isEmpty()){"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        throw new ArrayIndexOutOfBoundsException();"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    addTask(new ToDo(parser.getToDo()));"
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    saveList();"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }catch (Exception e){"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    dukeExceptions.printInvalidToDoException();"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }else if(firstCommand.equals(\"done\")) {"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                try {"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    if(parser.getCompleteNumber().equals(\" \")  || parser.getCompleteNumber().isEmpty()){"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                        throw new ArrayIndexOutOfBoundsException();"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    completeTask(parser.getCompleteNumber());"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    saveList();"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }catch (ArrayIndexOutOfBoundsException e){"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    dukeExceptions.printIndexOutOfBoundsException();"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }catch (NumberFormatException e){"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                    dukeExceptions.printInvalidDoneException();"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }else{"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "                dukeExceptions.printInvalidCommandException();"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        }catch (Exception e){"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            dukeExceptions.printInvalidCommandException();"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    private static void exitProgram() {"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        System.exit(0);"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    private void run(){"
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        loadList();"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        while(true){"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            String userCommand \u003d getUserInput();"
-      },
-      {
-        "lineNumber": 215,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "            processInput(userCommand);"
-      },
-      {
-        "lineNumber": 216,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 217,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static void main(String[] args) {"
-      },
-      {
-        "lineNumber": 219,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 220,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        doGreeting();"
-      },
-      {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        Duke duke \u003d new Duke();"
-      },
-      {
-        "lineNumber": 222,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        duke.run();"
-      },
-      {
-        "lineNumber": 223,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "-"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "-": 4,
-      "JensonWee": 220
+      "JensonWee": 136
     }
   },
   {
-    "path": "src/main/java/DukeExceptions.java",
+    "path": "src/main/java/Duke/ui/TextUi.java",
     "fileType": "java",
     "lines": [
       {
@@ -1999,245 +3915,245 @@
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "public class DukeExceptions {"
+        "content": "package Duke.ui;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void doLine(){"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        String line \u003d \"_\".repeat(60);"
+        "content": "import Duke.data.TaskList;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\t\"+line);"
+        "content": "import Duke.data.objects.Task;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void printInvalidCommandException(){"
+        "content": "import java.io.InputStream;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "import java.io.PrintStream;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHere is a list of command:\");"
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tbye\\t\\t\\t\\t\\t- Exit Duke.\");"
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tdeadline \u003citem\u003e /by \u003cdate\u003e\\t\\t\\t\\t\\t- Add Deadline item into List.\");"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tdone \u003citem number\u003e\\t\\t\\t\\t\\t- Mark item number as done. Ex \u0027done 1\u0027 to mark item(1) as done\");"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tevent \u003citem\u003e /at \u003clocation\u003e\\t\\t\\t\\t\\t- Add Event item into List.\");"
+        "content": "//Messages"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "import static Duke.common.Messages.MESSAGE_TASKDONE;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "import static Duke.common.Messages.MESSAGE_DELTASK;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void printInvalidEventException(){"
+        "content": "import static Duke.common.Messages.MESSAGE_ADDTASK;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "import static Duke.common.Messages.MESSAGE_GETLIST;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+        "content": "import static Duke.common.Messages.MESSAGE_FAREWELL;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHere is a example of the Event command:\");"
+        "content": "import static Duke.common.Messages.MESSAGE_GREETING;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tevent \u003citem\u003e /at \u003clocation\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027event CTF /at COM2\u0027\");"
+        "content": "import static Duke.common.Messages.MESSAGE_HELP;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "import static Duke.common.Messages.MESSAGE_FIND;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "import static Duke.data.exceptions.DukeExceptions.printInvalidCommandException;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void printInvalidDeadlineException(){"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+        "content": "public class TextUi {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHere is a example of the Deadline command:\");"
+        "content": "    private final Scanner in;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tdeadline \u003citem\u003e /by \u003cdate/time\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027deadline level-5 assignment /by tomorrow\u0027\");"
+        "content": "    private final PrintStream out;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "    public static final String DIVIDER \u003d \"\\t\"+ \"_\".repeat(60);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void printInvalidToDoException(){"
+        "content": "    public TextUi() {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        this(System.in, System.out);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHere is a example of the ToDo command:\");"
+        "content": "    public TextUi(InputStream in, PrintStream out) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\ttodo \u003citem\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027todo readbook\u0027\");"
+        "content": "        this.in \u003d new Scanner(in);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        this.out \u003d out;"
       },
       {
         "lineNumber": 36,
@@ -2258,908 +4174,1019 @@
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void printInvalidDoneException(){"
+        "content": "    /**"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "     * Prints out the String array given"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+        "content": "     *"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHere is a example of the done command:\");"
+        "content": "     * @param message - String... object"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tdone \u003citem number\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027done 1\u0027\");"
+        "content": "     */"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "    public void showToUser(String... message) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "        for (String m : message) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void printInvalidDeleteException(){"
+        "content": "            out.println(m);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tYou have entered an incorrect input. Please try again.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tHere is a example of the done command:\");"
+        "content": "    /**"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tdelete \u003citem number\u003e\\t\\t\\t\\t\\t \u003cEx: \u0027delete 1\u0027\");"
+        "content": "     * Prints out MESSAGE_HELP message from Messages class"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "     *"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    public static void printIndexOutOfBoundsException(){"
+        "content": "    public void showHelpMessage(){"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "        showToUser("
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tYou have entered an item number that does not exist. Please try again.\");"
+        "content": "                MESSAGE_HELP"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        System.out.println(\"\\tTry \u0027list\u0027 to display the items that exists in the Task list.\");"
+        "content": "        );"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "        doLine();"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "JensonWee"
         },
-        "content": ""
+        "content": "     * Prints out MESSAGE_GREETING message from Messages class"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "JensonWee"
         },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void showWelcomeMessage(String version) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER,"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                version,"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                MESSAGE_GREETING,"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Prints out MESSAGE_FAREWELL message from Messages class"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void showFarewellMessage(){"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER,"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                MESSAGE_FAREWELL,"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    private boolean shouldIgnore(String rawInputLine) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return rawInputLine.trim().isEmpty();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Prints out MESSAGE_GETLIST message from Messages class \u0026 Loops through taskList"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param taskList - TaskList object"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void showTaskList(TaskList taskList){"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ArrayList\u003cTask\u003e tasks \u003d taskList.getList();"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER,"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                MESSAGE_GETLIST"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        for(int i \u003d 0; i\u003c tasks.size(); i++){"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            System.out.println(\"\\t\"+(i+1)+\".\"+tasks.get(i).toString());"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Prints out MESSAGE_FIND message from Messages class \u0026 Loops through tempList"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param tempList - TaskList object"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void showFindList(ArrayList\u003cTask\u003e tempList){"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER,"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                MESSAGE_FIND"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        if(tempList.size() !\u003d 0){"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            for(int i \u003d 0; i\u003c tempList.size(); i++){"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                System.out.println(\"\\t\"+(i+1)+\".\"+tempList.get(i).toString());"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }else{"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            System.out.println(\"\\tNo Result Found! Please try again!\");"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Prints out MESSAGE_ADDTASK message from Messages class \u0026 the Task size"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param taskList - TaskList object"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void showAddTask(TaskList taskList){"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ArrayList\u003cTask\u003e taskArrayList \u003d taskList.getList();"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER,"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                MESSAGE_ADDTASK,"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                \"\\t\\t\"+taskArrayList.get(taskArrayList.size()-1).toString(),"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                \"\\tNow you have \"+ taskArrayList.size() +\" tasks in the list.\""
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Prints out MESSAGE_DELTASK message from Messages class \u0026 the Task size"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param taskList - TaskList object"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *                 taskNumber - the number(int) of the task being deleted"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void showDeleteTask(TaskList taskList, int taskNumber){"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ArrayList\u003cTask\u003e taskArrayList \u003d taskList.getList();"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER,"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                MESSAGE_DELTASK,"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                \"\\t\\t\"+ taskArrayList.get(taskNumber),"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                \"\\tNow you have \"+ (taskArrayList.size()-1) +\" tasks in the list.\","
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Prints out MESSAGE_TASKDONE message from Messages class \u0026 the Task that is marked Done"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @param taskList - TaskList object"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     *                 taskNumber - the number(int) of the task being marked as Done"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public void showDoneTask(TaskList taskList, int taskNumber){"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        ArrayList\u003cTask\u003e taskArrayList \u003d taskList.getList();"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser("
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER,"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                MESSAGE_TASKDONE,"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                \"\\t\\t\"+taskArrayList.get(taskNumber).toString(),"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "                DIVIDER"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Prompts for the command and reads the text entered by the user."
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Ignores empty and pure whitespace."
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * Echos the command back to the user."
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     * @return command (full line) entered by the user"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    public String getUserCommand() {"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        out.print(\"Enter command: \");"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        String fullInputLine \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        while (shouldIgnore(fullInputLine)){"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            printInvalidCommandException();"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            fullInputLine \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        String[] filteredArray \u003d fullInputLine.split(\" \", 2);"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        String command \u003d filteredArray[0];"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        showToUser(\"[Command entered:\" + command + \"]\");"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        if(filteredArray.length \u003d\u003d 2) {"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            String attributes \u003d filteredArray[1];"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "            showToUser(\"[Attributes entered:\" + attributes + \"]\");"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "        return fullInputLine;"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "JensonWee"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "JensonWee"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "JensonWee": 59
-    }
-  },
-  {
-    "path": "src/main/java/Event.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "public class Event extends Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    protected String at;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public Event(String description, String at) {"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        super(description);"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        this.at \u003d at;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getType(){"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"E\";"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getExtra(){"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return this.at;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "JensonWee": 19
-    }
-  },
-  {
-    "path": "src/main/java/Parser.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "public class Parser {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    protected String input;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public Parser(){"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        this.input \u003d \"\";"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public void setInput(String input){"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        this.input \u003d input;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public static void doLine(){"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        String line \u003d \"_\".repeat(60);"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        System.out.println(\"\\t\"+line);"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getFirst(){"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return this.input.split(\" \", 2)[0];"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getSecond(){"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return this.input.split(\" \", 2)[1];"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getDeadlineItem(){"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return getSecond().split(\" /by \")[0];"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getDeadlineBy(){"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return getSecond().split(\" /by \")[1];"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getEventItem(){"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return getSecond().split(\" /at \")[0];"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getEventAt(){"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return getSecond().split(\" /at \")[1];"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getToDo(){"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return getSecond();"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getCompleteNumber(){"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return getSecond();"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "JensonWee": 39
-    }
-  },
-  {
-    "path": "src/main/java/Task.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "public class Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    protected String description;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    protected boolean isDone;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public Task(String description) {"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        this.description \u003d description;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        this.isDone \u003d false;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public void markAsDone(){"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        this.isDone \u003d true;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getDescription(){"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return this.description;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public boolean getIsDone(){"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return this.isDone;"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getStatusIcon() {"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\"); //return tick or X symbols"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String toString(){"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"[\"+getStatusIcon() +\"]\" +\" \"+ this.description;"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getType(){"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"\";"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getExtra(){"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"\";"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "JensonWee": 31
-    }
-  },
-  {
-    "path": "src/main/java/ToDo.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "public class ToDo extends Task {"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public ToDo(String description) {"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        super(description);"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String getType(){"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"T\";"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "        return \"[T]\" + super.toString();"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "JensonWee"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "JensonWee": 13
+      "JensonWee": 182
     }
   }
 ]
