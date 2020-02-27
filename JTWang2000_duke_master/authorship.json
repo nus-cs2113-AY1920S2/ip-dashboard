@@ -610,17 +610,10 @@
           "gitId": "JTWang2000"
         },
         "content": "T | 1 | join sports club"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "E | 0 | dancing | Tuesday evening"
       }
     ],
     "authorContributionMap": {
-      "JTWang2000": 5
+      "JTWang2000": 4
     }
   },
   {
@@ -646,63 +639,63 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import duke.task.Deadline;"
+        "content": "import duke.command.Command;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import duke.task.Event;"
+        "content": "import duke.common.DukeException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import duke.task.Task;"
+        "content": "import duke.parser.Parser;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import duke.task.Todo;"
+        "content": "import duke.storage.Storage;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import duke.taskList.TaskList;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import duke.ui.Ui;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import java.io.File;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import java.io.FileNotFoundException;"
+        "content": "import java.io.File;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import java.io.FileWriter;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 12,
@@ -721,9 +714,648 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "JTWang2000"
+        },
+        "content": "import static duke.common.Constants.CREATE_FILE_PATH;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import static duke.common.Constants.FILE_PATH;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
         },
         "content": "public class Duke {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private Storage storage;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private TaskList tasks;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private Ui ui;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public Duke(String filePath) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui \u003d new Ui();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        tasks \u003d new TaskList();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        storage \u003d new Storage(filePath);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            storage.load(tasks);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        } catch (FileNotFoundException e) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            ui.showLoadingError();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            File newFolder \u003d new File(CREATE_FILE_PATH);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            newFolder.mkdirs();"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            try{"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                File f \u003d new File(FILE_PATH);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                f.createNewFile();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            } catch (IOException error) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                System.out.println(\"\\tUnknown errors: \" + error.getMessage());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void run() {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui.showWelcome();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        boolean isExit \u003d false;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        while (!isExit) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                String fullCommand \u003d ui.readCommand();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                ui.showLine(); // show the divider line (\"_______\")"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                c.execute(tasks, ui, storage);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                isExit \u003d c.isExit();"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            } catch (DukeException e) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                ui.showError(e.getMessage());"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                ui.showError(e.getMessage());"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            } finally {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                ui.showLine();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui.showGoodByeMessage();"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui.showLine();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        new Duke(FILE_PATH).run();"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /*public static void loadTasks() {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        File f \u003d new File(FILE_PATH);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            Scanner s \u003d new Scanner(f);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            while (s.hasNext()) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                String oneTask;"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                oneTask \u003d s.nextLine();"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                loadATask(oneTask);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        } catch (FileNotFoundException e) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            System.out.println(\"\\tCreating back up file in hard disk... \");"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            System.out.println();"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                f.createNewFile();"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            } catch (IOException error) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                System.out.println(\"\\tSomething went wrong: \" + error.getMessage());"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }*/"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 90
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/AddCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class AddCommand extends Command{"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private Task newtask;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public AddCommand(Task newtask) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        this.newtask \u003d newtask;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 15,
@@ -737,14 +1369,177 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    private static ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
+        "content": "    @Override"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    private static int taskCount \u003d 0;"
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        tasks.addTask(newtask);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui.showAddTaskMessage(tasks);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        storage.write(tasks);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 22
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Command.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "//package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.common.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public Command(){"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void execute (TaskList tasks, Ui ui, Storage storage) throws IOException, DukeException {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 18,
@@ -756,1404 +1551,45 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "JTWang2000"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    public Boolean isExit() {"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "-"
+          "gitId": "JTWang2000"
         },
-        "content": "        String logo \u003d \" ____        _        \\n\""
+        "content": "        return false;"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "-"
+          "gitId": "JTWang2000"
         },
-        "content": "                + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "JTWang2000"
         },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        greet();"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        loadTasks();"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        String userResponde;"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        Scanner in \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        do {"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            userResponde \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            dukeResponde(userResponde);"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } while (!userResponde.equals(\"bye\"));"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void greet() {"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        printLine();"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tHello! I\u0027m duke.Duke\");"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tWhat can I do for you?\");"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        printLine();"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println();"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void loadTasks() {"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        File f \u003d new File(\"data/duke.txt\");"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            Scanner s \u003d new Scanner(f);"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            while (s.hasNext()) {"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                String oneTask;"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                oneTask \u003d s.nextLine();"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                loadATask(oneTask);"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } catch (FileNotFoundException e) {"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            System.out.println(\"\\tCreating back up file in hard disk... \");"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            System.out.println();"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                f.createNewFile();"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (IOException error) {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\tSomething went wrong: \" + error.getMessage());"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void loadATask(String oneTask) {"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        String[] taskSplit \u003d oneTask.split(\" \\\\| \");"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        switch (taskSplit[0]) {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        case \"T\":"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            tasks.add(new Todo(taskSplit[2]));"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        case \"D\":"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            tasks.add(new Deadline(taskSplit[2],taskSplit[3]));"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        case \"E\":"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            tasks.add(new Event(taskSplit[2],taskSplit[3]));"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        default:"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        if (taskSplit[1].equals(\"1\")) {"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            tasks.get(taskCount).markAsDone();"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        taskCount++;"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void dukeResponde(String userResponde) {"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        printLine();"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        if (userResponde.equals(\"bye\")) {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            sayBye();"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } else if (userResponde.equals(\"list\")) {"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                listTask();"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! \" + e.getMessage());"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } else if (userResponde.startsWith(\"done\")) {"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                markAsDone(userResponde);"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (NumberFormatException e) {"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! Please enter the task number.\");"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (NullPointerException e) {"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! Please first input the task then mark done.\");"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (StringIndexOutOfBoundsException e) {"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! Please enter the task number.\");"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            outputTasks();"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } else if (userResponde.startsWith(\"delete\")) {"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                deleteTask(userResponde);"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (NumberFormatException e) {"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! Please enter the task number you want to delete.\");"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (StringIndexOutOfBoundsException e) {"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! Please enter the task number you want to delete.\");"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! \" + e.getMessage());"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            outputTasks();"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                addNewTask(userResponde);"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            } catch (DukeException e) {"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                System.out.println(\"\\t:(OOPS!!! \" + e.getMessage());"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            outputTasks();"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        printLine();"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println();"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void printLine() {"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\t____________________________________________________________\");"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void sayBye() {"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tBye. Hope to see you again soon!\");"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void listTask() throws DukeException {"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        if (taskCount \u003d\u003d 0) {"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            throw new DukeException(\"No tasks!!!\");"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tHere are the tasks in your list:\");"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        for (int i \u003d 0; i \u003c taskCount; i++) {"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            System.out.println(\"\\t\" + (i + 1) + \".\" + tasks.get(i));"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void markAsDone(String userResponde) {"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        int doneCount \u003d Integer.parseInt(userResponde.substring(5)) - 1;"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        tasks.get(doneCount).markAsDone();"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tNice! I\u0027ve marked this task as done:\");"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\t  yes! \" + tasks.get(doneCount).getDescription());"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void deleteTask(String userResponde) throws DukeException {"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        int deleteCount \u003d Integer.parseInt(userResponde.substring(7)) - 1;"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        if (deleteCount \u003e taskCount) {"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            throw new DukeException(\"There is no task \" + (deleteCount + 1) + \". Please reconsider the index.\");"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tNoted. I\u0027ve removed this task:\");"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\t  \" + tasks.get(deleteCount));"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        taskCount--;"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        tasks.remove(deleteCount);"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tNow you have \" + taskCount + \" tasks in the list.\");"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void addNewTask(String userResponde) throws DukeException {"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        String[] responses \u003d userResponde.split(\" \");"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        if (responses[0].equals(\"todo\")) {"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            if (responses.length \u003c 2) {"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                throw new DukeException(\"The description of a todo cannot be empty.\");"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            tasks.add(new Todo(userResponde.substring(5)));"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } else if (responses[0].equals(\"deadline\")) {"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            if (responses.length \u003c 2) {"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                throw new DukeException(\"The description of a deadline cannot be empty.\");"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            int dividerPosition \u003d userResponde.indexOf(\" /by\");"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            if (dividerPosition \u003d\u003d -1) {"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                throw new DukeException(\"Please follow the format: deadline thingsToDo /by time\");"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            String taskName \u003d userResponde.substring(9,dividerPosition);"
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            String deadlineTime \u003d userResponde.substring(dividerPosition + 5);"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            tasks.add(new Deadline(taskName,deadlineTime));"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } else if (responses[0].equals(\"event\")) {"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            if (responses.length \u003c 2) {"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                throw new DukeException(\"The description of a event cannot be empty.\");"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            int dividerPosition \u003d userResponde.indexOf(\" /at\");"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            if (dividerPosition \u003d\u003d -1) {"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                throw new DukeException(\"Please follow the format: event thingsToDo /at time\");"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            String taskName \u003d userResponde.substring(6,dividerPosition);"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            String deadlineTime \u003d userResponde.substring(dividerPosition + 5);"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            tasks.add(new Event(taskName,deadlineTime));"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            throw new DukeException(\"I\u0027m sorry, but I don\u0027t know what that means :-(\");"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tGot it. I\u0027ve added this task:\");"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\t  \" + tasks.get(taskCount));"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        System.out.println(\"\\tNow you have \" + (taskCount + 1) + \" tasks in the list\");"
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        taskCount++;"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    public static void outputTasks() {"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            FileWriter fw \u003d new FileWriter(\"data/duke.txt\");"
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            for (int i \u003d 0; i \u003c taskCount; i++) {"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "                fw.write(tasks.get(i).toFile() + \"\\n\");"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            fw.close();"
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        } catch (IOException e) {"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "            System.out.println(\"\\tNo backup file in the hard disk.\");"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 215,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 216,
-        "author": {
           "gitId": "JTWang2000"
         },
         "content": "}"
-      },
-      {
-        "lineNumber": 217,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
       }
     ],
     "authorContributionMap": {
-      "JTWang2000": 207,
-      "-": 10
+      "JTWang2000": 23
     }
   },
   {
-    "path": "src/main/java/duke/DukeException.java",
+    "path": "src/main/java/duke/command/DeleteCommand.java",
     "fileType": "java",
     "lines": [
       {
@@ -2161,7 +1597,936 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "package duke;"
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.common.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class DeleteCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private int deleteCount;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public DeleteCommand(int deleteCount) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        // The array index will be actual count minus one"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        this.deleteCount \u003d deleteCount - 1;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, DukeException{"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        if (deleteCount + 1 \u003e tasks.size())"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            throw new DukeException(\"\\tThere is no task \" + (deleteCount + 1) + \". Please reconsider the index.\");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui.showDeleteMessage(tasks.deleteTask(deleteCount),tasks);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        storage.write(tasks);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 25
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/DoneCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.common.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class DoneCommand extends Command{"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private int doneCount;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public DoneCommand(int doneCount) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        // The array index will be actual count minus one"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        this.doneCount \u003d doneCount - 1;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void execute (TaskList tasks, Ui ui, Storage storage) throws IOException, DukeException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        if(doneCount + 1 \u003e tasks.size()) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            throw new DukeException(\"\\tThere is no task \" + (doneCount + 1) + \". Please reconsider the index.\");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        tasks.getATask(this.doneCount).markAsDone();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui.showMarkAsDoneMessage(tasks,this.doneCount);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        storage.write(tasks);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 27
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ExitCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class ExitCommand extends Command{"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public ExitCommand() {"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public Boolean isExit() {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 12
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/InvalidCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.common.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class InvalidCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public InvalidCommand(){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        throw new DukeException(\"\\t Sorry.I do not understand you.\");"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 17
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ListCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.common.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.storage.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.ui.Ui;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class ListCommand extends Command {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void execute (TaskList tasks, Ui ui, Storage storage) throws DukeException {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        if (tasks.size() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            throw new DukeException(\"\\tCurrently, there is no task in the list!\");"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        ui.showListOfTasks(tasks);"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 17
+    }
+  },
+  {
+    "path": "src/main/java/duke/common/Constants.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.common;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public final class Constants {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String LOGO \u003d \" ____        _        \\n\""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                                + \"|  _ \\\\ _   _| | _____ \\n\""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                                + \"| | | | | | | |/ / _ \\\\\\n\""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                                + \"| |_| | |_| |   \u003c  __/\\n\""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String BYE \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String LIST \u003d \"list\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String DONE \u003d \"done\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String DELETE \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String TODO \u003d \"todo\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String DEADLINE \u003d \"deadline\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String EVENT \u003d \"event\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String LINE_BREAK \u003d \"\\t____________________________________________________________\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final int TODO_LENGTH \u003d 5;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final int DEADLINE_LENGTH \u003d 9;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final int EVENT_LENGTH \u003d 6;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final int FORMAT_LENGTH \u003d 5;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String FILE_PATH \u003d \"data/duke.txt\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static final String CREATE_FILE_PATH \u003d System.getProperty(\"user.dir\") + \"/data\";"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 27
+    }
+  },
+  {
+    "path": "src/main/java/duke/common/DukeException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.common;"
       },
       {
         "lineNumber": 2,
@@ -2211,7 +2576,7 @@
     }
   },
   {
-    "path": "src/main/java/duke/task/Deadline.java",
+    "path": "src/main/java/duke/parser/Parser.java",
     "fileType": "java",
     "lines": [
       {
@@ -2219,7 +2584,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "package duke.task;"
+        "content": "package duke.parser;"
       },
       {
         "lineNumber": 2,
@@ -2233,7 +2598,1441 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "import duke.task.Task;"
+        "content": "import duke.common.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.command.*;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Deadline;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Event;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Todo;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import static duke.common.Constants.*;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import static duke.common.Constants.FORMAT_LENGTH;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class Parser {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public Parser() {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * Helps to check is a string is number"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @param str input string"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @return returns true if it is integer, else returns false"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static boolean isNumeric(String str) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            Integer.parseInt(str);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        } catch(NumberFormatException e){"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * deals with making sense of the user command"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @param fullCommand user input"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @return returns different command type"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @throws DukeException when user\u0027s command does not match with command standard"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static Command parse(String fullCommand) throws DukeException{"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        String[] responses \u003d fullCommand.split(\" \");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        switch (responses[0]) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case TODO:"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            if (responses.length \u003c 2) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            throw new DukeException(\"\\tThe description of a todo cannot be empty.\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new AddCommand(new Todo(fullCommand.substring(TODO_LENGTH)));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case DEADLINE:"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            if (responses.length \u003c 2) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                throw new DukeException(\"\\tThe description of a deadline cannot be empty.\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            int deadlineDividerPosition \u003d fullCommand.indexOf(\" /by\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            if (deadlineDividerPosition \u003d\u003d -1) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                throw new DukeException(\"\\tPlease follow the format: deadline thingsToDo /by time\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            String deadlineName \u003d fullCommand.substring(DEADLINE_LENGTH,deadlineDividerPosition);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            String deadlineTime \u003d fullCommand.substring(deadlineDividerPosition + FORMAT_LENGTH);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new AddCommand(new Deadline(deadlineName,deadlineTime));"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case EVENT:"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            if (responses.length \u003c 2) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                throw new DukeException(\"\\tThe description of a event cannot be empty.\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            int eventDividerPosition \u003d fullCommand.indexOf(\" /at\");"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            if (eventDividerPosition \u003d\u003d -1) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                throw new DukeException(\"\\tPlease follow the format: event thingsToDo /at time\");"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            String eventName \u003d fullCommand.substring(EVENT_LENGTH,eventDividerPosition);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            String EventTime \u003d fullCommand.substring(eventDividerPosition + FORMAT_LENGTH);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new AddCommand(new Event(eventName,EventTime));"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case DONE:"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            if (responses.length \u003c 2 || !isNumeric(responses[1])) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                throw new DukeException(\"\\tPlease input a task number that you want to mark as done\");"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new DoneCommand(Integer.parseInt(responses[1]));"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case DELETE:"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            if (responses.length \u003c 2 || !isNumeric(responses[1])) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "                throw new DukeException(\"\\tPlease input a task number that you want to delete\");"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            int deleteCount \u003d Integer.parseInt(responses[1]);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new DeleteCommand(deleteCount);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case LIST:"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new ListCommand();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case BYE:"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new ExitCommand();"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            return new InvalidCommand();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 88
+    }
+  },
+  {
+    "path": "src/main/java/duke/storage/Storage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Deadline;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Event;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Todo;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private static String filePath;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public Storage() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public Storage(String filePath) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        this.filePath \u003d filePath;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * Helper function that change the format of a task in file to correct format of a task in taskList"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @param oneTask a line in the hard disk"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static void loadATask(String oneTask, TaskList tasks) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        String[] taskSplit \u003d oneTask.split(\" \\\\| \");"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        switch (taskSplit[0]) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case \"T\":"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            tasks.addTask(new Todo(taskSplit[2]));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case \"D\":"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            tasks.addTask(new Deadline(taskSplit[2],taskSplit[3]));"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        case \"E\":"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            tasks.addTask(new Event(taskSplit[2],taskSplit[3]));"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        if (taskSplit[1].equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            tasks.getATask(tasks.size() - 1).markAsDone();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * Load the content in the file to storage"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @return a list of tasks"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void load(TaskList tasks) throws FileNotFoundException {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        File f \u003d new File(filePath);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        if (!f.exists()) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            throw new FileNotFoundException();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        Scanner s \u003d new Scanner(f);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        while (s.hasNext()) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            String oneTask;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            loadATask(s.nextLine(),tasks);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static void write(TaskList tasks) throws IOException {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        File f \u003d new File(filePath);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        if(!f.exists()) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            throw new IOException();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(filePath);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            fw.write(tasks.getATask(i).toFile() + \"\\n\");"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        fw.close();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 76
+    }
+  },
+  {
+    "path": "src/main/java/duke/taskList/TaskList.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.taskList;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    private static ArrayList\u003cTask\u003e tasks;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public TaskList() {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        this.tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public TaskList(ArrayList\u003cTask\u003e storage) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        this.tasks \u003d storage;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static void addTask(Task task) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        tasks.add(task);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public static Task deleteTask(int deleteCount) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return tasks.remove(deleteCount);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public ArrayList\u003cTask\u003e getTaskList() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return this.tasks;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public Task getATask(int taskCount) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return this.tasks.get(taskCount);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public int size() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return tasks.size();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 37
+    }
+  },
+  {
+    "path": "src/main/java/duke/taskList/task/Deadline.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.taskList.task;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import static duke.common.Constants.DEADLINE;"
       },
       {
         "lineNumber": 4,
@@ -2373,15 +4172,50 @@
         "author": {
           "gitId": "JTWang2000"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public String type() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return DEADLINE;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JTWang2000"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "JTWang2000": 23
+      "JTWang2000": 28
     }
   },
   {
-    "path": "src/main/java/duke/task/Event.java",
+    "path": "src/main/java/duke/taskList/task/Event.java",
     "fileType": "java",
     "lines": [
       {
@@ -2389,7 +4223,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "package duke.task;"
+        "content": "package duke.taskList.task;"
       },
       {
         "lineNumber": 2,
@@ -2403,7 +4237,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "public class Event extends Task {"
+        "content": "import static duke.common.Constants.EVENT;"
       },
       {
         "lineNumber": 4,
@@ -2417,7 +4251,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    protected  String at;"
+        "content": "public class Event extends Task {"
       },
       {
         "lineNumber": 6,
@@ -2431,101 +4265,150 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    public Event(String description,String at) {"
+        "content": "    protected  String at;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "        this.at \u003d at;"
+        "content": "    public Event(String description,String at) {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    }"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "        this.at \u003d at;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+        "content": "    @Override"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    }"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    public String toFile() {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "        return \"E | \" + super.toFile() + \" | \" + at;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    }"
+        "content": "    public String toFile() {"
       },
       {
         "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return \"E | \" + super.toFile() + \" | \" + at;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public String type() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return EVENT;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
         "author": {
           "gitId": "JTWang2000"
         },
@@ -2533,11 +4416,11 @@
       }
     ],
     "authorContributionMap": {
-      "JTWang2000": 21
+      "JTWang2000": 28
     }
   },
   {
-    "path": "src/main/java/duke/task/Task.java",
+    "path": "src/main/java/duke/taskList/task/Task.java",
     "fileType": "java",
     "lines": [
       {
@@ -2545,7 +4428,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "package duke.task;"
+        "content": "package duke.taskList.task;"
       },
       {
         "lineNumber": 2,
@@ -2559,7 +4442,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "public class Task {"
+        "content": "public abstract class Task {"
       },
       {
         "lineNumber": 4,
@@ -2783,15 +4666,43 @@
         "author": {
           "gitId": "JTWang2000"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public String type() {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JTWang2000"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "JTWang2000": 35
+      "JTWang2000": 39
     }
   },
   {
-    "path": "src/main/java/duke/task/Todo.java",
+    "path": "src/main/java/duke/taskList/task/Todo.java",
     "fileType": "java",
     "lines": [
       {
@@ -2799,7 +4710,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "package duke.task;"
+        "content": "package duke.taskList.task;"
       },
       {
         "lineNumber": 2,
@@ -2813,7 +4724,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "public class Todo extends Task {"
+        "content": "import static duke.common.Constants.TODO;"
       },
       {
         "lineNumber": 4,
@@ -2827,21 +4738,205 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    public Todo(String description) {"
+        "content": "public class Todo extends Task {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JTWang2000"
         },
+        "content": "    public Todo(String description) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        super(description);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JTWang2000"
+        },
         "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return \"[T]\" + super.toString();"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public String toFile() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return \"T | \" + super.toFile();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public String type() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return TODO;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 25
+    }
+  },
+  {
+    "path": "src/main/java/duke/ui/Ui.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "package duke.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.common.DukeException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import duke.taskList.task.Task;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 8,
@@ -2855,56 +4950,56 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    @Override"
+        "content": "import static duke.common.Constants.LINE_BREAK;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    public String toString() {"
+        "content": "import static duke.common.Constants.LOGO;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "        return \"[T]\" + super.toString();"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    }"
+        "content": "public class Ui {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "    private static Scanner in \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "    public String toFile() {"
+        "content": "    public Ui() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "        return \"T | \" + super.toFile();"
+        "content": "        System.out.println(\"Hello from\\n\" + LOGO);"
       },
       {
         "lineNumber": 17,
@@ -2918,11 +5013,508 @@
         "author": {
           "gitId": "JTWang2000"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public String readCommand() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        return in.nextLine();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showLine() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(LINE_BREAK);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * Generates and prints the welcome message upon the start of the application."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showWelcome() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        showLine();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tHello! I\u0027m duke.Duke\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tWhat can I do for you?\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        showLine();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showGoodByeMessage() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tBye. Hope to see you again soon!\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * Displays list of tasks and if they are done"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @param tasks store the task list"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @throws DukeException If there is no tasks, throws the exception"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showListOfTasks (TaskList tasks) throws DukeException {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tHere are the tasks in your list:\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        for (int i \u003d 0; i \u003c tasks.size(); i++) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "            System.out.println(\"\\t\" + (i + 1) + \".\" + tasks.getATask(i));"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * Displays prompt message that a task is marked as done"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @param tasks store the task list"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @param doneCount the task that is done"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showMarkAsDoneMessage(TaskList tasks, int doneCount) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tNice! I\u0027ve marked this task as done:\");"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\t  yes! \" + tasks.getATask(doneCount).getDescription());"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showDeleteMessage(Task deleteTask, TaskList tasks) {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tNoted. I\u0027ve removed this task:\");"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\t  \" + deleteTask);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tNow you have \" + tasks.size() + \" tasks in the list.\");"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * Displays prompt message that a new task is added in the task list"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     * @param tasks store the task list"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showAddTaskMessage(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tGot it. I\u0027ve added this task:\");"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\t  \" + tasks.getATask(tasks.size() - 1));"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tNow you have \" + tasks.size() + \" tasks in the list\");"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showLoadingError() {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(\"\\tCreating back up file in the hard disk...\");"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    public void showError(String error) {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "        System.out.println(error);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "JTWang2000"
+        },
         "content": "}"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": ""
       }
     ],
     "authorContributionMap": {
-      "JTWang2000": 18
+      "JTWang2000": 89
     }
   },
   {
@@ -2983,63 +5575,63 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tCreating back up file in the hard disk..."
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tHello! I\u0027m duke.Duke"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tWhat can I do for you?"
+        "content": "\tHello! I\u0027m duke.Duke"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tWhat can I do for you?"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t:(OOPS!!! Please enter the task number."
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tPlease input a task number that you want to mark as done"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 17,
@@ -3053,7 +5645,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t:(OOPS!!! No tasks!!!"
+        "content": "\tCurrently, there is no task in the list!"
       },
       {
         "lineNumber": 19,
@@ -3067,35 +5659,35 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tGot it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tGot it. I\u0027ve added this task:"
+        "content": "\t  [T][ ] eat"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t  [T][?] eat"
+        "content": "\tNow you have 1 tasks in the list"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNow you have 1 tasks in the list"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 25,
@@ -3109,49 +5701,49 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\tGot it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\t  [T][ ] sleep"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tGot it. I\u0027ve added this task:"
+        "content": "\tNow you have 2 tasks in the list"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t  [T][?] sleep"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNow you have 2 tasks in the list"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tThe description of a todo cannot be empty."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 33,
@@ -3165,7 +5757,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t:(OOPS!!! The description of a todo cannot be empty."
+        "content": "\t Sorry.I do not understand you."
       },
       {
         "lineNumber": 35,
@@ -3179,35 +5771,35 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tGot it. I\u0027ve added this task:"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t:(OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-("
+        "content": "\t  [D][ ] cs2113 (by: Tuesday)"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tNow you have 3 tasks in the list"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 41,
@@ -3228,14 +5820,14 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t  [D][?] cs2113 (by: Tuesday)"
+        "content": "\t  [E][ ] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNow you have 3 tasks in the list"
+        "content": "\tNow you have 4 tasks in the list"
       },
       {
         "lineNumber": 45,
@@ -3249,49 +5841,49 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tThe description of a event cannot be empty."
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tGot it. I\u0027ve added this task:"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t  [E][?] project meeting (at: Mon 2-4pm)"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNow you have 4 tasks in the list"
+        "content": "\tNice! I\u0027ve marked this task as done:"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\t  yes! sleep"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 53,
@@ -3305,21 +5897,21 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t:(OOPS!!! The description of a event cannot be empty."
+        "content": "\tNice! I\u0027ve marked this task as done:"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\t  yes! cs2113"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 57,
@@ -3333,119 +5925,119 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNice! I\u0027ve marked this task as done:"
+        "content": "\tHere are the tasks in your list:"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t  [?] sleep"
+        "content": "\t1.[T][ ] eat"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\t2.[T][/] sleep"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t3.[D][/] cs2113 (by: Tuesday)"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\t4.[E][ ] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNice! I\u0027ve marked this task as done:"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t  [?] cs2113"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tNoted. I\u0027ve removed this task:"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t  [T][/] sleep"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\tNow you have 3 tasks in the list."
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tHere are the tasks in your list:"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t1.[T][?] eat"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t2.[T][?] sleep"
+        "content": "\tHere are the tasks in your list:"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t3.[D][?] cs2113 (by: Tuesday)"
+        "content": "\t1.[T][ ] eat"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t4.[E][?] project meeting (at: Mon 2-4pm)"
+        "content": "\t2.[D][/] cs2113 (by: Tuesday)"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t____________________________________________________________"
+        "content": "\t3.[E][ ] project meeting (at: Mon 2-4pm)"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": ""
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 75,
@@ -3459,116 +6051,55 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNoted. I\u0027ve removed this task:"
+        "content": "\t____________________________________________________________"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\t  [T][?] sleep"
+        "content": "\tBye. Hope to see you again soon!"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "\tNow you have 3 tasks in the list."
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "JTWang2000"
-        },
         "content": "\t____________________________________________________________"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\t____________________________________________________________"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\tHere are the tasks in your list:"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\t1.[T][?] eat"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\t2.[D][?] cs2113 (by: Tuesday)"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\t3.[E][?] project meeting (at: Mon 2-4pm)"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\t____________________________________________________________"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\t____________________________________________________________"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\tBye. Hope to see you again soon!"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": "\t____________________________________________________________"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "JTWang2000"
-        },
-        "content": ""
       }
     ],
     "authorContributionMap": {
-      "JTWang2000": 91
+      "JTWang2000": 78
+    }
+  },
+  {
+    "path": "text-ui-test/data/duke.txt",
+    "fileType": "txt",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "T | 0 | eat"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "D | 1 | cs2113 | Tuesday"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JTWang2000"
+        },
+        "content": "E | 0 | project meeting | Mon 2-4pm"
+      }
+    ],
+    "authorContributionMap": {
+      "JTWang2000": 3
     }
   },
   {
@@ -3757,7 +6288,7 @@
         "author": {
           "gitId": "JTWang2000"
         },
-        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\duke\\*.java ..\\src\\main\\java\\duke\\task\\*.java"
+        "content": "javac  -cp ..\\src -Xlint:none -d ..\\bin ..\\src\\main\\java\\duke\\*.java ..\\src\\main\\java\\duke\\command\\*.java ..\\src\\main\\java\\duke\\common\\*.java ..\\src\\main\\java\\duke\\parser\\*.java ..\\src\\main\\java\\duke\\storage\\*.java ..\\src\\main\\java\\duke\\taskList\\*.java ..\\src\\main\\java\\duke\\taskList\\task\\*.java ..\\src\\main\\java\\duke\\ui\\*.java"
       },
       {
         "lineNumber": 11,
