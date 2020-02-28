@@ -305,56 +305,56 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "import java.time.LocalDateTime;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "import java.time.format.DateTimeFormatter;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    protected String by;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "public class Deadline extends Task {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public Deadline(String description, String by) {"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        super(description);"
+        "content": "    protected String by;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        this.by \u003d by;"
+        "content": "    private String byFormat;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 11,
@@ -368,14 +368,14 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public Deadline(String description, String by, Boolean isDone){"
+        "content": "    public Deadline(String description, String by) {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        super(description, isDone);"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 14,
@@ -389,87 +389,164 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": "        this.byFormat \u003d getByFormat();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public String toString() {"
+        "content": "    public Deadline(String description, String by, Boolean isDone){"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        return \"[D]\" + super.toString() + \" (by: \" + by + \")\";"
+        "content": "        super(description, isDone);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": "        this.by \u003d by;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public String toText(){"
+        "content": "    public String getByFormat(){"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        return \"D | \" + (this.isDone? \"1\" : \"0\") + \" | \" + this.description;"
+        "content": "        LocalDateTime localDateTime \u003d LocalDateTime.parse(by, DateTimeFormatter.ofPattern(\"yyyy-MM-dd HHmm\"));"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": "        return localDateTime.format(DateTimeFormatter.ofPattern(\"MMM d yyyy HHmm\"));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "        return \"[D]\" + super.toString() + \" (by: \" + byFormat + \")\";"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    public String toText(){"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "        return \"D | \" + (this.isDone? \"1\" : \"0\") + \" | \" + this.description;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
         "author": {
           "gitId": "harithadiv"
         },
@@ -477,7 +554,7 @@
       }
     ],
     "authorContributionMap": {
-      "harithadiv": 27
+      "harithadiv": 38
     }
   },
   {
@@ -503,927 +580,948 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.time.format.DateTimeParseException;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 8,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
         "content": "public class Duke {"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 10,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static List\u003cTask\u003e tasksList \u003d new ArrayList\u003c\u003e(100);"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 11,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String LIST_COMMAND \u003d \"list\";"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 12,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String BYE_COMMAND \u003d \"bye\";"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 13,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String DONE_COMMAND \u003d \"done\";"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 14,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String DELETE_COMMAND \u003d \"delete\";"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 15,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String TODO_COMMAND \u003d \"todo\";"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 16,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String DEADLINE_COMMAND \u003d \"deadline\";"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 17,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String EVENT_COMMAND \u003d \"event\";"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 18,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String TODO_ERROR_MESSAGE \u003d \"Oops! The description of todo cannot be empty.\";"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 19,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String DEADLINE_ERROR_MESSAGE \u003d \"Oops! The description of deadline cannot be empty.\";"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 20,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String EVENT_ERROR_MESSAGE \u003d \"Oops! The description of event cannot be empty.\";"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 21,
         "author": {
           "gitId": "harithadiv"
         },
         "content": "    private static final String INVALID_COMMAND_MESSAGE \u003d \" Oops! Im sorry, but I don\u0027t know what that means :(\";"
       },
       {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "harithadiv"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 22,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    private Storage storage;"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    private TaskList tasks;"
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    private Ui ui;"
+        "content": "    private TaskList tasks;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "    private Ui ui;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public Duke(String filePath){"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        ui \u003d new Ui();"
+        "content": "    public Duke(String filePath){"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        storage \u003d new Storage(filePath);"
+        "content": "        ui \u003d new Ui();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        try{"
+        "content": "        storage \u003d new Storage(filePath);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "            tasks \u003d new TaskList(storage.load());"
+        "content": "        try{"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        } catch (DukeException e) {"
+        "content": "            tasks \u003d new TaskList(storage.load());"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "            ui.showLoadingError();"
+        "content": "        } catch (DukeException e) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "            tasks \u003d new TaskList();"
+        "content": "            ui.showLoadingError();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        }"
+        "content": "            tasks \u003d new TaskList();"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        new Duke(\"data/duke.txt\").run();"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": "        new Duke(\"data/duke.txt\").run();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public void run() {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        ui.greetUser();"
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        Scanner scanner \u003d  new Scanner(System.in);"
+        "content": "        ui.greetUser();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        boolean isExit \u003d false ;"
+        "content": "        Scanner scanner \u003d  new Scanner(System.in);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        while(!isExit){"
+        "content": "        boolean isExit \u003d false ;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "            try{"
+        "content": "        while(!isExit){"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                String input \u003d scanner.nextLine().trim();"
+        "content": "            try{"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                String[] parsedInput \u003d Parser.parseInput(input);"
+        "content": "                String input \u003d scanner.nextLine().trim();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                int inputLength \u003d parsedInput.length;"
+        "content": "                String[] parsedInput \u003d Parser.parseInput(input);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                List\u003cString\u003e parsedList \u003d Arrays.asList(parsedInput);"
+        "content": "                int inputLength \u003d parsedInput.length;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                String command \u003d parsedInput[0];"
+        "content": "                List\u003cString\u003e parsedList \u003d Arrays.asList(parsedInput);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                List\u003cString\u003e arguments \u003d parsedList.subList(1, parsedList.size());"
+        "content": "                String command \u003d parsedInput[0];"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                List\u003cString\u003e arguments \u003d parsedList.subList(1, parsedList.size());"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                switch(command){"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                case BYE_COMMAND:"
+        "content": "                switch(command){"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    storage.writeNewData(tasks);"
+        "content": "                case BYE_COMMAND:"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    ui.exitProgram();"
+        "content": "                    storage.writeNewData(tasks);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    isExit \u003d true;"
+        "content": "                    ui.exitProgram();"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    break;"
+        "content": "                    isExit \u003d true;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                    break;"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                case LIST_COMMAND:"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    ui.list(tasks);"
+        "content": "                case LIST_COMMAND:"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    break;"
+        "content": "                    ui.list(tasks);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                    break;"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                case DONE_COMMAND:"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    if(inputLength \u003d\u003d 2 \u0026\u0026 Parser.isNumeric(parsedInput[1])){"
+        "content": "                case DONE_COMMAND:"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        int taskNumber \u003d Integer.parseInt(parsedInput[1]);"
+        "content": "                    if(inputLength \u003d\u003d 2 \u0026\u0026 Parser.isNumeric(parsedInput[1])){"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        try{"
+        "content": "                        int taskNumber \u003d Integer.parseInt(parsedInput[1]);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                            tasks.markAsDone(taskNumber - 1);"
+        "content": "                        try{"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                            ui.showDoneMessage(tasks.getTasks().get(taskNumber-1).toString());"
+        "content": "                            tasks.markAsDone(taskNumber - 1);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        } catch (IndexOutOfBoundsException e) {"
+        "content": "                            ui.showDoneMessage(tasks.getTasks().get(taskNumber-1).toString());"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                            ui.showTaskErrorMessage();"
+        "content": "                        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        }"
+        "content": "                            ui.showTaskErrorMessage();"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    }"
+        "content": "                        }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    else{"
+        "content": "                    }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        throw new DukeException(INVALID_COMMAND_MESSAGE);"
+        "content": "                    else{"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    }"
+        "content": "                        throw new DukeException(INVALID_COMMAND_MESSAGE);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    break;"
+        "content": "                    }"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                    break;"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                case DELETE_COMMAND:"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    if(inputLength \u003d\u003d 2 \u0026\u0026 Parser.isNumeric(parsedInput[1])){"
+        "content": "                case DELETE_COMMAND:"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        int taskNumber \u003d Integer.parseInt(parsedInput[1]);"
+        "content": "                    if(inputLength \u003d\u003d 2 \u0026\u0026 Parser.isNumeric(parsedInput[1])){"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        try{"
+        "content": "                        int taskNumber \u003d Integer.parseInt(parsedInput[1]);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                            tasks.delete(taskNumber - 1);"
+        "content": "                        try{"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                            ui.showTasksLeft(tasks);"
+        "content": "                            tasks.delete(taskNumber - 1);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        } catch (IndexOutOfBoundsException e) {"
+        "content": "                            ui.showTasksLeft(tasks);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                            ui.showTaskErrorMessage();"
+        "content": "                        } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        }"
+        "content": "                            ui.showTaskErrorMessage();"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    }"
+        "content": "                        }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    else{"
+        "content": "                    }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        throw new DukeException(INVALID_COMMAND_MESSAGE);"
+        "content": "                    else{"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    }"
+        "content": "                        throw new DukeException(INVALID_COMMAND_MESSAGE);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    break;"
+        "content": "                    }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                    break;"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                case TODO_COMMAND:"
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    if(inputLength \u003d\u003d  1){"
+        "content": "                case TODO_COMMAND:"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        throw new DukeException(TODO_ERROR_MESSAGE);"
+        "content": "                    if(inputLength \u003d\u003d  1){"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    }"
+        "content": "                        throw new DukeException(TODO_ERROR_MESSAGE);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    String todoDescription \u003d Parser.getTodoDescription(arguments);"
+        "content": "                    }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    tasks.add(new Todo(todoDescription));"
+        "content": "                    String todoDescription \u003d Parser.getTodoDescription(arguments);"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    ui.showTasksLeft(tasks);"
+        "content": "                    tasks.add(new Todo(todoDescription));"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    break;"
+        "content": "                    ui.showTasksLeft(tasks);"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                    break;"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                case DEADLINE_COMMAND:"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    if(inputLength \u003d\u003d 1){"
+        "content": "                case DEADLINE_COMMAND:"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        throw new DukeException(DEADLINE_ERROR_MESSAGE);"
+        "content": "                    if(inputLength \u003d\u003d 1){"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    }"
+        "content": "                        throw new DukeException(DEADLINE_ERROR_MESSAGE);"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    String deadlineDescription \u003d Parser.getDeadlineDescription(parsedList);"
+        "content": "                    }"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    String by \u003d Parser.getBy(parsedList);"
+        "content": "                    String deadlineDescription \u003d Parser.getDeadlineDescription(parsedList);"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    tasks.add(new Deadline(deadlineDescription, by));"
+        "content": "                    String by \u003d Parser.getBy(parsedList);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    ui.showTasksLeft(tasks);"
+        "content": "                    tasks.add(new Deadline(deadlineDescription, by));"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    break;"
+        "content": "                    ui.showTasksLeft(tasks);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                    break;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                case EVENT_COMMAND:"
+        "content": ""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    if(inputLength \u003d\u003d 1){"
+        "content": "                case EVENT_COMMAND:"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                        throw new DukeException(EVENT_ERROR_MESSAGE);"
+        "content": "                    if(inputLength \u003d\u003d 1){"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    }"
+        "content": "                        throw new DukeException(EVENT_ERROR_MESSAGE);"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    String eventDescription \u003d Parser.getEventDescription(parsedList);"
+        "content": "                    }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    String at \u003d Parser.getAt(parsedList);"
+        "content": "                    String eventDescription \u003d Parser.getEventDescription(parsedList);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    tasks.add(new Event(eventDescription, at));"
+        "content": "                    String at \u003d Parser.getAt(parsedList);"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    ui.showTasksLeft(tasks);"
+        "content": "                    tasks.add(new Event(eventDescription, at));"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    break;"
+        "content": "                    ui.showTasksLeft(tasks);"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "                    break;"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                default:"
+        "content": ""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                    throw new DukeException(INVALID_COMMAND_MESSAGE);"
+        "content": "                default:"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                }"
+        "content": "                    throw new DukeException(INVALID_COMMAND_MESSAGE);"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "            } catch (DukeException de) {"
+        "content": "                }"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                ui.printMessage(de.getMessage());"
+        "content": "            } catch (DukeException de) {"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "            } finally {"
+        "content": "                ui.printMessage(de.getMessage());"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "                ui.printBorder();"
+        "content": "            } catch(DateTimeParseException e) {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "            }"
+        "content": "                ui.printMessage(\"Please give the following format for date and time: yyyy-mm-dd HHmm\");"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        }"
+        "content": "            } finally {"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": "                ui.printBorder();"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 135,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 138,
         "author": {
           "gitId": "-"
         },
@@ -1431,7 +1529,7 @@
       }
     ],
     "authorContributionMap": {
-      "harithadiv": 133,
+      "harithadiv": 136,
       "-": 2
     }
   },
@@ -1516,84 +1614,84 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "public class Event extends Task {"
+        "content": "import java.time.LocalDateTime;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "import java.time.format.DateTimeFormatter;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    protected String at;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "public class Event extends Task {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public Event(String description, String at){"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        super(description);"
+        "content": "    protected String at;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        this.at \u003d at;"
+        "content": "    String atFormat;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": ""
+        "content": "    public Event(String description, String at){"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public Event(String description, String at, Boolean isDone){"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        super(description, isDone);"
+        "content": "        this.at \u003d at;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        this.at \u003d at;"
+        "content": "        this.atFormat \u003d getAtFormat();"
       },
       {
         "lineNumber": 15,
@@ -1614,21 +1712,21 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    @Override"
+        "content": "    public Event(String description, String at, Boolean isDone){"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public String toString() {"
+        "content": "        super(description, isDone);"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        return \"[E]\" + super.toString() + \" (at: \" + at + \")\";"
+        "content": "        this.at \u003d at;"
       },
       {
         "lineNumber": 20,
@@ -1649,21 +1747,21 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    @Override"
+        "content": "    public String getAtFormat(){"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "    public String toText(){"
+        "content": "        LocalDateTime localDateTime \u003d LocalDateTime.parse(at, DateTimeFormatter.ofPattern(\"yyyy-MM-dd HHmm\"));"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "        return \"E | \" + (this.isDone? \"1\" : \"0\") + \" | \" + this.description;"
+        "content": "        return localDateTime.format(DateTimeFormatter.ofPattern(\"MMM d yyyy HHmm\"));"
       },
       {
         "lineNumber": 25,
@@ -1684,10 +1782,80 @@
         "author": {
           "gitId": "harithadiv"
         },
-        "content": "}"
+        "content": "    @Override"
       },
       {
         "lineNumber": 28,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "        return \"[E]\" + super.toString() + \" (at: \" + atFormat + \")\";"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    public String toText(){"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "        return \"E | \" + (this.isDone? \"1\" : \"0\") + \" | \" + this.description;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "harithadiv"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 38,
         "author": {
           "gitId": "harithadiv"
         },
@@ -1695,7 +1863,7 @@
       }
     ],
     "authorContributionMap": {
-      "harithadiv": 28
+      "harithadiv": 38
     }
   },
   {

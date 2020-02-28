@@ -8,84 +8,84 @@
         "author": {
           "gitId": "kcubey"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import exceptions.DukeException;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "import exceptions.DukeException;"
+        "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "import tasks.Task;"
+        "content": "/**"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": " * \u003ch1\u003eDuke\u003c/h1\u003e"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "-"
         },
-        "content": "public class Duke {"
+        "content": " * The main running class. Duke is a task management program,"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static ArrayList\u003cTask\u003e taskArrList \u003d new ArrayList\u003c\u003e();"
+        "content": " * allowing users to add/delete/find tasks."
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static Storage storage;"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static Parser parser;"
+        "content": "    private static Storage storage;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static UI ui;"
+        "content": "    private static Parser parser;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": "//    TODO private static TaskList taskList;"
+        "content": "    private static UI ui;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": "//    TODO convert taskArrList to TaskList"
+        "content": "    private static TaskList taskList;"
       },
       {
         "lineNumber": 13,
@@ -99,231 +99,231 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public static void init() throws DukeException {"
+        "content": "    /**"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": "        ui \u003d new UI(); //prints greeting"
+        "content": "     * Initialises the relevant functions for Duke to run"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "        storage \u003d new Storage();"
+        "content": "     * Starts up the Duke UI and Parser, loads preexisting list (if any) from file"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": "     */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "            taskArrList \u003d storage.loadDuke();"
+        "content": "    public static void init() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": "            //taskList \u003d storage.loadDuke();"
+        "content": "        ui \u003d new UI(); //prints greeting"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": "        } catch (DukeException e) {"
+        "content": "        storage \u003d new Storage();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": "            System.out.println(e);"
+        "content": "        try {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            taskList \u003d new TaskList(storage.loadDuke());"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "        parser \u003d new Parser();"
+        "content": "        } catch (DukeException e) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            System.out.println(e);"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static void runDuke() throws DukeException {"
+        "content": "        parser \u003d new Parser(taskList);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "        boolean continueRun \u003d true;"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "kcubey"
         },
-        "content": "        String userCmd \u003d \"\";"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": "    /**"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "            while (continueRun) {"
+        "content": "     * Starts running the program."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "                userCmd \u003d UI.getUserCommand();"
+        "content": "     */"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "                //immediate exit if userCmd has \u0027bye\u0027"
+        "content": "    public static void runDuke() {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "                taskArrList \u003d parser.runParser(userCmd, taskArrList);"
+        "content": "        boolean continueRun \u003d true;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "                taskArrList \u003d storage.saveDuke(taskArrList);"
+        "content": "        String userCmd \u003d \"\";"
       },
       {
         "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "            while (continueRun) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                userCmd \u003d UI.getUserCommand();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                //immediate exit if userCmd has \u0027bye\u0027"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                parser.runParser(userCmd);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                storage.saveDuke(taskList);"
+      },
+      {
+        "lineNumber": 41,
         "author": {
           "gitId": "kcubey"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 43,
         "author": {
           "gitId": "kcubey"
         },
         "content": "        catch (DukeException e){"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 44,
         "author": {
           "gitId": "kcubey"
         },
         "content": "            System.out.println(e +\"\\nPlease try again\");"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 45,
         "author": {
           "gitId": "kcubey"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 46,
         "author": {
           "gitId": "kcubey"
         },
         "content": "    }"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static void main(String[] args) throws DukeException {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        init();"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        runDuke();"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "}"
       },
       {
         "lineNumber": 47,
@@ -331,11 +331,74 @@
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Main method to run"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void main(String[] args) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        init();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        runDuke();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       }
     ],
     "authorContributionMap": {
-      "kcubey": 11,
-      "-": 36
+      "kcubey": 9,
+      "-": 47
     }
   },
   {
@@ -352,33 +415,68 @@
       {
         "lineNumber": 2,
         "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * \u003ch1\u003eDukeException\u003c/h1\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * Handles all exceptions in the Duke program and gives an error statement"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
           "gitId": "kcubey"
         },
         "content": "public class DukeException extends Exception{"
       },
       {
-        "lineNumber": 3,
+        "lineNumber": 8,
         "author": {
           "gitId": "kcubey"
         },
         "content": "    public DukeException(String message) {"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 9,
         "author": {
           "gitId": "kcubey"
         },
         "content": "        super(\"A Duke error has occurred! \\n\\t\" +message);"
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 10,
         "author": {
           "gitId": "kcubey"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 11,
         "author": {
           "gitId": "kcubey"
         },
@@ -386,7 +484,8 @@
       }
     ],
     "authorContributionMap": {
-      "kcubey": 6
+      "kcubey": 6,
+      "-": 5
     }
   },
   {
@@ -417,173 +516,285 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " * tasks that need to be done before a specific date/time"
+        "content": " * \u003ch1\u003eDeadline\u003c/h1\u003e"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " * e.g., submit report by 11/10/2019 5pm"
+        "content": " * Deadline tasks are tasks that need to be done before a specific date/time"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " */"
+        "content": " * e.g., submit report /by Monday"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "public class Deadline extends Task {"
+        "content": " * Contains Deadline-specific descriptions"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    protected String dueBy;"
+        "content": " */"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "public class Deadline extends Task {"
       },
       {
         "lineNumber": 10,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    protected String dueBy;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": "    public Deadline(String taskName, String dueBy) {"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": "        super(taskName);"
       },
       {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        this.category \u003d \u0027D\u0027;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        this.dueBy \u003d dueBy;"
-      },
-      {
         "lineNumber": 14,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "        this.taskType \u003d \u0027D\u0027;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        this.dueBy \u003d dueBy;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String getDueBy() {"
+        "content": "    }"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        return dueBy;"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "     * Not yet implemented: A branch-8 task (TODO)"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    public void setDueBy(String dueBy) {"
+        "content": "     * Gets the \u0027due by\u0027 date of the deadline"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        this.dueBy \u003d dueBy;"
+        "content": "     * @return the date as a String"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    public String getDueBy() {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    @Override"
+        "content": "        return dueBy;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String toString() {"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        return (super.toString() + \" (by: \" + dueBy +\")\" );"
+        "content": ""
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Not yet implemented: A branch-8 task (TODO)"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Sets the deadline (date) of the task"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @param dueBy the given date as a String"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public void setDueBy(String dueBy) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        this.dueBy \u003d dueBy;"
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "kcubey"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Converts the Deadline task to a String-readable format"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @return a String containing the task details, includes \u0027due by\u0027 date"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        return (super.toString() + \" (by: \" + dueBy +\")\" );"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
         "author": {
           "gitId": "kcubey"
         },
@@ -591,8 +802,8 @@
       }
     ],
     "authorContributionMap": {
-      "kcubey": 26,
-      "-": 2
+      "kcubey": 23,
+      "-": 21
     }
   },
   {
@@ -623,173 +834,285 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " * tasks that need to be done before a specific date/time"
+        "content": " * \u003ch1\u003eEvent\u003c/h1\u003e"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " * e.g., submit report by 11/10/2019 5pm"
+        "content": " * Event tasks are tasks that have a specific date/time"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " */"
+        "content": " * e.g., carnival /at 11 May 5pm"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "public class Event extends Task {"
+        "content": " * Contains Event-specific descriptions"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    protected String dateStr;"
+        "content": " */"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "public class Event extends Task {"
       },
       {
         "lineNumber": 10,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    protected String dateStr;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": "    public Event(String taskName, String dateStr) {"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": "        super(taskName);"
       },
       {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        this.category \u003d \u0027E\u0027;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "kcubey"
-        },
-        "content": "        this.dateStr \u003d dateStr;"
-      },
-      {
         "lineNumber": 14,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "        this.taskType \u003d \u0027E\u0027;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "        this.dateStr \u003d dateStr;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String getDateStr() {"
+        "content": "    }"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        return dateStr;"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "     * Not yet implemented: A branch-8 task (TODO)"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    public void setDateStr(String dateStr) {"
+        "content": "     * Gets the date of the event"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        this.dateStr \u003d dateStr;"
+        "content": "     * @return the date as a String"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    public String getDateStr() {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    @Override"
+        "content": "        return dateStr;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String toString() {"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        return (super.toString() + \" (at: \" + dateStr +\")\" );"
+        "content": ""
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Not yet implemented: A branch-8 task (TODO)"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Sets the date of the task"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @param dateStr the given date as a String"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public void setDateStr(String dateStr) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        this.dateStr \u003d dateStr;"
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "kcubey"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Converts the Event task to a String-readable format"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @return a String containing the task details, includes the date"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        return (super.toString() + \" (at: \" + dateStr +\")\" );"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
         "author": {
           "gitId": "kcubey"
         },
@@ -797,8 +1120,8 @@
       }
     ],
     "authorContributionMap": {
-      "kcubey": 26,
-      "-": 2
+      "kcubey": 23,
+      "-": 21
     }
   },
   {
@@ -843,334 +1166,418 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " * Also known as ToDos: tasks without any date/time attached to it"
+        "content": " * \u003ch1\u003eTask\u003c/h1\u003e"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": " * e.g., visit new theme park"
+        "content": " * Contains the general properties of a Task:"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "  */"
+        "content": " * Name, Task type, completion status"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "public class Task implements Serializable {"
+        "content": " *"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    protected String taskName;"
+        "content": " * \u003ch3\u003eAlso known as To-Do tasks\u003c/h3\u003e"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    protected boolean isDone;"
+        "content": " * To-Dos are tasks without any date/time attached to it"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    protected char category;"
+        "content": " * e.g. visit zoo"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": "    public Task(String taskName) {"
+        "content": "public class Task implements Serializable{"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        this.taskName \u003d taskName;"
+        "content": "    protected String taskName;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        this.isDone \u003d false;"
+        "content": "    protected boolean isDone;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        this.category \u003d \u0027T\u0027;"
+        "content": "    protected char taskType;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    public Task(String taskName) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public char getCategory() {"
+        "content": "        this.taskName \u003d taskName;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        return category;"
+        "content": "        this.isDone \u003d false;"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "        this.taskType \u003d \u0027T\u0027;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String getStatusIcon(){"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "        return (isDone ? \"Y\" : \"N\");"
+        "content": "    /**"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "//        return (isDone ? \"\\u2713\" : \"\\u2718\"); check : cross mark"
+        "content": "     * Gets the type of the Task"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * @return \u0027T\u0027 if it is a To-Do task; \u0027D\u0027 for Deadline tasks, \u0027E\u0027 for Event tasks"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    public char getTaskType() {"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    public void markDone(){"
+        "content": "        return taskType;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        this.isDone \u003d true;"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    public String getTaskName() {"
+        "content": "     * Gets the status \u0027icon\u0027 of the task"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        return taskName;"
+        "content": "     * @return \u0027Y\u0027 if it is complete, else \u0027N\u0027"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    public String getStatusIcon(){"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    public void setTaskName(String taskName) {"
+        "content": "        return (isDone ? \"Y\" : \"N\");"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        this.taskName \u003d taskName;"
+        "content": "//        return (isDone ? \"\\u2713\" : \"\\u2718\"); check : cross mark"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public boolean isDone() {"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        return isDone;"
+        "content": "    /**"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "     * Gets the name of the task"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "     * @return the task name"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "    public void setDone() {"
+        "content": "     */"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "        isDone \u003d true;"
+        "content": "    public String getTaskName() {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    }"
+        "content": "        return taskName;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "kcubey"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "kcubey"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "kcubey"
+          "gitId": "-"
         },
-        "content": "        return (\"[\" +getCategory() +\"][\" + getStatusIcon() +\"] \" +getTaskName() );"
+        "content": "    /**"
       },
       {
         "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Sets the isDone variable to true, indicating the task is completed"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public void setDone() {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "        isDone \u003d true;"
+      },
+      {
+        "lineNumber": 56,
         "author": {
           "gitId": "kcubey"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 57,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Converts the task description to a String-readable format"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @return the task details in a readable String"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return (\"[\" +getTaskType() +\"][\" + getStatusIcon() +\"] \" +getTaskName() );"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "kcubey"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
         "author": {
           "gitId": "kcubey"
         },
@@ -1178,8 +1585,8 @@
       }
     ],
     "authorContributionMap": {
-      "kcubey": 46,
-      "-": 7
+      "kcubey": 27,
+      "-": 38
     }
   }
 ]
