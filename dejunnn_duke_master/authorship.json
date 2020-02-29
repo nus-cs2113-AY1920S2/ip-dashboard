@@ -283,6 +283,22 @@
     }
   },
   {
+    "path": "data/duke.txt",
+    "fileType": "txt",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "1. [T][✘] hih"
+      }
+    ],
+    "authorContributionMap": {
+      "dejunnn": 1
+    }
+  },
+  {
     "path": "src/main/java/duke/Duke.java",
     "fileType": "java",
     "lines": [
@@ -354,21 +370,21 @@
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "public class Duke {"
+        "content": "import java.io.File;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": ""
+        "content": "import java.io.FileWriter;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 13,
@@ -382,21 +398,21 @@
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "        TaskList tasklist \u003d new TaskList();"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "        UI ui \u003d new UI();"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "        Storage storage \u003d new Storage();"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 17,
@@ -410,171 +426,360 @@
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "        ui.displayWelcomeMessage();"
+        "content": "        TaskList tasklist \u003d new TaskList();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": ""
+        "content": "        UI ui \u003d new UI();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "        while (!ui.isExitStatus()) {"
+        "content": "        Storage storage \u003d new Storage();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            try {"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                String input \u003d ui.readInput();"
+        "content": "        ui.displayWelcomeMessage();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                Command command \u003d Parser.parseInput(input);"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                command.execute(tasklist, ui, storage);"
+        "content": "        try {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            } catch (InvalidCommandException e) {"
+        "content": "            File dukeData \u003d new File(\"data\" + File.separator + \"duke.txt\");"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                ui.displayInvalidCommandMessage();"
+        "content": "            if (dukeData.createNewFile()) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            } catch (InvalidDeadlineException e) {"
+        "content": "                System.out.println(\"File created: \" + dukeData.getName());"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                ui.displayInvalidDeadlineMessage();"
+        "content": "            } else {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            } catch (InvalidEventException e) {"
+        "content": "                System.out.println(\"File already exists.\");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                ui.displayInvalidEventMessage();"
+        "content": "            }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            } catch (InvalidToDoException e) {"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                ui.displayInvalidToDoMessage();"
+        "content": "            System.out.println(\"An error occurred.\");"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            } catch (InvalidFormatException e) {"
+        "content": "            e.printStackTrace();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                ui.displayInvalidFormatMessage();"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            } catch (IndexOutOfBoundsException e) {"
+        "content": "/*"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "                ui.displayInvalidIndexMessage();"
+        "content": "        try {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "            }"
+        "content": "            FileWriter myWriter \u003d new FileWriter(\"filename.txt\");"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "        }"
+        "content": "            myWriter.write(\"Files in Java might be tricky, but it is fun enough!\");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": ""
+        "content": "            myWriter.close();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "    }"
+        "content": "            System.out.println(\"Successfully wrote to the file.\");"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "dejunnn"
         },
-        "content": ""
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 42,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            System.out.println(\"An error occurred.\");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            e.printStackTrace();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "*/"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "        while (!ui.isExitStatus()) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                String input \u003d ui.readInput();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                Command command \u003d Parser.parseInput(input);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                command.execute(tasklist, ui, storage);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            } catch (InvalidCommandException e) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                ui.displayInvalidCommandMessage();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            } catch (InvalidDeadlineException e) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                ui.displayInvalidDeadlineMessage();"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            } catch (InvalidEventException e) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                ui.displayInvalidEventMessage();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            } catch (InvalidToDoException e) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                ui.displayInvalidToDoMessage();"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            } catch (InvalidFormatException e) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                ui.displayInvalidFormatMessage();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            } catch (IndexOutOfBoundsException e) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "                ui.displayInvalidIndexMessage();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
         "author": {
           "gitId": "dejunnn"
         },
@@ -582,7 +787,7 @@
       }
     ],
     "authorContributionMap": {
-      "dejunnn": 42
+      "dejunnn": 69
     }
   },
   {
@@ -3407,7 +3612,7 @@
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "public class Storage {"
+        "content": "import duke.tasks.Task;"
       },
       {
         "lineNumber": 4,
@@ -3421,27 +3626,53 @@
         "author": {
           "gitId": "dejunnn"
         },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "dejunnn"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "dejunnn"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "dejunnn": 5
-    }
-  },
-  {
-    "path": "src/main/java/duke/storage/data/duke.txt",
-    "fileType": "txt",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "dejunnn"
-        },
-        "content": "1. [T][✘] hih"
-      }
-    ],
-    "authorContributionMap": {
-      "dejunnn": 1
+      "dejunnn": 11
     }
   },
   {
@@ -4972,7 +5203,7 @@
         "author": {
           "gitId": "dejunnn"
         },
-        "content": "        System.out.println(MessageBank.GOODBYE_MESSAGE + MessageBank.NEW_LINE + MessageBank.DUKE_LOGO );"
+        "content": "        System.out.println(MessageBank.GOODBYE_MESSAGE);"
       },
       {
         "lineNumber": 38,
