@@ -305,14 +305,14 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import java.io.FileNotFoundException;"
+        "content": "import duke.command.Command;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import java.io.IOException;"
+        "content": "import duke.excpetions.DukeException;"
       },
       {
         "lineNumber": 5,
@@ -326,7 +326,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import duke.excpetions.DukeException;"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 7,
@@ -340,304 +340,290 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "public class Duke {"
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    private TaskList tasks;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    private Storage storage;"
+        "content": "    private Ui ui;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    private TaskList tasks;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    private Ui ui;"
+        "content": "    public Duke(String filePath) {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        ui \u003d new Ui();"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public Duke(String filePath) {"
+        "content": "        storage \u003d new Storage(filePath);"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        ui \u003d new Ui();"
+        "content": "        try{"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        storage \u003d new Storage(filePath);"
+        "content": "            tasks \u003d new TaskList(storage.load());"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        try{"
+        "content": "        } catch (DukeException e) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            tasks \u003d new TaskList(storage.load());"
+        "content": "            ui.showLoadingError();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        } catch (DukeException e) {"
+        "content": "            tasks \u003d new TaskList();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            ui.showLoadingError();"
+        "content": "        }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            tasks \u003d new TaskList();"
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        new Duke(\"data/tasksList.txt\").run();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        new Duke(\"data/tasksList.txt\").run();"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "    public void run(){"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        Ui.showWelcome();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void run(){"
+        "content": "        boolean isExit \u003d false;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        try {"
+        "content": "        while(!isExit){"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            Ui.welcomeMessage();"
+        "content": "            try{"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            ui.getNextCommand();"
+        "content": "                String fullCommand \u003d ui.readCommand();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            while(!ui.getCommand().equals(\"bye\")){"
+        "content": "                Ui.showLine();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                Ui.printDividingLine();"
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                Parser.executeCommand(ui.getCommand(),tasks);"
+        "content": "                c.execute(tasks);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                ui.getNextCommand();"
+        "content": "                isExit \u003d c.isExit();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            }"
+        "content": "            } catch (DukeException e) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            storage.writeFile(tasks);"
+        "content": "                ui.showError();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            Ui.exitMessage();"
+        "content": "            }finally{"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }catch (FileNotFoundException e){"
+        "content": "                ui.showLine();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"File can not be found!\");"
+        "content": "            }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }catch (IOException e){"
+        "content": "        }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"Something goes wrong.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "    public TaskList getTasks() {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        return tasks;"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public TaskList getTasks() {"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        return tasks;"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "sliu107"
-        },
         "content": ""
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
@@ -645,7 +631,7 @@
       }
     ],
     "authorContributionMap": {
-      "sliu107": 50,
+      "sliu107": 48,
       "-": 1
     }
   },
@@ -672,283 +658,339 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import duke.excpetions.EmptyDescriptionException;"
+        "content": "import duke.command.AddCommand;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "import duke.command.Command;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "public class Parser {"
+        "content": "import duke.command.DeleteCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "import duke.command.ExitCommand;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public static void executeCommand(String command,TaskList tasks) {"
+        "content": "import duke.command.ManageCommand;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String commandType \u003d commandDivider(command);"
+        "content": "import duke.command.WrongCommand;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        try{"
+        "content": "import duke.excpetions.DukeException;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            switch(commandType) {"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            case \"list\":"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                tasks.listTasks();"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                break;"
+        "content": "    public static Command parse(String fullCommand) throws DukeException {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            case \"done\":"
+        "content": "        try{"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                tasks.doneTask(command);"
+        "content": "            if (fullCommand.contains(\" \")) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                break;"
+        "content": "                String type \u003d fullCommand.substring(0, fullCommand.indexOf(\" \"));"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            case \"todo\":"
+        "content": "                switch (type) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                tasks.addToDo(command);"
+        "content": "                case \"delete\":"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                break;"
+        "content": "                    int index \u003d Integer.parseInt(fullCommand.substring(fullCommand.indexOf(\" \")+1));"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            case \"deadline\":"
+        "content": "                    return new DeleteCommand(type,index);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                tasks.addDeadline(command);"
+        "content": "                case \"done\":"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                break;"
+        "content": "                    index \u003d Integer.parseInt(fullCommand.substring(fullCommand.indexOf(\" \")+1));"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            case \"event\":"
+        "content": "                   return new ManageCommand(type,index);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                tasks.addEvent(command);"
+        "content": "                case \"todo\":"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                break;"
+        "content": "                    String description\u003dfullCommand.substring(fullCommand.indexOf(\" \"));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            default:"
+        "content": "                    return new AddCommand(type,description,null);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "                System.out.println(\" ☹ OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
+        "content": "                case \"deadline\":"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            }"
+        "content": "                    description\u003dfullCommand.substring(fullCommand.indexOf(\" \"),fullCommand.indexOf(\"/\"));"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            Ui.printDividingLine();"
+        "content": "                    String by\u003dfullCommand.substring(fullCommand.indexOf(\"/by\")+4);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"Do you have any other commands? \");"
+        "content": "                    return new AddCommand(type,description,by);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        } catch (EmptyDescriptionException e){"
+        "content": "                case \"event\":"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"Please re-enter your command with a description.\");"
+        "content": "                    description\u003dfullCommand.substring(fullCommand.indexOf(\" \"),fullCommand.indexOf(\"/\"));"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": "                    String period\u003dfullCommand.substring(fullCommand.indexOf(\"/at\")+4);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "                    return new AddCommand(type,description,period);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "                default:"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    private static String commandDivider(String command){"
+        "content": "                    System.out.println(\" ☹ OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-(\");"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        if (command.contains(\" \")){"
+        "content": "                    return new WrongCommand(\"wrong\");"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "             return command.substring(0,command.indexOf(\" \"));"
+        "content": "                }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }else{"
+        "content": "            }else if(fullCommand.equals(\"list\")){"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            return command;"
+        "content": "                return new ManageCommand(fullCommand,-1);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": "            }else if (fullCommand.equals(\"bye\")){"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "                return new ExitCommand(\"bye\");"
       },
       {
         "lineNumber": 43,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            }else{"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "                throw new DukeException();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        } catch (DukeException e){"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            System.out.println(\"The command is not correct.\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            return new WrongCommand(\"wrong\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
         "author": {
           "gitId": "sliu107"
         },
@@ -956,7 +998,7 @@
       }
     ],
     "authorContributionMap": {
-      "sliu107": 43
+      "sliu107": 51
     }
   },
   {
@@ -1122,7 +1164,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    static void writeFile(TaskList usersTasks) throws IOException {"
+        "content": "    public static void writeFile(TaskList usersTasks) throws IOException {"
       },
       {
         "lineNumber": 24,
@@ -1185,7 +1227,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        FileWriter fw \u003d new FileWriter(\"data/tasksList.txt\",true);"
+        "content": "        FileWriter fw \u003d new FileWriter(\"data/tasksList.txt\");"
       },
       {
         "lineNumber": 33,
@@ -1642,105 +1684,105 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import duke.excpetions.EmptyDescriptionException;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import duke.task.Deadline;"
+        "content": "import duke.command.AddCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import duke.task.Event;"
+        "content": "import duke.command.DeleteCommand;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import duke.task.Task;"
+        "content": "import duke.command.ManageCommand;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "import duke.task.ToDo;"
+        "content": "import duke.task.Deadline;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "import duke.task.Event;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "public class TaskList {"
+        "content": "import duke.task.Task;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "import duke.task.ToDo;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    private ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003cTask\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "public class TaskList {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public TaskList(ArrayList\u003cTask\u003e tasks){"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        this.tasks\u003dtasks;"
+        "content": "    private ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003cTask\u003e();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    public TaskList(ArrayList\u003cTask\u003e tasks){"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public TaskList() {"
+        "content": "        this.tasks\u003dtasks;"
       },
       {
         "lineNumber": 19,
@@ -1761,70 +1803,70 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void deleteTask(String command) throws EmptyDescriptionException{"
+        "content": "    public TaskList() {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        if(command.indexOf(\" \")\u003d\u003d-1) {"
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"☹ OOPS!!! Please specify the index of the task you want to delete.\");"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            throw new EmptyDescriptionException();"
+        "content": "    public void deleteTask(DeleteCommand deleteCommand){"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": "        int index \u003d deleteCommand.getIndex()-1;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        int index \u003d Integer.parseInt(command.split(\" \")[1])-1;"
+        "content": "        System.out.println(\"Noted. I\u0027ve removed this task: \");"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(\"Noted. I\u0027ve removed this task: \");"
+        "content": "        System.out.println(tasks.remove(index));"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(tasks.remove(index));"
+        "content": "        printNumOfTasks();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printNumOfTasks();"
+        "content": "    }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 31,
@@ -1838,528 +1880,395 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    public void printNumOfTasks(){"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void printNumOfTasks(){"
+        "content": "        System.out.println(\"Now you have \"+ tasks.size()+\" tasks in the list.\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(\"Now you have \"+ tasks.size()+\" tasks in the list.\");"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    public void addEvent(AddCommand addCommand){"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void addEvent(String command) throws EmptyDescriptionException {"
+        "content": "        Event newEvent \u003d new Event(addCommand);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        if(command.indexOf(\" \")\u003d\u003d-1) {"
+        "content": "        getTasks().add(newEvent);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"☹ OOPS!!! The description of an event cannot be empty.\");"
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            throw new EmptyDescriptionException();"
+        "content": "        System.out.println(newEvent);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": "        printNumOfTasks();"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String description\u003dcommand.substring(command.indexOf(\" \"),command.indexOf(\"/\"));"
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String period\u003dcommand.substring(command.indexOf(\"/at\")+4);"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        Event newEvent \u003d new Event(description, period);"
+        "content": "    public void addDeadline(AddCommand addCommand){"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        getTasks().add(newEvent);"
+        "content": "        Deadline newDeadline \u003d new Deadline(addCommand);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
+        "content": "        getTasks().add(newDeadline);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(newEvent);"
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printNumOfTasks();"
+        "content": "        System.out.println(newDeadline);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "        printNumOfTasks();"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void addDeadline(String command) throws EmptyDescriptionException {"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        if(command.indexOf(\" \")\u003d\u003d-1) {"
+        "content": "    public void addToDo  (AddCommand addCommand){"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"☹ OOPS!!! The description of a deadline cannot be empty.\");"
+        "content": "        ToDo newTodo \u003d new ToDo(addCommand);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            throw new EmptyDescriptionException();"
+        "content": "        tasks.add(newTodo);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String description\u003dcommand.substring(command.indexOf(\" \"),command.indexOf(\"/\"));"
+        "content": "        System.out.println(newTodo);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String by\u003dcommand.substring(command.indexOf(\"/by\")+4);"
+        "content": "        printNumOfTasks();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        Deadline newDeadline \u003d new Deadline(description,by);"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        getTasks().add(newDeadline);"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
+        "content": "    public void doneTask(ManageCommand manageCommand) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(newDeadline);"
+        "content": "        int taskIndex\u003dmanageCommand.getIndex()-1;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printNumOfTasks();"
+        "content": "        if(taskIndex \u003c tasks.size()) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "            getTasks().get(taskIndex).markAsDone();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "            System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void addToDo  (String command) throws EmptyDescriptionException {"
+        "content": "            System.out.println(\"  [\"+ getTasks().get(taskIndex).getStatusIcon() + \"] \" + getTasks().get(taskIndex).description);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        if(command.indexOf(\" \")\u003d\u003d-1) {"
+        "content": "        }else{"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"☹ OOPS!!! The description of a todo cannot be empty.\");"
+        "content": "            System.out.println(\"There is no task No.\"+(taskIndex+1));"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            throw new EmptyDescriptionException();"
+        "content": "        }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String description\u003dcommand.substring(command.indexOf(\" \"));"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        ToDo newTodo \u003d new ToDo(description);"
+        "content": "    public void listTasks() {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        tasks.add(newTodo);"
+        "content": "        System.out.println(\"Here are the tasks in your list:\");"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task:\");"
+        "content": "        for(int i \u003d 0; i\u003ctasks.size(); i++){"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(newTodo);"
+        "content": "            if(getTasks().get(i)\u003d\u003dnull){"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printNumOfTasks();"
+        "content": "                break;"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "            System.out.println((i+1)+\". \"+ getTasks().get(i));"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void doneTask(String command) {"
+        "content": "        }"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String[] splitCommand\u003dcommand.split(\" \");"
+        "content": "    }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        int taskIndex\u003dInteger.parseInt(splitCommand[1])-1;"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        if(taskIndex \u003c tasks.size()) {"
+        "content": "    public ArrayList\u003cTask\u003e getTasks() {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            getTasks().get(taskIndex).markAsDone();"
+        "content": "        return tasks;"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+        "content": "    }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"  [\"+ getTasks().get(taskIndex).getStatusIcon() + \"] \" + getTasks().get(taskIndex).description);"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }else{"
+        "content": "    public void setTasks(ArrayList\u003cTask\u003e tasks) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "            System.out.println(\"There is no task No.\"+(taskIndex+1));"
+        "content": "        this.tasks \u003d tasks;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 88,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    public void listTasks() {"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "        System.out.println(\"Here are the tasks in your list:\");"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "        for(int i \u003d 0; i\u003ctasks.size(); i++){"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "            if(getTasks().get(i)\u003d\u003dnull){"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "            System.out.println((i+1)+\". \"+ getTasks().get(i));"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    public ArrayList\u003cTask\u003e getTasks() {"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "        return tasks;"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    public void setTasks(ArrayList\u003cTask\u003e tasks) {"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "        this.tasks \u003d tasks;"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "sliu107"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 107,
         "author": {
           "gitId": "sliu107"
         },
@@ -2367,7 +2276,7 @@
       }
     ],
     "authorContributionMap": {
-      "sliu107": 107
+      "sliu107": 88
     }
   },
   {
@@ -2442,7 +2351,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public static void printDividingLine() {"
+        "content": "    public static void showLine() {"
       },
       {
         "lineNumber": 11,
@@ -2470,14 +2379,14 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    static void exitMessage() {"
+        "content": "    public static void exitMessage() {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printDividingLine();"
+        "content": "        showLine();"
       },
       {
         "lineNumber": 16,
@@ -2491,7 +2400,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printDividingLine();"
+        "content": "        showLine();"
       },
       {
         "lineNumber": 18,
@@ -2512,14 +2421,14 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    static void welcomeMessage() {"
+        "content": "    static void showWelcome() {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printDividingLine();"
+        "content": "        showLine();"
       },
       {
         "lineNumber": 22,
@@ -2540,7 +2449,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        printDividingLine();"
+        "content": "        showLine();"
       },
       {
         "lineNumber": 25,
@@ -2561,7 +2470,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void getNextCommand(){"
+        "content": "    public String readCommand(){"
       },
       {
         "lineNumber": 28,
@@ -2575,66 +2484,73 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "        return command;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void showLoadingError(){"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        System.out.println(\"There is something wrong during the loading process.\");"
+        "content": "    public void showLoadingError(){"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"There is something wrong during the loading process.\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public String getCommand() {"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        return command;"
+        "content": "    public static void showError() {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "        System.out.println(\"The command given is not acceptable.\");"
       },
       {
         "lineNumber": 38,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
         "author": {
           "gitId": "sliu107"
         },
@@ -2642,7 +2558,1153 @@
       }
     ],
     "authorContributionMap": {
-      "sliu107": 38
+      "sliu107": 39
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/AddCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.excpetions.DukeException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "public class AddCommand extends Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    private String description;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    private String timeNotes;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public AddCommand(String type,String description,String timeNotes) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        super(type);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        this.description \u003d description;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        this.timeNotes \u003d timeNotes;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public void execute(TaskList tasks) throws DukeException {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        switch(type){"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        case \"todo\":"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            tasks.addToDo(this);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        case \"deadline\":"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            tasks.addDeadline(this);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        case \"event\":"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            tasks.addEvent(this);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public String getDescription() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return description;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public String getTimeNotes() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return timeNotes;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sliu107": 41
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Command.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.excpetions.DukeException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "public abstract class Command {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    protected String type;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public Command(String type){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        this.type \u003d type;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    abstract public void execute(TaskList tasks) throws DukeException;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public boolean isExit(){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return type.equals(\"bye\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public String getType() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return type;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sliu107": 23
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/DeleteCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "public class DeleteCommand extends Command {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    private int index;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public DeleteCommand(String type,int index) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        super(type);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        this.index\u003dindex;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        tasks.deleteTask(this);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public int getIndex() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return index;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sliu107": 22
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ExitCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.Storage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.Ui;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "public class ExitCommand extends Command{"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public ExitCommand(String type) {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        super(type);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public void execute(TaskList tasks){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            Storage.writeFile(tasks);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            Ui.exitMessage();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        }catch (IOException E){"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            System.out.println(\"Something goes wrong.\");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sliu107": 24
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ManageCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.excpetions.DukeException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "public class ManageCommand extends Command{"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    private int index;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public ManageCommand(String type,int index){"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        super(type);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        this.index \u003d index;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public void execute(TaskList tasks) throws DukeException{"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        switch(type){"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        case \"done\":"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            tasks.doneTask(this);"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        case \"list\":"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            tasks.listTasks();"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "            throw new DukeException();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public int getIndex() {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return index;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sliu107": 32
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/WrongCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "package duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "import duke.TaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "public class WrongCommand extends Command {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public WrongCommand(String type) {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        super(type);"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public void execute(TaskList tasks) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "sliu107": 14
     }
   },
   {
@@ -2756,91 +3818,91 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "public class Deadline extends Task {"
+        "content": "import duke.command.AddCommand;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    protected String by;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "public class Deadline extends Task {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public Deadline(String description,String by) {"
+        "content": "    protected String by;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        this.by\u003dby;"
+        "content": "    public Deadline(String description,String by) {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        this.by\u003dby;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public String toString(){"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String taskType\u003d\"[D]\";"
+        "content": "    public Deadline(AddCommand addCommand){"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String detail \u003d taskType + \" [\" + getStatusIcon() + \"] \" + description+\" (by: \"+by+\" )\";"
+        "content": "        super(addCommand);"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        return detail;"
+        "content": "        this.by \u003d addCommand.getTimeNotes();"
       },
       {
         "lineNumber": 16,
@@ -2854,11 +3916,60 @@
         "author": {
           "gitId": "sliu107"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public String toString(){"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        String taskType\u003d\"[D]\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        String detail \u003d taskType + \" [\" + getStatusIcon() + \"] \" + description+\" (by: \"+by+\" )\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return detail;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "sliu107"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "sliu107": 17
+      "sliu107": 24
     }
   },
   {
@@ -2884,91 +3995,91 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "public class Event extends Task {"
+        "content": "import duke.command.AddCommand;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    protected String period;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "public class Event extends Task {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public Event(String description,String period) {"
+        "content": "    protected String period;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        this.period\u003dperiod;"
+        "content": "    public Event(String description,String period) {"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        this.period\u003dperiod;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public String toString(){"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String taskType\u003d\"[E]\";"
+        "content": "    public Event(AddCommand addCommand){"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String detail \u003d taskType + \" [\" + getStatusIcon() + \"] \" + description+\" (at: \"+period+\")\";"
+        "content": "        super(addCommand);"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        return detail;"
+        "content": "        this.period \u003d addCommand.getTimeNotes();"
       },
       {
         "lineNumber": 16,
@@ -2982,11 +4093,67 @@
         "author": {
           "gitId": "sliu107"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public String toString(){"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        String taskType\u003d\"[E]\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        String detail \u003d taskType + \" [\" + getStatusIcon() + \"] \" + description+\" (at: \"+period+\")\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return detail;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "sliu107"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "sliu107": 17
+      "sliu107": 25
     }
   },
   {
@@ -3012,133 +4179,133 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "public abstract class Task {"
+        "content": "import duke.command.AddCommand;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public String description;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    private boolean isDone;"
+        "content": "public abstract class Task {"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    public String description;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public Task(String description){"
+        "content": "    private boolean isDone;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        this.description\u003ddescription;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        this.isDone\u003dfalse;"
+        "content": "    public Task(String description){"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        this.isDone \u003d false;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public String getStatusIcon(){"
+        "content": "    }"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "    public Task(AddCommand addCommand){"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        this.description \u003d addCommand.getDescription();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void markAsDone(){"
+        "content": "        this.isDone \u003d false;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        this.isDone\u003dtrue;"
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "    public String getStatusIcon(){"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    @Override"
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    abstract public String toString();"
+        "content": "    }"
       },
       {
         "lineNumber": 22,
@@ -3152,14 +4319,14 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public void setDone() {"
+        "content": "    public void markAsDone(){"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        isDone \u003d true;"
+        "content": "        this.isDone\u003dtrue;"
       },
       {
         "lineNumber": 25,
@@ -3173,11 +4340,60 @@
         "author": {
           "gitId": "sliu107"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    abstract public String toString();"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public void setDone() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        isDone \u003d true;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "sliu107"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "sliu107": 26
+      "sliu107": 33
     }
   },
   {
@@ -3203,7 +4419,7 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "public class ToDo extends Task{"
+        "content": "import duke.command.AddCommand;"
       },
       {
         "lineNumber": 4,
@@ -3217,73 +4433,115 @@
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public ToDo(String description) {"
+        "content": "public class ToDo extends Task{"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        super(description);"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": "    public ToDo(String description) {"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "sliu107"
         },
-        "content": ""
+        "content": "        super(description);"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    public String toString(){"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String taskType\u003d\"[T]\";"
+        "content": "    public ToDo(AddCommand addCommand){"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        String detail \u003d taskType + \" [\" + getStatusIcon() + \"] \" + description;"
+        "content": "        super(addCommand);"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "        return detail;"
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sliu107"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    public String toString(){"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        String taskType\u003d\"[T]\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        String detail \u003d taskType + \" [\" + getStatusIcon() + \"] \" + description;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "        return detail;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "sliu107"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
         "author": {
           "gitId": "sliu107"
         },
@@ -3291,7 +4549,7 @@
       }
     ],
     "authorContributionMap": {
-      "sliu107": 15
+      "sliu107": 21
     }
   }
 ]

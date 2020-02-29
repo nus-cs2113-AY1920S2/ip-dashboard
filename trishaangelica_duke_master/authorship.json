@@ -2699,35 +2699,35 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            ui.showResultToUser(result);"
+        "content": "            saveListToStorageFile(taskList);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            ui.showResultToUser(result);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } while (!ExitCommand.isExit(command));"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "        } while (!ExitCommand.isExit(command));"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 57,
@@ -2741,192 +2741,248 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    /**"
+        "content": "    private void saveListToStorageFile(TaskList taskList){"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     * Executes the command and returns the result."
+        "content": "        try{"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     *"
+        "content": "            storage.save(taskList);"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     * @param command user command"
+        "content": "        }catch (StorageFile.StorageOperationException e){"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     * @return result of the command"
+        "content": "            System.out.println(\"Error saving data to storage file..\");"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     */"
+        "content": "        }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private CommandResult executeCommand(Command command) {"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        try {"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            command.setData(taskList);"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            storage.save(taskList);"
+        "content": "    /**"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            return command.execute();"
+        "content": "     * Executes the command and returns the result."
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } catch (Exception e) {"
+        "content": "     *"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            ui.showToUser(e.getMessage());"
+        "content": "     * @param command user command"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throw new RuntimeException(e);"
+        "content": "     * @return result of the command"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": "     */"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "    private CommandResult executeCommand(Command command) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    /**"
+        "content": "            command.setData(taskList);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     * Creates the StorageFile object based on the user specified path (if any) or the default storage path."
+        "content": "            return command.execute();"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     * @param launchArgs arguments supplied by the user at program launch"
+        "content": "        } catch (Exception e) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     * @throws StorageFilePathException if the target file path is incorrect."
+        "content": "            ui.showToUser(e.getMessage());"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "     */"
+        "content": "            throw new RuntimeException(e);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private StorageFile initializeStorage(String[] launchArgs) throws StorageFilePathException {"
+        "content": "        }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        boolean isStorageFileSpecifiedByUser \u003d launchArgs.length \u003e 0;"
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0]) : new StorageFile();"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "     * Creates the StorageFile object based on the user specified path (if any) or the default storage path."
       },
       {
         "lineNumber": 85,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * @param launchArgs arguments supplied by the user at program launch"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * @throws StorageFilePathException if the target file path is incorrect."
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private StorageFile initializeStorage(String[] launchArgs) throws StorageFilePathException {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        boolean isStorageFileSpecifiedByUser \u003d launchArgs.length \u003e 0;"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0]) : new StorageFile();"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
@@ -2935,645 +2991,6 @@
     ],
     "authorContributionMap": {
       "-": 3,
-      "trishaangelica": 82
-    }
-  },
-  {
-    "path": "src/main/java/duke/Ui/TextUi.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "package duke.ui;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "import duke.command.CommandResult;"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "import duke.data.TaskList;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "import java.io.InputStream;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "import java.io.PrintStream;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "import java.util.Scanner;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "import static duke.common.Messages.*;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": " * Text UI of the application."
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "public class TextUi {"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * A platform independent line separator."
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public static final String LS \u003d System.lineSeparator();"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public static final String DIVIDER \u003d LS + \" - - - - - - - - - - - - - - - - - - - - - - - - \" + LS;"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    private final Scanner in;"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    private final PrintStream out;"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public TextUi() {"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        this(System.in, System.out);"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public TextUi(InputStream in, PrintStream out) {"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        this.in \u003d new Scanner(in);"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        this.out \u003d out;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * Prompts for the command and reads the text entered by the user."
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * Ignores empty, pure whitespace, and comment lines."
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * Echos the command back to the user."
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * @return command (full line) entered by the user"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public String getUserCommand() {"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        out.print(\"Enter command: \");"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        String fullInputLine \u003d in.nextLine();"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        showToUser(\"[Command entered:\" + fullInputLine + \"]\");"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        return fullInputLine;"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * Generates and prints the welcome message upon the start of the application."
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * @param storageFilePath path to the storage file being used."
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public void showWelcomeMessage(String storageFilePath) {"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        String storageFileInfo \u003d String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        showToUser(MESSAGE_WELCOME, storageFileInfo);"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public void showGoodbyeMessage() {"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        showToUser(MESSAGE_GOODBYE, DIVIDER);"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public void showInitFailedMessage() {"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        showToUser(MESSAGE_INIT_FAILED, DIVIDER);"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     * Shows message(s) to the user"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public void showToUser(String... message) {"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        for (String m : message) {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "            out.println(m);"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public void showResultToUser(CommandResult result) {"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        showToUser(result.feedbackToUser, DIVIDER);"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    public void showLoadedList() {"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        if (TaskList.size() \u003e 0) {"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "            System.out.println(\"\\nGreat we\u0027re all loaded!\\nHave a look at your previously saved list!\" + DIVIDER);"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "            TaskList.showStoredTaskList();"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "            System.out.println(TextUi.DIVIDER + TextUi.LS);"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "            System.out.println(\"\\nSeems like we\u0027re starting from scratch ...\\nI\u0027ve created a new storage file for you!\" + DIVIDER);"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "trishaangelica"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
       "trishaangelica": 90
     }
   },
@@ -3621,255 +3038,248 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "import java.io.IOException;"
+        "content": "import java.io.PrintWriter;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "import java.io.PrintWriter;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "import static duke.data.TaskList.clear;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "import static duke.data.TaskList.clear;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "/**"
+        "content": " * Clears the Task List."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": " * Clears the Task List."
+        "content": " */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "public class ClearCommand extends Command {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "public class ClearCommand extends Command {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"clear\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"clear\";"
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD +\": Clears task list permanently.\" + TextUi.LS"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD +\": Clears task list permanently.\" + TextUi.LS"
+        "content": "            + \"|| Parameter: \" + COMMAND_WORD"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            + \"|| Parameter: \" + COMMAND_WORD"
+        "content": "            + TextUi.LS"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            + TextUi.LS"
+        "content": "            + \"|| Example: \" + COMMAND_WORD + TextUi.LS;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            + \"|| Example: \" + COMMAND_WORD + TextUi.LS;"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_SUCCESS \u003d TextUi.LS + \"Task list has been cleared!\";"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d TextUi.LS + \"Task list has been cleared!\";"
+        "content": "    public static final String MESSAGE_FAIL \u003d TextUi.LS + \"Error clearing file: \" + StorageFile.DEFAULT_STORAGE_FILEPATH;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_FAIL \u003d TextUi.LS + \"Error clearing file: \" + StorageFile.DEFAULT_STORAGE_FILEPATH;"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    public ClearCommand() {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public ClearCommand() {"
+        "content": "    }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    @Override"
+        "content": "    public CommandResult execute() {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public CommandResult execute() {"
+        "content": "        clear();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        clear();"
+        "content": "        try {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        try {"
+        "content": "            PrintWriter writer \u003d new PrintWriter(StorageFile.DEFAULT_STORAGE_FILEPATH);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            PrintWriter writer \u003d new PrintWriter(StorageFile.DEFAULT_STORAGE_FILEPATH);"
+        "content": "            writer.print(\"\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            writer.print(\"\");"
+        "content": "            writer.close();"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            writer.close();"
+        "content": "            return new CommandResult(MESSAGE_SUCCESS);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            return new CommandResult(MESSAGE_SUCCESS);"
+        "content": "        } catch (FileNotFoundException ioe) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } catch (FileNotFoundException ioe) {"
+        "content": "            return new CommandResult(MESSAGE_FAIL);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            return new CommandResult(MESSAGE_FAIL);"
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "trishaangelica"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "trishaangelica"
         },
@@ -3877,7 +3287,7 @@
       }
     ],
     "authorContributionMap": {
-      "trishaangelica": 42
+      "trishaangelica": 41
     }
   },
   {
@@ -6220,7 +5630,7 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } catch (NullPointerException e) { //exception for Date means it doesn\u0027t exist at this point so try parse string"
+        "content": "        } catch (NullPointerException e) { //exception for Date means it doesn\u0027t exist at this point, parse String instead"
       },
       {
         "lineNumber": 63,
@@ -7350,28 +6760,28 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "import duke.ui.TextUi;"
+        "content": "import duke.storage.StorageFile;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "import duke.ui.TextUi;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "import static duke.common.Messages.MESSAGE_ERROR;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "import static duke.common.Messages.MESSAGE_ERROR;"
       },
       {
         "lineNumber": 9,
@@ -7385,119 +6795,119 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": " * Adds a todo-type of task in the task list."
+        "content": "/**"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": " */"
+        "content": " * Adds a todo-type of task in the task list."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "public class TodoCommand extends Command {"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"todo\";"
+        "content": "public class TodoCommand extends Command {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d  TextUi.LS + \"Got it. I\u0027ve added this task: \" +  TextUi.LS"
+        "content": "    public static final String COMMAND_WORD \u003d \"todo\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            + \"\\t%s. \" +  TextUi.LS + \"Now you have %d tasks in your list.\";"
+        "content": "    public static final String MESSAGE_SUCCESS \u003d  TextUi.LS + \"Got it. I\u0027ve added this task: \" +  TextUi.LS"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_PARAM \u003d TextUi.LS + \"|| Parameters: todo [DESCRIPTION]\"+ TextUi.LS;"
+        "content": "            + \"\\t%s. \" +  TextUi.LS + \"Now you have %d tasks in your list.\";"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_EXAMPLE \u003d\"|| Example: todo brainstorm ideas\" + TextUi.LS;"
+        "content": "    public static final String MESSAGE_PARAM \u003d TextUi.LS + \"|| Parameters: todo [DESCRIPTION]\"+ TextUi.LS;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d  duke.ui.TextUi.DIVIDER +  TextUi.LS + COMMAND_WORD"
+        "content": "    public static final String MESSAGE_EXAMPLE \u003d\"|| Example: todo brainstorm ideas\" + TextUi.LS;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            + \": Adds a simple to-do task to the list.\""
+        "content": "    public static final String MESSAGE_USAGE \u003d  duke.ui.TextUi.DIVIDER +  TextUi.LS + COMMAND_WORD"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            + MESSAGE_PARAM + MESSAGE_EXAMPLE;"
+        "content": "            + \": Adds a simple to-do task to the list.\""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            + MESSAGE_PARAM + MESSAGE_EXAMPLE;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public static final String MESSAGE_DUPLICATE_TASK \u003d \"This task already exists in the list.\";"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_DUPLICATE_TASK \u003d \"This task already exists in the list.\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_SAVE_ERROR \u003d \"Error saving task to storage file\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    private ToDos toAdd;"
+        "content": ""
       },
       {
         "lineNumber": 27,
@@ -7511,21 +6921,21 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public TodoCommand(ToDos toAdd) {"
+        "content": "    private ToDos toAdd;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        this.toAdd \u003d toAdd;"
+        "content": "    public StorageFile storage;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 31,
@@ -7539,129 +6949,157 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public TodoCommand(String desc) throws NullPointerException {"
+        "content": "    public TodoCommand(ToDos toAdd) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        if (desc.isEmpty()) {"
+        "content": "        this.toAdd \u003d toAdd;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            throw new NullPointerException();"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        this.toAdd \u003d new ToDos(desc);"
+        "content": "    public TodoCommand(String desc) throws NullPointerException {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "        if (desc.isEmpty()) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": ""
+        "content": "            throw new NullPointerException();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    @Override"
+        "content": "        }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    public CommandResult execute() {"
+        "content": "        this.toAdd \u003d new ToDos(desc);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        try {"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            TaskList.add(toAdd);"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd.toString(), TaskList.size()));"
+        "content": "    @Override"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } catch (TaskList.DuplicateTaskException dpe) {"
+        "content": "    public CommandResult execute() {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            return new CommandResult(MESSAGE_DUPLICATE_TASK);"
+        "content": "        try {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        } catch (NullPointerException NPE) {"
+        "content": "            TaskList.add(toAdd);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            return new CommandResult(String.format(MESSAGE_ERROR, \"description\", COMMAND_WORD));"
+        "content": "            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd.toString(), TaskList.size()));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "        }"
+        "content": "        } catch (TaskList.DuplicateTaskException dpe) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "    }"
+        "content": "            return new CommandResult(MESSAGE_DUPLICATE_TASK);"
       },
       {
         "lineNumber": 50,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } catch (NullPointerException NPE) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            return new CommandResult(String.format(MESSAGE_ERROR, \"description\", COMMAND_WORD));"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
         "author": {
           "gitId": "trishaangelica"
         },
@@ -7669,7 +7107,7 @@
       }
     ],
     "authorContributionMap": {
-      "trishaangelica": 50
+      "trishaangelica": 54
     }
   },
   {
@@ -12650,7 +12088,7 @@
         "author": {
           "gitId": "trishaangelica"
         },
-        "content": "            return new FilterCommand(arguments); //filter keyword as string        }"
+        "content": "            return new FilterCommand(arguments); //filter keyword as string"
       },
       {
         "lineNumber": 159,
@@ -14397,6 +13835,652 @@
     ],
     "authorContributionMap": {
       "trishaangelica": 62
+    }
+  },
+  {
+    "path": "src/main/java/duke/ui/TextUi.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "package duke.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "import duke.command.CommandResult;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "import duke.data.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "import java.io.InputStream;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "import java.io.PrintStream;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "import static duke.common.Messages.*;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": " * Text UI of the application."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "public class TextUi {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * A platform independent line separator."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public static final String LS \u003d System.lineSeparator();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public static final String DIVIDER \u003d LS + \" - - - - - - - - - - - - - - - - - - - - - - - - \" + LS;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private final Scanner in;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    private final PrintStream out;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public TextUi() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        this(System.in, System.out);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public TextUi(InputStream in, PrintStream out) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        this.in \u003d new Scanner(in);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        this.out \u003d out;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * Prompts for the command and reads the text entered by the user."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * Ignores empty, pure whitespace, and comment lines."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * Echos the command back to the user."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * @return command (full line) entered by the user"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public String getUserCommand() {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        out.print(\"Enter command: \");"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        String fullInputLine \u003d in.nextLine();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        showToUser(\"[Command entered:\" + fullInputLine + \"]\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        return fullInputLine;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * Generates and prints the welcome message upon the start of the application."
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * @param storageFilePath path to the storage file being used."
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public void showWelcomeMessage(String storageFilePath) {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        String storageFileInfo \u003d String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        showToUser(MESSAGE_WELCOME, storageFileInfo);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public void showGoodbyeMessage() {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        showToUser(MESSAGE_GOODBYE, DIVIDER);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public void showInitFailedMessage() {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        showToUser(MESSAGE_INIT_FAILED, DIVIDER);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     * Shows message(s) to the user"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public void showToUser(String... message) {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        for (String m : message) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            out.println(m);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public void showResultToUser(CommandResult result) {"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        showToUser(result.feedbackToUser, DIVIDER);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    public void showLoadedList() {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        if (TaskList.size() \u003e 0) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            System.out.println(\"\\nGreat we\u0027re all loaded!\\nHave a look at your previously saved list!\" + DIVIDER);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            TaskList.showStoredTaskList();"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            System.out.println(TextUi.DIVIDER + TextUi.LS);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "            System.out.println(\"\\nSeems like we\u0027re starting from scratch ...\\nI\u0027ve created a new storage file for you!\" + DIVIDER);"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "trishaangelica"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "trishaangelica": 91
     }
   },
   {
