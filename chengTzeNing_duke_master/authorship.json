@@ -108,563 +108,633 @@
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 2,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.io.PrintWriter;"
       },
       {
         "lineNumber": 3,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": ""
+        "content": "import java.util.Scanner;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "public class Duke {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    static ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "chengTzeNing"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    public static void printTasks() {"
+        "content": "    static ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        System.out.println(\"Here are the tasks in your list:\");"
+        "content": "    static String commands \u003d \"Here is the list of commands available\\n\""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        for (Task task : tasks) {"
+        "content": "            + \"\\\"bye\\\": to exit\\n\" +"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            System.out.println(String.format(\"%d. %s\", task.getTaskId(), task.toString()));"
+        "content": "            \"\\\"list\\\": to show the list of all your tasks\\n\" +"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        }"
+        "content": "            \"\\\"todo\\\": add a todo\\n\" +"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    }"
+        "content": "            \"\\\"deadline\\\": add a deadline\\n\" +"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": ""
+        "content": "            \"\\\"event\\\": add an event\\n\" +"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    public static void inputChecker(String userInput) throws IndexOutOfBoundsException, IllegalArgumentException {"
+        "content": "            \"\\\"done\\\": check off a task on your list\";"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        if (userInput.startsWith(\"list\")) {"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            printTasks();"
+        "content": "    public static void printTasks() {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        } else if (userInput.startsWith(\"done\")) {"
+        "content": "        System.out.println(\"Here are the tasks in your list:\");"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            tasks.get(Integer.parseInt(Character.toString("
+        "content": "        String output \u003d \"\";"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                    userInput.charAt(userInput.length() - 1))) - 1).setDone();"
+        "content": "        for (Task task : tasks) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        } else if (userInput.startsWith(\"todo\")) {"
+        "content": "            System.out.println(String.format(\"%d. %s\", task.getTaskId(), task.toString()));"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            Task task \u003d new ToDo(userInput.substring(5));"
+        "content": "            output +\u003d String.format(\"%d. %s\\n\", task.getTaskId(), task.toString());"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            tasks.add(task);"
+        "content": "        }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
+        "content": "        try (PrintWriter printer \u003d new PrintWriter(\"out.txt\")) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                    + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
+        "content": "            printer.println(output);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        } else if (userInput.startsWith(\"deadline\")) {"
+        "content": "        } catch (FileNotFoundException exception) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            Task task \u003d new Deadline(userInput.substring(9));"
+        "content": "            System.out.println(exception.getMessage());"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            tasks.add(task);"
+        "content": "        }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                    + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        } else if (userInput.startsWith(\"event\")) {"
+        "content": "    public static void checkInput(String userInput) throws IndexOutOfBoundsException, IllegalArgumentException {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            Task task \u003d new Event(userInput.substring(6));"
+        "content": "        if (userInput.startsWith(\"list\")) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            tasks.add(task);"
+        "content": "            printTasks();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
+        "content": "        } else if (userInput.startsWith(\"done\")) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                    + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
+        "content": "            tasks.get(Integer.parseInt(Character.toString("
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        } else {"
+        "content": "                    userInput.charAt(userInput.length() - 1))) - 1).setDone();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            throw new IllegalArgumentException();"
+        "content": "        } else if (userInput.startsWith(\"todo\")) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        }"
+        "content": "            Task task \u003d new ToDo(userInput.substring(5));"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    }"
+        "content": "            tasks.add(task);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": ""
+        "content": "            System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    public static void printLogo() {"
+        "content": "                    + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "        String logo \u003d \" ____        _        \\n\""
+        "content": "        } else if (userInput.startsWith(\"deadline\")) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                + \"|  _ \\\\ _   _| | __ __ \\n\""
+        "content": "            Task task \u003d new Deadline(userInput.substring(9));"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": "            tasks.add(task);"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
+        "content": "            System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+        "content": "                    + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": ""
+        "content": "        } else if (userInput.startsWith(\"event\")) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": ""
+        "content": "            Task task \u003d new Event(userInput.substring(6));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        /*String logo \u003d \"|  |  \\n\" +"
+        "content": "            tasks.add(task);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                \"|--| .\\n\" +"
+        "content": "            System.out.println(\"Got it. I\u0027ve added this task:\\n  \" + task.toString()"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                \"|  | |\\n\";"
+        "content": "                    + String.format(\"\\nNow you have %d tasks in the list.\", Task.getTotalNumOfTasks()));"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        */"
+        "content": "        } else if (userInput.startsWith(\"delete\")) { // output is wrong once we have double digits. like i fI input 21, it actually works and won\u0027t give error"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "-"
+          "gitId": "chengTzeNing"
         },
-        "content": "        System.out.println(\"Hello from\\n\" + logo);"
+        "content": "            int taskId \u003d Integer.parseInt(Character.toString(userInput.charAt(7)));"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        System.out.println(\"Hello! I\u0027m Duke\\nWhat can I do for you?\");"
+        "content": "            Task task \u003d tasks.get(taskId - 1);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        System.out.println(\"Sorry I don\u0027t understand that command. Here is the list of commands available\\n\""
+        "content": "            tasks.remove(task);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                + \"\\\"bye\\\": to exit\\n\\\"list\\\": to show the list of all your tasks\\n\\\"todo\\\": add a todo\\n\" +"
+        "content": "            System.out.println(\"I have removed this task:\\n\" + task.toString() +"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                \"\\\"deadline\\\": add a deadline\\n\\\"event\\\": add an event\\n\" +"
+        "content": "                    String.format(\"\\nYou only have %d tasks left to do. 加油!\", tasks.size()));"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                \"\\\"done\\\": check off a task on your list\");"
+        "content": "        } else {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        System.out.println(\"OIOIOIO\");"
+        "content": "            throw new IllegalArgumentException();"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        printLogo();"
+        "content": "    public static void printLogo() {"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "chengTzeNing"
+          "gitId": "-"
         },
-        "content": "        Scanner scan \u003d new Scanner(System.in);"
+        "content": "        String logo \u003d \" ____        _        \\n\""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        String userInput \u003d scan.nextLine();"
+        "content": "                + \"|  _ \\\\ _   _| | __ __ \\n\""
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "chengTzeNing"
+          "gitId": "-"
         },
-        "content": "        while (!userInput.equals(\"bye\")) {"
+        "content": "                + \"| | | | | | | |/ / _ \\\\\\n\""
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "chengTzeNing"
+          "gitId": "-"
         },
-        "content": "            try {"
+        "content": "                + \"| |_| | |_| |   \u003c  __/\\n\""
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "chengTzeNing"
+          "gitId": "-"
         },
-        "content": "                inputChecker(userInput);"
+        "content": "                + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "chengTzeNing"
+          "gitId": "-"
         },
-        "content": "            } catch (IndexOutOfBoundsException e) {"
+        "content": "        System.out.println(\"Hello from\\n\" + logo);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                System.out.println(\"You have given the wrong number of arguments\\n\" +"
+        "content": "        System.out.println(commands);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        \"Please try again or input \\\"bye\\\" to exit\");"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            } catch (IllegalArgumentException e) {"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                System.out.println(\"Sorry I don\u0027t understand that command. Here is the list of commands available\\n\""
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        + \"\\\"bye\\\": to exit\\n\\\"list\\\": to show the list of all your tasks\\n\\\"todo\\\": add a todo\\n\" +"
+        "content": "        printLogo();"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        \"\\\"deadline\\\": add a deadline\\n\\\"event\\\": add an event\\n\" +"
+        "content": "        Scanner scan \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "                        \"\\\"done\\\": check off a task on your list\");"
+        "content": "        String userInput \u003d scan.nextLine();"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            }"
+        "content": "        while (!userInput.equals(\"bye\")) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "            userInput \u003d scan.nextLine();"
+        "content": "            try {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        }"
+        "content": "                checkInput(userInput);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "chengTzeNing"
         },
-        "content": "        System.out.println(\"Bye from Singapore!\");"
+        "content": "            } catch (IndexOutOfBoundsException exception) {"
       },
       {
         "lineNumber": 80,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "                System.out.println(\"You have given the wrong number of arguments\\n\" +"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "                        \"Please try again or input \\\"bye\\\" to exit\");"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "                System.out.println(exception.getMessage());"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "            } catch (IllegalArgumentException exception) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "                System.out.println(\"Sorry I don\u0027t understand that command.\\n\" + commands);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "                System.out.println(exception.getMessage());"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "            userInput \u003d scan.nextLine();"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "chengTzeNing"
+        },
+        "content": "        System.out.println(\"Bye from Singapore!\");"
+      },
+      {
+        "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
@@ -672,7 +742,7 @@
       }
     ],
     "authorContributionMap": {
-      "chengTzeNing": 73,
+      "chengTzeNing": 83,
       "-": 8
     }
   },
