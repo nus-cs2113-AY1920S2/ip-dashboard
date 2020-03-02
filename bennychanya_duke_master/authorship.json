@@ -22,647 +22,402 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.exceptions.*;"
+        "content": "import src.main.java.duke.command.Command;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.task.Task;"
+        "content": "import src.main.java.duke.exceptions.*;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.io.IOException;"
+        "content": "import java.io.FileNotFoundException;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.util.Scanner;"
+        "content": "import java.io.IOException;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.io.File;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.io.FileNotFoundException;"
+        "content": "/**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": " * Duke program implements an application that manage a task list by using specific commands."
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "bennychanya"
         },
-        "content": "public class Duke {"
+        "content": " * User can use commands to create, mark and delete tasks inside the task list."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": " * \u003cp\u003e"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "bennychanya"
         },
-        "content": "    public static void main(String[] args) {"
+        "content": " * The program can read text file that contains a task list from specified file path."
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        ArrayList\u003cTask\u003e taskList \u003d new ArrayList\u003c\u003e();"
+        "content": " * Updates made to the task list by the user is written inside the same text file"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        try {"
+        "content": " * from the specified file path or written in a new text file if no text file is found"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            loadListFromFile(\"duke.txt\", taskList);"
+        "content": " * in the specified file path."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            Duke_Static_Methods.greetUser();"
+        "content": " *"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            inputAndExecute(taskList);"
+        "content": " * @author  Benny Chann"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        } catch (FileNotFoundException e) {"
+        "content": " * @version 1.0"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            System.out.println(\"File not found\");"
+        "content": " * @since   2020-03-02"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        } catch (UnknownLineFromSavedFileException e) {"
+        "content": " */"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "bennychanya"
+          "gitId": "-"
         },
-        "content": "            System.out.println(\"Unknown line read from Save File\");"
+        "content": "public class Duke {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "    private Storage storage;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    private TaskList tasks;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    private static void inputAndExecute(ArrayList\u003cTask\u003e taskList) {"
+        "content": "    private Ui ui;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        String userInput;"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        do {"
+        "content": "    public Duke(String filePath) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            userInput \u003d scanInput();"
+        "content": "        ui \u003d new Ui();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            String[] userCommand \u003d userInput.split(\" \", 2);"
+        "content": "        storage \u003d new Storage(filePath);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            try {"
+        "content": "        try {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                executeCommand(taskList, userCommand);"
+        "content": "            tasks \u003d new TaskList(storage.load());"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                Duke_Static_Methods.writeToFile(taskList);"
+        "content": "        } catch (FileNotFoundException e) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            } catch (IndexOutOfBoundsException e) {"
+        "content": "            ui.showLoadingError();"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                System.out.println(\"OOPS!!! The description of \" + userCommand[0] + \" cannot be empty.\");"
+        "content": "            tasks \u003d new TaskList();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            } catch (InvalidDateException e) {"
+        "content": "        } catch (UnknownLineFromSavedFileException e) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                System.out.println(\"Please re-enter command with the time and/or date.\");"
+        "content": "            ui.showError(e.getMessage());"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            } catch (InvalidCommandException e) {"
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                System.out.println(\"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-\u003c\");"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            } catch (InvalidDoneException e) {"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                System.out.println(\"Unable to process done statement\");"
+        "content": "    public void run() {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            } catch (AlreadyDoneException e) {"
+        "content": "        ui.greetUser();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                System.out.println(\"Task has already been completed.\");"
+        "content": "        boolean isExit \u003d false;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                System.out.println(\"  \" + taskList.get(Integer.parseInt(userCommand[1]) - 1).toString());"
+        "content": "        while(!isExit) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            } catch (IOException e) {"
+        "content": "            try {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                System.out.println(\"Unable to find duke.txt\");"
+        "content": "                String fullCommand \u003d ui.readCommand();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            }"
+        "content": "                ui.showLine();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        } while (!userInput.equalsIgnoreCase(\"bye\"));"
+        "content": "                Command c \u003d Parser.parse(fullCommand);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "                c.execute(tasks, ui, storage);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "                isExit \u003d c.isExit();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    private static void executeCommand(ArrayList\u003cTask\u003e taskList, String[] userCommand) throws InvalidCommandException, InvalidDateException, InvalidDoneException, AlreadyDoneException, IOException {"
+        "content": "            } catch (DukeException | IOException | NumberFormatException e) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        switch (userCommand[0]) {"
+        "content": "                ui.showError(e.getMessage());"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            case \"list\":"
+        "content": "            }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                Duke_Static_Methods.listTasks(taskList); //List out task list"
+        "content": "        }"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "bennychanya"
+          "gitId": "-"
         },
-        "content": "                break;"
+        "content": "    }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            case \"bye\":"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "bennychanya"
+          "gitId": "-"
         },
-        "content": "                System.out.println(\"Bye. Hope to see you again soon!\"); //terminate method"
+        "content": "    public static void main(String[] args) {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                break;"
+        "content": "        new Duke(\"duke.txt\").run();"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "bennychanya"
+          "gitId": "-"
         },
-        "content": "            case \"todo\":"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                Duke_Static_Methods.addNewTodo(taskList, userCommand[1]);"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            case \"deadline\":"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                Duke_Static_Methods.addNewDeadline(taskList, userCommand[1]);"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            case \"event\":"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                Duke_Static_Methods.addNewEvent(taskList, userCommand[1]);"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            case \"done\":"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                Duke_Static_Methods.markedAsDone(taskList, userCommand[1]);"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            case \"delete\":"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                Duke_Static_Methods.deleteTask(taskList, userCommand[1]);"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            default:"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "                throw new InvalidCommandException();"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    private static String scanInput(){"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        String userInput;"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        Scanner scan \u003d new Scanner(System.in);"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        userInput \u003d scan.nextLine();"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        return userInput;"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    private static void loadListFromFile(String filePath, ArrayList\u003cTask\u003e taskList) throws FileNotFoundException, UnknownLineFromSavedFileException {"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        File f \u003d new File(filePath);"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        Scanner s \u003d new Scanner(f);"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        String[] savedTaskDetails; //at most 4 parts"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        while (s.hasNext()) {"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            savedTaskDetails \u003d s.nextLine().split(\" \\\\| \");"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            Duke_Static_Methods.addSavedTasks(taskList, savedTaskDetails);"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
@@ -670,12 +425,12 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 90,
+      "bennychanya": 55,
       "-": 5
     }
   },
   {
-    "path": "src/main/java/Duke_Static_Methods.java",
+    "path": "src/main/java/Parser.java",
     "fileType": "java",
     "lines": [
       {
@@ -697,77 +452,77 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.exceptions.AlreadyDoneException;"
+        "content": "import src.main.java.duke.command.*;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.exceptions.InvalidDateException;"
+        "content": "import src.main.java.duke.exceptions.InvalidCommandException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.exceptions.InvalidDoneException;"
+        "content": "import src.main.java.duke.exceptions.InvalidDateException;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.exceptions.UnknownLineFromSavedFileException;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.task.Deadline;"
+        "content": "/** Return Commands based on user commands written in Command line."
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.task.Event;"
+        "content": " *"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.task.Task;"
+        "content": " * @param fullCommand  commands written by user"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import src.main.java.duke.task.Todo;"
+        "content": " * @param userCommand  command that are split up from @param fullCommand"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.io.FileWriter;"
+        "content": " * @param taskDetails  description and date of task from @userCommand"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.io.IOException;"
+        "content": " */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 14,
@@ -781,63 +536,1082 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "class Duke_Static_Methods {"
+        "content": "    static Command parse(String fullCommand) throws InvalidCommandException, InvalidDateException {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void addNewEvent(ArrayList\u003cTask\u003e taskList, String s) throws InvalidDateException {"
+        "content": "        String[] userCommand\u003d fullCommand.split(\" \", 2);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        String[] taskDetails \u003d s.split(\" /at \", 2);"
+        "content": "        switch (userCommand[0]) {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        if (taskDetails.length \u003d\u003d 1) {"
+        "content": "            case AddTodoCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            throw new InvalidDateException();"
+        "content": "                return new AddTodoCommand(userCommand[1]);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        Event event \u003d new Event(taskDetails[0], taskDetails[1]);"
+        "content": "            case AddDeadlineCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        addTaskInList(event, taskList);"
+        "content": "                String[] taskDetails \u003d readTaskDetails(userCommand[1], \" /by \");"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        printAddedTask(taskList);"
+        "content": "                return new AddDeadlineCommand(taskDetails[0], taskDetails[1]);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case AddEventCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                taskDetails \u003d readTaskDetails(userCommand[1], \" /at \");"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return new AddEventCommand(taskDetails[0], taskDetails[1]);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case ListCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return new ListCommand();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case DoneCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return new DoneCommand(userCommand[1]);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case DeleteCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return new DeleteCommand(userCommand[1]);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case ExitCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return new ExitCommand();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                "
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case FindCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return new FindCommand(userCommand[1]);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                throw new InvalidCommandException();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static String[] readTaskDetails(String taskDescription, String delimiter) throws InvalidDateException {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        String[] taskDetails \u003d taskDescription.split(delimiter, 2);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        if (taskDetails.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            throw new InvalidDateException();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        return taskDetails;"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 56
+    }
+  },
+  {
+    "path": "src/main/java/Storage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.UnknownLineFromSavedFileException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Event;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Task;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Todo;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.FileWriter;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Return task list by reading in specified text file from specified file path and"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * matching it to the related Task class."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * \u003cp\u003e"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * Write task list into specified text file"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param filePath  The specified relative file path of duke.txt"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param savedTaskDetails  the descriptions and/or date of task from text file"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @throws FileNotFoundException  if duke.txt is not found in specified file path"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @throws UnknownLineFromSavedFileException  if line read in from text file does not fall under any Task classes"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class Storage {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private String filePath;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public Storage(String filePath) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.filePath \u003d filePath;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    /*Read in and split up all lines in saved text file*/"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public ArrayList\u003cTask\u003e load() throws UnknownLineFromSavedFileException, FileNotFoundException {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        File f \u003d new File(this.filePath);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        Scanner s \u003d new Scanner(f);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        ArrayList\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        while (s.hasNext()) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            String[] savedTaskDetails \u003d s.nextLine().split(\" \\\\| \");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            tasks.add(importSavedTasks(savedTaskDetails));"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        return tasks;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    /*Identify and create Task based on task type read in saved text file"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    * Throws error message if unable to identify task type"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    * */"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static Task importSavedTasks(String[] savedTaskDetails) throws UnknownLineFromSavedFileException {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        switch (savedTaskDetails[0]) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case \"T\":"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                Todo todo \u003d new Todo(savedTaskDetails[2]);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                checkTaskStatus(todo, savedTaskDetails[1]);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return todo;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case \"D\":"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                Deadline deadline \u003d new Deadline(savedTaskDetails[2], savedTaskDetails[3]);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                checkTaskStatus(deadline, savedTaskDetails[1]);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return deadline;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            case \"E\":"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                Event event \u003d new Event(savedTaskDetails[2], savedTaskDetails[3]);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                checkTaskStatus(event, savedTaskDetails[1]);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                return event;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            default:"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                throw new UnknownLineFromSavedFileException();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    /*Check task status for saved task and"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    Update task status for task marked as completed"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static void checkTaskStatus(Task task, String taskStatus){"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        if (taskStatus.equals(\"1\")) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            task.completedTask();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    /*write task list inside of text file*/"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void writeToFile(TaskList tasks) throws IOException {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        FileWriter fw \u003d new FileWriter(this.filePath);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        StringBuilder fileText \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        for (int i \u003d 0; i \u003c Task.getTotalNumberOfTask(); i++) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            fileText.append(tasks.getTaskFromList(i).writeInFile());"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            fileText.append(System.lineSeparator());"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        fw.write(fileText.toString());"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        fw.close();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 87
+    }
+  },
+  {
+    "path": "src/main/java/TaskList.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Contains ArrayList of Task class for program and methods to"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * make tasks within Task list"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class TaskList {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private ArrayList\u003cTask\u003e taskList;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public TaskList() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.taskList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public TaskList(ArrayList\u003cTask\u003e taskList) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.taskList \u003d taskList;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void addToList(Task task){"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        taskList.add(task);"
       },
       {
         "lineNumber": 24,
@@ -858,406 +1632,688 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void addNewDeadline(ArrayList\u003cTask\u003e taskList, String taskDescription) throws InvalidDateException {"
+        "content": "    public Task getTaskFromList(int taskNumber) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        String[] taskDetails \u003d taskDescription.split(\" /by \", 2);"
+        "content": "        return taskList.get(taskNumber);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        if (taskDetails.length \u003d\u003d 1) {"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            throw new InvalidDateException();"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        }"
+        "content": "    public void completeTask(int taskNumber) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        Deadline deadline \u003d new Deadline(taskDetails[0], taskDetails[1]);"
+        "content": "        taskList.get(taskNumber).completedTask();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        addTaskInList(deadline, taskList);"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        printAddedTask(taskList);"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "    public void removeTaskFromList(int taskNumber) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "        taskList.remove(taskNumber);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void printAddedTask(ArrayList\u003cTask\u003e taskList) {"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"Got it. I\u0027ve added this task\");"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"  \" + taskList.get(Task.getTotalNumberOfTask() - 1).toString());"
+        "content": "    public ArrayList\u003cTask\u003e getTaskList() { return taskList; }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"Now you have \" + Task.getTotalNumberOfTask() + \" tasks in the list\");"
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 39
+    }
+  },
+  {
+    "path": "src/main/java/Ui.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Task;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.util.Scanner;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Messages that are printed to the user from different commands"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class Ui {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String DIVIDER \u003d \"_________________________________________________\";"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String GREETING \u003d \"Hello from Optimus Prime\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String ASK_FOR_INSTRUCTION \u003d \"What can I do for you?\";"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String TASK_ADDED \u003d \"Got it. I\u0027ve added this task\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String TASK_COUNT_FRONT_PART \u003d \"Now you have \";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String TASK_COUNT_BACK_PART \u003d \" tasks in the list\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String LIST_TASK \u003d\"Here are the tasks in your list:\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String ERROR_HEADER \u003d \"ERROR!\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String MARKED_AS_COMPLETED_MESSAGE \u003d \"Nice! I\u0027ve marked this task as done:\";"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String DELETE_TASK_MESSAGE \u003d \"Noted. I\u0027ve removed this task:\";"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String INDENT \u003d \"  \";"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String FILE_NOT_FOUND \u003d \"Unable to find File\";"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String END_MESSAGE \u003d \"Bye. Hope to see you again soon!\";"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private static final String FOUND_MESSAGE \u003d \"Here are the matching tasks in your list:\";"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    static String readCommand(){"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "        String userInput;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "        Scanner scan \u003d new Scanner(System.in);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void greetUser() {"
+        "content": "        userInput \u003d scan.nextLine();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"Hello from Optimus Prime\");"
+        "content": "        return userInput;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"What can I do for you?\");"
+        "content": "    }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    static void showLine(){"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void addTaskInList(Task task, ArrayList\u003cTask\u003e taskList) {"
+        "content": "        showToUser(DIVIDER);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        taskList.add(task);"
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    private static void showToUser(String... messages){"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void markedAsDone(ArrayList\u003cTask\u003e taskList, String numberInput) throws InvalidDoneException, AlreadyDoneException {"
+        "content": "        for (String m: messages) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        int taskNumber \u003d Integer.parseInt(numberInput) - 1;"
+        "content": "            System.out.println(m);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        if (taskNumber \u003d\u003d -1 || taskNumber \u003e\u003d taskList.size()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            throw new InvalidDoneException();"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        if (taskList.get(taskNumber).getIsDone()) {"
+        "content": "    public static void greetUser() {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            throw new AlreadyDoneException();"
+        "content": "        showToUser(GREETING,"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        } else {"
+        "content": "                ASK_FOR_INSTRUCTION ,"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            taskList.get(taskNumber).completedTask();"
+        "content": "                DIVIDER);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            System.out.println(\"Nice! I\u0027ve marked this task as done:\");"
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            System.out.println(\"  \" + taskList.get(taskNumber).toString());"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        }"
+        "content": "    public static void printAddedTask(Task task) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "        showToUser(TASK_ADDED,"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "                INDENT + task.toString(),"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void listTasks(ArrayList\u003cTask\u003e taskList) {"
+        "content": "                TASK_COUNT_FRONT_PART + Task.getTotalNumberOfTask() + TASK_COUNT_BACK_PART,"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"Here are the tasks in your list:\");"
+        "content": "                DIVIDER);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        for (int i \u003d 0; i \u003c Task.getTotalNumberOfTask(); i++) {"
+        "content": "    }"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            System.out.println((i + 1) + \".\" + taskList.get(i).toString());"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        }"
+        "content": "    public static void printCompletedMessage(Task task){"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "        showToUser(MARKED_AS_COMPLETED_MESSAGE,"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "                INDENT + task.toString(),"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void addNewTodo(ArrayList\u003cTask\u003e taskList, String taskDescription) {"
+        "content": "                DIVIDER);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        Todo toDo \u003d new Todo(taskDescription);"
+        "content": "    }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        addTaskInList(toDo, taskList);"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        printAddedTask(taskList);"
+        "content": "    public static void printDeletedMessage(Task task){"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "        showToUser(DELETE_TASK_MESSAGE,"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "                INDENT + task.toString(),"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void deleteTask(ArrayList\u003cTask\u003e taskList, String taskNumber) {"
+        "content": "                TASK_COUNT_FRONT_PART + Task.getTotalNumberOfTask() + TASK_COUNT_BACK_PART,"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"Noted. I\u0027ve removed this task:\");"
+        "content": "                DIVIDER);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"  \" + taskList.get(Integer.parseInt(taskNumber) - 1).toString());"
+        "content": "    }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        taskList.remove(Integer.parseInt(taskNumber) - 1);"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        Task.reduceTotalNumberOfTask();"
+        "content": "    public static void printEndMessage(){"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        System.out.println(\"Now you have \" + Task.getTotalNumberOfTask() + \" tasks in the list\");"
+        "content": "        showToUser(END_MESSAGE,DIVIDER);"
       },
       {
         "lineNumber": 84,
@@ -1278,269 +2334,136 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static void addSavedTasks(ArrayList\u003cTask\u003e taskList, String[] savedTaskDetails) throws UnknownLineFromSavedFileException {"
+        "content": "    public static void listTasks(String fullList) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        switch (savedTaskDetails[0]) {"
+        "content": "        showToUser(LIST_TASK,"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            case \"T\":"
+        "content": "                fullList,"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                Todo todo \u003d new Todo(savedTaskDetails[2]);"
+        "content": "                DIVIDER);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                updateTaskStatus(todo, savedTaskDetails[1]);"
+        "content": "    }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                addTaskInList(todo, taskList);"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                break;"
+        "content": "    public static void listFoundTasks(String foundTasks) {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            case \"D\":"
+        "content": "        showToUser(FOUND_MESSAGE,"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                Deadline deadline \u003d new Deadline(savedTaskDetails[2], savedTaskDetails[3]);"
+        "content": "                foundTasks,"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                updateTaskStatus(deadline, savedTaskDetails[1]);"
+        "content": "                DIVIDER);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                addTaskInList(deadline, taskList);"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                break;"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            case \"E\":"
+        "content": "    public static void showLoadingError(){"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                Event event \u003d new Event(savedTaskDetails[2], savedTaskDetails[3]);"
+        "content": "        System.out.println(FILE_NOT_FOUND);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                updateTaskStatus(event, savedTaskDetails[1]);"
+        "content": "    }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                addTaskInList(event, taskList);"
+        "content": ""
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                break;"
+        "content": "    public static void showError(String errorMessage){"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "            default:"
+        "content": "        showToUser(ERROR_HEADER, errorMessage, DIVIDER);"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "                throw new UnknownLineFromSavedFileException();"
+        "content": "    }"
       },
       {
         "lineNumber": 105,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    private static void updateTaskStatus(Task task, String taskStatus){"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        if (taskStatus.equals(\"1\")) {"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            task.completedTask();"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    static void writeToFile(ArrayList\u003cTask\u003e taskList) throws IOException {"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        FileWriter fw \u003d new FileWriter(\"duke.txt\");"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        String fileText \u003d \"\";"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        for (int i \u003d 0; i \u003c Task.getTotalNumberOfTask(); i++) {"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            fileText +\u003d taskList.get(i).writeInFile();"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "            fileText +\u003d System.lineSeparator();"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        fw.write(fileText);"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "        fw.close();"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "bennychanya"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 124,
         "author": {
           "gitId": "bennychanya"
         },
@@ -1548,7 +2471,2104 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 124
+      "bennychanya": 105
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/AddDeadlineCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Deadline;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Instantiate new Deadline class to insert into TaskList"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param taskDescription  Name of task"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param date  due date and and time of task"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class AddDeadlineCommand extends Command {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"deadline\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private String taskDescription;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private String date;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public AddDeadlineCommand(String taskDescription, String date){"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.taskDescription \u003d taskDescription;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.date \u003d date;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        Deadline deadline \u003d new Deadline(taskDescription, date);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        tasks.addToList(deadline);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        Ui.printAddedTask(deadline);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        storage.writeToFile(tasks);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 35
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/AddEventCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Event;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Instantiate new Event class to insert into TaskList"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param taskDescription  Name of event"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param date  date and time of Event"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class AddEventCommand extends Command {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"event\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private String taskDescription;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private String date;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public AddEventCommand(String taskDescription, String date){"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.taskDescription \u003d taskDescription;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.date \u003d date;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        Event event \u003d new Event(taskDescription, date);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        tasks.addToList(event);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        Ui.printAddedTask(event);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        storage.writeToFile(tasks);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 35
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/AddTodoCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Todo;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Instantiate new Todo class to insert into TaskList"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param taskDescription  Name of task"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class AddTodoCommand extends Command {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"todo\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private String taskDescription;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public AddTodoCommand(String taskDescription){"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.taskDescription \u003d taskDescription;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        Todo todo \u003d new Todo(taskDescription);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        tasks.addToList(todo);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        Ui.printAddedTask(todo);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        storage.writeToFile(tasks);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 30
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/Command.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.AlreadyDoneException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.InvalidDeleteException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.InvalidDoneException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.NoTaskFoundException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public abstract class Command{"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public boolean isExit() { return false; }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, InvalidDeleteException, InvalidDoneException, AlreadyDoneException, NoTaskFoundException;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 19
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/DeleteCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.InvalidDeleteException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Task;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Remove specified task from Task List and display removed task to user"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param taskNumber  ArrayList index of specified task"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @throw InvalidDeleteException  if taskNumber \u003d\u003d 0 or taskNumber \u003e\u003d Total Number of Task in Task List"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class DeleteCommand extends Command{"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private int taskNumber;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    /*Convert task number from number input to array index */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public DeleteCommand(String taskNumber){"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.taskNumber \u003d Integer.parseInt(taskNumber) - 1;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws InvalidDeleteException, IOException {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        if (taskNumber \u003d\u003d -1 || taskNumber \u003e\u003d Task.getTotalNumberOfTask()) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            throw new InvalidDeleteException();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            Task deletedTask \u003d tasks.getTaskFromList(taskNumber);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            tasks.removeTaskFromList(taskNumber);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            Task.reduceTotalNumberOfTask();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            ui.printDeletedMessage(deletedTask);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            storage.writeToFile(tasks);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 38
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/DoneCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.AlreadyDoneException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.InvalidDoneException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Task;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Mark specified task from Task List as done and display completed task to user"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param taskNumber  ArrayList index of specified task"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @throw InvalidDoneException  if taskNumber \u003d\u003d 0 or taskNumber \u003e\u003d Total Number of Task in Task List"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @throw AlreadyDoneException  if specified task isDone \u003d\u003d true before command is executed"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class DoneCommand extends Command{"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"done\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private int taskNumber;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    /*Convert task number from number input to array index */"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public DoneCommand(String taskNumber){"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.taskNumber \u003d Integer.parseInt(taskNumber) - 1;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws InvalidDoneException, AlreadyDoneException, IOException {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        if (taskNumber \u003d\u003d -1 || taskNumber \u003e\u003d Task.getTotalNumberOfTask()) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            throw new InvalidDoneException();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        if (tasks.getTaskFromList(taskNumber).getIsDone()) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            throw new AlreadyDoneException();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            tasks.completeTask(taskNumber);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            Ui.printCompletedMessage(tasks.getTaskFromList(taskNumber));"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            storage.writeToFile(tasks);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 41
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ExitCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Print out End Message to user"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * Return true for isExit() method to break loop in Main method and Terminate the program"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class ExitCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"bye\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage){"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        ui.printEndMessage();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 21
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/FindCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.exceptions.NoTaskFoundException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Task;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/**Read in keyword from user and compare it to task descriptions of"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * all the Task in taskList. All comparisons are not case-sensitive"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * Stored all Task with task descriptions which contains keyword inside"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * a separate ArrayList\u003cTask\u003e to print in a list format"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " * @param keyword  Word from user to find"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class FindCommand extends Command {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    private String keyword;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public FindCommand(String keyword){"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        this.keyword \u003d keyword.toLowerCase();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage) throws NoTaskFoundException {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        ArrayList\u003cTask\u003e taskList \u003d tasks.getTaskList();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        ArrayList\u003cTask\u003e foundTask \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        for (Task task: taskList) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            if (task.getDescription().toLowerCase().contains(keyword)) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                foundTask.add(task);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        int numberOfTaskFound \u003d foundTask.size();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        if (numberOfTaskFound \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            throw new NoTaskFoundException();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            StringBuilder foundList \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            for (int i \u003d 0; i \u003c numberOfTaskFound; i++) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "                foundList.append(i + 1).append(\".\").append(foundTask.get(i).toString()).append(System.lineSeparator());"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            ui.listFoundTasks(foundList.toString().trim());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 48
+    }
+  },
+  {
+    "path": "src/main/java/duke/command/ListCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.command;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Storage;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.TaskList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.Ui;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "import src.main.java.duke.task.Task;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "/** Print out all task contained in Task List to user"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "*/"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class ListCommand extends Command {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public void execute(TaskList tasks, Ui ui, Storage storage){"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        StringBuilder fullList \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        for (int i \u003d 0; i \u003c Task.getTotalNumberOfTask(); i++) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "            fullList.append(i + 1).append(\".\").append(tasks.getTaskFromList(i).toString()).append(System.lineSeparator());"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        ui.listTasks(fullList.toString().trim());"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 21
     }
   },
   {
@@ -1574,7 +4594,51 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "public class AlreadyDoneException extends Exception {"
+        "content": "public class AlreadyDoneException extends DukeException {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String getMessage() { return \"Task has already been completed.\"; }"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 5
+    }
+  },
+  {
+    "path": "src/main/java/duke/exceptions/DukeException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public abstract class DukeException extends Exception{"
       },
       {
         "lineNumber": 4,
@@ -1611,10 +4675,17 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "public class InvalidCommandException extends Exception {"
+        "content": "public class InvalidCommandException extends DukeException {"
       },
       {
         "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String getMessage() { return \"OOPS!!! I\u0027m sorry, but I don\u0027t know what that means :-\u003c\"; }"
+      },
+      {
+        "lineNumber": 5,
         "author": {
           "gitId": "bennychanya"
         },
@@ -1622,7 +4693,7 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 4
+      "bennychanya": 5
     }
   },
   {
@@ -1648,10 +4719,17 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "public class InvalidDateException extends Exception {"
+        "content": "public class InvalidDateException extends DukeException {"
       },
       {
         "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String getMessage() { return \"Please re-enter command with the time and/or date.\"; }"
+      },
+      {
+        "lineNumber": 5,
         "author": {
           "gitId": "bennychanya"
         },
@@ -1659,7 +4737,51 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 4
+      "bennychanya": 5
+    }
+  },
+  {
+    "path": "src/main/java/duke/exceptions/InvalidDeleteException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class InvalidDeleteException extends DukeException {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String getMessage() { return \"Unable to process delete statement\"; }"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 5
     }
   },
   {
@@ -1685,10 +4807,17 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "public class InvalidDoneException extends Exception {"
+        "content": "public class InvalidDoneException extends DukeException {"
       },
       {
         "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String getMessage() { return \"Unable to process done statement\"; }"
+      },
+      {
+        "lineNumber": 5,
         "author": {
           "gitId": "bennychanya"
         },
@@ -1696,7 +4825,65 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 4
+      "bennychanya": 5
+    }
+  },
+  {
+    "path": "src/main/java/duke/exceptions/NoTaskFoundException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "package src.main.java.duke.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "public class NoTaskFoundException extends DukeException {"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String getMessage(){"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "        return \"No matching task found in your list\";"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "bennychanya": 7
     }
   },
   {
@@ -1722,10 +4909,17 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "public class UnknownLineFromSavedFileException extends Exception {"
+        "content": "public class UnknownLineFromSavedFileException extends DukeException {"
       },
       {
         "lineNumber": 4,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String getMessage() { return \"Unknown line read from Save File\"; }"
+      },
+      {
+        "lineNumber": 5,
         "author": {
           "gitId": "bennychanya"
         },
@@ -1733,7 +4927,7 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 4
+      "bennychanya": 5
     }
   },
   {
@@ -1780,94 +4974,101 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    protected String date;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    protected String date;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public Deadline(String description, String date) {"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        super(description);"
+        "content": "    public Deadline(String description, String date) {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        this.date \u003d date;"
+        "content": "        super(description);"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        this.taskType \u003d DEADLINE;"
+        "content": "        this.date \u003d date;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "        this.taskType \u003d DEADLINE;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        return \"[\" + taskType + \"]\" + super.toString() + \" (by: \" + date + \")\";"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": "        return \"[\" + taskType + \"]\" + super.toString() + \" (by: \" + date + \")\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public String writeInFile() { return super.writeInFile() + \" | \" + date;}"
+        "content": ""
       },
       {
         "lineNumber": 19,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "    public String writeInFile() { return super.writeInFile() + \" | \" + date;}"
+      },
+      {
+        "lineNumber": 20,
         "author": {
           "gitId": "bennychanya"
         },
@@ -1875,7 +5076,7 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 19
+      "bennychanya": 20
     }
   },
   {
@@ -2057,7 +5258,7 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    static int totalNumberOfTask \u003d 0;"
+        "content": "    protected static int totalNumberOfTask \u003d 0;"
       },
       {
         "lineNumber": 5,
@@ -2148,7 +5349,7 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public static int reduceTotalNumberOfTask() {"
+        "content": "    public static void reduceTotalNumberOfTask() {"
       },
       {
         "lineNumber": 18,
@@ -2162,157 +5363,164 @@
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        return totalNumberOfTask;"
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    public String getStatusIcon() {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public String getStatusIcon() {"
+        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        return (isDone ? \"\\u2713\" : \"\\u2718\");"
+        "content": "    }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    public void completedTask() {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public void completedTask() {"
+        "content": "        isDone \u003d true;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        this.isDone \u003d true;"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public String toString() {"
+        "content": "        return \"[\" + getStatusIcon() + \"] \" + description;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        return \"[\" + getStatusIcon() + \"] \" + description;"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    public boolean getIsDone() { return isDone; }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public boolean getIsDone() { return isDone; }"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": ""
+        "content": "    public String writeInFile() {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "    public String writeInFile() {"
+        "content": "        String taskStatus \u003d (isDone ? \"1\" : \"0\");"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        String taskStatus \u003d (isDone ? \"1\" : \"0\");"
+        "content": "        return taskType + \" | \" + taskStatus + \" | \" + description;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        String s \u003d taskType + \" | \" + taskStatus + \" | \" + description;"
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "        return s; }"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "bennychanya"
         },
-        "content": "}"
+        "content": "    public String getDescription() { return description; }"
       },
       {
         "lineNumber": 41,
+        "author": {
+          "gitId": "bennychanya"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 42,
         "author": {
           "gitId": "bennychanya"
         },
@@ -2320,7 +5528,7 @@
       }
     ],
     "authorContributionMap": {
-      "bennychanya": 41
+      "bennychanya": 42
     }
   },
   {
