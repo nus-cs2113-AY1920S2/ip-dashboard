@@ -2424,213 +2424,269 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "import static duke.constants.Messages.MESSAGE_DEADLINE_DESCRIPTION_CANNOT_BE_EMPTY;"
+        "content": "import static duke.constants.Messages.*;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "import static duke.constants.Messages.MESSAGE_TIME_DEADLINE_CANNOT_BE_EMPTY;"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "public class DeadlineCommand extends Command {"
+        "content": " * The deadline Command adds deadlines to the current task list."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public DeadlineCommand (String command) {"
+        "content": "public class DeadlineCommand extends Command {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        super();"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        this.command \u003d command;"
+        "content": "    public DeadlineCommand (String command) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "        super();"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "        this.command \u003d command;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public void execute(TaskList taskList, Ui uiInput, Storage storage) throws DukeException, ParseException {"
+        "content": "    }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        String[] words \u003d command.split(\" \",2);"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        if (words.length \u003d\u003d 1) {"
+        "content": "    public void execute(TaskList taskList, Ui uiInput, Storage storage) throws DukeException, ParseException {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            throw new DukeException(MESSAGE_DEADLINE_DESCRIPTION_CANNOT_BE_EMPTY);"
+        "content": "        String[] words \u003d command.split(\" \",2);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        }"
+        "content": "        if (words.length \u003d\u003d 1) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        String[] wordSplitter \u003d words[1].split(\"/by\");"
+        "content": "            throw new DukeException(MESSAGE_DEADLINE_DESCRIPTION_CANNOT_BE_EMPTY);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        String[] dateTime \u003d wordSplitter[1].trim().split(\" \");"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        if (dateTime.length \u003e 1) {"
+        "content": "        else if (words[1].equals(\" \") || (words[1].equals(\"\"))) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            Tasks task \u003d new Deadline(wordSplitter[0].trim(), timeConverter.dateTime(wordSplitter[1].trim()));"
+        "content": "            throw new DukeException(MESSAGE_DEADLINE_DESCRIPTION_CANNOT_BE_EMPTY);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            taskList.addTasks(task);"
+        "content": "        }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            storage.writeFile(taskList);"
+        "content": "        String[] wordSplitter \u003d words[1].split(\"/by\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "        if (wordSplitter[0].equals(\" \") || wordSplitter[0].equals(\"\")) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        }"
+        "content": "            throw new DukeException(MESSAGE_DEADLINE_DESCRIPTION_CANNOT_BE_EMPTY);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        else {"
+        "content": "        }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            throw new DukeException(MESSAGE_TIME_DEADLINE_CANNOT_BE_EMPTY);"
+        "content": "        String[] dateTime \u003d wordSplitter[1].trim().split(\" \");"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        }"
+        "content": "        if (dateTime.length \u003e 1) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "            Tasks task \u003d new Deadline(wordSplitter[0].trim(), timeConverter.dateTime(wordSplitter[1].trim()));"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public boolean isExit() {"
+        "content": "            taskList.addTasks(task);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        return false;"
+        "content": "            storage.writeFile(taskList);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 43,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        else {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "            throw new DukeException(MESSAGE_TIME_DEADLINE_CANNOT_BE_EMPTY);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
         "author": {
           "gitId": "Yukilite"
         },
@@ -2638,7 +2694,7 @@
       }
     ],
     "authorContributionMap": {
-      "Yukilite": 43
+      "Yukilite": 51
     }
   },
   {
@@ -3179,14 +3235,14 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "import static duke.constants.Messages.MESSAGE_EVENT_DESCRIPTION_CANNOT_BE_EMPTY;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "import static duke.constants.Messages.MESSAGE_TIME_EVENT_CANNOT_BE_EMPTY;"
+        "content": "import static duke.constants.Messages.*;"
       },
       {
         "lineNumber": 14,
@@ -3277,42 +3333,42 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        String[] wordSplitter \u003d words[1].split(\"/at\");"
+        "content": "        else if (words[1].equals(\" \") || (words[1].equals(\"\"))) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        String[] dateTime \u003d wordSplitter[1].trim().split(\" \");"
+        "content": "            throw new DukeException(MESSAGE_EVENT_DESCRIPTION_CANNOT_BE_EMPTY);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        if (dateTime.length \u003e 1) {"
+        "content": "        }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            Tasks task \u003d new Event(wordSplitter[0].trim(), timeConverter.dateTime(wordSplitter[1].trim()));"
+        "content": "        String[] wordSplitter \u003d words[1].split(\"/at\");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            taskList.addTasks(task);"
+        "content": "        if (wordSplitter[0].equals(\" \") || wordSplitter[0].equals(\"\")) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            storage.writeFile(taskList);"
+        "content": "            throw new DukeException(MESSAGE_EVENT_DESCRIPTION_CANNOT_BE_EMPTY);"
       },
       {
         "lineNumber": 32,
@@ -3326,52 +3382,94 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        else {"
+        "content": "        String[] dateTime \u003d wordSplitter[1].trim().split(\" \");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            throw new DukeException(MESSAGE_TIME_EVENT_CANNOT_BE_EMPTY);"
+        "content": "        if (dateTime.length \u003e 1) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        }"
+        "content": "            Tasks task \u003d new Event(wordSplitter[0].trim(), timeConverter.dateTime(wordSplitter[1].trim()));"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "            taskList.addTasks(task);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public boolean isExit() {"
+        "content": "            storage.writeFile(taskList);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        return false;"
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "        else {"
       },
       {
         "lineNumber": 40,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "            throw new DukeException(MESSAGE_TIME_EVENT_CANNOT_BE_EMPTY);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
         "author": {
           "gitId": "Yukilite"
         },
@@ -3379,7 +3477,7 @@
       }
     ],
     "authorContributionMap": {
-      "Yukilite": 40
+      "Yukilite": 46
     }
   },
   {
@@ -4076,42 +4174,42 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        Tasks task \u003d new Todo(words[1].trim());"
+        "content": "        else if (words[1].equals(\" \") || (words[1].equals(\"\"))) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        taskList.addTasks(task);"
+        "content": "            throw new DukeException(MESSAGE_TODO_DESCRIPTION_CANNOT_BE_EMPTY);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        storage.writeFile(taskList);"
+        "content": "        }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "        Tasks task \u003d new Todo(words[1].trim());"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public boolean isExit() {"
+        "content": "        taskList.addTasks(task);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        return false;"
+        "content": "        storage.writeFile(taskList);"
       },
       {
         "lineNumber": 31,
@@ -4125,11 +4223,32 @@
         "author": {
           "gitId": "Yukilite"
         },
+        "content": "    public boolean isExit() {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Yukilite"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "Yukilite": 32
+      "Yukilite": 35
     }
   },
   {
@@ -4197,273 +4316,273 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String COMMAND_DEADLINE_WORD \u003d \"deadline\";"
+        "content": "    public static final String COMMAND_FIND_WORD \u003d \"find\";"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String COMMAND_TODO_WORD \u003d \"todo\";"
+        "content": "    public static final String COMMAND_DEADLINE_WORD \u003d \"deadline\";"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String COMMAND_DELETE_WORD \u003d \"delete\";"
+        "content": "    public static final String COMMAND_TODO_WORD \u003d \"todo\";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String COMMAND_BYE_WORD \u003d \"bye\";"
+        "content": "    public static final String COMMAND_DELETE_WORD \u003d \"delete\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_LIST_TASKS \u003d \" Here are the tasks in your list:\";"
+        "content": "    public static final String COMMAND_BYE_WORD \u003d \"bye\";"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_ADD_TASK \u003d \" Got it. I\u0027ve added this task:\";"
+        "content": "    public static final String MESSAGE_LIST_TASKS \u003d \" Here are the tasks in your list:\";"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_LOADINGERROR \u003d \" Sorry. This file does not exist.\";"
+        "content": "    public static final String MESSAGE_ADD_TASK \u003d \" Got it. I\u0027ve added this task:\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_MARK_DONE \u003d \" Nice! I\u0027ve marked this task as done:\";"
+        "content": "    public static final String MESSAGE_LOADINGERROR \u003d \" Sorry. This file does not exist.\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_MATCHING_TASKS \u003d \" Here are the matching tasks in your lists:\";"
+        "content": "    public static final String MESSAGE_MARK_DONE \u003d \" Nice! I\u0027ve marked this task as done:\";"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_GOODBYE \u003d \" Bye. Hope to see you again soon!\";"
+        "content": "    public static final String MESSAGE_MATCHING_TASKS \u003d \" Here are the matching tasks in your lists:\";"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_REMOVED_TASKS \u003d \" Noted. I\u0027ve removed this task: \";"
+        "content": "    public static final String MESSAGE_GOODBYE \u003d \" Bye. Hope to see you again soon!\";"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_LIST_START \u003d \"Now you have \";"
+        "content": "    public static final String MESSAGE_REMOVED_TASKS \u003d \" Noted. I\u0027ve removed this task: \";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_LIST_END \u003d \" task in the list\";"
+        "content": "    public static final String MESSAGE_LIST_START \u003d \"Now you have \";"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_DEADLINE_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of a deadline cannot be empty.\";"
+        "content": "    public static final String MESSAGE_LIST_END \u003d \" task in the list\";"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_TIME_DEADLINE_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The time for a deadline cannot be empty.\";"
+        "content": "    public static final String MESSAGE_DEADLINE_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of a deadline cannot be empty.\";"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_TIME_EVENT_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The time for an event cannot be empty.\";"
+        "content": "    public static final String MESSAGE_TIME_DEADLINE_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The time for a deadline cannot be empty.\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_NO_APPROPRIATE_KEYWORD \u003d \"☹ OOPS!!! You did not fill in an appropriate keyword.\";"
+        "content": "    public static final String MESSAGE_TIME_EVENT_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The time for an event cannot be empty.\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_EVENT_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of an event cannot be empty.\";"
+        "content": "    public static final String MESSAGE_NO_APPROPRIATE_KEYWORD \u003d \"☹ OOPS!!! You did not fill in an appropriate keyword.\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_DELETE_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of a delete cannot be empty.\";"
+        "content": "    public static final String MESSAGE_EVENT_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of an event cannot be empty.\";"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_TODO_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of a todo cannot be empty.\";"
+        "content": "    public static final String MESSAGE_DELETE_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of a delete cannot be empty.\";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_NO_TASK_TO_MARK_DONE \u003d \"☹ OOPS!!! You did not provide a task to mark as done.\";"
+        "content": "    public static final String MESSAGE_TODO_DESCRIPTION_CANNOT_BE_EMPTY \u003d \"☹ OOPS!!! The description of a todo cannot be empty.\";"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_NO_COMMAND_EXISTS \u003d \"☹ OOPS!!! No such command exists! Try again?\";"
+        "content": "    public static final String MESSAGE_NO_TASK_TO_MARK_DONE \u003d \"☹ OOPS!!! You did not provide a task to mark as done.\";"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_ENTER_TASK\u003d \"Please enter a task.\";"
+        "content": "    public static final String MESSAGE_NO_COMMAND_EXISTS \u003d \"☹ OOPS!!! No such command exists! Try again?\";"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_REENTER_DATE\u003d\"Please enter date in the correct format dd/mm/yyyy hhmm\";"
+        "content": "    public static final String MESSAGE_ENTER_TASK\u003d \"Please enter a task.\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_REENTER_TASK_NUMBER \u003d \"Please provide a task number to delete.\";"
+        "content": "    public static final String MESSAGE_REENTER_DATE\u003d\"Please enter date in the correct format dd/mm/yyyy hhmm\";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String MESSAGE_NO_TASK_NUMBER_EXISTS \u003d \"The task number you entered does not exist.\";"
+        "content": "    public static final String MESSAGE_REENTER_TASK_NUMBER \u003d \"Please provide a task number to delete.\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String divider \u003d \"____________________________________________________________\";"
+        "content": "    public static final String MESSAGE_NO_TASK_NUMBER_EXISTS \u003d \"The task number you entered does not exist.\";"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "    public static final String divider \u003d \"____________________________________________________________\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String logo \u003d \" ____        _        \\n\""
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            + \"|  _ \\\\ _   _| | _____ \\n\""
+        "content": "    public static final String logo \u003d \" ____        _        \\n\""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            + \"| | | | | | | |/ / _ \\\\\\n\""
+        "content": "            + \"|  _ \\\\ _   _| | _____ \\n\""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            + \"| |_| | |_| |   \u003c  __/\\n\""
+        "content": "            + \"| | | | | | | |/ / _ \\\\\\n\""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
+        "content": "            + \"| |_| | |_| |   \u003c  __/\\n\""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "            + \"|____/ \\\\__,_|_|\\\\_\\\\___|\\n\";"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static final String lvlzero \u003d \"____________________________________________________________\\n\""
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            + \" Hello! I\u0027m Duke \\n\""
+        "content": "    public static final String lvlzero \u003d \"____________________________________________________________\\n\""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            + \" What can I do for you?\\n\""
+        "content": "            + \" Hello! I\u0027m Duke \\n\""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            + \"____________________________________________________________\\n\";"
+        "content": "            + \" What can I do for you?\\n\""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "            + \"____________________________________________________________\\n\";"
       },
       {
         "lineNumber": 48,
@@ -4477,31 +4596,38 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static void printLogoMessage(String lvlzero) {"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        System.out.println(lvlzero);"
+        "content": "    public static void printLogoMessage(String lvlzero) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "        System.out.println(lvlzero);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 53,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
         "author": {
           "gitId": "Yukilite"
         },
@@ -4509,7 +4635,7 @@
       }
     ],
     "authorContributionMap": {
-      "Yukilite": 53
+      "Yukilite": 54
     }
   },
   {
@@ -4742,178 +4868,262 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "public class Parser {"
+        "content": "/**"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    public static Command parseCommand(String input) throws DukeException {"
+        "content": " * The parser reads a user\u0027s command and sorts it into its"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        String[] words \u003d input.split(\" \", 2);"
+        "content": " * respective function."
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        String commandWord \u003d words[0];"
+        "content": " */"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        Command newCommand;"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        switch (commandWord.toLowerCase()) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        case (COMMAND_BYE_WORD):"
+        "content": "     * This method"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            return new ExitProgram();"
+        "content": "     * @param input The input provided by the user"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        case (COMMAND_LIST_WORD):"
+        "content": "     * @return Command specified by user input"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            return new ListCommand();"
+        "content": "     * @throws DukeException Catches command provided by the user"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        case (COMMAND_DONE_WORD):"
+        "content": "     */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            return new DoneCommand(input);"
+        "content": "    public static Command parseCommand(String input) throws DukeException {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        case (COMMAND_DEADLINE_WORD):"
+        "content": "        String[] words \u003d input.split(\" \", 2);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            return new DeadlineCommand(input);"
+        "content": "        String commandWord \u003d words[0];"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        case (COMMAND_EVENT_WORD):"
+        "content": "        Command newCommand;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            return new EventCommand(input);"
+        "content": "        switch (commandWord.toLowerCase()) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        case (COMMAND_DELETE_WORD):"
+        "content": "        case (COMMAND_BYE_WORD):"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            return new DeleteCommand(input);"
+        "content": "            return new ExitProgram();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        case (COMMAND_TODO_WORD):"
+        "content": "        case (COMMAND_LIST_WORD):"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            return new TodoCommand(input);"
+        "content": "            return new ListCommand();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        default:"
+        "content": "        case (COMMAND_DONE_WORD):"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            throw new DukeException(MESSAGE_NO_COMMAND_EXISTS);"
+        "content": "            return new DoneCommand(input);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        }"
+        "content": "        case (COMMAND_DEADLINE_WORD):"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "            return new DeadlineCommand(input);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "        case (COMMAND_EVENT_WORD):"
       },
       {
         "lineNumber": 32,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "            return new EventCommand(input);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        case (COMMAND_FIND_WORD):"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "            return new FindCommand(input);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        case (COMMAND_DELETE_WORD):"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "            return new DeleteCommand(input);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        case (COMMAND_TODO_WORD):"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "            return new TodoCommand(input);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "            throw new DukeException(MESSAGE_NO_COMMAND_EXISTS);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
         "author": {
           "gitId": "Yukilite"
         },
@@ -4921,7 +5131,7 @@
       }
     ],
     "authorContributionMap": {
-      "Yukilite": 32
+      "Yukilite": 44
     }
   },
   {
@@ -6728,77 +6938,77 @@
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        System.out.println(Messages.MESSAGE_MATCHING_TASKS);"
+        "content": "        System.out.println(Messages.divider);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        int count \u003d 0;"
+        "content": "        System.out.println(Messages.MESSAGE_MATCHING_TASKS);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        for (int i \u003d 0; i \u003c list.size(); i++) {"
+        "content": "        int count \u003d 0;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            if (list.get(i).description.contains(match)) {"
+        "content": "        for (int i \u003d 0; i \u003c list.size(); i++) {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "                System.out.println(count+1 + \".\" + list.get(i).toString());"
+        "content": "            if (list.get(i).description.contains(match)) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "                count++;"
+        "content": "                System.out.println(count+1 + \".\" + list.get(i).toString());"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "            }"
+        "content": "                count++;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": ""
+        "content": "        System.out.println(Messages.divider);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Yukilite"
         },
-        "content": "}"
+        "content": "    }"
       },
       {
         "lineNumber": 72,
@@ -6806,10 +7016,24 @@
           "gitId": "Yukilite"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Yukilite"
+        },
+        "content": ""
       }
     ],
     "authorContributionMap": {
-      "Yukilite": 72
+      "Yukilite": 74
     }
   },
   {
