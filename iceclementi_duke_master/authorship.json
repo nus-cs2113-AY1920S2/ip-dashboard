@@ -2530,7 +2530,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "Regarding **delimiters**, the program will **only** consider \u0027/\u0027 and \u0027-\u0027 as valid delimiters for *dates*.  Delimiters are \u003cu\u003eoptional\u003c/u\u003e and may be omitted provided you include the **year** of the *date* *(e.g. 1/1/20, 1/1 and 010120 are accepted, but not 0101).*"
+        "content": "Regarding **delimiters**, the program will **only** consider `/` and `-` as valid delimiters for *dates*.  Delimiters are \u003cu\u003eoptional\u003c/u\u003e and may be omitted provided you include the **year** of the *date* *(e.g. 1/1/20, 1/1 and 010120 are accepted, but not 0101).*"
       },
       {
         "lineNumber": 355,
@@ -2656,7 +2656,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "Regarding **delimiters**, the program will **only** consider \u0027:\u0027 and \u0027.\u0027 as valid delimiters for *time*.  Delimiters are \u003cu\u003eoptional\u003c/u\u003e and may be omitted."
+        "content": "Regarding **delimiters**, the program will **only** consider `:` and `.` as valid delimiters for *time*.  Delimiters are \u003cu\u003eoptional\u003c/u\u003e and may be omitted."
       },
       {
         "lineNumber": 373,
@@ -10581,14 +10581,14 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"Lumi needs you to follow this datetime format:\\n\" + TAB +"
+        "content": "            \"Lumi needs you to follow this date format:\\n\" + TAB +"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            toBoldAndItalic(DateTime.FORMAT) + \"\\n\";"
+        "content": "            toBoldAndItalic(\"\u003c\" + DateTime.DATE_FORMAT + \"\u003e\") + \"\\n\";"
       },
       {
         "lineNumber": 119,
@@ -10616,14 +10616,14 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"Lumi needs you to follow this datetime format:\\n\" + TAB +"
+        "content": "            \"Lumi needs you to follow this time format:\\n\" + TAB +"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            toBoldAndItalic(DateTime.FORMAT) + \"\\n\";"
+        "content": "            toBoldAndItalic(\"\u003c\" + DateTime.TIME_FORMAT + \"\u003e\") + \"\\n\";"
       },
       {
         "lineNumber": 124,
@@ -10914,21 +10914,21 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public static final String FORMAT \u003d \"\u003cdate dd/mm/yyyy\u003e \u003ctime hh:mm\u003e\";"
+        "content": "    public static final String FORMAT \u003d \"\u003cdate dd/mm/yyyy\u003e \u003ctime hh:mma\u003e\";"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private static final String DATE_FORMAT \u003d \"dd/MM/yyyy\"; // Date format to be displayed"
+        "content": "    public static final String DATE_FORMAT \u003d \"dd/MM/yyyy\"; // Date format to be displayed"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private static final String TIME_FORMAT \u003d \"hh:mma\"; // Time format to be displayed"
+        "content": "    public static final String TIME_FORMAT \u003d \"hh:mma\"; // Time format to be displayed"
       },
       {
         "lineNumber": 21,
@@ -13503,343 +13503,343 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import duke.commands.*;"
+        "content": "import duke.commands.AddDeadlineCommand;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import duke.exception.InvalidFormatException;"
+        "content": "import duke.commands.AddEventCommand;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import duke.format.DateTime;"
+        "content": "import duke.commands.AddToDoCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import duke.format.DateTimeFormat;"
+        "content": "import duke.commands.Command;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import duke.ui.UI;"
+        "content": "import duke.commands.DeleteCommand;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "import duke.commands.DoCommand;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import static duke.exception.ExceptionMessages.*;"
+        "content": "import duke.commands.DueCommand;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import static duke.format.DateTimeFormat.stringToDate;"
+        "content": "import duke.commands.ExitCommand;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "import duke.commands.FindCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "import static duke.format.DateTimeFormat.stringToDateTime;"
+        "content": "import duke.commands.HelpCommand;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "import duke.commands.InvalidCommand;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "/**"
+        "content": "import duke.commands.ListCommand;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": " * \u003ch3\u003eParser\u003c/h3\u003e"
+        "content": "import duke.exception.InvalidFormatException;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": " * The \u003cb\u003eParser\u003c/b\u003e interprets the user input that is read by the \u003cb\u003eUI.java\u003c/b\u003e."
+        "content": "import duke.format.DateTime;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": " * The \u003cb\u003eParser\u003c/b\u003e then converts the input into a \u003cb\u003eCommand\u003c/b\u003e to be executed by the \u003cb\u003eLumiChat\u003c/b\u003e program."
+        "content": "import duke.format.DateTimeFormat;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": " * @see UI"
+        "content": "import duke.ui.UI;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": " * @see Command"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": " */"
+        "content": "import static duke.exception.ExceptionMessages.ILLEGAL_LIST_NUMBER_MESSAGE;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "public class Parser {"
+        "content": "import static duke.exception.ExceptionMessages.INVALID_DATETIME_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private static final int MAX_INPUT_LENGTH \u003d 50; // Maximum length of user input accepted"
+        "content": "import static duke.exception.ExceptionMessages.INVALID_DATE_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private static final String DEADLINE_PREFIX \u003d \"/by\";"
+        "content": "import static duke.exception.ExceptionMessages.INVALID_DEADLINE_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private static final String EVENT_PREFIX \u003d \"/at\";"
+        "content": "import static duke.exception.ExceptionMessages.INVALID_DELETE_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "import static duke.exception.ExceptionMessages.INVALID_DONE_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "import static duke.exception.ExceptionMessages.INVALID_DUE_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Parses the input string read by the \u003cb\u003eUI.java\u003c/b\u003e and converts the string into a specific \u003cb\u003eCommand\u003c/b\u003e, which is"
+        "content": "import static duke.exception.ExceptionMessages.INVALID_EVENT_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * to be executed by the \u003cb\u003eLumiChat\u003c/b\u003e program."
+        "content": "import static duke.exception.ExceptionMessages.INVALID_HELP_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cp\u003e\u003c/p\u003e"
+        "content": "import static duke.exception.ExceptionMessages.INVALID_TIME_FORMAT_MESSAGE;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cb\u003eNote\u003c/b\u003e: The user input has to start with a certain keyword (i.e. \u003ci\u003ecommand word\u003c/i\u003e), otherwise an"
+        "content": "import static duke.exception.ExceptionMessages.MISSING_DATE_FILTER_MESSAGE;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003ci\u003eInvalid Command Exception\u003c/i\u003e will be thrown."
+        "content": "import static duke.exception.ExceptionMessages.MISSING_DEADLINE_INFORMATION_MESSAGE;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "import static duke.exception.ExceptionMessages.MISSING_EVENT_INFORMATION_MESSAGE;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param input The user input read by the \u003cb\u003eUI.java\u003c/b\u003e"
+        "content": "import static duke.exception.ExceptionMessages.MISSING_HELP_WORD_MESSAGE;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003ecorresponding\u003c/b\u003e command to be executed"
+        "content": "import static duke.exception.ExceptionMessages.MISSING_LIST_NUMBER_MESSAGE;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws EmptyInputException If user input is empty"
+        "content": "import static duke.exception.ExceptionMessages.MISSING_SEARCH_WORD_MESSAGE;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws InputLengthExceededException If the length of the user input \u003e {@value MAX_INPUT_LENGTH}"
+        "content": "import static duke.exception.ExceptionMessages.MISSING_TODO_DESCRIPTION_MESSAGE;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws InvalidCommandException If the user input cannot be recognised as any of the  \u003cb\u003eCommand\u003c/b\u003e"
+        "content": "import static duke.format.DateTimeFormat.stringToDate;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see UI"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see Command"
+        "content": "import static duke.format.DateTimeFormat.stringToDateTime;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public Command parseInput(String input)"
+        "content": "/**"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throws EmptyInputException, InputLengthExceededException, InvalidCommandException {"
+        "content": " * \u003ch3\u003eParser\u003c/h3\u003e"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (input.isEmpty()) {"
+        "content": " * The \u003cb\u003eParser\u003c/b\u003e interprets the user input that is read by the \u003cb\u003eUI.java\u003c/b\u003e."
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new EmptyInputException();"
+        "content": " * The \u003cb\u003eParser\u003c/b\u003e then converts the input into a \u003cb\u003eCommand\u003c/b\u003e to be executed by the \u003cb\u003eLumiChat\u003c/b\u003e program."
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": " * @see UI"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (input.length() \u003e MAX_INPUT_LENGTH) {"
+        "content": " * @see Command"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new InputLengthExceededException();"
+        "content": " */"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "public class Parser {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    private static final int MAX_INPUT_LENGTH \u003d 50; // Maximum length of user input accepted"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        // Splits user input into command word and rest of parameters (if any)"
+        "content": "    private static final String DEADLINE_PREFIX \u003d \"/by\";"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String[] separatedInput \u003d input.split(\" \", 2);"
+        "content": "    private static final String EVENT_PREFIX \u003d \"/at\";"
       },
       {
         "lineNumber": 52,
@@ -13853,217 +13853,217 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String commandWord \u003d separatedInput[0].toLowerCase();"
+        "content": "    /**"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String parameters \u003d (separatedInput.length \u003d\u003d 2) ? separatedInput[1].trim() : \"\";"
+        "content": "     * Parses the input string read by the \u003cb\u003eUI.java\u003c/b\u003e and converts the string into a specific \u003cb\u003eCommand\u003c/b\u003e, which is"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * to be executed by the \u003cb\u003eLumiChat\u003c/b\u003e program."
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        switch (commandWord) {"
+        "content": "     * \u003cp\u003e\u003c/p\u003e"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * \u003cb\u003eNote\u003c/b\u003e: The user input has to start with a certain keyword (i.e. \u003ci\u003ecommand word\u003c/i\u003e), otherwise an"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case DoCommand.COMMAND_WORD:"
+        "content": "     * \u003ci\u003eInvalid Command Exception\u003c/i\u003e will be thrown."
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createDoCommand(parameters);"
+        "content": "     *"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * @param input The user input read by the \u003cb\u003eUI.java\u003c/b\u003e"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case ListCommand.COMMAND_WORD:"
+        "content": "     * @return The \u003cb\u003ecorresponding\u003c/b\u003e command to be executed"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new ListCommand();"
+        "content": "     * @throws EmptyInputException If user input is empty"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * @throws InputLengthExceededException If the length of the user input \u003e {@value MAX_INPUT_LENGTH}"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case AddToDoCommand.COMMAND_WORD:"
+        "content": "     * @throws InvalidCommandException If the user input cannot be recognised as any of the  \u003cb\u003eCommand\u003c/b\u003e"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createToDoCommand(parameters);"
+        "content": "     * @see UI"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * @see Command"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case AddDeadlineCommand.COMMAND_WORD:"
+        "content": "     */"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createDeadlineCommand(parameters);"
+        "content": "    public Command parseInput(String input)"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            throws EmptyInputException, InputLengthExceededException, InvalidCommandException {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case AddEventCommand.COMMAND_WORD:"
+        "content": "        if (input.isEmpty()) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createEventCommand(parameters);"
+        "content": "            throw new EmptyInputException();"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD:"
+        "content": "        if (input.length() \u003e MAX_INPUT_LENGTH) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createDeleteCommand(parameters);"
+        "content": "            throw new InputLengthExceededException();"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case FindCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createFindCommand(parameters);"
+        "content": "        // Splits user input into command word and rest of parameters (if any)"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        String[] separatedInput \u003d input.split(\" \", 2);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case DueCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createDueCommand(parameters);"
+        "content": "        String commandWord \u003d separatedInput[0].toLowerCase();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        String parameters \u003d (separatedInput.length \u003d\u003d 2) ? separatedInput[1].trim() : \"\";"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case HelpCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createHelpCommand(parameters);"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 84,
@@ -14077,14 +14077,14 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        case ExitCommand.COMMAND_WORD:"
+        "content": "        case DoCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new ExitCommand();"
+        "content": "            return createDoCommand(parameters);"
       },
       {
         "lineNumber": 87,
@@ -14098,2285 +14098,2474 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        default:"
+        "content": "        case ListCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new InvalidCommandException();"
+        "content": "            return new ListCommand();"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "        case AddToDoCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            return createToDoCommand(parameters);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eDo Command\u003c/b\u003e to be executed based on the parameters in the user input."
+        "content": "        case AddDeadlineCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "            return createDeadlineCommand(parameters);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "        case AddEventCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eDo Command\u003c/b\u003e to be executed"
+        "content": "            return createEventCommand(parameters);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see DoCommand"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "        case DeleteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "            return createDeleteCommand(parameters);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createDoCommand(String parameters) {"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "        case FindCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            int index \u003d extractIndex(parameters);"
+        "content": "            return createFindCommand(parameters);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new DoCommand(index);"
+        "content": ""
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingListNumberException e) {"
+        "content": "        case DueCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_LIST_NUMBER_MESSAGE);"
+        "content": "            return createDueCommand(parameters);"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (ExcessParameterException e) {"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DONE_FORMAT_MESSAGE);"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            return createHelpCommand(parameters);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            // The list number is not an integer"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(ILLEGAL_LIST_NUMBER_MESSAGE);"
+        "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        default:"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "            throw new InvalidCommandException();"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eAdd To Do Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
+        "content": "        }"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "    }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "    /**"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eAdd To Do Command\u003c/b\u003e to be executed"
+        "content": "     * Creates the \u003cb\u003eDo Command\u003c/b\u003e to be executed based on the parameters in the user input."
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see AddToDoCommand"
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "     *"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createToDoCommand(String parameters) {"
+        "content": "     * @return The \u003cb\u003eDo Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "     * @see DoCommand"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String task \u003d extractDetails(parameters, null)[0];"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new AddToDoCommand(task);"
+        "content": "     */"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingParameterException e) {"
+        "content": "    private Command createDoCommand(String parameters) {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_TODO_DESCRIPTION_MESSAGE);"
+        "content": "        try {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "            int index \u003d extractIndex(parameters);"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            return new DoCommand(index);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        } catch (MissingListNumberException e) {"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "            return new InvalidCommand(MISSING_LIST_NUMBER_MESSAGE);"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eAdd Deadline Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
+        "content": "        } catch (ExcessParameterException e) {"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "            return new InvalidCommand(INVALID_DONE_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "            // The list number is not an integer"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eAdd Deadline Command\u003c/b\u003e to be executed"
+        "content": "            return new InvalidCommand(ILLEGAL_LIST_NUMBER_MESSAGE);"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see AddDeadlineCommand"
+        "content": "        }"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "    }"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createDeadlineCommand(String parameters) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "     * Creates the \u003cb\u003eAdd To Do Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String[] taskDetails \u003d extractDetails(parameters, DEADLINE_PREFIX);"
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String task \u003d taskDetails[0];"
+        "content": "     *"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            DateTime deadline \u003d stringToDateTime(taskDetails[1]);"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new AddDeadlineCommand(task, deadline);"
+        "content": "     * @return The \u003cb\u003eAdd To Do Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingParameterException e) {"
+        "content": "     * @see AddToDoCommand"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_DEADLINE_INFORMATION_MESSAGE);"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+        "content": "     */"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DEADLINE_FORMAT_MESSAGE);"
+        "content": "    private Command createToDoCommand(String parameters) {"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (DateTimeFormat.InvalidDateTimeException e) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DATETIME_FORMAT_MESSAGE);"
+        "content": "            String task \u003d extractDetails(parameters, null)[0];"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (DateTimeFormat.InvalidDateException e) {"
+        "content": "            return new AddToDoCommand(task);"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DATE_FORMAT_MESSAGE);"
+        "content": "        } catch (MissingParameterException e) {"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (DateTimeFormat.InvalidTimeException e) {"
+        "content": "            return new InvalidCommand(MISSING_TODO_DESCRIPTION_MESSAGE);"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_TIME_FORMAT_MESSAGE);"
+        "content": "        }"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "     * Creates the \u003cb\u003eAdd Deadline Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eAdd Event Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "     *"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "     * @return The \u003cb\u003eAdd Deadline Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eAdd Event Command\u003c/b\u003e to be executed"
+        "content": "     * @see AddDeadlineCommand"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see AddEventCommand"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "     */"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "    private Command createDeadlineCommand(String parameters) {"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createEventCommand(String parameters) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "            String[] taskDetails \u003d extractDetails(parameters, DEADLINE_PREFIX);"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String[] taskDetails \u003d extractDetails(parameters, EVENT_PREFIX);"
+        "content": "            String task \u003d taskDetails[0];"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String task \u003d taskDetails[0];"
+        "content": "            DateTime deadline \u003d stringToDateTime(taskDetails[1]);"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            DateTime dateTime \u003d stringToDateTime(taskDetails[1]);"
+        "content": "            return new AddDeadlineCommand(task, deadline);"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new AddEventCommand(task, dateTime);"
+        "content": "        } catch (MissingParameterException e) {"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingParameterException e) {"
+        "content": "            return new InvalidCommand(MISSING_DEADLINE_INFORMATION_MESSAGE);"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_EVENT_INFORMATION_MESSAGE);"
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+        "content": "            return new InvalidCommand(INVALID_DEADLINE_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_EVENT_FORMAT_MESSAGE);"
+        "content": "        } catch (DateTimeFormat.InvalidDateTimeException e) {"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (DateTimeFormat.InvalidDateTimeException e) {"
+        "content": "            return new InvalidCommand(INVALID_DATETIME_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DATETIME_FORMAT_MESSAGE);"
+        "content": "        } catch (DateTimeFormat.InvalidDateException e) {"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (DateTimeFormat.InvalidDateException e) {"
+        "content": "            return new InvalidCommand(INVALID_DATE_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DATE_FORMAT_MESSAGE);"
+        "content": "        } catch (DateTimeFormat.InvalidTimeException e) {"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (DateTimeFormat.InvalidTimeException e) {"
+        "content": "            return new InvalidCommand(INVALID_TIME_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_TIME_FORMAT_MESSAGE);"
+        "content": "        }"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "     * Creates the \u003cb\u003eAdd Event Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eDelete Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "     *"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "     * @return The \u003cb\u003eAdd Event Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eDelete Command\u003c/b\u003e to be executed"
+        "content": "     * @see AddEventCommand"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see DeleteCommand"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "     */"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "    private Command createEventCommand(String parameters) {"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createDeleteCommand(String parameters) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "            String[] taskDetails \u003d extractDetails(parameters, EVENT_PREFIX);"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            int index \u003d extractIndex(parameters);"
+        "content": "            String task \u003d taskDetails[0];"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new DeleteCommand(index);"
+        "content": "            DateTime dateTime \u003d stringToDateTime(taskDetails[1]);"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingListNumberException e) {"
+        "content": "            return new AddEventCommand(task, dateTime);"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_LIST_NUMBER_MESSAGE);"
+        "content": "        } catch (MissingParameterException e) {"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (ExcessParameterException e) {"
+        "content": "            return new InvalidCommand(MISSING_EVENT_INFORMATION_MESSAGE);"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DELETE_FORMAT_MESSAGE);"
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "            return new InvalidCommand(INVALID_EVENT_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            // The list number is not an integer"
+        "content": "        } catch (DateTimeFormat.InvalidDateTimeException e) {"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(ILLEGAL_LIST_NUMBER_MESSAGE);"
+        "content": "            return new InvalidCommand(INVALID_DATETIME_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "        } catch (DateTimeFormat.InvalidDateException e) {"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            return new InvalidCommand(INVALID_DATE_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        } catch (DateTimeFormat.InvalidTimeException e) {"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "            return new InvalidCommand(INVALID_TIME_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eFind Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
+        "content": "        }"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "    }"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "    /**"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eFind Command\u003c/b\u003e to be executed"
+        "content": "     * Creates the \u003cb\u003eDelete Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see FindCommand"
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "     *"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createFindCommand(String parameters) {"
+        "content": "     * @return The \u003cb\u003eDelete Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "     * @see DeleteCommand"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String searchWord \u003d extractDetails(parameters, null)[0];"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new FindCommand(searchWord);"
+        "content": "     */"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingParameterException e) {"
+        "content": "    private Command createDeleteCommand(String parameters) {"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_SEARCH_WORD_MESSAGE);"
+        "content": "        try {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "            int index \u003d extractIndex(parameters);"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            return new DeleteCommand(index);"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        } catch (MissingListNumberException e) {"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "            return new InvalidCommand(MISSING_LIST_NUMBER_MESSAGE);"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eDue Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
+        "content": "        } catch (ExcessParameterException e) {"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "            return new InvalidCommand(INVALID_DELETE_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "            // The list number is not an integer"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eDue Command\u003c/b\u003e to be executed"
+        "content": "            return new InvalidCommand(ILLEGAL_LIST_NUMBER_MESSAGE);"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see DueCommand"
+        "content": "        }"
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "    }"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createDueCommand(String parameters) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "     * Creates the \u003cb\u003eFind Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String dateFilter \u003d extractDetails(parameters, null)[0];"
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return createDueCommandFromDateFilter(dateFilter);"
+        "content": "     *"
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingParameterException e) {"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_DATE_FILTER_MESSAGE);"
+        "content": "     * @return The \u003cb\u003eFind Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (ExcessParameterException e) {"
+        "content": "     * @see FindCommand"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DUE_FORMAT_MESSAGE);"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (DateTimeFormat.InvalidDateException e) {"
+        "content": "     */"
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_DATETIME_FORMAT_MESSAGE);"
+        "content": "    private Command createFindCommand(String parameters) {"
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "        try {"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            String searchWord \u003d extractDetails(parameters, null)[0];"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            return new FindCommand(searchWord);"
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "        } catch (MissingParameterException e) {"
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Interprets the \u003ccode\u003edateFilter\u003c/code\u003e provided by the user for the \u003cb\u003eDue Command\u003c/b\u003e."
+        "content": "            return new InvalidCommand(MISSING_SEARCH_WORD_MESSAGE);"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e If valid, returns the corresponding \u003cb\u003eDue Command\u003c/b\u003e to be executed."
+        "content": "        }"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cp\u003e\u003c/p\u003e"
+        "content": "    }"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * The \u003ci\u003edate filter\u003c/i\u003e comprise a specified \u003ci\u003edate\u003c/i\u003e and an \u003cu\u003eoptional\u003c/u\u003e \u003ci\u003etime specifier\u003c/i\u003e."
+        "content": ""
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param dateFilter The date filter for the \u003cb\u003eDue Command\u003c/b\u003e"
+        "content": "     * Creates the \u003cb\u003eDue Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eDue Command\u003c/b\u003e to be executed"
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws ExcessParameterException If there are more than 2 parameters"
+        "content": "     *"
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws DateTimeFormat.InvalidDateException If the \u003ci\u003edate\u003c/i\u003e provided is invalid"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see DueCommand"
+        "content": "     * @return The \u003cb\u003eDue Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see DateTimeFormat"
+        "content": "     * @see DueCommand"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createDueCommandFromDateFilter(String dateFilter)"
+        "content": "     */"
       },
       {
         "lineNumber": 267,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throws ExcessParameterException, DateTimeFormat.InvalidDateException {"
+        "content": "    private Command createDueCommand(String parameters) {"
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        String[] dateFilterData \u003d dateFilter.split(\"\\\\s+\");"
+        "content": "        try {"
       },
       {
         "lineNumber": 269,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            String dateFilter \u003d extractDetails(parameters, null)[0];"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (dateFilterData.length \u003d\u003d 1) {"
+        "content": "            return createDueCommandFromDateFilter(dateFilter);"
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            // Only date is provided"
+        "content": "        } catch (MissingParameterException e) {"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new DueCommand(stringToDate(dateFilterData[0]), null);"
+        "content": "            return new InvalidCommand(MISSING_DATE_FILTER_MESSAGE);"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } else if (dateFilterData.length \u003d\u003d 2) {"
+        "content": "        } catch (ExcessParameterException e) {"
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            // Both date and time specifier is provided"
+        "content": "            return new InvalidCommand(INVALID_DUE_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 275,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new DueCommand(stringToDate(dateFilterData[1]), dateFilterData[0]);"
+        "content": "        } catch (DateTimeFormat.InvalidDateException e) {"
       },
       {
         "lineNumber": 276,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } else {"
+        "content": "            return new InvalidCommand(INVALID_DATE_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 277,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new ExcessParameterException();"
+        "content": "        }"
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "     * Interprets the \u003ccode\u003edateFilter\u003c/code\u003e provided by the user for the \u003cb\u003eDue Command\u003c/b\u003e."
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Creates the \u003cb\u003eHelp Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
+        "content": "     * \u003cbr\u003e If valid, returns the corresponding \u003cb\u003eDue Command\u003c/b\u003e to be executed."
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
+        "content": "     * \u003cp\u003e\u003c/p\u003e"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "     * The \u003ci\u003edate filter\u003c/i\u003e comprise a specified \u003ci\u003edate\u003c/i\u003e and an \u003cu\u003eoptional\u003c/u\u003e \u003ci\u003etime specifier\u003c/i\u003e."
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "     *"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003cb\u003eHelp Command\u003c/b\u003e to be executed"
+        "content": "     * @param dateFilter The date filter for the \u003cb\u003eDue Command\u003c/b\u003e"
       },
       {
         "lineNumber": 287,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see DueCommand"
+        "content": "     * @return The \u003cb\u003eDue Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see InvalidCommand"
+        "content": "     * @throws ExcessParameterException If there are more than 2 parameters"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "     * @throws DateTimeFormat.InvalidDateException If the \u003ci\u003edate\u003c/i\u003e provided is invalid"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private Command createHelpCommand(String parameters) {"
+        "content": "     * @see DueCommand"
       },
       {
         "lineNumber": 291,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        try {"
+        "content": "     * @see DateTimeFormat"
       },
       {
         "lineNumber": 292,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String helpWord \u003d extractHelpWord(parameters);"
+        "content": "     */"
       },
       {
         "lineNumber": 293,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new HelpCommand(helpWord);"
+        "content": "    private Command createDueCommandFromDateFilter(String dateFilter)"
       },
       {
         "lineNumber": 294,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (MissingParameterException e) {"
+        "content": "            throws ExcessParameterException, DateTimeFormat.InvalidDateException {"
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(MISSING_HELP_WORD_MESSAGE);"
+        "content": "        String[] dateFilterData \u003d dateFilter.split(\"\\\\s+\");"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } catch (ExcessParameterException e) {"
+        "content": ""
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new InvalidCommand(INVALID_HELP_FORMAT_MESSAGE);"
+        "content": "        if (dateFilterData.length \u003d\u003d 1) {"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "            // Only date is provided"
       },
       {
         "lineNumber": 299,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            return new DueCommand(stringToDate(dateFilterData[0]), null);"
       },
       {
         "lineNumber": 300,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        } else if (dateFilterData.length \u003d\u003d 2) {"
       },
       {
         "lineNumber": 301,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "            // Both date and time specifier is provided"
       },
       {
         "lineNumber": 302,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Returns the \u003ci\u003ehelp word\u003c/i\u003e that the user wants to query."
+        "content": "            return new DueCommand(stringToDate(dateFilterData[1]), dateFilterData[0]);"
       },
       {
         "lineNumber": 303,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "        } else {"
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": "            throw new ExcessParameterException();"
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003ci\u003ehelp word\u003c/i\u003e provided by the user"
+        "content": "        }"
       },
       {
         "lineNumber": 306,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws MissingParameterException If no \u003ci\u003ehelp word\u003c/i\u003e is given"
+        "content": "    }"
       },
       {
         "lineNumber": 307,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws ExcessParameterException If more than one \u003ci\u003ehelp word\u003c/i\u003e is given"
+        "content": ""
       },
       {
         "lineNumber": 308,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 309,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private String extractHelpWord(String parameters) throws MissingParameterException, ExcessParameterException {"
+        "content": "     * Creates the \u003cb\u003eHelp Command\u003c/b\u003e to be executed based on the \u003ccode\u003eparameters\u003c/code\u003e in the user input."
       },
       {
         "lineNumber": 310,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (parameters.isEmpty()) {"
+        "content": "     * \u003cbr\u003e Returns an \u003cb\u003eInvalid Command\u003c/b\u003e if the parameters provided are invalid."
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new MissingParameterException();"
+        "content": "     *"
       },
       {
         "lineNumber": 312,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 313,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * @return The \u003cb\u003eHelp Command\u003c/b\u003e to be executed"
       },
       {
         "lineNumber": 314,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        // Checks if there is more than one parameter"
+        "content": "     * @see DueCommand"
       },
       {
         "lineNumber": 315,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (parameters.contains(\" \")) {"
+        "content": "     * @see InvalidCommand"
       },
       {
         "lineNumber": 316,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new ExcessParameterException();"
+        "content": "     */"
       },
       {
         "lineNumber": 317,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "    private Command createHelpCommand(String parameters) {"
       },
       {
         "lineNumber": 318,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 319,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        return parameters;"
+        "content": "            String helpWord \u003d extractHelpWord(parameters);"
       },
       {
         "lineNumber": 320,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            return new HelpCommand(helpWord);"
       },
       {
         "lineNumber": 321,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        } catch (MissingParameterException e) {"
       },
       {
         "lineNumber": 322,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": "            return new InvalidCommand(MISSING_HELP_WORD_MESSAGE);"
       },
       {
         "lineNumber": 323,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Returns the \u003ci\u003eindex\u003c/i\u003e of the \u003ci\u003etask\u003c/i\u003e, based on the \u003ci\u003elist number\u003c/i\u003e provided by the user."
+        "content": "        } catch (ExcessParameterException e) {"
       },
       {
         "lineNumber": 324,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cp\u003e\u003c/p\u003e"
+        "content": "            return new InvalidCommand(INVALID_HELP_FORMAT_MESSAGE);"
       },
       {
         "lineNumber": 325,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cb\u003eNote\u003c/b\u003e: Only \u003cb\u003e1\u003c/b\u003e list number is allowed to be provided."
+        "content": "        }"
       },
       {
         "lineNumber": 326,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 327,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": ""
       },
       {
         "lineNumber": 328,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return The \u003ci\u003eindex\u003c/i\u003e of the \u003ci\u003etask\u003c/i\u003e"
+        "content": "    /**"
       },
       {
         "lineNumber": 329,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws MissingListNumberException If no \u003ci\u003elist number\u003c/i\u003e is provided"
+        "content": "     * Returns the \u003ci\u003ehelp word\u003c/i\u003e that the user wants to query."
       },
       {
         "lineNumber": 330,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws ExcessParameterException If there is more than one parameter"
+        "content": "     *"
       },
       {
         "lineNumber": 331,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 332,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private int extractIndex(String parameters) throws MissingListNumberException, ExcessParameterException {"
+        "content": "     * @return The \u003ci\u003ehelp word\u003c/i\u003e provided by the user"
       },
       {
         "lineNumber": 333,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (parameters.isEmpty()) {"
+        "content": "     * @throws MissingParameterException If no \u003ci\u003ehelp word\u003c/i\u003e is given"
       },
       {
         "lineNumber": 334,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new MissingListNumberException();"
+        "content": "     * @throws ExcessParameterException If more than one \u003ci\u003ehelp word\u003c/i\u003e is given"
       },
       {
         "lineNumber": 335,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "     */"
       },
       {
         "lineNumber": 336,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    private String extractHelpWord(String parameters) throws MissingParameterException, ExcessParameterException {"
       },
       {
         "lineNumber": 337,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        // Checks if there is more than one parameter"
+        "content": "        if (parameters.isEmpty()) {"
       },
       {
         "lineNumber": 338,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (parameters.contains(\" \")) {"
+        "content": "            throw new MissingParameterException();"
       },
       {
         "lineNumber": 339,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new ExcessParameterException();"
+        "content": "        }"
       },
       {
         "lineNumber": 340,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 341,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        // Checks if there is more than one parameter"
       },
       {
         "lineNumber": 342,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        return Integer.parseInt(parameters) - 1; // 0-based indexing"
+        "content": "        if (parameters.contains(\" \")) {"
       },
       {
         "lineNumber": 343,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "            throw new ExcessParameterException();"
       },
       {
         "lineNumber": 344,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 345,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 346,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * Interprets and returns the details of the \u003ci\u003etask\u003c/i\u003e or \u003cb\u003eCommand\u003c/b\u003e provided by the user in a"
+        "content": "        return parameters;"
       },
       {
         "lineNumber": 347,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003ccode\u003eString Array\u003c/code\u003e."
+        "content": "    }"
       },
       {
         "lineNumber": 348,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * The \u003ccode\u003eprefix\u003c/code\u003e argument is optional and represents the \u003ci\u003edatetime\u003c/i\u003e prefix for \u003cb\u003eDeadline\u003c/b\u003e"
+        "content": ""
       },
       {
         "lineNumber": 349,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * tasks ({@value DEADLINE_PREFIX}) or \u003cb\u003eEvent\u003c/b\u003e tasks ({@value EVENT_PREFIX})."
+        "content": "    /**"
       },
       {
         "lineNumber": 350,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003cp\u003e\u003c/p\u003e"
+        "content": "     * Returns the \u003ci\u003eindex\u003c/i\u003e of the \u003ci\u003etask\u003c/i\u003e, based on the \u003ci\u003elist number\u003c/i\u003e provided by the user."
       },
       {
         "lineNumber": 351,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * There are 2 cases:"
+        "content": "     * \u003cp\u003e\u003c/p\u003e"
       },
       {
         "lineNumber": 352,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003col\u003e"
+        "content": "     * \u003cb\u003eNote\u003c/b\u003e: Only \u003cb\u003e1\u003c/b\u003e list number is allowed to be provided."
       },
       {
         "lineNumber": 353,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *     \u003cli\u003e"
+        "content": "     *"
       },
       {
         "lineNumber": 354,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         \u003ccode\u003eprefix\u003c/code\u003e is \u003cb\u003e\u003cu\u003enot\u003c/u\u003e\u003c/b\u003e \u003ccode\u003eNULL\u003c/code\u003e"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 355,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         \u003cbr\u003e This is for \u003cb\u003eAdd Deadline Command\u003c/b\u003e and \u003cb\u003eAdd Event Command\u003c/b\u003e, where the \u003ci\u003edatetime\u003c/i\u003e"
+        "content": "     * @return The \u003ci\u003eindex\u003c/i\u003e of the \u003ci\u003etask\u003c/i\u003e"
       },
       {
         "lineNumber": 356,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         prefix is required to locate the datetime information. A \u003ccode\u003eString Array\u003c/code\u003e containing the task"
+        "content": "     * @throws MissingListNumberException If no \u003ci\u003elist number\u003c/i\u003e is provided"
       },
       {
         "lineNumber": 357,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         description and datetime detail is returned."
+        "content": "     * @throws ExcessParameterException If there is more than one parameter"
       },
       {
         "lineNumber": 358,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *     \u003c/li\u003e"
+        "content": "     */"
       },
       {
         "lineNumber": 359,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *     \u003cli\u003e"
+        "content": "    private int extractIndex(String parameters) throws MissingListNumberException, ExcessParameterException {"
       },
       {
         "lineNumber": 360,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         \u003ccode\u003eprefix\u003c/code\u003e \u003cb\u003eis\u003c/b\u003e \u003ccode\u003eNULL\u003c/code\u003e"
+        "content": "        if (parameters.isEmpty()) {"
       },
       {
         "lineNumber": 361,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         \u003cbr\u003e This is for \u003cb\u003eTo Do Command\u003c/b\u003e, \u003cb\u003eFind Command\u003c/b\u003e and \u003cb\u003eDue Command\u003c/b\u003e."
+        "content": "            throw new MissingListNumberException();"
       },
       {
         "lineNumber": 362,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         For the \u003cb\u003eAdd To Do Command\u003c/b\u003e, a \u003ccode\u003eString Array\u003c/code\u003e containing the task description is"
+        "content": "        }"
       },
       {
         "lineNumber": 363,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         returned.  And for the \u003cb\u003eFind Command\u003c/b\u003e and \u003cb\u003eDue Command\u003c/b\u003e, a \u003ccode\u003eString Array\u003c/code\u003e"
+        "content": ""
       },
       {
         "lineNumber": 364,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *         containing the search word(s) is returned."
+        "content": "        // Checks if there is more than one parameter"
       },
       {
         "lineNumber": 365,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *     \u003c/li\u003e"
+        "content": "        if (parameters.contains(\" \")) {"
       },
       {
         "lineNumber": 366,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * \u003c/ol\u003e"
+        "content": "            throw new ExcessParameterException();"
       },
       {
         "lineNumber": 367,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     *"
+        "content": "        }"
       },
       {
         "lineNumber": 368,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param parameters The parameters provided in the user input"
+        "content": ""
       },
       {
         "lineNumber": 369,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @param prefix The prefix string for the \u003ci\u003edatetime\u003c/i\u003e details of \u003cb\u003eDeadline\u003c/b\u003e and \u003cb\u003eEvent\u003c/b\u003e tasks"
+        "content": "        return Integer.parseInt(parameters) - 1; // 0-based indexing"
       },
       {
         "lineNumber": 370,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @return An \u003ccode\u003eString Array\u003c/code\u003e with the required details of the \u003ci\u003etask\u003c/i\u003e or \u003cb\u003eCommand\u003c/b\u003e"
+        "content": "    }"
       },
       {
         "lineNumber": 371,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @throws MissingParameterException If no \u003ci\u003etask\u003c/i\u003e details are provided"
+        "content": ""
       },
       {
         "lineNumber": 372,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see duke.task.Deadline"
+        "content": "    /**"
       },
       {
         "lineNumber": 373,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     * @see duke.task.Event"
+        "content": "     * Interprets and returns the details of the \u003ci\u003etask\u003c/i\u003e or \u003cb\u003eCommand\u003c/b\u003e provided by the user in a"
       },
       {
         "lineNumber": 374,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "     */"
+        "content": "     * \u003ccode\u003eString Array\u003c/code\u003e."
       },
       {
         "lineNumber": 375,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    private String[] extractDetails(String parameters, String prefix) throws MissingParameterException {"
+        "content": "     * The \u003ccode\u003eprefix\u003c/code\u003e argument is optional and represents the \u003ci\u003edatetime\u003c/i\u003e prefix for \u003cb\u003eDeadline\u003c/b\u003e"
       },
       {
         "lineNumber": 376,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (parameters.isEmpty()) {"
+        "content": "     * tasks ({@value DEADLINE_PREFIX}) or \u003cb\u003eEvent\u003c/b\u003e tasks ({@value EVENT_PREFIX})."
       },
       {
         "lineNumber": 377,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            throw new MissingParameterException();"
+        "content": "     * \u003cp\u003e\u003c/p\u003e"
       },
       {
         "lineNumber": 378,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "     * There are 2 cases:"
       },
       {
         "lineNumber": 379,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * \u003col\u003e"
       },
       {
         "lineNumber": 380,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        if (prefix \u003d\u003d null) {"
+        "content": "     *     \u003cli\u003e"
       },
       {
         "lineNumber": 381,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new String[]{parameters};"
+        "content": "     *         \u003ccode\u003eprefix\u003c/code\u003e is \u003cb\u003e\u003cu\u003enot\u003c/u\u003e\u003c/b\u003e \u003ccode\u003eNULL\u003c/code\u003e"
       },
       {
         "lineNumber": 382,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        } else {"
+        "content": "     *         \u003cbr\u003e This is for \u003cb\u003eAdd Deadline Command\u003c/b\u003e and \u003cb\u003eAdd Event Command\u003c/b\u003e, where the \u003ci\u003edatetime\u003c/i\u003e"
       },
       {
         "lineNumber": 383,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            int endIndexOfTask \u003d parameters.toLowerCase().indexOf(prefix);"
+        "content": "     *         prefix is required to locate the datetime information. A \u003ccode\u003eString Array\u003c/code\u003e containing the task"
       },
       {
         "lineNumber": 384,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            int indexOfDateTimeDetail \u003d endIndexOfTask + prefix.length();"
+        "content": "     *         description and datetime detail is returned."
       },
       {
         "lineNumber": 385,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     *     \u003c/li\u003e"
       },
       {
         "lineNumber": 386,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String task \u003d parameters.substring(0, endIndexOfTask).trim();"
+        "content": "     *     \u003cli\u003e"
       },
       {
         "lineNumber": 387,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            String dateTimeDetail \u003d parameters.substring(indexOfDateTimeDetail).trim();"
+        "content": "     *         \u003ccode\u003eprefix\u003c/code\u003e \u003cb\u003eis\u003c/b\u003e \u003ccode\u003eNULL\u003c/code\u003e"
       },
       {
         "lineNumber": 388,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     *         \u003cbr\u003e This is for \u003cb\u003eTo Do Command\u003c/b\u003e, \u003cb\u003eFind Command\u003c/b\u003e and \u003cb\u003eDue Command\u003c/b\u003e."
       },
       {
         "lineNumber": 389,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            if (task.length() \u003d\u003d 0 || dateTimeDetail.length() \u003d\u003d 0) {"
+        "content": "     *         For the \u003cb\u003eAdd To Do Command\u003c/b\u003e, a \u003ccode\u003eString Array\u003c/code\u003e containing the task description is"
       },
       {
         "lineNumber": 390,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "                throw new MissingParameterException();"
+        "content": "     *         returned.  And for the \u003cb\u003eFind Command\u003c/b\u003e and \u003cb\u003eDue Command\u003c/b\u003e, a \u003ccode\u003eString Array\u003c/code\u003e"
       },
       {
         "lineNumber": 391,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            }"
+        "content": "     *         containing the search word(s) is returned."
       },
       {
         "lineNumber": 392,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     *     \u003c/li\u003e"
       },
       {
         "lineNumber": 393,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            return new String[]{task, dateTimeDetail};"
+        "content": "     * \u003c/ol\u003e"
       },
       {
         "lineNumber": 394,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "        }"
+        "content": "     *"
       },
       {
         "lineNumber": 395,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    }"
+        "content": "     * @param parameters The parameters provided in the user input"
       },
       {
         "lineNumber": 396,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * @param prefix The prefix string for the \u003ci\u003edatetime\u003c/i\u003e details of \u003cb\u003eDeadline\u003c/b\u003e and \u003cb\u003eEvent\u003c/b\u003e tasks"
       },
       {
         "lineNumber": 397,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /** Signals that the user has provided an empty input. */"
+        "content": "     * @return An \u003ccode\u003eString Array\u003c/code\u003e with the required details of the \u003ci\u003etask\u003c/i\u003e or \u003cb\u003eCommand\u003c/b\u003e"
       },
       {
         "lineNumber": 398,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public static class EmptyInputException extends InvalidFormatException {}"
+        "content": "     * @throws MissingParameterException If no \u003ci\u003etask\u003c/i\u003e details are provided"
       },
       {
         "lineNumber": 399,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "     * @see duke.task.Deadline"
       },
       {
         "lineNumber": 400,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /** Signals that the user has provided an input that is longer than {@value MAX_INPUT_LENGTH} characters. */"
+        "content": "     * @see duke.task.Event"
       },
       {
         "lineNumber": 401,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public static class InputLengthExceededException extends InvalidFormatException {}"
+        "content": "     */"
       },
       {
         "lineNumber": 402,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "    private String[] extractDetails(String parameters, String prefix) throws MissingParameterException {"
       },
       {
         "lineNumber": 403,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /** Signals that the user has provided an unrecognised command */"
+        "content": "        if (parameters.isEmpty()) {"
       },
       {
         "lineNumber": 404,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public static class InvalidCommandException extends InvalidFormatException {}"
+        "content": "            throw new MissingParameterException();"
       },
       {
         "lineNumber": 405,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 406,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /** Signals that the user has not provided a list number. */"
+        "content": ""
       },
       {
         "lineNumber": 407,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public static class MissingListNumberException extends InvalidFormatException {}"
+        "content": "        if (prefix \u003d\u003d null) {"
       },
       {
         "lineNumber": 408,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            return new String[]{parameters};"
       },
       {
         "lineNumber": 409,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /** Signals that the user has provided surplus parameters. */"
+        "content": "        } else {"
       },
       {
         "lineNumber": 410,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public static class ExcessParameterException extends InvalidFormatException {}"
+        "content": "            int endIndexOfTask \u003d parameters.toLowerCase().indexOf(prefix);"
       },
       {
         "lineNumber": 411,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": ""
+        "content": "            int indexOfDateTimeDetail \u003d endIndexOfTask + prefix.length();"
       },
       {
         "lineNumber": 412,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    /** Signals that the user has not provided sufficient parameters. */"
+        "content": ""
       },
       {
         "lineNumber": 413,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "    public static class MissingParameterException extends InvalidFormatException {}"
+        "content": "            String task \u003d parameters.substring(0, endIndexOfTask).trim();"
       },
       {
         "lineNumber": 414,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            String dateTimeDetail \u003d parameters.substring(indexOfDateTimeDetail).trim();"
+      },
+      {
+        "lineNumber": 415,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 416,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            if (task.length() \u003d\u003d 0 || dateTimeDetail.length() \u003d\u003d 0) {"
+      },
+      {
+        "lineNumber": 417,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "                throw new MissingParameterException();"
+      },
+      {
+        "lineNumber": 418,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 419,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 420,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "            return new String[]{task, dateTimeDetail};"
+      },
+      {
+        "lineNumber": 421,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 422,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 423,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 424,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    /** Signals that the user has provided an empty input. */"
+      },
+      {
+        "lineNumber": 425,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public static class EmptyInputException extends InvalidFormatException {}"
+      },
+      {
+        "lineNumber": 426,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 427,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    /** Signals that the user has provided an input that is longer than {@value MAX_INPUT_LENGTH} characters. */"
+      },
+      {
+        "lineNumber": 428,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public static class InputLengthExceededException extends InvalidFormatException {}"
+      },
+      {
+        "lineNumber": 429,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 430,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    /** Signals that the user has provided an unrecognised command */"
+      },
+      {
+        "lineNumber": 431,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public static class InvalidCommandException extends InvalidFormatException {}"
+      },
+      {
+        "lineNumber": 432,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 433,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    /** Signals that the user has not provided a list number. */"
+      },
+      {
+        "lineNumber": 434,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public static class MissingListNumberException extends InvalidFormatException {}"
+      },
+      {
+        "lineNumber": 435,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 436,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    /** Signals that the user has provided surplus parameters. */"
+      },
+      {
+        "lineNumber": 437,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public static class ExcessParameterException extends InvalidFormatException {}"
+      },
+      {
+        "lineNumber": 438,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 439,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    /** Signals that the user has not provided sufficient parameters. */"
+      },
+      {
+        "lineNumber": 440,
+        "author": {
+          "gitId": "iceclementi"
+        },
+        "content": "    public static class MissingParameterException extends InvalidFormatException {}"
+      },
+      {
+        "lineNumber": 441,
         "author": {
           "gitId": "iceclementi"
         },
@@ -16384,7 +16573,7 @@
       }
     ],
     "authorContributionMap": {
-      "iceclementi": 414
+      "iceclementi": 441
     }
   },
   {
@@ -19542,7 +19731,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"NOTE: \u003cdate\u003e and \u003ctime\u003e must adhere to a certain set of date time formats. \\nTo find out about the specific\" +"
+        "content": "            \"NOTE: \u003cdate\u003e and \u003ctime\u003e must adhere to a certain set of date time formats. \\nTo find out about the specific \" +"
       },
       {
         "lineNumber": 46,
@@ -19661,7 +19850,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"NOTE: \u003cdate\u003e and \u003ctime\u003e must adhere to a certain set of date time formats. \\nTo find out about the specific\" +"
+        "content": "            \"NOTE: \u003cdate\u003e and \u003ctime\u003e must adhere to a certain set of date time formats. \\nTo find out about the specific \" +"
       },
       {
         "lineNumber": 63,
@@ -20620,21 +20809,21 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            TAB + \"today or tdy – represents the current date\\n\" +"
+        "content": "            TAB + \"today or tdy - represents the current date\\n\" +"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            TAB + \"tomorrow or tmr – represents the next date\\n\" +"
+        "content": "            TAB + \"tomorrow or tmr - represents the next date\\n\" +"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            TAB + \"yesterday or yst – represents the previous date\" + NEW_PARAGRAPH +"
+        "content": "            TAB + \"yesterday or yst - represents the previous date\" + NEW_PARAGRAPH +"
       },
       {
         "lineNumber": 202,
@@ -20690,7 +20879,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"Regarding delimiters, the program will only consider ‘/’ and ‘-‘ as valid delimiters for dates. \\n\" +"
+        "content": "            \"Regarding delimiters, the program will only consider \\\u0027/\\\u0027 and \\\u0027-\\\u0027 as valid delimiters for dates. \\n\" +"
       },
       {
         "lineNumber": 210,
@@ -20851,7 +21040,7 @@
         "author": {
           "gitId": "iceclementi"
         },
-        "content": "            \"Regarding delimiters, the program will only consider ‘:’ and ‘.’ as valid delimiters for time.\\n\" +"
+        "content": "            \"Regarding delimiters, the program will only consider \\\u0027:\\\u0027 and \\\u0027.\\\u0027 as valid delimiters for time.\\n\" +"
       },
       {
         "lineNumber": 233,
